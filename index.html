@@ -300,12 +300,10 @@
         <img class="name" src="/assets/wordmark.png" alt="two english mugs">
       </a>
       <nav>
-        <a href="#hosts">Hosts</a>
         <a href="#episodes">Episodes</a>
         <a href="#quiz">Quiz</a>
         <a href="#learn">Words</a>
         <a href="#order">Order</a>
-        <a href="#turn">Your turn</a>
         <a href="#pdf">PDF</a>
       </nav>
     </div>
@@ -570,39 +568,41 @@
   } else { els.forEach(function (el) { el.classList.add('in'); }); }
   setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 1400);
 
-  /* mouse-reactive dot grid */
+  /* mouse-reactive dot grid — draws only when the pointer moves, never a free-running loop */
   var cv = document.getElementById('dots');
   if (cv && !reduce) {
     var ctx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
-    var pts = [], W = 0, H = 0, mx = -999, my = -999;
+    var pts = [], W = 0, H = 0, mx = -999, my = -999, queued = false;
     function build() {
       W = cv.clientWidth; H = cv.clientHeight;
       cv.width = W * dpr; cv.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       pts = [];
-      var gap = 30;
-      for (var x = gap; x < W; x += gap) for (var y = gap; y < H; y += gap) pts.push({ x: x, y: y });
+      for (var x = 30; x < W; x += 30) for (var y = 30; y < H; y += 30) pts.push({ x: x, y: y });
+      render();
     }
-    function draw() {
+    function render() {
+      queued = false;
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < pts.length; i++) {
-        var p = pts[i];
-        var d = Math.hypot(p.x - mx, p.y - my);
-        var r = d < 130 ? 1.3 + (1 - d / 130) * 2.1 : 1.3;
-        var a = d < 130 ? 0.34 + (1 - d / 130) * 0.5 : 0.22;
+        var p = pts[i], d = Math.hypot(p.x - mx, p.y - my);
+        var near = d < 130;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, r, 0, 6.2832);
-        ctx.fillStyle = 'rgba(231,93,78,' + a.toFixed(3) + ')';
+        ctx.arc(p.x, p.y, near ? 1.3 + (1 - d / 130) * 2.1 : 1.3, 0, 6.2832);
+        ctx.fillStyle = near ? 'rgba(231,93,78,' + (0.34 + (1 - d / 130) * 0.5).toFixed(3) + ')'
+                             : 'rgba(231,93,78,.22)';
         ctx.fill();
       }
-      requestAnimationFrame(draw);
     }
-    addEventListener('resize', build);
-    cv.parentElement.addEventListener('pointermove', function (e) {
-      var b = cv.getBoundingClientRect(); mx = e.clientX - b.left; my = e.clientY - b.top;
+    function request() { if (!queued) { queued = true; requestAnimationFrame(render); } }
+    var host = cv.parentElement;
+    host.addEventListener('pointermove', function (e) {
+      var b = cv.getBoundingClientRect();
+      mx = e.clientX - b.left; my = e.clientY - b.top; request();
     });
-    cv.parentElement.addEventListener('pointerleave', function () { mx = my = -999; });
-    build(); draw();
+    host.addEventListener('pointerleave', function () { mx = my = -999; request(); });
+    var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 150); });
+    build();
   }
 
   /* episode filter + done tracking */
