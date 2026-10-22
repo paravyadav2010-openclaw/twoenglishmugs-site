@@ -17,101 +17,168 @@
 <style>
   @font-face{font-family:Fredoka;src:url(/assets/fonts/Fredoka.ttf) format('truetype');font-weight:300 700;font-display:swap}
   @font-face{font-family:Nunito;src:url(/assets/fonts/Nunito.ttf) format('truetype');font-weight:200 900;font-display:swap}
-
   :root{
-    --night:#141111; --night-2:#1D1818; --card:#211B1B;
-    --coral:#E75D4E; --coral-soft:#F0806F; --cream:#FFF6E9; --dim:#C9BFB6;
-    --line:rgba(255,246,233,.14);
+    --night:#141111; --night-2:#1B1616; --card:#211B1B; --card-2:#271F1F;
+    --coral:#E75D4E; --coral-soft:#F0806F; --cream:#FFF6E9; --dim:#BDB2A9;
+    --line:rgba(255,246,233,.13);
     --display:Fredoka,ui-rounded,"Segoe UI",sans-serif;
     --text:Nunito,-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--night);color:var(--cream);font:17px/1.7 var(--text);
-       -webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--night);color:var(--cream);font:17px/1.7 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:var(--cream);text-decoration:none}
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
 
-  header{padding:20px 0 6px}
-  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  /* thin scroll progress */
+  #prog{position:fixed;top:0;left:0;height:2px;background:var(--coral);width:0;z-index:60;transition:width .1s linear}
+
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(20,17,17,.72);
+         border-bottom:1px solid transparent;transition:border-color .2s,background .2s}
+  header.stuck{border-bottom-color:var(--line);background:rgba(20,17,17,.9)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
   .lock{display:flex;align-items:center;gap:12px}
-  .lock img.mark{height:38px;width:auto;display:block}
-  .lock img.name{height:19px;width:auto;display:block}
-  nav a{font:800 14.5px/1 var(--text);color:var(--dim);margin-left:22px}
-  nav a:hover{color:var(--coral-soft)}
+  .lock img.mark{height:36px;width:auto;display:block}
+  .lock img.name{height:18px;width:auto;display:block}
+  nav{display:flex;align-items:center;gap:4px}
+  nav a{font:800 14px/1 var(--text);color:var(--dim);padding:9px 12px;border-radius:999px;transition:.15s}
+  nav a:hover,nav a.on{color:var(--cream);background:rgba(255,246,233,.08)}
 
-  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;padding:40px 0 34px}
+  /* hero */
+  .hero{position:relative;padding:56px 0 40px}
+  #dots{position:absolute;inset:-40px 0 0 0;width:100%;height:100%;z-index:0;opacity:.75;pointer-events:none}
+  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;
+        padding:6px 13px;font:800 12px/1 var(--text);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+  .pill i{width:6px;height:6px;border-radius:50%;background:var(--coral);display:block}
   h1{font:600 clamp(36px,5.6vw,58px)/1.05 var(--display);margin:0 0 16px;letter-spacing:-.6px}
-  h1 em{font-style:normal;color:var(--coral)}
+  .rot{display:inline-block;color:var(--coral);min-width:4ch}
   .lede{font-size:18.5px;color:var(--dim);margin:0 0 26px;max-width:46ch}
-  .row{display:flex;flex-wrap:wrap;gap:12px}
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:999px;
-       font:800 15px/1 var(--text);border:2px solid transparent;transition:.18s}
+       font:800 15px/1 var(--text);border:2px solid transparent;transition:.18s;cursor:pointer}
   .btn-main{background:var(--coral);color:#1a1210}
   .btn-main:hover{background:var(--coral-soft);transform:translateY(-1px)}
-  .btn-ghost{border-color:rgba(255,246,233,.35);color:var(--cream)}
-  .btn-ghost:hover{border-color:var(--coral);color:var(--cream)}
+  .btn-ghost{border-color:rgba(255,246,233,.3);color:var(--cream);background:none}
+  .btn-ghost:hover{border-color:var(--coral)}
   .art{display:flex;justify-content:center}
-  .art img{width:100%;max-width:390px;height:auto}
+  .art img{width:100%;max-width:340px;height:auto;transition:transform .4s ease}
+  .art img:hover{transform:translateY(-6px) rotate(-1deg)}
 
-  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;
-          font:800 12.5px/1.4 var(--text);letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
-          display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
-  .ticker b{color:var(--coral)}
+  /* marquee */
+  .marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px;
+        -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+                mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .marq ul{display:flex;gap:34px;list-style:none;margin:0;padding:13px 0;width:max-content;animation:slide 26s linear infinite}
+  .marq li{font:800 12.5px/1 var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+  .marq li b{color:var(--coral)}
+  @keyframes slide{to{transform:translateX(-50%)}}
 
-  section{padding:56px 0}
+  section{padding:60px 0}
   h2{font:600 clamp(24px,3.4vw,32px)/1.15 var(--display);margin:0 0 8px;letter-spacing:-.3px}
   .sub{color:var(--dim);margin:0 0 26px;font-size:16px}
 
-  .eps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-  .ep{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);
-      border-radius:18px;padding:18px;transition:.2s}
-  .ep:hover{transform:translateY(-3px);border-color:var(--coral);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+  /* bento */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;position:relative;overflow:hidden}
+  .tile.big{grid-column:span 2}
+  .tile h3{font:600 17px/1.3 var(--display);margin:0 0 6px}
+  .tile p{margin:0;color:var(--dim);font-size:14.5px}
+  .tile .num{font:600 30px/1 var(--display);color:var(--coral);margin-bottom:8px}
+  .tile:after{content:"";position:absolute;inset:auto -30% -60% auto;width:150px;height:150px;border-radius:50%;
+              background:radial-gradient(circle,rgba(231,93,78,.16),transparent 70%);pointer-events:none}
+
+  /* episodes */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+  .f{border:1px solid var(--line);background:none;color:var(--dim);border-radius:999px;padding:8px 14px;
+     font:800 13px/1 var(--text);cursor:pointer;transition:.15s}
+  .f:hover{color:var(--cream);border-color:rgba(255,246,233,.3)}
+  .f.on{background:var(--coral);border-color:var(--coral);color:#1a1210}
+  .eps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+  .ep{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;
+      padding:18px;transition:.2s;position:relative}
+  .ep:hover{transform:translateY(-3px);border-color:var(--coral);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+  .ep.hide{display:none}
   .ep .n{font:800 11.5px/1 var(--text);letter-spacing:.16em;color:var(--coral);text-transform:uppercase}
   .ep .t{font:600 19px/1.3 var(--display);margin:10px 0 6px}
   .ep .d{font-size:13.5px;color:var(--dim);margin:auto 0 0;padding-top:10px}
+  .done{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);
+        background:none;cursor:pointer;color:transparent;font-size:13px;line-height:1;transition:.15s}
+  .done:hover{border-color:var(--coral)}
+  .done[aria-pressed="true"]{background:var(--coral);border-color:var(--coral);color:#1a1210}
+  .count{font:800 13px/1 var(--text);color:var(--dim);margin-left:auto}
+  .count b{color:var(--coral)}
 
-  .pdf{background:var(--coral);border-radius:24px;padding:34px;color:#1a1210}
-  .pdf h2{color:#1a1210;margin-bottom:6px}
-  .pdf .sub{color:rgba(26,18,16,.78);margin-bottom:0}
-  .pdflist{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-  .chip{border:1.5px solid rgba(26,18,16,.45);border-radius:999px;padding:9px 16px;
-        font:800 14px/1 var(--text);color:#1a1210;transition:.18s}
-  .chip:hover{background:#1a1210;color:var(--cream)}
+  /* quiz */
+  .quiz{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:26px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  .qitem{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:var(--card);cursor:pointer;
+         font:600 16px/1.35 var(--display);transition:.15s;text-align:left;color:var(--cream)}
+  .qitem:hover{border-color:rgba(255,246,233,.35)}
+  .qitem.sel{border-color:var(--coral);box-shadow:0 0 0 2px rgba(231,93,78,.25)}
+  .qitem.ok{border-color:#5CB27A;background:rgba(92,178,122,.14);cursor:default}
+  .qitem.bad{border-color:#C7452F;animation:shake .3s}
+  .qitem.muted{opacity:.35;pointer-events:none}
+  .qitem span{display:block;font:700 14.5px/1.5 var(--text);color:var(--dim);margin-top:4px}
+  @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .qmsg{margin:14px 0 0;font:800 14px/1.4 var(--text);color:var(--dim);min-height:20px}
+  .qmsg.good{color:#7FD09A}
+  .qmsg.warn{color:var(--coral-soft)}
 
-  .words{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-  .word{border-left:3px solid var(--coral);padding:4px 0 4px 16px}
-  .word b{display:block;font:600 21px/1.3 var(--display)}
-  .word span{color:var(--dim);font-size:14.5px}
+  /* your turn */
+  .turn{background:var(--coral);border-radius:24px;padding:30px;color:#1a1210}
+  .turn h2{color:#1a1210;margin-bottom:6px}
+  .turn p{color:rgba(26,18,16,.8);margin:0 0 16px;font-size:15.5px}
+  .turn textarea{width:100%;min-height:84px;resize:vertical;border-radius:14px;border:1.5px solid rgba(26,18,16,.35);
+        background:rgba(255,246,233,.94);color:#241812;padding:13px 15px;font:600 16px/1.5 var(--text)}
+  .turn textarea:focus{outline:2px solid #1a1210;outline-offset:1px}
+  .turnfoot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .turn .btn-main{background:#1a1210;color:var(--cream)}
+  .turn .btn-main:hover{background:#2a1d18}
+  .hint{font:800 13px/1 var(--text);color:rgba(26,18,16,.75)}
+  #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--cream);color:#1a1210;
+         font:800 14px/1 var(--text);padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;
+         transition:.25s;z-index:70}
+  #toast.show{opacity:1;transform:translate(-50%,0)}
 
-  .fade{opacity:1}
-  .js .fade{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
-  .js .fade.in{opacity:1;transform:none}
+  .pdf{background:var(--night-2);border:1px solid var(--line);border-radius:24px;padding:30px}
+  .pdflist{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .chip{border:1.5px solid rgba(255,246,233,.28);border-radius:999px;padding:9px 16px;font:800 14px/1 var(--text);transition:.18s}
+  .chip:hover{border-color:var(--coral);background:rgba(231,93,78,.14)}
 
-  footer{border-top:1px solid var(--line);padding:26px 0 46px;color:var(--dim);font-size:14px;margin-top:10px;text-align:center}
+  .reveal{opacity:1}
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+
+  footer{border-top:1px solid var(--line);padding:30px 0 48px;color:var(--dim);font-size:14px;text-align:center}
   footer .lock{margin-bottom:12px;justify-content:center}
-  footer .lock img.mark{height:28px}
-  footer .lock img.name{height:14px}
+  footer .lock img.mark{height:26px}
+  footer .lock img.name{height:13px}
   footer a{font-weight:800;margin:0 9px}
-  footer .contact a{margin:0;font-weight:700;color:var(--coral-soft)}
+  footer .contact{margin-top:8px}
+  footer .contact a{margin:0;color:var(--coral-soft)}
 
-  @media(max-width:720px){
-    .lock img.mark{height:32px}
-    .lock img.name{height:16px}
-    nav a{margin-left:14px;font-size:13px}
-    .hero{grid-template-columns:1fr;padding:24px 0}
-    .art{order:-1}
-    .art img{max-width:260px}
+  @media(max-width:860px){
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .tile.big{grid-column:span 2}
+    .hero-in{grid-template-columns:1fr}
+    .art{order:-1}.art img{max-width:230px}
+    .cols{grid-template-columns:1fr}
+    .lock img.mark{height:32px}.lock img.name{height:16px}
+    nav a{padding:8px 9px;font-size:13px}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .fade{opacity:1;transform:none;transition:none}
+    .marq ul{animation:none}
+    .js .reveal{opacity:1;transform:none;transition:none}
+    #dots{display:none}
   }
 </style>
 </head>
 <body>
+<div id="prog"></div>
 <div class="wrap">
-  <header>
+  <header id="hd">
     <div class="bar">
       <a class="lock" href="/">
         <img class="mark" src="/assets/mark.png" alt="" aria-hidden="true">
@@ -119,63 +186,137 @@
       </a>
       <nav>
         <a href="#episodes">Episodes</a>
-        <a href="#pdf">Free PDF</a>
-        <a href="#about">Words</a>
+        <a href="#quiz">Word test</a>
+        <a href="#turn">Your turn</a>
+        <a href="#pdf">PDF</a>
       </nav>
     </div>
   </header>
 
   <div class="hero">
-    <div>
-      <h1>Real English,<br><em>one cup</em> at a time.</h1>
-      <p class="lede">Emma and Josh talk the way people really talk. Short turns, small stories,
-      and every hard word explained the moment it shows up. Put your earphones on and follow the chat.</p>
-      <div class="row">
-        <a class="btn btn-main" href="https://www.youtube.com/@TwoEnglishMugs">Listen on YouTube</a>
-        <a class="btn btn-ghost" href="#pdf">Free PDF</a>
+    <canvas id="dots" aria-hidden="true"></canvas>
+    <div class="hero-in">
+      <div>
+        <span class="pill"><i></i>B1 · cosy · twenty minutes</span>
+        <h1>Real English,<br><span class="rot" id="rot">one cup</span> at a time.</h1>
+        <p class="lede">Emma and Josh talk the way people really talk. Short turns, small stories,
+        and every hard word explained the moment it shows up.</p>
+        <div class="row">
+          <a class="btn btn-main" href="https://www.youtube.com/@TwoEnglishMugs">Listen free</a>
+          <a class="btn btn-ghost" href="#quiz">Try the word test</a>
+        </div>
+      </div>
+      <div class="art">
+        <img src="/assets/lockup.png" alt="Two English Mugs: two mugs facing each other, in cream and coral">
       </div>
     </div>
-    <div class="art">
-      <img src="/assets/lockup.png" alt="Two English Mugs: two mugs facing each other, in cream and coral">
-    </div>
   </div>
 
-  <div class="ticker">
-    <span><b>26</b> episodes</span>
-    <span><b>B1–B2</b> level</span>
-    <span><b>Two</b> new each week</span>
-    <span><b>Zero</b> grammar drills</span>
+  <div class="marq" aria-hidden="true">
+    <ul>
+      <li><b>habits</b></li><li>money</li><li>small talk</li><li><b>sleep</b></li><li>food</li>
+      <li>focus</li><li><b>habits</b></li><li>money</li><li>small talk</li><li><b>sleep</b></li><li>food</li><li>focus</li>
+    </ul>
   </div>
+
+  <section id="how">
+    <h2 class="reveal">How it works</h2>
+    <p class="sub reveal">No pen. No paper. No grammar drills. Just twenty minutes of talk you can follow.</p>
+    <div class="bento">
+      <div class="tile big reveal">
+        <div class="num">01</div>
+        <h3>Put your earphones on</h3>
+        <p>Cook, walk, fold clothes. You do not need to sit and stare at a screen.</p>
+      </div>
+      <div class="tile reveal">
+        <div class="num">02</div>
+        <h3>Follow the chat</h3>
+        <p>Every hard word gets explained right there, in the moment.</p>
+      </div>
+      <div class="tile reveal">
+        <div class="num">03</div>
+        <h3>Read it back</h3>
+        <p>The free PDF holds the whole talk plus the word list.</p>
+      </div>
+      <div class="tile big reveal">
+        <div class="num">04</div>
+        <h3>Say one line out loud</h3>
+        <p>One sentence from the show, in your own voice. That is the whole trick.</p>
+      </div>
+      <div class="tile reveal">
+        <div class="num">26</div>
+        <h3>Episodes so far</h3>
+        <p>Two new ones each week.</p>
+      </div>
+    </div>
+  </section>
 
   <section id="episodes">
-    <h2 class="fade">Start with one of these</h2>
-    <p class="sub fade">About twenty minutes each. Play one while you cook, walk or fold laundry.</p>
+    <h2 class="reveal">Start with one of these</h2>
+    <p class="sub reveal">Tap the mug to mark one done. Your picks stay on this device.</p>
+    <div class="filters reveal" role="group" aria-label="Filter episodes">
+      <button class="f on" data-f="all">All</button>
+      <button class="f" data-f="words">Words</button>
+      <button class="f" data-f="habits">Habits</button>
+      <button class="f" data-f="money">Money</button>
+      <span class="count" id="epcount">0 of 4 done</span>
+    </div>
     <div class="eps">
-      <a class="ep fade" href="https://www.youtube.com/watch?v=ikI8NmrDgbc">
+      <article class="ep reveal" data-tags="words">
+        <button class="done" data-ep="ep25" aria-pressed="false" aria-label="Mark episode 25 done">✓</button>
         <span class="n">Episode 25</span>
-        <p class="t">Stop Studying Grammar, Just Listen</p>
-        <p class="d">24 min</p>
-      </a>
-      <a class="ep fade" href="https://www.youtube.com/watch?v=GwXKgJ90Fic">
+        <p class="t"><a href="https://www.youtube.com/watch?v=ikI8NmrDgbc">Stop Studying Grammar, Just Listen</a></p>
+        <p class="d">24 min · words</p>
+      </article>
+      <article class="ep reveal" data-tags="words food">
+        <button class="done" data-ep="ep24" aria-pressed="false" aria-label="Mark episode 24 done">✓</button>
         <span class="n">Episode 24</span>
-        <p class="t">Food Words You Use Every Day</p>
-        <p class="d">20 min</p>
-      </a>
-      <a class="ep fade" href="https://www.youtube.com/watch?v=QS5SlmdXTaw">
+        <p class="t"><a href="https://www.youtube.com/watch?v=GwXKgJ90Fic">Food Words You Use Every Day</a></p>
+        <p class="d">20 min · food</p>
+      </article>
+      <article class="ep reveal" data-tags="habits">
+        <button class="done" data-ep="ep23" aria-pressed="false" aria-label="Mark episode 23 done">✓</button>
         <span class="n">Episode 23</span>
-        <p class="t">How To Stay Motivated</p>
-        <p class="d">21 min</p>
-      </a>
-      <a class="ep fade" href="https://www.youtube.com/watch?v=0qx1EKEj4R8">
+        <p class="t"><a href="https://www.youtube.com/watch?v=QS5SlmdXTaw">How To Stay Motivated</a></p>
+        <p class="d">21 min · habits</p>
+      </article>
+      <article class="ep reveal" data-tags="money habits">
+        <button class="done" data-ep="ep22" aria-pressed="false" aria-label="Mark episode 22 done">✓</button>
         <span class="n">Episode 22</span>
-        <p class="t">Money, and What It Does To Us</p>
-        <p class="d">20 min</p>
-      </a>
+        <p class="t"><a href="https://www.youtube.com/watch?v=0qx1EKEj4R8">Money, and What It Does To Us</a></p>
+        <p class="d">20 min · money</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <div class="quiz reveal">
+      <h2>Word test</h2>
+      <p class="sub">Tap a word on the left, then its meaning on the right. Three pairs, no score kept.</p>
+      <div class="cols">
+        <div id="words"></div>
+        <div id="means"></div>
+      </div>
+      <p class="qmsg" id="qmsg">Pick a word to start.</p>
+    </div>
+  </section>
+
+  <section id="turn">
+    <div class="turn reveal">
+      <h2>Your turn</h2>
+      <p>Episode 23 ends with: <strong>“The hardest thing for me to start is…”</strong> Finish it in one short line,
+      then copy it into the comments.</p>
+      <label for="ans" class="hint" style="display:block;margin-bottom:8px">Your sentence</label>
+      <textarea id="ans" placeholder="The hardest thing for me to start is…"></textarea>
+      <div class="turnfoot">
+        <button class="btn btn-main" id="copy">Copy my line</button>
+        <span class="hint" id="wc">0 words</span>
+      </div>
     </div>
   </section>
 
   <section id="pdf">
-    <div class="pdf fade">
+    <div class="pdf reveal">
       <h2>The words, in writing</h2>
       <p class="sub">Every episode has a free PDF: the whole chat in plain text, plus the word list with
       its meaning. Read it after you listen, or read it first and listen after.</p>
@@ -184,16 +325,6 @@
         <a class="chip" href="/pdfs/ep23-stay-motivated.pdf">Episode 23 · PDF</a>
         <a class="chip" href="/pdfs/ep22-money.pdf">Episode 22 · PDF</a>
       </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <h2 class="fade">Three words from the show</h2>
-    <p class="sub fade">Small words that come back again and again. Say each one out loud once.</p>
-    <div class="words fade">
-      <div class="word"><b>automatic</b><span>doing something without thinking about it</span></div>
-      <div class="word"><b>routine</b><span>the normal order you do things each day</span></div>
-      <div class="word"><b>progress</b><span>moving forward and getting better</span></div>
     </div>
   </section>
 </div>
@@ -209,20 +340,173 @@
       <a href="/terms.html">Terms</a>
       <a href="https://www.youtube.com/@TwoEnglishMugs">YouTube</a>
     </div>
-    <div class="contact" style="margin-top:8px">Two English Mugs Podcast · <a href="mailto:hello@twoenglishmugs.com">hello@twoenglishmugs.com</a></div>
+    <div class="contact">Two English Mugs Podcast · <a href="mailto:hello@twoenglishmugs.com">hello@twoenglishmugs.com</a></div>
   </div>
 </footer>
+<div id="toast" role="status" aria-live="polite"></div>
 
 <script>
-  const els = document.querySelectorAll('.fade');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll progress + sticky header */
+  var prog = document.getElementById('prog'), hd = document.getElementById('hd');
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    hd.classList.toggle('stuck', h.scrollTop > 8);
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* rotating hero word */
+  var words = ['one cup', 'one chat', 'one habit', 'one story'];
+  var rot = document.getElementById('rot'), wi = 0;
+  if (!reduce) {
+    setInterval(function () {
+      wi = (wi + 1) % words.length;
+      rot.style.opacity = 0;
+      setTimeout(function () { rot.textContent = words[wi]; rot.style.opacity = 1; }, 220);
+    }, 3200);
+    rot.style.transition = 'opacity .22s ease';
+  }
+
+  /* reveal on scroll, with a safety net */
+  var els = document.querySelectorAll('.reveal');
   if (!reduce && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    els.forEach((el) => io.observe(el));
-  } else { els.forEach((el) => el.classList.add('in')); }
-  setTimeout(() => els.forEach((el) => el.classList.add('in')), 1200);
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else { els.forEach(function (el) { el.classList.add('in'); }); }
+  setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 1400);
+
+  /* mouse-reactive dot grid */
+  var cv = document.getElementById('dots');
+  if (cv && !reduce) {
+    var ctx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
+    var pts = [], W = 0, H = 0, mx = -999, my = -999;
+    function build() {
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      pts = [];
+      var gap = 30;
+      for (var x = gap; x < W; x += gap) for (var y = gap; y < H; y += gap) pts.push({ x: x, y: y });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        var d = Math.hypot(p.x - mx, p.y - my);
+        var r = d < 130 ? 1.1 + (1 - d / 130) * 2.1 : 1.1;
+        var a = d < 130 ? 0.28 + (1 - d / 130) * 0.5 : 0.16;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, 6.2832);
+        ctx.fillStyle = 'rgba(231,93,78,' + a.toFixed(3) + ')';
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    addEventListener('resize', build);
+    cv.parentElement.addEventListener('pointermove', function (e) {
+      var b = cv.getBoundingClientRect(); mx = e.clientX - b.left; my = e.clientY - b.top;
+    });
+    cv.parentElement.addEventListener('pointerleave', function () { mx = my = -999; });
+    build(); draw();
+  }
+
+  /* episode filter + done tracking */
+  var KEY = 'tem-done';
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { done = {}; }
+  var btns = document.querySelectorAll('.done'), countEl = document.getElementById('epcount');
+  function paint() {
+    var n = 0;
+    btns.forEach(function (b) {
+      var on = !!done[b.dataset.ep];
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) n++;
+    });
+    countEl.innerHTML = '<b>' + n + '</b> of ' + btns.length + ' done';
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      done[b.dataset.ep] = !done[b.dataset.ep];
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (err) {}
+      paint();
+    });
+  });
+  paint();
+
+  document.querySelectorAll('.f').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.f').forEach(function (o) { o.classList.remove('on'); });
+      btn.classList.add('on');
+      var f = btn.dataset.f;
+      document.querySelectorAll('.ep').forEach(function (card) {
+        var tags = (card.dataset.tags || '').split(' ');
+        card.classList.toggle('hide', f !== 'all' && tags.indexOf(f) === -1);
+      });
+    });
+  });
+
+  /* word match quiz */
+  var pairs = [
+    { w: 'automatic', m: 'doing something without thinking about it' },
+    { w: 'routine', m: 'the normal order you do things each day' },
+    { w: 'progress', m: 'moving forward and getting better' }
+  ];
+  var wbox = document.getElementById('words'), mbox = document.getElementById('means');
+  var msg = document.getElementById('qmsg'), sel = null, left = pairs.length;
+  function shuffle(a) { return a.map(function (v) { return [Math.random(), v]; }).sort(function (x, y) { return x[0] - y[0]; }).map(function (v) { return v[1]; }); }
+  shuffle(pairs.slice()).forEach(function (p) {
+    var b = document.createElement('button');
+    b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w; b.textContent = p.w;
+    b.addEventListener('click', function () {
+      if (b.classList.contains('ok')) return;
+      document.querySelectorAll('#words .qitem').forEach(function (o) { o.classList.remove('sel'); });
+      b.classList.add('sel'); sel = b;
+      msg.className = 'qmsg'; msg.textContent = 'Now pick the meaning of “' + p.w + '”.';
+    });
+    wbox.appendChild(b);
+  });
+  shuffle(pairs.slice()).forEach(function (p) {
+    var b = document.createElement('button');
+    b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w;
+    b.innerHTML = '<span>' + p.m + '</span>';
+    b.addEventListener('click', function () {
+      if (b.classList.contains('ok')) return;
+      if (!sel) { msg.className = 'qmsg warn'; msg.textContent = 'Pick a word on the left first.'; return; }
+      if (sel.dataset.k === b.dataset.k) {
+        b.classList.add('ok'); sel.classList.remove('sel'); sel.classList.add('ok'); sel = null;
+        left--;
+        if (left === 0) { msg.className = 'qmsg good'; msg.textContent = 'All three matched. Say each one out loud once, then go and listen.'; }
+        else { msg.className = 'qmsg good'; msg.textContent = 'Right. ' + left + ' to go.'; }
+      } else {
+        b.classList.add('bad');
+        setTimeout(function () { b.classList.remove('bad'); }, 400);
+        msg.className = 'qmsg warn'; msg.textContent = 'Not that one. Try the other meaning.';
+      }
+    });
+    mbox.appendChild(b);
+  });
+
+  /* your turn: word count + copy */
+  var ans = document.getElementById('ans'), wc = document.getElementById('wc');
+  var toast = document.getElementById('toast');
+  function countWords(s) { var t = s.trim(); return t ? t.split(/\s+/).length : 0; }
+  ans.addEventListener('input', function () { wc.textContent = countWords(ans.value) + ' words'; });
+  document.getElementById('copy').addEventListener('click', function () {
+    var v = ans.value.trim();
+    if (!v) { toast.textContent = 'Write your line first.'; toast.className = 'show'; setTimeout(function () { toast.className = ''; }, 1800); return; }
+    var done2 = function () { toast.textContent = 'Copied — paste it on the video.'; toast.className = 'show'; setTimeout(function () { toast.className = ''; }, 2200); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(v).then(done2, function () { ans.select(); document.execCommand('copy'); done2(); });
+    } else { ans.select(); document.execCommand('copy'); done2(); }
+  });
+})();
 </script>
 </body>
 </html>
