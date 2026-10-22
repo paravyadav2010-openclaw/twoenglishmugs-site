@@ -4,54 +4,228 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Two English Mugs — real English, one cup at a time</title>
-<meta name="description" content="A slow, cosy English podcast for B1 learners. Listen, read along, and stop freezing when it is your turn to speak.">
+<meta name="description" content="A slow, cosy B1 English podcast. Emma and Josh talk like real people, and every hard word is explained the moment it appears.">
+<meta property="og:title" content="Two English Mugs — real English, one cup at a time">
+<meta property="og:description" content="A cosy B1 English listening podcast. 26 episodes, free PDF for each one.">
+<meta property="og:url" content="https://twoenglishmugs.com/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231b1512'/><path d='M9 14h11v7a4 4 0 0 1-4 4h-3a4 4 0 0 1-4-4z' fill='%23f6efe6'/><path d='M20 16h2.5a2.5 2.5 0 0 1 0 5H20' stroke='%23f6efe6' stroke-width='1.8' fill='none'/></svg>">
 <style>
-  :root{--ink:#221c18;--paper:#faf6f0;--mug:#7b4a2d;--soft:#8a7f76;--line:#e6ddd2}
+  :root{
+    --espresso:#171210; --espresso-2:#221a16; --cream:#f7f1e8; --cream-dim:#cdbfb0;
+    --copper:#c98b52; --copper-soft:#e0ab74; --line:rgba(247,241,232,.13);
+    --serif:ui-serif,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--paper);color:var(--ink);
-       font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  .wrap{max-width:720px;margin:0 auto;padding:56px 24px 80px}
-  h1{font:600 40px/1.15 Georgia,"Times New Roman",serif;margin:0 0 8px;letter-spacing:-.5px}
-  h2{font:600 22px/1.3 Georgia,serif;margin:40px 0 8px}
-  .tag{color:var(--soft);font-size:15px;margin:0 0 36px}
-  a{color:var(--mug)}
-  ul{padding-left:20px}
-  li{margin:6px 0}
-  .card{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:#fff;margin:22px 0}
-  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
-         color:var(--soft);font-size:14px}
-  footer a{margin-right:14px}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--espresso);color:var(--cream);font:17px/1.7 var(--sans);
+       -webkit-font-smoothing:antialiased}
+  a{color:var(--copper-soft);text-decoration:none}
+  a:hover{color:var(--cream)}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  header{padding:26px 0}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font:600 17px/1 var(--serif);letter-spacing:.2px;color:var(--cream)}
+  .brand svg{flex:none}
+  nav a{color:var(--cream-dim);font-size:14.5px;margin-left:22px}
+  nav a:hover{color:var(--cream)}
+
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:56px 0 40px}
+  h1{font:600 clamp(38px,6vw,60px)/1.05 var(--serif);letter-spacing:-1px;margin:0 0 18px}
+  h1 em{font-style:italic;color:var(--copper-soft)}
+  .lede{font-size:18.5px;color:var(--cream-dim);margin:0 0 28px;max-width:46ch}
+  .row{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:999px;
+       font-size:15px;font-weight:600;border:1px solid transparent;transition:.18s}
+  .btn-main{background:var(--copper);color:#1b120c}
+  .btn-main:hover{background:var(--copper-soft);color:#1b120c;transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--copper);color:var(--cream)}
+  .art{position:relative;height:270px}
+  .steam{stroke:var(--copper-soft);stroke-width:2.2;fill:none;opacity:.55;stroke-linecap:round;
+         animation:rise 4.6s ease-in-out infinite}
+  .steam:nth-child(2){animation-delay:.9s}
+  .steam:nth-child(3){animation-delay:1.8s}
+  @keyframes rise{
+    0%{transform:translateY(6px);opacity:0}
+    35%{opacity:.6}
+    100%{transform:translateY(-16px);opacity:0}
+  }
+
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+          padding:14px 0;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;
+          color:var(--cream-dim);display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+  .ticker b{color:var(--copper-soft);font-weight:600}
+
+  section{padding:64px 0}
+  h2{font:600 clamp(24px,3.4vw,32px)/1.2 var(--serif);margin:0 0 8px;letter-spacing:-.3px}
+  .sub{color:var(--cream-dim);margin:0 0 28px;font-size:16px}
+
+  .eps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+  .ep{display:block;background:var(--espresso-2);border:1px solid var(--line);border-radius:16px;
+      padding:18px;transition:.2s}
+  .ep:hover{transform:translateY(-3px);border-color:rgba(201,139,82,.5);color:var(--cream)}
+  .ep .n{font:600 12px/1 var(--sans);letter-spacing:.16em;color:var(--copper);text-transform:uppercase}
+  .ep .t{font:600 18px/1.35 var(--serif);margin:10px 0 6px}
+  .ep .d{font-size:13.5px;color:var(--cream-dim);margin:0}
+
+  .pdf{background:linear-gradient(160deg,#241a15,#1b1411);border:1px solid var(--line);
+       border-radius:22px;padding:32px}
+  .pdf h2{margin-bottom:6px}
+  .pdflist{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:9px 15px;font-size:14px;
+        color:var(--cream);transition:.18s}
+  .chip:hover{border-color:var(--copper);color:var(--copper-soft)}
+
+  .words{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+  .word{border-left:2px solid var(--copper);padding:4px 0 4px 16px}
+  .word b{display:block;font:600 20px/1.3 var(--serif)}
+  .word span{color:var(--cream-dim);font-size:14.5px}
+
+  .fade{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  .fade.in{opacity:1;transform:none}
+
+  footer{border-top:1px solid var(--line);padding:30px 0 46px;color:var(--cream-dim);font-size:14px}
+  footer a{margin-right:16px}
+  @media(max-width:720px){
+    .hero{grid-template-columns:1fr;padding:34px 0 26px}
+    .art{height:200px;order:-1}
+    nav a{margin-left:14px;font-size:13.5px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .steam{animation:none;opacity:.35}
+    .fade{opacity:1;transform:none;transition:none}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Two English Mugs</h1>
-  <p class="tag">Real everyday English, one cup at a time.</p>
+  <header>
+    <div class="bar">
+      <a class="brand" href="/">
+        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M7 13h13v8a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5z" fill="#f7f1e8"/>
+          <path d="M20 15h2.6a2.9 2.9 0 0 1 0 5.8H20" stroke="#f7f1e8" stroke-width="1.9" fill="none"/>
+        </svg>
+        Two English Mugs
+      </a>
+      <nav>
+        <a href="#episodes">Episodes</a>
+        <a href="#pdf">Free PDF</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
 
-  <p>Two English Mugs is a listening podcast for B1 and B2 learners. Emma and Josh talk the way people
-  really talk: short turns, small stories, and every hard word explained the moment it appears.</p>
-
-  <p>No word lists. No grammar drills. You put your headphones on, you follow the chat, and slowly you
-  stop freezing when it is your turn to speak.</p>
-
-  <div class="card">
-    <h2 style="margin-top:0">Listen</h2>
-    <ul>
-      <li><a href="https://www.youtube.com/@TwoEnglishMugs">YouTube</a> — every episode, with captions on</li>
-      <li>Free PDF transcript for each episode, linked in the video description</li>
-    </ul>
+  <div class="hero">
+    <div>
+      <h1>Real English,<br><em>one cup</em> at a time.</h1>
+      <p class="lede">Emma and Josh talk the way people really talk. Short turns, small stories,
+      and every hard word explained the moment it shows up. Put your earphones on and follow the chat.</p>
+      <div class="row">
+        <a class="btn btn-main" href="https://www.youtube.com/@TwoEnglishMugs">Listen on YouTube</a>
+        <a class="btn btn-ghost" href="#pdf">Get a free PDF</a>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 320 260" width="100%" height="100%">
+        <g transform="translate(150 30)">
+          <path class="steam" d="M22 46c-10-14 8-20 0-34"/>
+          <path class="steam" d="M44 48c-10-14 8-20 0-34"/>
+          <path class="steam" d="M66 46c-10-14 8-20 0-34"/>
+        </g>
+        <g fill="none" stroke="#c98b52" stroke-width="2.4" opacity=".85">
+          <path d="M96 96h116v62a34 34 0 0 1-34 34h-48a34 34 0 0 1-34-34z" fill="#221a16"/>
+          <path d="M212 110h16a22 22 0 0 1 0 44h-16"/>
+        </g>
+        <ellipse cx="154" cy="98" rx="60" ry="9" fill="#3a2b22" stroke="#c98b52" stroke-width="2.4"/>
+        <circle cx="120" cy="205" r="3" fill="#c98b52" opacity=".5"/>
+        <circle cx="190" cy="212" r="2.4" fill="#c98b52" opacity=".35"/>
+      </svg>
+    </div>
   </div>
 
-  <h2>About this site</h2>
-  <p>This site exists for two reasons: to tell you what the show is, and to hold the privacy and terms
-  pages for our own publishing tools.</p>
+  <div class="ticker">
+    <span><b>26</b> episodes</span>
+    <span><b>B1–B2</b> level</span>
+    <span><b>Two</b> new each week</span>
+    <span><b>Zero</b> grammar drills</span>
+  </div>
 
-  <footer>
+  <section id="episodes">
+    <h2 class="fade">Start with one of these</h2>
+    <p class="sub fade">Each one is about twenty minutes. Play it while you cook, walk or fold laundry.</p>
+    <div class="eps">
+      <a class="ep fade" href="https://www.youtube.com/watch?v=ikI8NmrDgbc">
+        <span class="n">Episode 25</span>
+        <p class="t">Stop Studying Grammar, Just Listen</p>
+        <p class="d">24 min</p>
+      </a>
+      <a class="ep fade" href="https://www.youtube.com/watch?v=GwXKgJ90Fic">
+        <span class="n">Episode 24</span>
+        <p class="t">Food Words You Use Every Day</p>
+        <p class="d">20 min</p>
+      </a>
+      <a class="ep fade" href="https://www.youtube.com/watch?v=QS5SlmdXTaw">
+        <span class="n">Episode 23</span>
+        <p class="t">How To Stay Motivated</p>
+        <p class="d">21 min</p>
+      </a>
+      <a class="ep fade" href="https://www.youtube.com/watch?v=0qx1EKEj4R8">
+        <span class="n">Episode 22</span>
+        <p class="t">Money, and What It Does To Us</p>
+        <p class="d">20 min</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="pdf">
+    <div class="pdf fade">
+      <h2>The words, in writing</h2>
+      <p class="sub" style="margin-bottom:0">Every episode has a free PDF: the whole chat in plain text,
+      plus the word list with its meaning. Read it after you listen, or read it first and listen after.</p>
+      <div class="pdflist">
+        <a class="chip" href="/pdfs/ep24-food-words.pdf">Episode 24 · PDF</a>
+        <a class="chip" href="/pdfs/ep23-stay-motivated.pdf">Episode 23 · PDF</a>
+        <a class="chip" href="/pdfs/ep22-money.pdf">Episode 22 · PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="fade">Three words from the show</h2>
+    <p class="sub fade">Small words that come back again and again. Say each one out loud once.</p>
+    <div class="words fade">
+      <div class="word"><b>automatic</b><span>doing something without thinking about it</span></div>
+      <div class="word"><b>routine</b><span>the normal order you do things each day</span></div>
+      <div class="word"><b>progress</b><span>moving forward and getting better</span></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
     <a href="https://www.youtube.com/@TwoEnglishMugs">YouTube</a>
     <div style="margin-top:10px">Two English Mugs Podcast · parav.yadav2010@gmail.com</div>
-  </footer>
-</div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.fade');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach((el) => io.observe(el));
+  } else {
+    els.forEach((el) => el.classList.add('in'));
+  }
+</script>
 </body>
 </html>
