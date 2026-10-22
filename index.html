@@ -223,6 +223,20 @@
     #toast.show{transform:translateY(0)}
   }
   @media(hover:none){ .ep:hover{transform:none} .art img:hover{transform:none} }
+
+  /* tap targets: 44px minimum on touch */
+  @media(max-width:560px){
+    .done{width:44px;height:44px;top:8px;right:8px}
+    .f{min-height:44px;display:inline-flex;align-items:center}
+    nav a{min-height:44px;display:inline-flex;align-items:center}
+    .chip{min-height:44px;display:inline-flex;align-items:center}
+    .qitem{width:100%;min-height:48px}
+    .btn{min-height:44px}
+  }
+  @media(hover:none){
+    .qitem{width:100%;min-height:48px}
+    .f,.chip,nav a{min-height:44px;display:inline-flex;align-items:center}
+  }
 </style>
 </head>
 <body>
