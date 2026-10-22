@@ -208,6 +208,8 @@
     }, { threshold: 0.15 });
     els.forEach((el) => io.observe(el));
   } else { els.forEach((el) => el.classList.add('in')); }
+  // safety net: never leave content hidden, whatever the observer does
+  setTimeout(() => els.forEach((el) => el.classList.add('in')), 1200);
 </script>
 </body>
 </html>
