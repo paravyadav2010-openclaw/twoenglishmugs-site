@@ -244,7 +244,9 @@
   .host img,.host video{position:relative;z-index:1}
   .host .meta{position:relative;z-index:1;background:linear-gradient(180deg,transparent,rgba(20,17,17,.55))}
   .host:hover{transform:translateY(-3px);border-color:var(--coral)}
-  .host img,.host video{display:block;width:100%;height:340px;object-fit:contain;object-position:bottom center;background:transparent}
+  .host img,.host video{display:block;width:100%;height:340px;object-fit:contain;object-position:bottom center;background:transparent;
+           -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 74%,rgba(0,0,0,.55) 90%,transparent 100%);
+           mask-image:linear-gradient(to bottom,#000 0%,#000 74%,rgba(0,0,0,.55) 90%,transparent 100%)}
   .host .meta{padding:14px 16px 16px}
   .host .who{font:600 18px/1.2 var(--display);color:var(--cream);margin:0 0 4px}
   .host .role{font:800 11.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:0 0 8px}
