@@ -491,7 +491,9 @@
       <div class="grow">
         <button class="btn btn-main" id="speak">Play the word</button>
         <label class="switch"><input type="checkbox" id="slow"> Slow</label>
+        <button class="btn btn-ghost" id="reveal">Show the word</button>
       </div>
+      <p class="hint" id="lword">Word hidden — play it, then pick the meaning.</p>
       <div class="lchoices" id="lchoices"></div>
       <p class="qmsg" id="lmsg">Press play to hear a word.</p>
     </div>
@@ -738,11 +740,29 @@
   /* ---------- listen and pick ---------- */
   var lTarget = null, lChoices = document.getElementById('lchoices'),
       lMsg = document.getElementById('lmsg'), canSpeak = 'speechSynthesis' in window;
+  var voices = [];
+  function loadVoices() {
+    if (!canSpeak) return;
+    var all = speechSynthesis.getVoices() || [];
+    voices = all.filter(function (v) { return /^en/i.test(v.lang); });
+  }
+  if (canSpeak) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
   function speak(text) {
-    if (!canSpeak) { lMsg.className = 'qmsg warn'; lMsg.textContent = 'This browser cannot play the sound. Read the word and pick anyway.'; return; }
-    speechSynthesis.cancel();
+    if (!canSpeak) {
+      lMsg.className = 'qmsg warn';
+      lMsg.textContent = 'This browser cannot play sound — tap “Show the word” and pick by reading.';
+      return;
+    }
+    try { speechSynthesis.cancel(); speechSynthesis.resume(); } catch (e) {}
     var u = new SpeechSynthesisUtterance(text);
-    u.lang = 'en-GB'; u.rate = document.getElementById('slow').checked ? 0.6 : 0.95;
+    u.lang = 'en-GB';
+    var pick = voices.filter(function (v) { return /en-GB/.test(v.lang); })[0] || voices[0];
+    if (pick) { u.voice = pick; u.lang = pick.lang; }
+    u.rate = document.getElementById('slow').checked ? 0.6 : 0.95;
+    u.onerror = function () {
+      lMsg.className = 'qmsg warn';
+      lMsg.textContent = 'The voice did not play — tap “Show the word” and pick by reading.';
+    };
     speechSynthesis.speak(u);
   }
   function newListen() {
@@ -759,6 +779,7 @@
         if (v.w === lTarget.w) {
           b.classList.add('ok');
           lMsg.className = 'qmsg good'; lMsg.textContent = 'Yes — “' + lTarget.w + '”.';
+          lWord.textContent = 'The word was “' + lTarget.w + '”.';
           speak(lTarget.w);
           setTimeout(newListen, 2200);
         } else {
@@ -769,8 +790,16 @@
       lChoices.appendChild(b);
     });
     lMsg.className = 'qmsg'; lMsg.textContent = 'Listen, then pick.';
+    lWord.textContent = 'Word hidden — play it, then pick the meaning.';
+    lWord.removeAttribute('data-revealed');
   }
+  var lWord = document.getElementById('lword');
   document.getElementById('speak').addEventListener('click', function () { speak(lTarget ? lTarget.w : VOCAB[0].w); });
+  document.getElementById('reveal').addEventListener('click', function () {
+    if (!lTarget) return;
+    lWord.textContent = 'The word is “' + lTarget.w + '”.';
+    speak(lTarget.w);
+  });
   newListen();
 
   /* ---------- sentence order ---------- */
