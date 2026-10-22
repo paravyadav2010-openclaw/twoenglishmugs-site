@@ -777,7 +777,7 @@
     lineEl.innerHTML = ''; bank.innerHTML = '';
     picked.forEach(function (w, i) {
       var b = document.createElement('button');
-      b.className = 'wchip'; b.type = 'button'; b.textContent = w;
+      b.className = 'wchip'; b.type = 'button'; b.textContent = w.split('#')[0];
       b.addEventListener('click', function () { picked.splice(i, 1); renderOrder(); });
       lineEl.appendChild(b);
     });
