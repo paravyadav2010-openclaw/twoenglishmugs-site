@@ -9,7 +9,7 @@
 <meta property="og:description" content="A cosy B1 English listening podcast. 26 episodes, free PDF for each one.">
 <meta property="og:url" content="https://twoenglishmugs.com/">
 <meta property="og:image" content="https://twoenglishmugs.com/assets/og.png">
-<meta name="theme-color" content="#4A2C1A">
+<meta name="theme-color" content="#141111">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
@@ -19,81 +19,88 @@
   @font-face{font-family:Nunito;src:url(/assets/fonts/Nunito.ttf) format('truetype');font-weight:200 900;font-display:swap}
 
   :root{
-    --espresso:#4A2C1A; --ink:#3A2113; --amber:#C9945E; --amber-deep:#B27E49;
-    --cream:#FFF5E6; --card:#FFFCF6; --line:rgba(74,44,26,.14);
+    --night:#141111; --night-2:#1D1818; --card:#211B1B;
+    --coral:#E75D4E; --coral-soft:#F0806F; --cream:#FFF6E9; --dim:#C9BFB6;
+    --line:rgba(255,246,233,.14);
     --display:Fredoka,ui-rounded,"Segoe UI",sans-serif;
     --text:Nunito,-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.7 var(--text);
+  body{margin:0;background:var(--night);color:var(--cream);font:17px/1.7 var(--text);
        -webkit-font-smoothing:antialiased}
-  a{color:var(--espresso);text-decoration:none}
+  a{color:var(--cream);text-decoration:none}
   .wrap{max-width:960px;margin:0 auto;padding:0 24px}
 
-  header{padding:22px 0 8px}
+  header{padding:20px 0 6px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .bar img{height:46px;width:auto;display:block}
-  nav a{font-size:15px;font-weight:700;color:var(--espresso);opacity:.75;margin-left:22px}
-  nav a:hover{opacity:1;color:var(--amber-deep)}
+  .lock{display:flex;align-items:center;gap:12px}
+  .lock img.mark{height:38px;width:auto;display:block}
+  .lock img.name{height:19px;width:auto;display:block}
+  nav a{font:800 14.5px/1 var(--text);color:var(--dim);margin-left:22px}
+  nav a:hover{color:var(--coral-soft)}
 
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:34px 0 30px}
-  h1{font:600 clamp(38px,6vw,62px)/1.03 var(--display);margin:0 0 16px;letter-spacing:-.6px;color:var(--espresso)}
-  h1 em{font-style:normal;color:var(--amber-deep)}
-  .lede{font-size:18.5px;color:#5b4232;margin:0 0 26px;max-width:46ch}
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;padding:40px 0 34px}
+  h1{font:600 clamp(36px,5.6vw,58px)/1.05 var(--display);margin:0 0 16px;letter-spacing:-.6px}
+  h1 em{font-style:normal;color:var(--coral)}
+  .lede{font-size:18.5px;color:var(--dim);margin:0 0 26px;max-width:46ch}
   .row{display:flex;flex-wrap:wrap;gap:12px}
-  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 21px;border-radius:999px;
-       font:700 15px/1 var(--text);border:2px solid transparent;transition:.18s}
-  .btn-main{background:var(--espresso);color:var(--cream)}
-  .btn-main:hover{background:var(--ink);transform:translateY(-1px)}
-  .btn-ghost{border-color:var(--espresso);color:var(--espresso)}
-  .btn-ghost:hover{background:var(--espresso);color:var(--cream)}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:999px;
+       font:800 15px/1 var(--text);border:2px solid transparent;transition:.18s}
+  .btn-main{background:var(--coral);color:#1a1210}
+  .btn-main:hover{background:var(--coral-soft);transform:translateY(-1px)}
+  .btn-ghost{border-color:rgba(255,246,233,.35);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--coral);color:var(--cream)}
   .art{display:flex;justify-content:center}
-  .art img{width:100%;max-width:330px;height:auto;filter:drop-shadow(0 16px 30px rgba(74,44,26,.20))}
+  .art img{width:100%;max-width:390px;height:auto}
 
   .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;
-          font:800 13px/1.4 var(--text);letter-spacing:.13em;text-transform:uppercase;color:#6b503c;
-          display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
-  .ticker b{color:var(--amber-deep)}
+          font:800 12.5px/1.4 var(--text);letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
+          display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+  .ticker b{color:var(--coral)}
 
-  section{padding:58px 0}
-  h2{font:600 clamp(24px,3.4vw,33px)/1.15 var(--display);margin:0 0 8px;color:var(--espresso);letter-spacing:-.3px}
-  .sub{color:#6b503c;margin:0 0 26px;font-size:16px}
+  section{padding:56px 0}
+  h2{font:600 clamp(24px,3.4vw,32px)/1.15 var(--display);margin:0 0 8px;letter-spacing:-.3px}
+  .sub{color:var(--dim);margin:0 0 26px;font-size:16px}
 
   .eps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-  .ep{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:.2s}
-  .ep:hover{transform:translateY(-3px);border-color:var(--amber);box-shadow:0 12px 26px rgba(74,44,26,.10)}
-  .ep .n{font:800 11.5px/1 var(--text);letter-spacing:.16em;color:var(--amber-deep);text-transform:uppercase}
-  .ep .t{font:600 19px/1.3 var(--display);margin:10px 0 6px;color:var(--espresso)}
-  .ep .d{font-size:13.5px;color:#7a5f4b;margin:auto 0 0;padding-top:10px}
+  .ep{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);
+      border-radius:18px;padding:18px;transition:.2s}
+  .ep:hover{transform:translateY(-3px);border-color:var(--coral);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+  .ep .n{font:800 11.5px/1 var(--text);letter-spacing:.16em;color:var(--coral);text-transform:uppercase}
+  .ep .t{font:600 19px/1.3 var(--display);margin:10px 0 6px}
+  .ep .d{font-size:13.5px;color:var(--dim);margin:auto 0 0;padding-top:10px}
 
-  .pdf{background:var(--espresso);border-radius:24px;padding:34px;color:var(--cream)}
-  .pdf h2{color:var(--cream);margin-bottom:6px}
-  .pdf .sub{color:#e6d5c2;margin-bottom:0}
+  .pdf{background:var(--coral);border-radius:24px;padding:34px;color:#1a1210}
+  .pdf h2{color:#1a1210;margin-bottom:6px}
+  .pdf .sub{color:rgba(26,18,16,.78);margin-bottom:0}
   .pdflist{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-  .chip{border:1.5px solid rgba(255,245,230,.35);border-radius:999px;padding:9px 16px;
-        font:700 14px/1 var(--text);color:var(--cream);transition:.18s}
-  .chip:hover{border-color:var(--amber);background:rgba(201,148,94,.18);color:#fff}
+  .chip{border:1.5px solid rgba(26,18,16,.45);border-radius:999px;padding:9px 16px;
+        font:800 14px/1 var(--text);color:#1a1210;transition:.18s}
+  .chip:hover{background:#1a1210;color:var(--cream)}
 
   .words{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-  .word{border-left:3px solid var(--amber);padding:4px 0 4px 16px}
-  .word b{display:block;font:600 21px/1.3 var(--display);color:var(--espresso)}
-  .word span{color:#6b503c;font-size:14.5px}
+  .word{border-left:3px solid var(--coral);padding:4px 0 4px 16px}
+  .word b{display:block;font:600 21px/1.3 var(--display)}
+  .word span{color:var(--dim);font-size:14.5px}
 
   .fade{opacity:1}
   .js .fade{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
   .js .fade.in{opacity:1;transform:none}
 
-  footer{border-top:1px solid var(--line);padding:28px 0 44px;color:#6b503c;font-size:14px;margin-top:10px}
-  footer img{height:34px;width:auto;margin-bottom:12px;opacity:.92}
-  footer a{font-weight:700;margin-right:16px}
+  footer{border-top:1px solid var(--line);padding:26px 0 46px;color:var(--dim);font-size:14px;margin-top:10px}
+  footer .lock{margin-bottom:12px}
+  footer .lock img.mark{height:28px}
+  footer .lock img.name{height:14px}
+  footer a{font-weight:800;margin-right:16px}
 
   @media(max-width:720px){
-    .bar img{height:38px}
-    nav a{margin-left:14px;font-size:13.5px}
-    .hero{grid-template-columns:1fr;padding:22px 0}
+    .lock img.mark{height:32px}
+    .lock img.name{height:16px}
+    nav a{margin-left:14px;font-size:13px}
+    .hero{grid-template-columns:1fr;padding:24px 0}
     .art{order:-1}
-    .art img{max-width:220px}
+    .art img{max-width:260px}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -105,7 +112,10 @@
 <div class="wrap">
   <header>
     <div class="bar">
-      <a href="/"><img src="/assets/wordmark.png" alt="Two English Mugs"></a>
+      <a class="lock" href="/">
+        <img class="mark" src="/assets/mark.png" alt="" aria-hidden="true">
+        <img class="name" src="/assets/wordmark.png" alt="two english mugs">
+      </a>
       <nav>
         <a href="#episodes">Episodes</a>
         <a href="#pdf">Free PDF</a>
@@ -125,7 +135,7 @@
       </div>
     </div>
     <div class="art">
-      <img src="/assets/bubble-mug.png" alt="The Two English Mugs mark: a mug shaped like a speech bubble">
+      <img src="/assets/lockup.png" alt="Two English Mugs: two mugs facing each other, in cream and coral">
     </div>
   </div>
 
@@ -189,7 +199,10 @@
 
 <footer>
   <div class="wrap">
-    <img src="/assets/wordmark.png" alt="Two English Mugs">
+    <div class="lock">
+      <img class="mark" src="/assets/mark.png" alt="" aria-hidden="true">
+      <img class="name" src="/assets/wordmark.png" alt="two english mugs">
+    </div>
     <div>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
@@ -208,7 +221,6 @@
     }, { threshold: 0.15 });
     els.forEach((el) => io.observe(el));
   } else { els.forEach((el) => el.classList.add('in')); }
-  // safety net: never leave content hidden, whatever the observer does
   setTimeout(() => els.forEach((el) => el.classList.add('in')), 1200);
 </script>
 </body>
