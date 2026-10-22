@@ -675,46 +675,62 @@
     });
   });
 
-  /* word match quiz */
-  var pairs = [
-    { w: 'automatic', m: 'doing something without thinking about it' },
-    { w: 'routine', m: 'the normal order you do things each day' },
-    { w: 'progress', m: 'moving forward and getting better' }
-  ];
+  /* word match — walks the whole deck in sets of three */
   var wbox = document.getElementById('words'), mbox = document.getElementById('means');
-  var msg = document.getElementById('qmsg'), sel = null, left = pairs.length;
+  var msg = document.getElementById('qmsg'), sel = null, left = 0;
   function shuffle(a) { return a.map(function (v) { return [Math.random(), v]; }).sort(function (x, y) { return x[0] - y[0]; }).map(function (v) { return v[1]; }); }
-  shuffle(pairs.slice()).forEach(function (p) {
-    var b = document.createElement('button');
-    b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w; b.textContent = p.w;
-    b.addEventListener('click', function () {
-      if (b.classList.contains('ok')) return;
-      document.querySelectorAll('#words .qitem').forEach(function (o) { o.classList.remove('sel'); });
-      b.classList.add('sel'); sel = b;
-      msg.className = 'qmsg'; msg.textContent = 'Now pick the meaning of “' + p.w + '”.';
+
+  var matchQueue = [], matchSet = 0;
+  function refillMatch() {                      /* all six words, in sets of three, no word repeated */
+    matchQueue = [];
+    var bag = shuffle(VOCAB.map(function (v) { return { w: v.w, m: v.m }; }));
+    while (bag.length) matchQueue.push(bag.splice(0, 3));
+  }
+  function renderMatch() {
+    if (!matchQueue.length) refillMatch();
+    var set = matchQueue.shift();
+    matchSet++;
+    wbox.innerHTML = ''; mbox.innerHTML = ''; sel = null;
+    left = set.length;
+    msg.className = 'qmsg'; msg.textContent = 'Set ' + matchSet + ' — pick a word, then its meaning.';
+
+    shuffle(set.slice()).forEach(function (p) {
+      var b = document.createElement('button');
+      b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w; b.textContent = p.w;
+      b.addEventListener('click', function () {
+        if (b.classList.contains('ok')) return;
+        document.querySelectorAll('#words .qitem').forEach(function (o) { o.classList.remove('sel'); });
+        b.classList.add('sel'); sel = b;
+        msg.className = 'qmsg'; msg.textContent = 'Now pick the meaning of “' + p.w + '”.';
+      });
+      wbox.appendChild(b);
     });
-    wbox.appendChild(b);
-  });
-  shuffle(pairs.slice()).forEach(function (p) {
-    var b = document.createElement('button');
-    b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w;
-    b.innerHTML = '<span>' + p.m + '</span>';
-    b.addEventListener('click', function () {
-      if (b.classList.contains('ok')) return;
-      if (!sel) { msg.className = 'qmsg warn'; msg.textContent = 'Pick a word on the left first.'; return; }
-      if (sel.dataset.k === b.dataset.k) {
-        b.classList.add('ok'); sel.classList.remove('sel'); sel.classList.add('ok'); sel = null;
-        left--;
-        if (left === 0) { msg.className = 'qmsg good'; msg.textContent = 'All three matched. Say each one out loud once, then go and listen.'; }
-        else { msg.className = 'qmsg good'; msg.textContent = 'Right. ' + left + ' to go.'; }
-      } else {
-        b.classList.add('bad');
-        setTimeout(function () { b.classList.remove('bad'); }, 400);
-        msg.className = 'qmsg warn'; msg.textContent = 'Not that one. Try the other meaning.';
-      }
+
+    shuffle(set.slice()).forEach(function (p) {
+      var b = document.createElement('button');
+      b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w;
+      b.innerHTML = '<span>' + p.m + '</span>';
+      b.addEventListener('click', function () {
+        if (b.classList.contains('ok')) return;
+        if (!sel) { msg.className = 'qmsg warn'; msg.textContent = 'Pick a word on the left first.'; return; }
+        if (sel.dataset.k === b.dataset.k) {
+          b.classList.add('ok'); sel.classList.remove('sel'); sel.classList.add('ok'); sel = null;
+          left--;
+          if (left === 0) {
+            msg.className = 'qmsg good'; msg.textContent = 'Set done. Say each one out loud once — next three coming up.';
+            setTimeout(renderMatch, 1400);
+          } else {
+            msg.className = 'qmsg good'; msg.textContent = 'Right. ' + left + ' to go.';
+          }
+        } else {
+          b.classList.add('bad');
+          setTimeout(function () { b.classList.remove('bad'); }, 400);
+          msg.className = 'qmsg warn'; msg.textContent = 'Not that one. Try the other meaning.';
+        }
+      });
+      mbox.appendChild(b);
     });
-    mbox.appendChild(b);
-  });
+  }
 
 
   /* host wave clips: play when visible, pause off-screen, respect reduced motion */
@@ -745,18 +761,22 @@
     { w:'expectation', m:'A strong belief that something will happen.', e:'I have a strong expectation that it will rain right after I wash my car.' },
     { w:'habit', m:'Something you do often and easily.', e:'I have a terrible habit of eating salty snacks at midnight.' }
   ];
+  refillMatch(); renderMatch();          /* deck now exists */
+
   var KNOW = 'tem-known';
   var known = {};
   try { known = JSON.parse(localStorage.getItem(KNOW) || '{}'); } catch (e) { known = {}; }
   var flash = document.getElementById('flash'), fw = document.getElementById('fw'),
       fm = document.getElementById('fm'), fe = document.getElementById('fe'),
       knowCount = document.getElementById('knowcount');
-  var fi = 0;
+  var deck = shuffle(VOCAB.slice()), di = 0;      /* shuffled once per visit */
   function nextCard() {
-    var open = VOCAB.filter(function (v) { return !known[v.w]; });
-    var pool = open.length ? open : VOCAB;
-    fi = (fi + 1) % pool.length;
-    var v = pool[fi];
+    var n = deck.length, seen = 0, v = null;
+    while (seen++ < n) {
+      di = (di + 1) % n;
+      if (!known[deck[di].w]) { v = deck[di]; break; }
+    }
+    if (!v) { di = (di + 1) % n; v = deck[di]; }     /* everything known: just keep cycling */
     fw.textContent = v.w; fm.textContent = v.m; fe.textContent = v.e;
     flash.classList.remove('open');
     flash.setAttribute('data-w', v.w);
@@ -775,8 +795,8 @@
     paintKnown(); nextCard();
   });
   document.getElementById('notyet').addEventListener('click', function () { nextCard(); });
-  fw.textContent = VOCAB[0].w; fm.textContent = VOCAB[0].m; fe.textContent = VOCAB[0].e;
-  flash.setAttribute('data-w', VOCAB[0].w); paintKnown();
+  fw.textContent = deck[0].w; fm.textContent = deck[0].m; fe.textContent = deck[0].e;
+  flash.setAttribute('data-w', deck[0].w); paintKnown();
 
 
   /* ---------- games menu ---------- */
@@ -800,7 +820,7 @@
   })();
 
   /* ---------- listen and pick ---------- */
-  var lTarget = null, lChoices = document.getElementById('lchoices'),
+  var lTarget = null, lBag = [], lChoices = document.getElementById('lchoices'),
       lMsg = document.getElementById('lmsg'), canSpeak = 'speechSynthesis' in window;
   var voices = [];
   function loadVoices() {
@@ -828,7 +848,8 @@
     speechSynthesis.speak(u);
   }
   function newListen() {
-    lTarget = VOCAB[Math.floor(Math.random() * VOCAB.length)];
+    if (!lBag.length) lBag = shuffle(VOCAB.slice());
+    lTarget = lBag.pop();
     var others = VOCAB.filter(function (v) { return v.w !== lTarget.w; });
     others = others.sort(function () { return Math.random() - 0.5; }).slice(0, 2);
     var opts = [lTarget].concat(others).sort(function () { return Math.random() - 0.5; });
