@@ -229,6 +229,52 @@
   }
   @media(hover:none){ .ep:hover{transform:none} .art img:hover{transform:none} }
 
+
+
+  /* ---------- hosts ---------- */
+  .hosts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .host{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s}
+  .host:hover{transform:translateY(-3px);border-color:var(--coral)}
+  .host img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .host .meta{padding:14px 16px 16px}
+  .host .who{font:600 18px/1.2 var(--display);color:var(--cream);margin:0 0 4px}
+  .host .role{font:800 11.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:0 0 8px}
+  .host .say{margin:0;color:var(--dim);font-size:14.5px}
+  @media(max-width:560px){ .hosts{grid-template-columns:1fr} }
+
+  /* ---------- games ---------- */
+  .game{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:24px}
+  .grow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+  .flash{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;min-height:146px;
+         cursor:pointer;transition:.18s}
+  .flash:hover{border-color:rgba(255,246,233,.3)}
+  .flash .fw{font:600 26px/1.2 var(--display);color:var(--coral)}
+  .flash .fm,.flash .fe{display:none;color:var(--cream);font:700 15.5px/1.5 var(--text);margin-top:10px}
+  .flash .fe{color:var(--dim);font-weight:600;font-size:14.5px;font-style:italic}
+  .flash.open .fm,.flash.open .fe{display:block}
+  .flash .tap{font:800 12px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:14px}
+  .flash.open .tap{display:none}
+  .lchoices{display:grid;gap:8px;margin-top:14px}
+  .lchoice{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:var(--card);
+           color:var(--cream);font:700 15px/1.45 var(--text);text-align:left;cursor:pointer;transition:.15s;min-height:48px}
+  .lchoice:hover{border-color:rgba(255,246,233,.35)}
+  .lchoice.ok{border-color:#5CB27A;background:rgba(92,178,122,.14)}
+  .lchoice.bad{border-color:#C7452F;background:rgba(199,69,47,.14)}
+  .switch{display:inline-flex;align-items:center;gap:7px;font:800 13px/1 var(--text);color:var(--dim);cursor:pointer}
+  .switch input{accent-color:var(--coral);width:17px;height:17px}
+  .line{min-height:62px;border:1.5px dashed rgba(255,246,233,.22);border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .bank{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .wchip{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 13px;
+         font:700 15px/1 var(--text);color:var(--cream);cursor:pointer;transition:.15s;min-height:40px}
+  .wchip:hover{border-color:var(--coral)}
+  .wchip.used{opacity:.25;pointer-events:none}
+  @media(max-width:560px){
+    .game{padding:18px}
+    .flash .fw{font-size:22px}
+    .grow{gap:8px}
+    .lchoice{padding:12px 13px;font-size:14px}
+  }
+
   /* tap targets: 44px minimum on touch */
   @media(max-width:560px){
     .done{width:44px;height:44px;top:8px;right:8px}
@@ -254,8 +300,11 @@
         <img class="name" src="/assets/wordmark.png" alt="two english mugs">
       </a>
       <nav>
+        <a href="#hosts">Hosts</a>
         <a href="#episodes">Episodes</a>
         <a href="#quiz">Quiz</a>
+        <a href="#learn">Words</a>
+        <a href="#order">Order</a>
         <a href="#turn">Your turn</a>
         <a href="#pdf">PDF</a>
       </nav>
@@ -320,6 +369,30 @@
     </div>
   </section>
 
+
+  <section id="hosts">
+    <h2 class="reveal">The two of them</h2>
+    <p class="sub reveal">Emma leads. Josh is you — he asks the question you were too shy to ask.</p>
+    <div class="hosts reveal">
+      <article class="host">
+        <img src="/assets/hosts-emma.png" alt="Emma at the microphone, in a peach blazer">
+        <div class="meta">
+          <p class="role">Host</p>
+          <p class="who">Emma</p>
+          <p class="say">Warm guide. She explains every hard word as it lands, and never makes you feel late.</p>
+        </div>
+      </article>
+      <article class="host">
+        <img src="/assets/hosts-josh.png" alt="Josh at the microphone, in a dark blazer">
+        <div class="meta">
+          <p class="role">Learner's seat</p>
+          <p class="who">Josh</p>
+          <p class="say">Tries each line out loud, gets it wrong first, then gets it. That is the point.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section id="episodes">
     <h2 class="reveal">Start with one of these</h2>
     <p class="sub reveal">Tap the mug to mark one done. Your picks stay on this device.</p>
@@ -380,6 +453,53 @@
       <div class="turnfoot">
         <button class="btn btn-main" id="copy">Copy my line</button>
         <span class="hint" id="wc">0 words</span>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="learn">
+    <h2 class="reveal">Words to keep</h2>
+    <p class="sub reveal">Tap the card to see the meaning, then tell it honestly: do you know this word?
+    Your list stays on this device.</p>
+    <div class="game reveal">
+      <div class="flash" id="flash" role="button" tabindex="0" aria-label="Flashcard, tap to reveal the meaning">
+        <div class="fw" id="fw">automatic</div>
+        <div class="fm" id="fm"></div>
+        <div class="fe" id="fe"></div>
+        <div class="tap">Tap to flip</div>
+      </div>
+      <div class="grow">
+        <button class="btn btn-main" id="known">I know it</button>
+        <button class="btn btn-ghost" id="notyet">Not yet</button>
+        <span class="hint" id="knowcount">0 of 6 known</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="listen">
+    <h2 class="reveal">Listen and pick</h2>
+    <p class="sub reveal">Press play, listen, then choose the meaning. Slow says it at half speed.</p>
+    <div class="game reveal">
+      <div class="grow">
+        <button class="btn btn-main" id="speak">Play the word</button>
+        <label class="switch"><input type="checkbox" id="slow"> Slow</label>
+      </div>
+      <div class="lchoices" id="lchoices"></div>
+      <p class="qmsg" id="lmsg">Press play to hear a word.</p>
+    </div>
+  </section>
+
+  <section id="order">
+    <h2 class="reveal">Put the line in order</h2>
+    <p class="sub reveal">Tap the words to build the sentence. Tap a word in your line to send it back.</p>
+    <div class="game reveal">
+      <div class="line" id="line" aria-live="polite"></div>
+      <div class="bank" id="bank"></div>
+      <div class="grow">
+        <button class="btn btn-main" id="check">Check</button>
+        <button class="btn btn-ghost" id="nextline">Next one</button>
+        <span class="hint" id="omsg"></span>
       </div>
     </div>
   </section>
@@ -561,6 +681,126 @@
     });
     mbox.appendChild(b);
   });
+
+
+  /* ---------- flashcards ---------- */
+  var VOCAB = [
+    { w:'automatic', m:'Doing something without thinking about it.', e:'Making coffee in the morning is automatic for me.' },
+    { w:'routine', m:'The normal order you do things every day.', e:'My morning routine is waking up, stretching, and complaining about the weather.' },
+    { w:'progress', m:'Moving forward and getting better.', e:'I made real progress today. I finally understood a film without subtitles.' },
+    { w:'minimum', m:'The smallest amount possible.', e:'I always do the minimum amount of cleaning before my guests arrive.' },
+    { w:'expectation', m:'A strong belief that something will happen.', e:'I have a strong expectation that it will rain right after I wash my car.' },
+    { w:'habit', m:'Something you do often and easily.', e:'I have a terrible habit of eating salty snacks at midnight.' }
+  ];
+  var KNOW = 'tem-known';
+  var known = {};
+  try { known = JSON.parse(localStorage.getItem(KNOW) || '{}'); } catch (e) { known = {}; }
+  var flash = document.getElementById('flash'), fw = document.getElementById('fw'),
+      fm = document.getElementById('fm'), fe = document.getElementById('fe'),
+      knowCount = document.getElementById('knowcount');
+  var fi = 0;
+  function nextCard() {
+    var open = VOCAB.filter(function (v) { return !known[v.w]; });
+    var pool = open.length ? open : VOCAB;
+    fi = (fi + 1) % pool.length;
+    var v = pool[fi];
+    fw.textContent = v.w; fm.textContent = v.m; fe.textContent = v.e;
+    flash.classList.remove('open');
+    flash.setAttribute('data-w', v.w);
+  }
+  function paintKnown() {
+    var n = Object.keys(known).filter(function (k) { return known[k]; }).length;
+    knowCount.textContent = n + ' of ' + VOCAB.length + ' known';
+  }
+  flash.addEventListener('click', function () { flash.classList.toggle('open'); });
+  flash.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flash.classList.toggle('open'); }
+  });
+  document.getElementById('known').addEventListener('click', function () {
+    known[flash.getAttribute('data-w')] = true;
+    try { localStorage.setItem(KNOW, JSON.stringify(known)); } catch (err) {}
+    paintKnown(); nextCard();
+  });
+  document.getElementById('notyet').addEventListener('click', function () { nextCard(); });
+  fw.textContent = VOCAB[0].w; fm.textContent = VOCAB[0].m; fe.textContent = VOCAB[0].e;
+  flash.setAttribute('data-w', VOCAB[0].w); paintKnown();
+
+  /* ---------- listen and pick ---------- */
+  var lTarget = null, lChoices = document.getElementById('lchoices'),
+      lMsg = document.getElementById('lmsg'), canSpeak = 'speechSynthesis' in window;
+  function speak(text) {
+    if (!canSpeak) { lMsg.className = 'qmsg warn'; lMsg.textContent = 'This browser cannot play the sound. Read the word and pick anyway.'; return; }
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-GB'; u.rate = document.getElementById('slow').checked ? 0.6 : 0.95;
+    speechSynthesis.speak(u);
+  }
+  function newListen() {
+    lTarget = VOCAB[Math.floor(Math.random() * VOCAB.length)];
+    var others = VOCAB.filter(function (v) { return v.w !== lTarget.w; });
+    others = others.sort(function () { return Math.random() - 0.5; }).slice(0, 2);
+    var opts = [lTarget].concat(others).sort(function () { return Math.random() - 0.5; });
+    lChoices.innerHTML = '';
+    opts.forEach(function (v) {
+      var b = document.createElement('button');
+      b.className = 'lchoice'; b.type = 'button'; b.textContent = v.m;
+      b.addEventListener('click', function () {
+        if (b.classList.contains('ok')) return;
+        if (v.w === lTarget.w) {
+          b.classList.add('ok');
+          lMsg.className = 'qmsg good'; lMsg.textContent = 'Yes — “' + lTarget.w + '”.';
+          speak(lTarget.w);
+          setTimeout(newListen, 2200);
+        } else {
+          b.classList.add('bad');
+          lMsg.className = 'qmsg warn'; lMsg.textContent = 'Not that one. Play it again.';
+        }
+      });
+      lChoices.appendChild(b);
+    });
+    lMsg.className = 'qmsg'; lMsg.textContent = 'Listen, then pick.';
+  }
+  document.getElementById('speak').addEventListener('click', function () { speak(lTarget ? lTarget.w : VOCAB[0].w); });
+  newListen();
+
+  /* ---------- sentence order ---------- */
+  var LINES = [
+    'Making coffee in the morning is automatic for me',
+    'My morning routine is waking up and stretching',
+    'I made real progress today',
+    'I always do the minimum amount of cleaning',
+    'I have a terrible habit of eating salty snacks'
+  ];
+  var li = 0, picked = [], bank = document.getElementById('bank'),
+      lineEl = document.getElementById('line'), oMsg = document.getElementById('omsg');
+  function renderOrder() {
+    lineEl.innerHTML = ''; bank.innerHTML = '';
+    picked.forEach(function (w, i) {
+      var b = document.createElement('button');
+      b.className = 'wchip'; b.type = 'button'; b.textContent = w;
+      b.addEventListener('click', function () { picked.splice(i, 1); renderOrder(); });
+      lineEl.appendChild(b);
+    });
+    var pool = LINES[li].split(' ');
+    pool.forEach(function (w, i) {
+      if (picked.indexOf(w + '#' + i) !== -1) return;
+      var used = picked.some(function (p) { return p === w + '#' + i; });
+      var b = document.createElement('button');
+      b.className = 'wchip' + (used ? ' used' : ''); b.type = 'button'; b.textContent = w;
+      b.addEventListener('click', function () { picked.push(w + '#' + i); renderOrder(); });
+      bank.appendChild(b);
+    });
+  }
+  function plain(a) { return a.map(function (x) { return x.split('#')[0]; }).join(' '); }
+  document.getElementById('check').addEventListener('click', function () {
+    if (!picked.length) { oMsg.className = 'qmsg warn'; oMsg.textContent = 'Tap some words first.'; return; }
+    if (plain(picked) === LINES[li]) { oMsg.className = 'qmsg good'; oMsg.textContent = 'That is the line.'; }
+    else { oMsg.className = 'qmsg warn'; oMsg.textContent = 'Have another go — tap a word in your line to send it back.'; }
+  });
+  document.getElementById('nextline').addEventListener('click', function () {
+    li = (li + 1) % LINES.length; picked = []; oMsg.textContent = ''; renderOrder();
+  });
+  renderOrder();
 
   /* your turn: word count + copy */
   var ans = document.getElementById('ans'), wc = document.getElementById('wc');
