@@ -233,8 +233,10 @@
 
   /* ---------- hosts ---------- */
   .hosts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .host{position:relative;background:linear-gradient(180deg,rgba(255,246,233,.07),rgba(255,246,233,.015));
-        border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s}
+  .host{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s;
+        background-color:var(--night);
+        background-image:radial-gradient(circle, rgba(231,93,78,.22) 1.4px, transparent 1.5px);
+        background-size:30px 30px;background-position:0 0}
   .host:before{content:'';position:absolute;left:50%;bottom:96px;transform:translateX(-50%);
         width:78%;height:56%;border-radius:50%;background:radial-gradient(ellipse,rgba(231,93,78,.16),transparent 68%);pointer-events:none}
   .host:after{content:'';position:absolute;left:50%;bottom:118px;transform:translateX(-50%);
@@ -242,8 +244,7 @@
   .host img,.host video{position:relative;z-index:1}
   .host .meta{position:relative;z-index:1;background:linear-gradient(180deg,transparent,rgba(20,17,17,.55))}
   .host:hover{transform:translateY(-3px);border-color:var(--coral)}
-  .host img,.host video{display:block;width:100%;height:330px;object-fit:contain;object-position:bottom center;
-           padding:14px 10px 0;background:transparent}
+  .host img,.host video{display:block;width:100%;height:340px;object-fit:contain;object-position:bottom center;background:transparent}
   .host .meta{padding:14px 16px 16px}
   .host .who{font:600 18px/1.2 var(--display);color:var(--cream);margin:0 0 4px}
   .host .role{font:800 11.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:0 0 8px}
@@ -382,7 +383,7 @@
     <p class="sub reveal">Emma leads. Josh is you — he asks the question you were too shy to ask.</p>
     <div class="hosts reveal">
       <article class="host">
-        <video class="hostvid" autoplay muted loop playsinline preload="metadata" poster="/assets/wave-emma-poster.png" aria-label="Emma waving hello"><source src="/assets/wave-emma.mp4" type="video/mp4"></video>
+        <video class="hostvid" autoplay muted loop playsinline preload="metadata" poster="/assets/wave-emma-poster.png" aria-label="Emma waving hello"><source src="/assets/wave-emma.webm" type="video/webm"><source src="/assets/wave-emma.mp4" type="video/mp4"></video>
         <div class="meta">
           <p class="role">Host</p>
           <p class="who">Emma</p>
@@ -390,7 +391,7 @@
         </div>
       </article>
       <article class="host">
-        <video class="hostvid" autoplay muted loop playsinline preload="metadata" poster="/assets/wave-josh-poster.png" aria-label="Josh waving hello"><source src="/assets/wave-josh.mp4" type="video/mp4"></video>
+        <video class="hostvid" autoplay muted loop playsinline preload="metadata" poster="/assets/wave-josh-poster.png" aria-label="Josh waving hello"><source src="/assets/wave-josh.webm" type="video/webm"><source src="/assets/wave-josh.mp4" type="video/mp4"></video>
         <div class="meta">
           <p class="role">Learner's seat</p>
           <p class="who">Josh</p>
