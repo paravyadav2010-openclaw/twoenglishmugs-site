@@ -233,9 +233,11 @@
 
   /* ---------- hosts ---------- */
   .hosts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .host{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s}
+  .host{background:linear-gradient(180deg,rgba(255,246,233,.06),rgba(255,246,233,.01));
+        border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s}
   .host:hover{transform:translateY(-3px);border-color:var(--coral)}
-  .host img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .host img{display:block;width:100%;height:330px;object-fit:contain;object-position:bottom center;
+           padding:14px 10px 0}
   .host .meta{padding:14px 16px 16px}
   .host .who{font:600 18px/1.2 var(--display);color:var(--cream);margin:0 0 4px}
   .host .role{font:800 11.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:0 0 8px}
@@ -263,7 +265,8 @@
   .switch{display:inline-flex;align-items:center;gap:7px;font:800 13px/1 var(--text);color:var(--dim);cursor:pointer}
   .switch input{accent-color:var(--coral);width:17px;height:17px}
   .line{min-height:62px;border:1.5px dashed rgba(255,246,233,.22);border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:6px}
-  .bank{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .bank{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .banklabel{font:800 11.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:16px 0 0}
   .wchip{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 13px;
          font:700 15px/1 var(--text);color:var(--cream);cursor:pointer;transition:.15s;min-height:40px}
   .wchip:hover{border-color:var(--coral)}
@@ -490,15 +493,16 @@
 
   <section id="order">
     <h2 class="reveal">Put the line in order</h2>
-    <p class="sub reveal">Tap the words to build the sentence. Tap a word in your line to send it back.</p>
+    <p class="sub reveal">Tap or click the words to build the sentence. Tap a word in your line to send it back.</p>
     <div class="game reveal">
       <div class="line" id="line" aria-live="polite"></div>
+      <p class="banklabel">Words left</p>
       <div class="bank" id="bank"></div>
       <div class="grow">
         <button class="btn btn-main" id="check">Check</button>
         <button class="btn btn-ghost" id="nextline">Next one</button>
-        <span class="hint" id="omsg"></span>
       </div>
+      <p class="qmsg" id="omsg"></p>
     </div>
   </section>
 
@@ -781,13 +785,13 @@
       b.addEventListener('click', function () { picked.splice(i, 1); renderOrder(); });
       lineEl.appendChild(b);
     });
-    var pool = LINES[li].split(' ');
-    pool.forEach(function (w, i) {
-      if (picked.indexOf(w + '#' + i) !== -1) return;
-      var used = picked.some(function (p) { return p === w + '#' + i; });
+    var pool = LINES[li].split(' ').map(function (w, i) { return w + '#' + i; });
+    for (var k = pool.length - 1; k > 0; k--) { var j = Math.floor(Math.random() * (k + 1)); var t = pool[k]; pool[k] = pool[j]; pool[j] = t; }
+    pool.forEach(function (key) {
+      if (picked.indexOf(key) !== -1) return;
       var b = document.createElement('button');
-      b.className = 'wchip' + (used ? ' used' : ''); b.type = 'button'; b.textContent = w;
-      b.addEventListener('click', function () { picked.push(w + '#' + i); renderOrder(); });
+      b.className = 'wchip'; b.type = 'button'; b.textContent = key.split('#')[0];
+      b.addEventListener('click', function () { picked.push(key); renderOrder(); });
       bank.appendChild(b);
     });
   }
