@@ -300,6 +300,18 @@
     .qitem{width:100%;min-height:52px;font-size:13.5px}
     .f,.chip,nav a{min-height:44px;display:inline-flex;align-items:center}
   }
+
+  /* ---------- games menu ---------- */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 14px}
+  .tab{font:inherit;font-size:15px;padding:10px 16px;border-radius:999px;cursor:pointer;
+       border:1px solid var(--line);background:transparent;color:var(--cream);opacity:.72;transition:.18s}
+  .tab:hover{opacity:1}
+  .tab.is-on{background:var(--coral);border-color:var(--coral);color:#1a1110;font-weight:700;opacity:1}
+  .pane{display:none}
+  .pane.is-on{display:block}
+  .sayword{font-family:Fredoka,system-ui,sans-serif;font-size:clamp(30px,6vw,44px);line-height:1.1;
+           margin:6px 0 14px;color:var(--cream);letter-spacing:.2px}
+  @media(max-width:560px){.tab{padding:9px 13px;font-size:14px}}
 </style>
 </head>
 <body>
@@ -313,9 +325,7 @@
       </a>
       <nav>
         <a href="#episodes">Episodes</a>
-        <a href="#quiz">Quiz</a>
-        <a href="#learn">Words</a>
-        <a href="#order">Order</a>
+        <a href="#play">Play</a>
         <a href="#pdf">PDF</a>
       </nav>
     </div>
@@ -441,15 +451,69 @@
     </div>
   </section>
 
-  <section id="quiz">
-    <div class="quiz reveal">
-      <h2>Quiz</h2>
-      <p class="sub">Tap a word on the left, then its meaning on the right. Three pairs, no score kept.</p>
-      <div class="cols">
-        <div id="words"></div>
-        <div id="means"></div>
+  <section id="play">
+    <h2 class="reveal">Play</h2>
+    <p class="sub reveal">Four quick games. Pick one — everything stays on this device.</p>
+    <div class="tabs reveal" role="tablist" aria-label="Games">
+      <button class="tab is-on" role="tab" aria-selected="true" aria-controls="pane-match" data-pane="match">Match</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-listen" data-pane="listen">Listen</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-order" data-pane="order">Order</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-cards" data-pane="cards">Cards</button>
+    </div>
+
+    <div class="pane is-on" id="pane-match" role="tabpanel">
+      <div class="quiz">
+        <p class="sub">Tap a word on the left, then its meaning on the right. Three pairs, no score kept.</p>
+        <div class="cols">
+          <div id="words"></div>
+          <div id="means"></div>
+        </div>
+        <p class="qmsg" id="qmsg">Pick a word to start.</p>
       </div>
-      <p class="qmsg" id="qmsg">Pick a word to start.</p>
+    </div>
+
+    <div class="pane" id="pane-listen" role="tabpanel">
+      <div class="game">
+        <p class="sub">The word is on screen — say it out loud, then play it and check yourself.</p>
+        <p class="sayword" id="lword">automatic</p>
+        <div class="grow">
+          <button class="btn btn-main" id="speak">Play the word</button>
+          <label class="switch"><input type="checkbox" id="slow"> Slow</label>
+        </div>
+        <div class="lchoices" id="lchoices"></div>
+        <p class="qmsg" id="lmsg">Play it, say it, then pick the meaning.</p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-order" role="tabpanel">
+      <div class="game">
+        <p class="sub">Tap or click the words to build the sentence. Tap a word in your line to send it back.</p>
+        <div class="line" id="line" aria-live="polite"></div>
+        <p class="banklabel">Words left</p>
+        <div class="bank" id="bank"></div>
+        <div class="grow">
+          <button class="btn btn-main" id="check">Check</button>
+          <button class="btn btn-ghost" id="nextline">Next one</button>
+        </div>
+        <p class="qmsg" id="omsg"></p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-cards" role="tabpanel">
+      <div class="game">
+        <p class="sub">Tap the card to see the meaning, then tell it honestly: do you know this word?</p>
+        <div class="flash" id="flash" role="button" tabindex="0" aria-label="Flashcard, tap to reveal the meaning">
+          <div class="fw" id="fw">automatic</div>
+          <div class="fm" id="fm"></div>
+          <div class="fe" id="fe"></div>
+          <div class="tap">Tap to flip</div>
+        </div>
+        <div class="grow">
+          <button class="btn btn-main" id="known">I know it</button>
+          <button class="btn btn-ghost" id="notyet">Not yet</button>
+          <span class="hint" id="knowcount">0 of 6 known</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -464,56 +528,6 @@
         <button class="btn btn-main" id="copy">Copy my line</button>
         <span class="hint" id="wc">0 words</span>
       </div>
-    </div>
-  </section>
-
-
-  <section id="learn">
-    <h2 class="reveal">Words to keep</h2>
-    <p class="sub reveal">Tap the card to see the meaning, then tell it honestly: do you know this word?
-    Your list stays on this device.</p>
-    <div class="game reveal">
-      <div class="flash" id="flash" role="button" tabindex="0" aria-label="Flashcard, tap to reveal the meaning">
-        <div class="fw" id="fw">automatic</div>
-        <div class="fm" id="fm"></div>
-        <div class="fe" id="fe"></div>
-        <div class="tap">Tap to flip</div>
-      </div>
-      <div class="grow">
-        <button class="btn btn-main" id="known">I know it</button>
-        <button class="btn btn-ghost" id="notyet">Not yet</button>
-        <span class="hint" id="knowcount">0 of 6 known</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="listen">
-    <h2 class="reveal">Listen and pick</h2>
-    <p class="sub reveal">Press play, listen, then choose the meaning. Slow says it at half speed.</p>
-    <div class="game reveal">
-      <div class="grow">
-        <button class="btn btn-main" id="speak">Play the word</button>
-        <label class="switch"><input type="checkbox" id="slow"> Slow</label>
-        <button class="btn btn-ghost" id="reveal">Show the word</button>
-      </div>
-      <p class="hint" id="lword">Word hidden — play it, then pick the meaning.</p>
-      <div class="lchoices" id="lchoices"></div>
-      <p class="qmsg" id="lmsg">Press play to hear a word.</p>
-    </div>
-  </section>
-
-  <section id="order">
-    <h2 class="reveal">Put the line in order</h2>
-    <p class="sub reveal">Tap or click the words to build the sentence. Tap a word in your line to send it back.</p>
-    <div class="game reveal">
-      <div class="line" id="line" aria-live="polite"></div>
-      <p class="banklabel">Words left</p>
-      <div class="bank" id="bank"></div>
-      <div class="grow">
-        <button class="btn btn-main" id="check">Check</button>
-        <button class="btn btn-ghost" id="nextline">Next one</button>
-      </div>
-      <p class="qmsg" id="omsg"></p>
     </div>
   </section>
 
@@ -764,6 +778,27 @@
   fw.textContent = VOCAB[0].w; fm.textContent = VOCAB[0].m; fe.textContent = VOCAB[0].e;
   flash.setAttribute('data-w', VOCAB[0].w); paintKnown();
 
+
+  /* ---------- games menu ---------- */
+  (function () {
+    var tabs = [].slice.call(document.querySelectorAll('.tab'));
+    var panes = [].slice.call(document.querySelectorAll('.pane'));
+    function show(name) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-pane') === name;
+        t.classList.toggle('is-on', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panes.forEach(function (p) { p.classList.toggle('is-on', p.id === 'pane-' + name); });
+      try { history.replaceState(null, '', '#' + (name === 'match' ? 'play' : name)); } catch (e) {}
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { show(t.getAttribute('data-pane')); });
+    });
+    var h = (location.hash || '').replace('#', '');
+    if (h === 'listen' || h === 'order' || h === 'cards') show(h);
+  })();
+
   /* ---------- listen and pick ---------- */
   var lTarget = null, lChoices = document.getElementById('lchoices'),
       lMsg = document.getElementById('lmsg'), canSpeak = 'speechSynthesis' in window;
@@ -777,7 +812,7 @@
   function speak(text) {
     if (!canSpeak) {
       lMsg.className = 'qmsg warn';
-      lMsg.textContent = 'This browser cannot play sound — tap “Show the word” and pick by reading.';
+      lMsg.textContent = 'This browser cannot play sound — the word is on screen, so say it and pick by reading.';
       return;
     }
     try { speechSynthesis.cancel(); speechSynthesis.resume(); } catch (e) {}
@@ -788,7 +823,7 @@
     u.rate = document.getElementById('slow').checked ? 0.6 : 0.95;
     u.onerror = function () {
       lMsg.className = 'qmsg warn';
-      lMsg.textContent = 'The voice did not play — tap “Show the word” and pick by reading.';
+      lMsg.textContent = 'The voice did not play — the word is above, so read it aloud and pick.';
     };
     speechSynthesis.speak(u);
   }
@@ -805,8 +840,7 @@
         if (b.classList.contains('ok')) return;
         if (v.w === lTarget.w) {
           b.classList.add('ok');
-          lMsg.className = 'qmsg good'; lMsg.textContent = 'Yes — “' + lTarget.w + '”.';
-          lWord.textContent = 'The word was “' + lTarget.w + '”.';
+          lMsg.className = 'qmsg good'; lMsg.textContent = 'Yes — that is “' + lTarget.w + '”.';
           speak(lTarget.w);
           setTimeout(newListen, 2200);
         } else {
@@ -816,17 +850,11 @@
       });
       lChoices.appendChild(b);
     });
-    lMsg.className = 'qmsg'; lMsg.textContent = 'Listen, then pick.';
-    lWord.textContent = 'Word hidden — play it, then pick the meaning.';
-    lWord.removeAttribute('data-revealed');
+    lMsg.className = 'qmsg'; lMsg.textContent = 'Say it out loud, then pick the meaning.';
+    lWord.textContent = lTarget.w;
   }
   var lWord = document.getElementById('lword');
   document.getElementById('speak').addEventListener('click', function () { speak(lTarget ? lTarget.w : VOCAB[0].w); });
-  document.getElementById('reveal').addEventListener('click', function () {
-    if (!lTarget) return;
-    lWord.textContent = 'The word is “' + lTarget.w + '”.';
-    speak(lTarget.w);
-  });
   newListen();
 
   /* ---------- sentence order ---------- */
