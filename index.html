@@ -695,6 +695,25 @@
   });
 
 
+  /* host wave clips: play when visible, pause off-screen, respect reduced motion */
+  (function () {
+    var vids = [].slice.call(document.querySelectorAll('.hostvid'));
+    if (!vids.length) return;
+    vids.forEach(function (v) { v.muted = true; v.setAttribute('muted', ''); });
+    if (reduce) { vids.forEach(function (v) { v.pause(); }); return; }
+    var kick = function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    if ('IntersectionObserver' in window) {
+      var vio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.isIntersecting ? kick(e.target) : e.target.pause(); });
+      }, { threshold: 0.15 });
+      vids.forEach(function (v) { vio.observe(v); });
+    }
+    vids.forEach(kick);
+    document.addEventListener('visibilitychange', function () {
+      vids.forEach(function (v) { document.hidden ? v.pause() : kick(v); });
+    });
+  })();
+
   /* ---------- flashcards ---------- */
   var VOCAB = [
     { w:'automatic', m:'Doing something without thinking about it.', e:'Making coffee in the morning is automatic for me.' },
