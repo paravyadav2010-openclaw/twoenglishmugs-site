@@ -325,7 +325,7 @@
       </a>
       <nav>
         <a href="#episodes">Episodes</a>
-        <a href="#play">Play</a>
+        <a href="#practice">Practice</a>
         <a href="#pdf">PDF</a>
       </nav>
     </div>
@@ -451,8 +451,8 @@
     </div>
   </section>
 
-  <section id="play">
-    <h2 class="reveal">Play</h2>
+  <section id="practice">
+    <h2 class="reveal">Practice</h2>
     <p class="sub reveal">Four quick games. Pick one — everything stays on this device.</p>
     <div class="tabs reveal" role="tablist" aria-label="Games">
       <button class="tab is-on" role="tab" aria-selected="true" aria-controls="pane-match" data-pane="match">Match</button>
@@ -810,7 +810,7 @@
         t.setAttribute('aria-selected', on ? 'true' : 'false');
       });
       panes.forEach(function (p) { p.classList.toggle('is-on', p.id === 'pane-' + name); });
-      try { history.replaceState(null, '', '#' + (name === 'match' ? 'play' : name)); } catch (e) {}
+      try { history.replaceState(null, '', '#' + (name === 'match' ? 'practice' : name)); } catch (e) {}
     }
     tabs.forEach(function (t) {
       t.addEventListener('click', function () { show(t.getAttribute('data-pane')); });
