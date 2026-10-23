@@ -319,6 +319,60 @@
   .sayword{font-family:Fredoka,system-ui,sans-serif;font-size:clamp(30px,6vw,44px);line-height:1.1;
            margin:6px 0 14px;color:var(--cream);letter-spacing:.2px}
   @media(max-width:560px){.tab{padding:9px 13px;font-size:14px}}
+
+  /* ---------- progress / gamification ---------- */
+  .hud{display:grid;grid-template-columns:auto minmax(120px,1fr) auto;gap:12px 16px;align-items:center;
+       margin:0 0 12px;border:1px solid var(--line);border-radius:16px;padding:11px 13px;
+       background:linear-gradient(180deg,rgba(255,246,233,.05),rgba(255,246,233,.02))}
+  .hud .chip2{display:inline-flex;align-items:center;gap:7px;font:800 11.5px/1 var(--text);letter-spacing:.05em;
+       text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:999px;
+       padding:9px 12px;white-space:nowrap;background:rgba(20,17,17,.35)}
+  .hud .chip2 b{color:var(--cream);font-size:15px}
+  .hud .flame{font-size:14px;filter:saturate(1.2)}
+  .hud .grow2{min-width:0}
+  .hud .lvlrow{display:flex;justify-content:space-between;gap:10px;font:800 11px/1 var(--text);
+       letter-spacing:.05em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+  .hud .lvlrow b{color:var(--cream);letter-spacing:.02em}
+  .hud .xpbar{height:11px;border-radius:999px;background:rgba(255,246,233,.12);overflow:hidden;
+       box-shadow:inset 0 1px 2px rgba(0,0,0,.45)}
+  .hud .xpbar i{display:block;height:100%;min-width:0;border-radius:999px;
+       background:linear-gradient(90deg,#E75D4E,#F5A08D);transition:width .5s cubic-bezier(.2,.8,.2,1);
+       box-shadow:0 0 12px rgba(231,93,78,.55)}
+  .hud .goal.hit{border-color:rgba(126,217,160,.6)}
+  .hud .goal.hit b{color:#7ED9A0}
+  .hud .hudright{display:flex;align-items:center;gap:8px}
+  .hud .snd{border:1px solid rgba(255,246,233,.28);background:rgba(255,246,233,.06);color:var(--cream);
+       border-radius:999px;padding:9px 11px;cursor:pointer;font:800 13px/1 var(--text);min-width:44px}
+  .hud .snd:hover{border-color:var(--coral)}
+  .badges{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}
+  .badge{font:800 10.5px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
+       border:1px solid var(--line);border-radius:999px;padding:8px 11px;opacity:.7;
+       background:rgba(20,17,17,.35);transition:.25s}
+  .badge.on{color:#1a1210;background:var(--coral);border-color:var(--coral);opacity:1;
+       box-shadow:0 4px 14px rgba(231,93,78,.35)}
+  #gToast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,24px);z-index:70;
+       background:#1b1615;border:1px solid var(--coral);color:var(--cream);border-radius:14px;
+       padding:12px 18px;font:800 14px/1.25 var(--text);opacity:0;pointer-events:none;
+       transition:opacity .22s ease,transform .22s ease;max-width:90vw;text-align:center}
+  #gToast.show{opacity:1;transform:translate(-50%,0)}
+  #gFloat{position:fixed;z-index:71;pointer-events:none;font:900 16px/1 var(--text);color:#7ED9A0;opacity:0}
+  #gFloat.go{animation:gfloat .95s ease-out forwards}
+  @keyframes gfloat{0%{opacity:0;transform:translateY(8px) scale(.9)}18%{opacity:1}
+       100%{opacity:0;transform:translateY(-40px) scale(1.06)}}
+  #gBurst{position:fixed;inset:0;z-index:69;pointer-events:none}
+  .qitem.hint{outline:2px solid #7ED9A0;outline-offset:2px}
+  .qitem.shake{animation:gshake .3s}
+  @keyframes gshake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+  @media(prefers-reduced-motion:reduce){
+    .qitem.shake{animation:none}
+    #gFloat.go{animation:none;opacity:0}
+    .hud .xpbar i{transition:none}
+  }
+  @media(max-width:560px){
+    .hud{gap:8px;padding:9px 10px}
+    .hud .grow2{order:3;flex:1 1 100%}
+    .hud .chip2{font-size:10.5px;padding:7px 9px}
+  }
 </style>
 </head>
 <body>
@@ -456,6 +510,19 @@
   <section id="practice">
     <h2 class="reveal">Practice</h2>
     <p class="sub reveal">Four quick games. Pick one — everything stays on this device.</p>
+    <div class="hud reveal" id="gHud">
+      <span class="chip2" title="Right answers in a row"><span class="flame">🔥</span> <b id="gStreak">0</b> streak</span>
+      <div class="grow2">
+        <div class="lvlrow"><b id="gLevel">Level 1</b><span id="gXp">0 / 100 XP</span></div>
+        <div class="xpbar" role="progressbar" aria-label="Progress to next level"><i id="gBar"></i></div>
+      </div>
+      <div class="hudright">
+        <span class="chip2 goal" id="gGoalWrap" title="Today's XP goal"><span>🎯</span> <b id="gGoal">0 / 50</b> today</span>
+        <button class="snd" id="gSnd" aria-pressed="true" title="Sound on or off">🔊</button>
+      </div>
+    </div>
+    <div class="badges reveal" id="gBadges"></div>
+
     <div class="tabs reveal" role="tablist" aria-label="Games">
       <button class="tab is-on" role="tab" aria-selected="true" aria-controls="pane-match" data-pane="match">Match</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="pane-listen" data-pane="listen">Listen</button>
@@ -465,7 +532,7 @@
 
     <div class="pane is-on" id="pane-match" role="tabpanel">
       <div class="quiz">
-        <p class="sub">Tap a word on the left, then its meaning on the right. Three pairs, no score kept.</p>
+        <p class="sub">Tap a word, then its meaning. Three pairs — right answers earn XP.</p>
         <div class="cols">
           <div id="words"></div>
           <div id="means"></div>
@@ -999,6 +1066,266 @@
       navigator.clipboard.writeText(v).then(done2, function () { ans.select(); document.execCommand('copy'); done2(); });
     } else { ans.select(); document.execCommand('copy'); done2(); }
   });
+})();
+</script>
+
+<script>
+/* ---------- progress layer: XP, streaks, levels, badges, feedback ---------- */
+(function () {
+  var KEY = 'tem-progress-v1';
+  var TODAY = new Date().toISOString().slice(0, 10);
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var S = { xp: 0, streak: 0, best: 0, today: { d: TODAY, xp: 0 }, badges: [], seen: {}, paid: {} , muted: false };
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) { var p = JSON.parse(raw); for (var k in p) { if (Object.prototype.hasOwnProperty.call(p, k)) S[k] = p[k]; } }
+  } catch (e) {}
+  if (!S.today || S.today.d !== TODAY) S.today = { d: TODAY, xp: 0 };
+  if (!S.seen) S.seen = {};
+  if (!S.paid) S.paid = {};
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var hud = { streak: $('gStreak'), level: $('gLevel'), xp: $('gXp'), bar: $('gBar'),
+              goal: $('gGoal'), goalWrap: $('gGoalWrap'), badges: $('gBadges'), snd: $('gSnd') };
+
+  var BADGES = [
+    { id: 'first',  label: 'First right answer' },
+    { id: 'hot',    label: '5 in a row' },
+    { id: 'perfect',label: 'Perfect set' },
+    { id: 'collect',label: '25 words' },
+    { id: 'goal',   label: 'Daily goal' },
+    { id: 'level5', label: 'Level 5' }
+  ];
+
+  var GOAL = 50;
+  var levelOf = function (xp) { return Math.floor(xp / 100) + 1; };
+
+  function paint() {
+    var lv = levelOf(S.xp), into = S.xp % 100;
+    hud.streak.textContent = S.streak;
+    hud.level.textContent = 'Level ' + lv;
+    hud.xp.textContent = into + ' / 100 XP';
+    hud.bar.style.width = into + '%';
+    hud.goal.textContent = Math.min(S.today.xp, GOAL) + ' / ' + GOAL;
+    hud.goalWrap.classList.toggle('hit', S.today.xp >= GOAL);
+    hud.badges.innerHTML = '';
+    BADGES.forEach(function (b) {
+      var d = document.createElement('span');
+      d.className = 'badge' + (S.badges.indexOf(b.id) >= 0 ? ' on' : '');
+      d.textContent = b.label;
+      hud.badges.appendChild(d);
+    });
+    hud.snd.setAttribute('aria-pressed', S.muted ? 'false' : 'true');
+    hud.snd.textContent = S.muted ? '🔇' : '🔊';
+  }
+
+  /* ---- sound: tiny WebAudio blips, no assets ---- */
+  var actx = null;
+  function beep(freqs, dur, type, gain) {
+    if (S.muted) return;
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+      freqs.forEach(function (f, i) {
+        var o = actx.createOscillator(), g = actx.createGain();
+        o.type = type || 'sine'; o.frequency.value = f;
+        var t0 = actx.currentTime + i * (dur * 0.55);
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(gain || 0.05, t0 + 0.012);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+        o.connect(g); g.connect(actx.destination);
+        o.start(t0); o.stop(t0 + dur + 0.02);
+      });
+    } catch (e) {}
+  }
+  var sfx = {
+    ok:    function () { beep([660, 880], 0.10, 'sine', 0.05); },
+    bonus: function () { beep([740, 990, 1320], 0.10, 'triangle', 0.05); },
+    bad:   function () { beep([220, 165], 0.16, 'sine', 0.045); },
+    level: function () { beep([523, 659, 784, 1046], 0.14, 'triangle', 0.06); }
+  };
+
+  /* ---- feedback: toast, floating XP, confetti ---- */
+  var toastEl = document.createElement('div'); toastEl.id = 'gToast'; document.body.appendChild(toastEl);
+  var floatEl = document.createElement('div'); floatEl.id = 'gFloat'; document.body.appendChild(floatEl);
+  var burstCv = document.createElement('canvas'); burstCv.id = 'gBurst'; document.body.appendChild(burstCv);
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
+  }
+  function floatXp(n, x, y) {
+    if (reduce) return;
+    floatEl.textContent = '+' + n + ' XP';
+    floatEl.style.left = (x || window.innerWidth / 2) + 'px';
+    floatEl.style.top = (y || window.innerHeight * 0.6) + 'px';
+    floatEl.classList.remove('go');
+    void floatEl.offsetWidth;
+    floatEl.classList.add('go');
+  }
+  function confetti(count) {
+    if (reduce) return;
+    var ctx = burstCv.getContext('2d'), W = burstCv.width = window.innerWidth, H = burstCv.height = window.innerHeight;
+    var cols = ['#E75D4E', '#F0A08F', '#FFF6E9', '#7ED9A0'];
+    var parts = [];
+    for (var i = 0; i < (count || 40); i++) {
+      parts.push({ x: W / 2 + (Math.random() - 0.5) * 120, y: H * 0.42,
+                   vx: (Math.random() - 0.5) * 9, vy: -6 - Math.random() * 7,
+                   r: 2 + Math.random() * 3, c: cols[(Math.random() * cols.length) | 0], life: 1 });
+    }
+    var t0 = performance.now();
+    (function frame(t) {
+      var dt = Math.min(32, t - t0) / 16; t0 = t;
+      ctx.clearRect(0, 0, W, H);
+      var alive = 0;
+      parts.forEach(function (p) {
+        p.vy += 0.32 * dt; p.x += p.vx * dt; p.y += p.vy * dt; p.life -= 0.012 * dt;
+        if (p.life > 0) {
+          alive++;
+          ctx.globalAlpha = Math.max(0, p.life);
+          ctx.fillStyle = p.c;
+          ctx.fillRect(p.x, p.y, p.r * 2, p.r * 2);
+        }
+      });
+      ctx.globalAlpha = 1;
+      if (alive > 0) requestAnimationFrame(frame);
+      else ctx.clearRect(0, 0, W, H);
+    })(t0);
+  }
+
+  /* ---- rewards ---- */
+  function badge(id) {
+    if (S.badges.indexOf(id) >= 0) return;
+    S.badges.push(id); save(); paint();
+    var b = BADGES.filter(function (x) { return x.id === id; })[0];
+    toast('🏅 Badge earned — ' + (b ? b.label : id));
+    sfx.bonus(); confetti(46);
+  }
+
+  function addXp(n, opts) {
+    opts = opts || {};
+    var before = levelOf(S.xp);
+    S.xp += n; S.today.xp += n;
+    save(); paint();
+    if (!opts.quiet) floatXp(n);
+    if (levelOf(S.xp) > before) {
+      toast('⭐ Level ' + levelOf(S.xp) + ' — nice work');
+      sfx.level(); confetti(70);
+      if (levelOf(S.xp) >= 5) badge('level5');
+    }
+    if (S.today.xp >= GOAL && !S.goalPaid) { S.goalPaid = true; save(); badge('goal'); }
+  }
+
+  function correct(word) {
+    S.streak++; if (S.streak > S.best) S.best = S.streak;
+    var bonus = (S.streak % 3 === 0) ? 5 : 0;
+    addXp(10 + bonus);
+    if (bonus) { toast('🔥 ' + S.streak + ' in a row · +' + bonus + ' bonus'); sfx.bonus(); confetti(24); }
+    else sfx.ok();
+    if (word) {
+      S.seen[word] = 1;
+      if (Object.keys(S.seen).length >= 25) badge('collect');
+    }
+    badge('first');
+    if (S.streak >= 5) badge('hot');
+    save(); paint();
+  }
+
+  function wrong(el) {
+    S.streak = 0; save(); paint();
+    sfx.bad();
+    if (el && !reduce) {
+      el.classList.add('shake');
+      setTimeout(function () { el.classList.remove('shake'); }, 340);
+    }
+    missesThisSet++;
+  }
+
+  /* ---- game hooks: watch the message lines the games already write ---- */
+  var lastText = {};
+  var missesThisSet = 0, currentWord = null;
+  var orderPaid = false;   /* one reward per sentence, no re-check farming */
+
+  /* plain prefix tests — the games' copy is fixed, and regex escaping here caused a silent
+     mismatch once already (patterns never fired) */
+  function startsWith(txt, list) {
+    for (var i = 0; i < list.length; i++) { if (txt.indexOf(list[i]) === 0) return true; }
+    return false;
+  }
+  var GOOD_START = ['Right.', 'Set done.', 'Yes —', 'That is the line.'];
+  var BAD_START  = ['Not that one', 'Have another go'];
+
+  function classify(node) {
+    var txt = (node.textContent || '').trim();
+    if (!txt || txt === lastText[node.id]) return;
+    lastText[node.id] = txt;
+
+    if (txt.indexOf('Set ') === 0 && txt.indexOf(' —') > 0) { missesThisSet = 0; return; }
+
+    var good = startsWith(txt, GOOD_START);
+    var bad = startsWith(txt, BAD_START);
+
+    if (node.id === 'omsg' && good) {
+      if (orderPaid) return;
+      orderPaid = true;
+    }
+
+    if (good) {
+      var w = currentWord;
+      if (node.id === 'lmsg') w = (document.getElementById('lword') || {}).textContent;
+      correct(w ? String(w).trim() : null);
+      if (txt.indexOf('Set done.') === 0) {
+        addXp(20, { quiet: true });
+        toast('Set complete · +20 XP');
+        confetti(52);
+        if (missesThisSet === 0) badge('perfect');
+        missesThisSet = 0;
+      }
+      currentWord = null;
+    } else if (bad) {
+      wrong(node.id === 'omsg' ? document.getElementById('check') : null);
+      if (node.id === 'qmsg') hintMeaning();
+    }
+  }
+
+  function hintMeaning() {
+    var sel = document.querySelector('#words .qitem.sel') ||
+              document.querySelector('#words .qitem.gen-hint');
+    if (!sel) return;
+    var k = sel.dataset.k;
+    var m = document.querySelector('#means .qitem[data-k="' + (window.CSS && CSS.escape ? CSS.escape(k) : k) + '"]');
+    if (!m) return;
+    m.classList.add('hint');
+    setTimeout(function () { m.classList.remove('hint'); }, 2200);
+  }
+
+  ['qmsg', 'lmsg', 'omsg'].forEach(function (id) {
+    var n = document.getElementById(id);
+    if (!n) return;
+    new MutationObserver(function () { classify(n); }).observe(n, { childList: true, characterData: true, subtree: true });
+  });
+
+  /* remember which word the learner is working on (match) */
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('#nextline')) orderPaid = false;
+    var t = e.target.closest ? e.target.closest('.qitem') : null;
+    if (t && t.closest('#words')) currentWord = t.dataset.k;
+    if (e.target.closest && e.target.closest('#known')) {
+      var w = document.getElementById('flash').getAttribute('data-w');
+      if (w && !S.paid[w]) { S.paid[w] = 1; save(); addXp(5); }
+    }
+  }, true);
+
+  if (hud.snd) hud.snd.addEventListener('click', function () {
+    S.muted = !S.muted; save(); paint();
+    if (!S.muted) sfx.ok();
+  });
+
+  paint();
 })();
 </script>
 </body>
