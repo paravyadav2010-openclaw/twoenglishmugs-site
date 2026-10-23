@@ -682,16 +682,31 @@
   var msg = document.getElementById('qmsg'), sel = null, left = 0;
   function shuffle(a) { return a.map(function (v) { return [Math.random(), v]; }).sort(function (x, y) { return x[0] - y[0]; }).map(function (v) { return v[1]; }); }
 
-  var matchQueue = [], matchSet = 0;
-  function refillMatch() {                      /* all six words, in sets of three, no word repeated */
+  var matchQueue = [], matchSet = 0, lastSet = [], carry = [];
+  function pairOf(v) { return { w: v.w, m: v.m }; }
+  function refillMatch() {
+    /* one pass = every word exactly once, in sets of three.
+       The leftover words of a pass lead the next one, and the previous set's words go last,
+       so a word is never repeated until the whole bank has been used. */
     matchQueue = [];
-    var bag = shuffle(VOCAB.map(function (v) { return { w: v.w, m: v.m }; }));
-    while (bag.length) matchQueue.push(bag.splice(0, 3));
+    var lead = VOCAB.filter(function (v) { return carry.indexOf(v.w) >= 0; });
+    var tail = VOCAB.filter(function (v) { return lastSet.indexOf(v.w) >= 0 && carry.indexOf(v.w) < 0; });
+    var rest = VOCAB.filter(function (v) { return carry.indexOf(v.w) < 0 && lastSet.indexOf(v.w) < 0; });
+    var pool = lead.map(pairOf).concat(shuffle(rest.map(pairOf)), shuffle(tail.map(pairOf)));
+    carry = [];
+    while (pool.length) {
+      var set = pool.splice(0, 3);
+      if (set.length < 3) { carry = set.map(function (x) { return x.w; }); break; }
+      matchQueue.push(set);
+    }
+    if (!matchQueue.length) matchQueue.push(pool.length ? pool : VOCAB.slice(0, 3).map(pairOf));
   }
+
   function renderMatch() {
     if (!matchQueue.length) refillMatch();
     var set = matchQueue.shift();
     matchSet++;
+    lastSet = set.map(function (x) { return x.w; });
     wbox.innerHTML = ''; mbox.innerHTML = ''; sel = null;
     left = set.length;
     msg.className = 'qmsg'; msg.textContent = 'Set ' + matchSet + ' — pick a word, then its meaning.';
@@ -756,12 +771,37 @@
 
   /* ---------- flashcards ---------- */
   var VOCAB = [
-    { w:'automatic', m:'Doing something without thinking about it.', e:'Making coffee in the morning is automatic for me.' },
+    { w:'impulse buy', m:'Buying something suddenly, with no plan.', e:'Those sunglasses at the petrol station were a total impulse buy.' },
+    { w:'splurge', m:'To spend a lot of money on something nice you don\'t really need.', e:'We splurged on a really nice hotel for our anniversary.' },
+    { w:'treat yourself', m:'To do something nice for yourself as a little reward.', e:'I finished my exams, so I treated myself to a really long nap.' },
+    { w:'in the long run', m:'Over a long time — years, not days.', e:'Learning new words feels slow, but in the long run, it really helps.' },
+    { w:'save for a rainy day', m:'To keep money for problems later.', e:'My dad always kept some cash in a kitchen drawer — he was saving for a rainy day.' },
+    { w:'automatic', m:'Doing something without thinking about it.', e:'Making coffee in the morning is automatic for me. My eyes are still closed.' },
     { w:'routine', m:'The normal order you do things every day.', e:'My morning routine is waking up, stretching, and complaining about the weather.' },
-    { w:'progress', m:'Moving forward and getting better.', e:'I made real progress today. I finally understood a film without subtitles.' },
+    { w:'progress', m:'Moving forward and getting better.', e:'I made real progress today. I finally understood an English movie without subtitles.' },
     { w:'minimum', m:'The smallest amount possible.', e:'I always do the minimum amount of cleaning before my guests arrive.' },
     { w:'expectation', m:'A strong belief that something will happen.', e:'I have a strong expectation that it will rain right after I wash my car.' },
-    { w:'habit', m:'Something you do often and easily.', e:'I have a terrible habit of eating salty snacks at midnight.' }
+    { w:'habit', m:'Something you do often and easily.', e:'I have a terrible habit of eating salty snacks at midnight.' },
+    { w:'Little by little', m:'Slowly, in small amounts, over time — but with hope.', e:'' },
+    { w:'Habit stacking', m:'Attaching a new habit to an old one so your routine does half the work.', e:'' },
+    { w:'Never miss twice', m:'One mistake is an accident; two mistakes is a pattern. Get back on track immediately.', e:'' },
+    { w:'Confident', m:'Feeling sure of yourself because you have proof — not because the fear went away.', e:'' },
+    { w:'Fearless', m:'Having no fear at all. Impossible for most people, and not the goal of this episode.', e:'' },
+    { w:'Hesitate', m:'To pause or stop just because you are nervous, even when your foot is already moving forward.', e:'' },
+    { w:'Doubt', m:'The little voice inside asking.', e:'' },
+    { w:'Courage', m:'Doing the thing even though it is very difficult. Courage needs fear to exist at all.', e:'' },
+    { w:'Overcome', m:'Dealing with a scary problem successfully, even if the nervousness is still in your body.', e:'' },
+    { w:'Bias', m:'An unfair preference for or against an idea or person.', e:'' },
+    { w:'Illusion', m:'A false idea, impression, or belief that seems real.', e:'' },
+    { w:'Control', m:'The power to direct, influence, or manage outcomes.', e:'' },
+    { w:'Reaction', m:'What you say or do in response to an event or stimulus.', e:'' },
+    { w:'Compound', m:'To build upon itself and grow larger over time.', e:'' },
+    { w:'Prioritize', m:'To decide what is most important and tackle it first.', e:'' },
+    { w:'Priceless', m:'Having a value beyond money.', e:'' },
+    { w:'Neglect', m:'To fail to give proper care or attention.', e:'' },
+    { w:'Make the most of', m:'To use a situation as well as you can.', e:'' },
+    { w:'Waste time', m:'Spending hours on things that offer no value.', e:'' },
+    { w:'Deadline', m:'The final agreed-upon time for completing a task.', e:'' }
   ];
   refillMatch(); renderMatch();          /* deck now exists */
 
@@ -850,7 +890,12 @@
     speechSynthesis.speak(u);
   }
   function newListen() {
-    if (!lBag.length) lBag = shuffle(VOCAB.slice());
+    if (!lBag.length) {                       /* new pass: do not start with the word just heard */
+      lBag = shuffle(VOCAB.slice());
+      if (lTarget && lBag.length > 1 && lBag[lBag.length - 1].w === lTarget.w) {
+        var sw = lBag[0]; lBag[0] = lBag[lBag.length - 1]; lBag[lBag.length - 1] = sw;
+      }
+    }
     lTarget = lBag.pop();
     var others = VOCAB.filter(function (v) { return v.w !== lTarget.w; });
     others = others.sort(function () { return Math.random() - 0.5; }).slice(0, 2);
@@ -882,15 +927,37 @@
 
   /* ---------- sentence order ---------- */
   var LINES = [
+    'Those sunglasses at the petrol station were a total impulse buy',
+    'We splurged on a really nice hotel for our anniversary',
+    'I finished my exams, so I treated myself to a really long nap',
+    'Learning new words feels slow, but in the long run, it really helps',
+    'My dad always kept some cash in a kitchen drawer — he was saving for a rainy day',
+    'Making coffee in the morning is automatic for me. My eyes are still closed',
+    'My morning routine is waking up, stretching, and complaining about the weather',
+    'I made real progress today. I finally understood an English movie without subtitles',
+    'I always do the minimum amount of cleaning before my guests arrive',
+    'I have a strong expectation that it will rain right after I wash my car',
+    'I have a terrible habit of eating salty snacks at midnight',
     'Making coffee in the morning is automatic for me',
     'My morning routine is waking up and stretching',
     'I made real progress today',
     'I always do the minimum amount of cleaning',
     'I have a terrible habit of eating salty snacks'
   ];
-  var li = 0, picked = [], bank = document.getElementById('bank'),
+  var orderBag = [], curLine = '', picked = [], bank = document.getElementById('bank'),
       lineEl = document.getElementById('line'), oMsg = document.getElementById('omsg');
+  function nextLine() {
+    if (!orderBag.length) {                    /* new pass over every sentence */
+      orderBag = shuffle(LINES.slice());
+      if (curLine && orderBag.length > 1 && orderBag[orderBag.length - 1] === curLine) {
+        var tmp = orderBag[0]; orderBag[0] = orderBag[orderBag.length - 1]; orderBag[orderBag.length - 1] = tmp;
+      }
+    }
+    curLine = orderBag.pop();
+    return curLine;
+  }
   function renderOrder() {
+    if (!curLine) nextLine();
     lineEl.innerHTML = ''; bank.innerHTML = '';
     picked.forEach(function (w, i) {
       var b = document.createElement('button');
@@ -898,7 +965,7 @@
       b.addEventListener('click', function () { picked.splice(i, 1); renderOrder(); });
       lineEl.appendChild(b);
     });
-    var pool = LINES[li].split(' ').map(function (w, i) { return w + '#' + i; });
+    var pool = curLine.split(' ').map(function (w, i) { return w + '#' + i; });
     for (var k = pool.length - 1; k > 0; k--) { var j = Math.floor(Math.random() * (k + 1)); var t = pool[k]; pool[k] = pool[j]; pool[j] = t; }
     pool.forEach(function (key) {
       if (picked.indexOf(key) !== -1) return;
@@ -911,11 +978,11 @@
   function plain(a) { return a.map(function (x) { return x.split('#')[0]; }).join(' '); }
   document.getElementById('check').addEventListener('click', function () {
     if (!picked.length) { oMsg.className = 'qmsg warn'; oMsg.textContent = 'Tap some words first.'; return; }
-    if (plain(picked) === LINES[li]) { oMsg.className = 'qmsg good'; oMsg.textContent = 'That is the line.'; }
+    if (plain(picked) === curLine) { oMsg.className = 'qmsg good'; oMsg.textContent = 'That is the line.'; }
     else { oMsg.className = 'qmsg warn'; oMsg.textContent = 'Have another go — tap a word in your line to send it back.'; }
   });
   document.getElementById('nextline').addEventListener('click', function () {
-    li = (li + 1) % LINES.length; picked = []; oMsg.textContent = ''; renderOrder();
+    nextLine(); picked = []; oMsg.textContent = ''; renderOrder();
   });
   renderOrder();
 
