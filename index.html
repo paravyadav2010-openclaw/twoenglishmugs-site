@@ -263,15 +263,25 @@
   /* ---------- games ---------- */
   .game{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:24px}
   .grow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
-  .flash{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;min-height:146px;
-         cursor:pointer;transition:.18s}
-  .flash:hover{border-color:rgba(255,246,233,.3)}
+  .flash{background:linear-gradient(158deg,#26201d 0%,var(--card) 45%,#151111 100%);
+         border:1px solid var(--line);border-radius:18px;padding:22px;
+         min-height:172px;cursor:pointer;perspective:1100px;
+         box-shadow:0 18px 44px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,246,233,.06);
+         transition:border-color .2s,box-shadow .25s,transform .25s}
+  .flash:hover{border-color:rgba(255,246,233,.3);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+  .flash .flip-inner{position:relative;width:100%;min-height:128px;transform-style:preserve-3d;
+         transition:transform .55s cubic-bezier(.22,.9,.28,1)}
+  .flash.open .flip-inner{transform:rotateY(180deg)}
+  .flash:active{transform:scale(.995)}
+  .flash .face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+         backface-visibility:hidden;-webkit-backface-visibility:hidden}
+  .flash .face.back{transform:rotateY(180deg);justify-content:center}
+  .flash .face.back::after{content:'Tap to flip back';position:absolute;right:0;bottom:-4px;
+         font:800 10.5px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,246,233,.35)}
   .flash .fw{font:600 26px/1.2 var(--display);color:var(--coral)}
-  .flash .fm,.flash .fe{display:none;color:var(--cream);font:700 15.5px/1.5 var(--text);margin-top:10px}
-  .flash .fe{color:var(--dim);font-weight:600;font-size:14.5px;font-style:italic}
-  .flash.open .fm,.flash.open .fe{display:block}
+  .flash .fm{color:var(--cream);font:700 15.5px/1.5 var(--text)}
+  .flash .fe{color:var(--dim);font-weight:600;font-size:14.5px;font-style:italic;margin-top:8px}
   .flash .tap{font:800 12px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:14px}
-  .flash.open .tap{display:none}
   .lchoices{display:grid;gap:8px;margin-top:14px}
   .lchoice{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:var(--card);
            color:var(--cream);font:700 15px/1.45 var(--text);text-align:left;cursor:pointer;transition:.15s;min-height:48px}
@@ -375,6 +385,65 @@
     .hud .hudright{justify-self:end}
     .hud .chip2{font-size:10.5px;padding:8px 10px}
     .hud .snd{padding:8px 10px;min-width:40px}
+  }
+
+  /* ---------- 21st.dev-style micro-interactions ---------- */
+  /* magic card: spotlight follows the pointer, border picks up a warm edge */
+  .glowcard{position:relative;overflow:hidden;isolation:isolate}
+  .glowcard::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
+       transition:opacity .3s ease;
+       background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),
+                  rgba(231,93,78,.16), rgba(231,93,78,.05) 42%, transparent 68%)}
+  .glowcard:hover::before{opacity:1}
+  .glowcard::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;
+       opacity:0;transition:opacity .3s ease;
+       background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),
+                  rgba(255,246,233,.5), transparent 60%);-webkit-mask:
+                  linear-gradient(#000,#000) content-box, linear-gradient(#000,#000);
+       -webkit-mask-composite:xor;mask-composite:exclude;padding:1px}
+  .glowcard:hover::after{opacity:.55}
+  .glowcard > *{position:relative;z-index:1}
+
+  /* glare hover: a diagonal light sweep across tabs and primary buttons */
+  .tab,.btn{position:relative;overflow:hidden}
+  .tab::after,.btn::after{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;
+       background:linear-gradient(115deg,transparent 42%,rgba(255,246,233,.22) 50%,transparent 58%);
+       transform:translateX(-120%);transition:transform .6s cubic-bezier(.22,.9,.28,1);pointer-events:none}
+  .tab:hover::after,.btn:hover::after{transform:translateX(120%)}
+
+  /* press + settle states on answer chips */
+  .qitem,.lchoice,.wchip{transition:transform .12s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+  .qitem:active,.lchoice:active,.wchip:active{transform:scale(.974)}
+  .qitem.sel{border-color:var(--coral);background:rgba(231,93,78,.10);
+       box-shadow:0 0 0 1px rgba(231,93,78,.5),0 8px 24px rgba(231,93,78,.14)}
+  .qitem.ok,.lchoice.ok{animation:temPop .32s cubic-bezier(.2,1.4,.4,1)}
+  @keyframes temPop{0%{transform:scale(1)}45%{transform:scale(1.035)}100%{transform:scale(1)}}
+  .qitem.hint{animation:temHint 1.1s ease-in-out 2}
+
+  /* xp bar: a slow sheen so it reads as "alive" */
+  .hud .xpbar i{position:relative;overflow:hidden}
+  .hud .xpbar i::after{content:'';position:absolute;inset:0;
+       background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);
+       transform:translateX(-100%);animation:temSheen 2.8s ease-in-out infinite}
+  @keyframes temSheen{0%{transform:translateX(-100%)}55%,100%{transform:translateX(260%)}}
+
+  /* xp number pop when it changes */
+  .hud #gXp.bump{animation:temBump .34s ease}
+  @keyframes temBump{0%{transform:scale(1)}40%{transform:scale(1.12);color:var(--cream)}100%{transform:scale(1)}}
+
+  /* click ripple */
+  .ripple{position:absolute;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(0);
+       background:radial-gradient(circle,rgba(255,246,233,.35),transparent 70%);animation:temRipple .55s ease-out forwards}
+  @keyframes temRipple{to{transform:translate(-50%,-50%) scale(1);opacity:0}}
+
+  @media(prefers-reduced-motion:reduce){
+    .glowcard::before,.glowcard::after{display:none}
+    .tab::after,.btn::after{display:none}
+    .qitem.ok,.lchoice.ok,.qitem.hint{animation:none}
+    .hud .xpbar i::after{animation:none;display:none}
+    .hud #gXp.bump{animation:none}
+    .flash .flip-inner{transition:none}
+    .ripple{display:none}
   }
 </style>
 </head>
@@ -575,10 +644,16 @@
       <div class="game">
         <p class="sub">Tap the card to see the meaning, then tell it honestly: do you know this word?</p>
         <div class="flash" id="flash" role="button" tabindex="0" aria-label="Flashcard, tap to reveal the meaning">
-          <div class="fw" id="fw">automatic</div>
-          <div class="fm" id="fm"></div>
-          <div class="fe" id="fe"></div>
-          <div class="tap">Tap to flip</div>
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="fw" id="fw">automatic</div>
+              <div class="tap">Tap to flip</div>
+            </div>
+            <div class="face back">
+              <div class="fm" id="fm"></div>
+              <div class="fe" id="fe"></div>
+            </div>
+          </div>
         </div>
         <div class="grow">
           <button class="btn btn-main" id="known">I know it</button>
@@ -1348,6 +1423,103 @@
   });
 
   paint();
+})();
+</script>
+
+<script>
+/* ---------- interaction layer: spotlight, ripple, xp ticker ---------- */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* magic-card spotlight on every game panel */
+  var panels = [].slice.call(document.querySelectorAll('#practice .quiz, #practice .game'));
+  panels.forEach(function (el) { el.classList.add('glowcard'); });
+  if (!reduce) {
+    document.addEventListener('pointermove', function (e) {
+      var card = e.target.closest ? e.target.closest('.glowcard') : null;
+      if (!card) return;
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+  }
+
+  /* ripple on the answer chips and buttons */
+  if (!reduce) {
+    document.addEventListener('pointerdown', function (e) {
+      var t = e.target.closest ? e.target.closest('.qitem, .lchoice, .wchip, .tab, .btn') : null;
+      if (!t) return;
+      var r = t.getBoundingClientRect(), size = Math.max(r.width, r.height) * 1.6;
+      var span = document.createElement('span');
+      span.className = 'ripple';
+      span.style.width = span.style.height = size + 'px';
+      span.style.left = (e.clientX - r.left) + 'px';
+      span.style.top = (e.clientY - r.top) + 'px';
+      t.appendChild(span);
+      setTimeout(function () { span.remove(); }, 560);
+    }, { passive: true });
+  }
+
+  /* xp ticker: count the number up instead of snapping, and pop the label */
+  var xpEl = document.getElementById('gXp');
+  if (xpEl) {
+    var shown = null;
+    var animate = function (to) {
+      if (shown === null || reduce) { shown = to; xpEl.textContent = to + ' / 100 XP'; return; }
+      var from = shown, t0 = performance.now(), dur = 420;
+      xpEl.classList.add('bump');
+      setTimeout(function () { xpEl.classList.remove('bump'); }, 360);
+      (function step(t) {
+        var k = Math.min(1, (t - t0) / dur), eased = 1 - Math.pow(1 - k, 3);
+        var val = Math.round(from + (to - from) * eased);
+        xpEl.textContent = val + ' / 100 XP';
+        shown = to;
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    };
+    var readXp = function () {
+      try {
+        var s = JSON.parse(localStorage.getItem('tem-progress-v1') || '{}');
+        return (s.xp || 0) % 100;
+      } catch (e) { return 0; }
+    };
+    setInterval(function () {
+      var now = readXp();
+      if (shown !== null && now !== shown) animate(now);
+    }, 250);
+  }
+})();
+</script>
+
+<script>
+/* keep the flipping card tall enough for whichever face is showing */
+(function () {
+  var flash = document.getElementById('flash');
+  if (!flash) return;
+  var inner = flash.querySelector('.flip-inner');
+  var faces = [].slice.call(flash.querySelectorAll('.face'));
+  if (!inner || faces.length < 2) return;
+
+  function fit() {
+    var tallest = 0;
+    faces.forEach(function (f) {
+      var prevPos = f.style.position, prevTransform = f.style.transform;
+      f.style.position = 'static';
+      f.style.transform = 'none';
+      tallest = Math.max(tallest, f.offsetHeight);
+      f.style.position = prevPos;
+      f.style.transform = prevTransform;
+    });
+    inner.style.minHeight = Math.max(120, tallest) + 'px';
+    flash.style.minHeight = (tallest + 44) + 'px';
+  }
+
+  ['fm', 'fe', 'fw'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) new MutationObserver(fit).observe(el, { childList: true, characterData: true, subtree: true });
+  });
+  window.addEventListener('resize', fit);
+  fit();
 })();
 </script>
 </body>
