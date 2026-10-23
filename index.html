@@ -47,7 +47,7 @@
   /* hero */
   .hero{position:relative;padding:56px 0 40px}
   #dots{position:absolute;inset:-40px 0 0 0;width:100%;height:100%;z-index:0;opacity:.75;pointer-events:none}
-  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.06fr;gap:38px;align-items:center}
+  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:38px;align-items:center}
   .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;
         padding:6px 13px;font:800 12px/1 var(--text);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
   .pill i{width:6px;height:6px;border-radius:50%;background:var(--coral);display:block}
@@ -241,7 +241,7 @@
 
 
   /* ---------- hosts ---------- */
-  .art-col{display:flex;flex-direction:column;align-items:center;width:100%}
+  .art-col{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0}
   .duo-legend{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:15px;text-align:center;width:100%}
   .duo-legend p{margin:0}
   .duo-legend .role{font:800 10.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
