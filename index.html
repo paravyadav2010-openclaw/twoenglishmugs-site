@@ -445,6 +445,53 @@
     .flash .flip-inner{transition:none}
     .ripple{display:none}
   }
+
+  /* ---------- how it works: a four-step path ---------- */
+  .howstat{display:inline-flex;align-items:center;gap:8px;margin:-10px 0 26px;padding:8px 14px;
+       border:1px solid var(--line);border-radius:999px;background:rgba(255,246,233,.03);
+       font:800 12px/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+  .howstat b{color:var(--cream);font-size:14px}
+  .howstat::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--coral);flex:0 0 auto}
+
+  .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+       position:relative;counter-reset:step}
+  /* the rail behind the numbered nodes */
+  .steps::before{content:'';position:absolute;left:5%;right:5%;top:22px;height:2px;z-index:2;pointer-events:none;
+       background:repeating-linear-gradient(90deg,rgba(231,93,78,.55) 0 7px,transparent 7px 15px)}
+
+  .step{position:relative;z-index:1;padding:52px 20px 22px;border:1px solid var(--line);border-radius:18px;
+       background:linear-gradient(180deg,rgba(255,246,233,.045),rgba(255,246,233,.012));
+       transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+  .step:hover{transform:translateY(-4px);border-color:rgba(231,93,78,.55);
+       box-shadow:0 18px 44px rgba(0,0,0,.42)}
+  .step .n{position:absolute;top:0;left:18px;width:44px;height:44px;border-radius:50%;z-index:3;
+       display:grid;place-items:center;background:var(--night);border:2px solid var(--coral);
+       color:var(--coral);font:800 13px/1 var(--text);letter-spacing:.04em;
+       transition:background .25s ease,color .25s ease,transform .25s ease}
+  .step:hover .n{background:var(--coral);color:#1a1210;transform:scale(1.06)}
+  .step h3{font:600 17.5px/1.3 var(--display);margin:0 0 7px}
+  .step p{margin:0;color:#D6CCC3;font-size:15px;line-height:1.55}
+
+  @media(max-width:860px){
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .steps::before{display:none}
+    .step{padding:46px 16px 18px}
+    .step .n{left:14px;width:38px;height:38px;font-size:12px}
+  }
+  @media(max-width:560px){
+    /* one column with a vertical rail, so it reads as a sequence on a phone */
+    .steps{grid-template-columns:1fr;gap:14px;padding-left:30px}
+    .step{padding:14px 16px 16px}
+    .step .n{left:-30px;top:12px;width:34px;height:34px;font-size:11.5px}
+    .steps{position:relative}
+    .steps::before{display:block;left:16px;right:auto;top:24px;bottom:24px;width:2px;height:auto;
+         background:repeating-linear-gradient(180deg,rgba(231,93,78,.55) 0 7px,transparent 7px 15px)}
+    .howstat{margin-bottom:22px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .step,.step .n{transition:none}
+    .step:hover{transform:none}
+  }
 </style>
 </head>
 <body>
@@ -510,33 +557,29 @@
   <section id="how">
     <h2 class="reveal">How it works</h2>
     <p class="sub reveal">No pen. No paper. No grammar drills. Just twenty minutes of talk you can follow.</p>
-    <div class="bento">
-      <div class="tile big reveal">
-        <div class="num">01</div>
+    <p class="howstat reveal"><b>26</b> episodes so far · <b>2</b> new ones each week</p>
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="n">01</span>
         <h3>Put your earphones on</h3>
         <p>Cook, walk, fold clothes. You do not need to sit and stare at a screen.</p>
-      </div>
-      <div class="tile reveal">
-        <div class="num">02</div>
+      </li>
+      <li class="step reveal">
+        <span class="n">02</span>
         <h3>Follow the chat</h3>
         <p>Every hard word gets explained right there, in the moment.</p>
-      </div>
-      <div class="tile reveal">
-        <div class="num">03</div>
+      </li>
+      <li class="step reveal">
+        <span class="n">03</span>
         <h3>Read it back</h3>
         <p>The free PDF holds the whole talk plus the word list.</p>
-      </div>
-      <div class="tile big reveal">
-        <div class="num">04</div>
+      </li>
+      <li class="step reveal">
+        <span class="n">04</span>
         <h3>Say one line out loud</h3>
         <p>One sentence from the show, in your own voice. That is the whole trick.</p>
-      </div>
-      <div class="tile reveal">
-        <div class="num">26</div>
-        <h3>Episodes so far</h3>
-        <p>Two new ones each week.</p>
-      </div>
-    </div>
+      </li>
+    </ol>
   </section>
 
 
