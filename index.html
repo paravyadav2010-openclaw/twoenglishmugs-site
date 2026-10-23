@@ -319,11 +319,21 @@
   }
 
   /* ---------- games menu ---------- */
-  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 14px}
-  .tab{font:inherit;font-size:15px;padding:10px 16px;border-radius:999px;cursor:pointer;
-       border:1px solid var(--line);background:transparent;color:var(--cream);opacity:.72;transition:.18s}
-  .tab:hover{opacity:1}
-  .tab.is-on{background:var(--coral);border-color:var(--coral);color:#1a1110;font-weight:700;opacity:1}
+  /* segmented control — a track with a sliding coral pill, deliberately unlike the badges */
+  .tabs{position:relative;display:inline-flex;gap:4px;padding:6px;margin:20px 0 16px;max-width:100%;
+       border-radius:999px;border:1px solid rgba(255,246,233,.16);
+       background:rgba(255,246,233,.05);box-shadow:inset 0 1px 0 rgba(255,246,233,.07),0 10px 26px rgba(0,0,0,.28)}
+  .tab-ind{position:absolute;z-index:0;border-radius:999px;background:var(--coral);
+       box-shadow:0 8px 22px rgba(231,93,78,.42);transition:left .32s cubic-bezier(.22,.9,.28,1),
+       top .32s cubic-bezier(.22,.9,.28,1),width .32s cubic-bezier(.22,.9,.28,1),height .32s}
+  .tab{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;border:0;background:none;
+       cursor:pointer;font:800 13.5px/1 var(--text);padding:11px 17px;border-radius:999px;
+       color:rgba(255,246,233,.62);transition:color .18s ease}
+  .tab svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;
+       stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+  .tab:hover{color:var(--cream)}
+  .tab.is-on{color:#1a1210}
+  .tab.is-on svg{stroke:#1a1210}
   .pane{display:none}
   .pane.is-on{display:block}
   .sayword{font-family:Fredoka,system-ui,sans-serif;font-size:clamp(30px,6vw,44px);line-height:1.1;
@@ -379,6 +389,8 @@
     .hud .xpbar i{transition:none}
   }
   @media(max-width:560px){
+    .tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;width:100%;border-radius:20px;padding:6px}
+    .tab{justify-content:center;padding:12px 8px;font-size:13px}
     /* two rows on phones: streak + goal/sound, then the level bar across the full width */
     .hud{grid-template-columns:1fr auto;gap:10px 12px;padding:10px 12px}
     .hud .grow2{grid-column:1 / -1;grid-row:2}
@@ -639,10 +651,11 @@
     <div class="badges reveal" id="gBadges"></div>
 
     <div class="tabs reveal" role="tablist" aria-label="Games">
-      <button class="tab is-on" role="tab" aria-selected="true" aria-controls="pane-match" data-pane="match">Match</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-listen" data-pane="listen">Listen</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-order" data-pane="order">Order</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-cards" data-pane="cards">Cards</button>
+      <span class="tab-ind" aria-hidden="true"></span>
+      <button class="tab is-on" role="tab" aria-selected="true" aria-controls="pane-match" data-pane="match"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5 14.5 9.5"/><path d="M13 6.5 15 4.5a4.2 4.2 0 0 1 6 6l-2 2"/><path d="M11 17.5 9 19.5a4.2 4.2 0 0 1-6-6l2-2"/></svg><span>Match</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-listen" data-pane="listen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4"/><path d="M8 7v10"/><path d="M12 4v16"/><path d="M16 8v8"/><path d="M20 10v4"/></svg><span>Listen</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-order" data-pane="order"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9"/><path d="M4 12h6"/><path d="M4 17h9"/><path d="M17 5v14"/><path d="M14 16l3 3 3-3"/></svg><span>Order</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-cards" data-pane="cards"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="12" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v9"/></svg><span>Cards</span></button>
     </div>
 
     <div class="pane is-on" id="pane-match" role="tabpanel">
@@ -1563,6 +1576,31 @@
   });
   window.addEventListener('resize', fit);
   fit();
+})();
+</script>
+
+<script>
+/* slide the segmented-control indicator to whichever tab is active */
+(function () {
+  var bar = document.querySelector('.tabs');
+  if (!bar) return;
+  var ind = bar.querySelector('.tab-ind');
+  if (!ind) return;
+
+  function move() {
+    var on = bar.querySelector('.tab.is-on');
+    if (!on) return;
+    ind.style.left = on.offsetLeft + 'px';
+    ind.style.top = on.offsetTop + 'px';
+    ind.style.width = on.offsetWidth + 'px';
+    ind.style.height = on.offsetHeight + 'px';
+  }
+
+  bar.addEventListener('click', function () { requestAnimationFrame(move); });
+  window.addEventListener('resize', move);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(move);
+  move();
+  setTimeout(move, 300);
 })();
 </script>
 </body>
