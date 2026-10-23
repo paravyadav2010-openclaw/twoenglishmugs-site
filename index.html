@@ -64,20 +64,12 @@
   .art{display:flex;justify-content:center}
   .art > img{width:100%;max-width:340px;height:auto;transition:transform .4s ease}
   .art > img:hover{transform:translateY(-6px) rotate(-1deg)}
-  /* both hosts in one panel, side by side, mirrored so the waves open outward */
-  .art .duo{position:relative;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:410px;
-        border:1px solid var(--line);border-radius:22px;overflow:hidden;
-        background-color:var(--night);
-        background-image:radial-gradient(ellipse at 50% 92%, rgba(255,246,233,.10), transparent 62%),
-        radial-gradient(circle, rgba(231,93,78,.22) 1.4px, transparent 1.5px);background-size:100% 100%, 30px 30px}
+  /* both hosts, side by side, no card around them */
+  .art .duo{position:relative;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:430px}
   .art .duo img{position:relative;z-index:1;display:block;width:58%;height:auto;margin:0 -3.5%;
-        -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.5) 94%,transparent 100%);
-        mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.5) 94%,transparent 100%)}
-  .art .duo:before{content:'';position:absolute;left:50%;bottom:12%;transform:translateX(-50%);
-        width:86%;height:52%;border-radius:50%;background:radial-gradient(ellipse,rgba(231,93,78,.26),transparent 70%);pointer-events:none}
-  .art .duo:after{content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%);
-        width:62%;height:14px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.6),transparent 72%);pointer-events:none}
-  .art .duo img.duo-b{transform:scaleX(-1)}
+        -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 84%,rgba(0,0,0,.55) 95%,transparent 100%);
+        mask-image:linear-gradient(to bottom,#000 0%,#000 84%,rgba(0,0,0,.55) 95%,transparent 100%)}
+  .art .duo img.duo-a{transform:scaleX(-1)}
 
   /* marquee */
   .marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px;
