@@ -67,12 +67,12 @@
   /* both hosts, side by side, no card, bigger and pulled together */
   .art{display:flex;justify-content:center}
   .art .duo{position:relative;display:flex;align-items:flex-end;justify-content:center}
-  .art .duo img{position:relative;z-index:1;display:block;width:clamp(200px,30vw,420px);height:auto;
+  .art .duo img{position:relative;z-index:1;display:block;flex:0 0 auto;width:clamp(200px,30vw,420px);height:auto;
         -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 88%,rgba(0,0,0,.6) 96%,transparent 100%);
         mask-image:linear-gradient(to bottom,#000 0%,#000 88%,rgba(0,0,0,.6) 96%,transparent 100%)}
   .art .duo img.duo-a{transform:scaleX(-1)}
-  .art .duo img.duo-b{margin-left:-227px}
-  @media(max-width:760px){ .art{margin-bottom:26px} .art .duo img{width:50vw} .art .duo img.duo-b{margin-left:-92px} }
+  .art .duo img.duo-b{margin-left:-163px}
+  @media(max-width:760px){ .art{margin-bottom:26px} .art .duo img{width:61vw} .art .duo img.duo-b{margin-left:-116px} }
 
   /* marquee */
   .marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px;
