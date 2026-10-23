@@ -1278,10 +1278,15 @@
 
   function classify(node) {
     var txt = (node.textContent || '').trim();
-    if (!txt || txt === lastText[node.id]) return;
-    lastText[node.id] = txt;
+    if (!txt) { delete lastText[node.id]; return; }        /* a cleared line may legitimately repeat */
+    /* the key includes the current word, so the same sentence for a different word still pays */
+    var key = node.id + '|' + txt;
+    if (node.id === 'lmsg') key += '|' + ((document.getElementById('lword') || {}).textContent || '');
+    if (key === lastText[node.id]) return;
+    lastText[node.id] = key;
 
-    if (txt.indexOf('Set ') === 0 && txt.indexOf(' —') > 0) { missesThisSet = 0; return; }
+    /* a new set starts with 'Set <number>'; 'Set done.' is the END of a set and must still pay */
+    if (/^Set \d/.test(txt)) { missesThisSet = 0; return; }
 
     var good = startsWith(txt, GOOD_START);
     var bad = startsWith(txt, BAD_START);
