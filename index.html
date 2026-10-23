@@ -514,7 +514,7 @@
     <h2 class="reveal">Practice</h2>
     <p class="sub reveal">Four quick games. Pick one — everything stays on this device.</p>
     <div class="hud reveal" id="gHud">
-      <span class="chip2" title="Right answers in a row"><span class="flame">🔥</span> <b id="gStreak">0</b> streak</span>
+      <span class="chip2" id="gStreakWrap" title="Days in a row with practice"><span class="flame">🔥</span> <b id="gStreak">1</b> <span id="gStreakLabel">day</span></span>
       <div class="grow2">
         <div class="lvlrow"><b id="gLevel">Level 1</b><span id="gXp">0 / 100 XP</span></div>
         <div class="xpbar" role="progressbar" aria-label="Progress to next level"><i id="gBar"></i></div>
@@ -1079,7 +1079,8 @@
   var TODAY = new Date().toISOString().slice(0, 10);
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var S = { xp: 0, streak: 0, best: 0, today: { d: TODAY, xp: 0 }, badges: [], seen: {}, paid: {} , muted: false };
+  var S = { xp: 0, streak: 0, best: 0, dayStreak: 1, lastDay: TODAY, today: { d: TODAY, xp: 0 },
+            badges: [], seen: {}, paid: {}, muted: false };
   try {
     var raw = localStorage.getItem(KEY);
     if (raw) { var p = JSON.parse(raw); for (var k in p) { if (Object.prototype.hasOwnProperty.call(p, k)) S[k] = p[k]; } }
@@ -1087,6 +1088,15 @@
   if (!S.today || S.today.d !== TODAY) S.today = { d: TODAY, xp: 0 };
   if (!S.seen) S.seen = {};
   if (!S.paid) S.paid = {};
+  if (!S.dayStreak) S.dayStreak = 1;
+  if (!S.lastDay) S.lastDay = TODAY;
+  if (S.lastDay !== TODAY) {                       /* count consecutive days, not consecutive taps */
+    var yst = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    S.dayStreak = (S.lastDay === yst) ? S.dayStreak + 1 : 1;
+    S.lastDay = TODAY;
+    try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {}
+  }
+  try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {}   /* record the day even before any XP */
 
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 
@@ -1108,7 +1118,11 @@
 
   function paint() {
     var lv = levelOf(S.xp), into = S.xp % 100;
-    hud.streak.textContent = S.streak;
+    hud.streak.textContent = S.dayStreak;
+    var lbl = document.getElementById('gStreakLabel');
+    if (lbl) lbl.textContent = S.dayStreak === 1 ? 'day' : 'days';
+    var wrap = document.getElementById('gStreakWrap');
+    if (wrap) wrap.title = 'Days in a row with practice · ' + S.streak + ' right in a row right now';
     hud.level.textContent = 'Level ' + lv;
     hud.xp.textContent = into + ' / 100 XP';
     hud.bar.style.width = into + '%';
