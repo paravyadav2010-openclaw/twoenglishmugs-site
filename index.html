@@ -241,26 +241,15 @@
 
 
   /* ---------- hosts ---------- */
-  .hosts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .host{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s;
-        background-color:var(--night);
-        background-image:radial-gradient(circle, rgba(231,93,78,.22) 1.4px, transparent 1.5px);
-        background-size:30px 30px;background-position:0 0}
-  .host:before{content:'';position:absolute;left:50%;bottom:96px;transform:translateX(-50%);
-        width:78%;height:56%;border-radius:50%;background:radial-gradient(ellipse,rgba(231,93,78,.16),transparent 68%);pointer-events:none}
-  .host:after{content:'';position:absolute;left:50%;bottom:118px;transform:translateX(-50%);
-        width:58%;height:16px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.55),transparent 72%);pointer-events:none}
-  .host img,.host video{position:relative;z-index:1}
-  .host .meta{position:relative;z-index:1;background:linear-gradient(180deg,transparent,rgba(20,17,17,.55))}
-  .host:hover{transform:translateY(-3px);border-color:var(--coral)}
+  .art-col{display:flex;flex-direction:column;align-items:center;width:100%}
+  .duo-legend{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:15px;text-align:center;width:100%}
+  .duo-legend p{margin:0}
+  .duo-legend .role{font:800 10.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
+  .duo-legend .who{font:600 17.5px/1.2 var(--display);color:var(--cream);margin-bottom:4px}
+  .duo-legend .say{color:var(--dim);font-size:13.5px;line-height:1.5}
   .host img,.host video{display:block;width:100%;height:340px;object-fit:contain;object-position:bottom center;background:transparent;
            -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 74%,rgba(0,0,0,.55) 90%,transparent 100%);
            mask-image:linear-gradient(to bottom,#000 0%,#000 74%,rgba(0,0,0,.55) 90%,transparent 100%)}
-  .host .meta{padding:14px 16px 16px}
-  .host .who{font:600 18px/1.2 var(--display);color:var(--cream);margin:0 0 4px}
-  .host .role{font:800 11.5px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:0 0 8px}
-  .host .say{margin:0;color:var(--dim);font-size:14.5px}
-  @media(max-width:560px){ .hosts{grid-template-columns:1fr} }
 
   /* ---------- games ---------- */
   .game{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:24px}
@@ -354,9 +343,23 @@
         </div>
       </div>
       <div class="art">
+        <div class="art-col">
         <div class="duo">
           <img class="duo-a" src="/assets/wave-emma.svg?v=2" alt="Emma waving hello" width="832" height="640">
           <img class="duo-b" src="/assets/wave-josh.svg?v=2" alt="Josh waving hello" width="832" height="640">
+        </div>
+        <div class="duo-legend">
+          <div>
+            <p class="role">Host</p>
+            <p class="who">Emma</p>
+            <p class="say">Warm guide. She explains every hard word as it lands, and never makes you feel late.</p>
+          </div>
+          <div>
+            <p class="role">Learner's seat</p>
+            <p class="who">Josh</p>
+            <p class="say">Tries each line out loud, gets it wrong first, then gets it. That is the point.</p>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -402,28 +405,6 @@
   </section>
 
 
-  <section id="hosts">
-    <h2 class="reveal">The two of them</h2>
-    <p class="sub reveal">Emma leads. Josh is you — he asks the question you were too shy to ask.</p>
-    <div class="hosts reveal">
-      <article class="host">
-        <img class="hostvid" src="/assets/wave-emma.svg?v=2" alt="Emma waving hello" width="832" height="640">
-        <div class="meta">
-          <p class="role">Host</p>
-          <p class="who">Emma</p>
-          <p class="say">Warm guide. She explains every hard word as it lands, and never makes you feel late.</p>
-        </div>
-      </article>
-      <article class="host">
-        <img class="hostvid" src="/assets/wave-josh.svg?v=2" alt="Josh waving hello" width="832" height="640">
-        <div class="meta">
-          <p class="role">Learner's seat</p>
-          <p class="who">Josh</p>
-          <p class="say">Tries each line out loud, gets it wrong first, then gets it. That is the point.</p>
-        </div>
-      </article>
-    </div>
-  </section>
 
   <section id="episodes">
     <h2 class="reveal">Start with one of these</h2>
