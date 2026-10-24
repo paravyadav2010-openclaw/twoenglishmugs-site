@@ -422,6 +422,7 @@
        border-radius:999px;padding:9px 11px;cursor:pointer;font:800 13px/1 var(--text);min-width:44px}
   .hud .snd:hover{border-color:var(--coral)}
   .badges{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}
+  .badges:empty{display:none}
   .badge{font:800 10.5px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
        border:1px solid rgba(255,246,233,.24);border-radius:999px;padding:8px 11px;opacity:.85;
        background:rgba(16,13,12,.42);transition:.25s}
@@ -1420,9 +1421,10 @@
     hud.goal.textContent = Math.min(S.today.xp, GOAL) + ' / ' + GOAL;
     hud.goalWrap.classList.toggle('hit', S.today.xp >= GOAL);
     hud.badges.innerHTML = '';
-    BADGES.forEach(function (b) {
+    var earned = BADGES.filter(function (b) { return S.badges.indexOf(b.id) >= 0; });
+    earned.forEach(function (b) {
       var d = document.createElement('span');
-      d.className = 'badge' + (S.badges.indexOf(b.id) >= 0 ? ' on' : '');
+      d.className = 'badge on';
       d.textContent = b.label;
       hud.badges.appendChild(d);
     });
