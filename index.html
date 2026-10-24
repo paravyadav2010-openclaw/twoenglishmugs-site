@@ -343,7 +343,6 @@
   /* ---------- play ledger strip ---------- */
   .playmeta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:-4px 0 16px;
             font:600 12.5px/1.3 var(--text);letter-spacing:.02em;color:rgba(255,246,233,.62)}
-  .playmeta #playstats{color:rgba(255,246,233,.8)}
   .again{border:1px solid rgba(255,246,233,.22);background:none;color:rgba(255,246,233,.72);
          font:700 11.5px/1 var(--text);letter-spacing:.06em;text-transform:uppercase;
          padding:0 12px;min-height:34px;border-radius:999px;cursor:pointer}
@@ -669,7 +668,6 @@
     </div>
 
     <p class="playmeta reveal">
-      <span id="playstats">0 of 0 words met</span>
       <button class="again" id="playreset" type="button">Start over</button>
     </p>
 
@@ -986,26 +984,12 @@
     saveLedger();
     return out;
   }
-  function combos(k) {
-    var t = 1, i;
-    for (i = 0; i < k; i++) t = t * (VOCAB.length - i) / (i + 1);
-    return Math.round(t);
-  }
-  function paintPlayStats() {
-    var L = lane('words'), el = document.getElementById('playstats');
-    if (!el) return;
-    el.textContent = 'Round ' + L.round + ' · ' + L.seen.length + ' of ' + VOCAB.length +
-      ' words met · ' + L.played + (L.played === 1 ? ' set' : ' sets') + ' · ' +
-      combos(3).toLocaleString('en-AU') + ' possible, no set repeats';
-  }
-
   var matchSet = 0;
   function pairOf(v) { return { w: v.w, m: v.m }; }
 
   function renderMatch() {
     var set = dealWords(3).map(pairOf);
     matchSet++;
-    paintPlayStats();
     wbox.innerHTML = ''; mbox.innerHTML = ''; sel = null;
     left = set.length;
     msg.className = 'qmsg'; msg.textContent = 'Set ' + matchSet + ' — pick a word, then its meaning.';
@@ -1114,7 +1098,7 @@
     { w:'voice', m:'The loud sound you make when you speak, or the silent sound inside your mind.', e:'My inner voice is getting very good at English now.' },
     { w:'echo', m:'When you copy a sound right after you hear it spoken.', e:'I try to echo the actors in my favourite shows to learn their fast rhythm.' }
   ];
-  renderMatch(); paintPlayStats();          /* deck now exists */
+  renderMatch();                            /* deck now exists */
 
   var KNOW = 'tem-known';
   var known = {};
@@ -1183,7 +1167,6 @@
       ledger = {}; saveLedger();
       matchSet = 0; curLine = ''; picked = [];
       renderMatch(); newListen(); renderOrder();
-      paintPlayStats();
       rst.blur();
     });
   })();
@@ -1219,7 +1202,6 @@
   function newListen() {
     lTarget = dealWords(1)[0];
     if (!lTarget) return;
-    paintPlayStats();
     var others = VOCAB.filter(function (v) { return v.w !== lTarget.w; });
     others = others.sort(function () { return Math.random() - 0.5; }).slice(0, 2);
     var opts = [lTarget].concat(others).sort(function () { return Math.random() - 0.5; });
