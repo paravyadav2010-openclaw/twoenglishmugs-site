@@ -318,6 +318,54 @@
     .f,.chip,nav a{min-height:44px;display:inline-flex;align-items:center}
   }
 
+  /* ---------- practice zone — a distinct "stage", not another dark section ---------- */
+  #practice{position:relative;isolation:isolate;
+    margin:38px -24px 26px;padding:66px 48px 70px;border-radius:30px;
+    background:
+      radial-gradient(860px 340px at 16% -18%,rgba(231,93,78,.36),transparent 62%),
+      radial-gradient(640px 300px at 88% -10%,rgba(231,93,78,.17),transparent 70%),
+      linear-gradient(180deg,#4E332C 0%,#3D2A25 24%,#2E221F 58%,#251C1A 100%);
+    border:1.5px solid rgba(231,93,78,.46);
+    box-shadow:
+      0 34px 74px -30px rgba(0,0,0,.82),
+      inset 0 140px 120px -95px rgba(231,93,78,.32),
+      inset 0 1px 0 rgba(255,246,233,.15)}
+  #practice:before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+    background-image:radial-gradient(rgba(255,246,233,.14) 1px,transparent 1px);
+    background-size:24px 24px;opacity:.6;
+    -webkit-mask-image:radial-gradient(112% 82% at 50% 0%,#000 0%,transparent 76%);
+            mask-image:radial-gradient(112% 82% at 50% 0%,#000 0%,transparent 76%)}
+  #practice:after{content:"";position:absolute;left:36px;right:36px;top:-1px;height:3px;
+    border-radius:0 0 4px 4px;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(231,93,78,.95) 16%,rgba(231,93,78,.95) 84%,transparent)}
+  #practice .phead{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 10px}
+  #practice .phead h2{margin:0}
+  #practice .ptag{display:inline-flex;align-items:center;gap:7px;background:var(--coral);color:#1a1210;
+    border-radius:999px;padding:8px 13px 8px 11px;font:800 10.5px/1 var(--text);letter-spacing:.13em;
+    text-transform:uppercase;box-shadow:0 8px 20px rgba(231,93,78,.35)}
+  #practice .ptag svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+  #practice .hud{background:linear-gradient(180deg,rgba(26,20,18,.82),rgba(20,16,15,.9));
+    border-color:rgba(231,93,78,.40);
+    box-shadow:0 14px 30px rgba(0,0,0,.40),inset 0 1px 0 rgba(255,246,233,.10)}
+  #practice .hud .chip2{background:rgba(255,246,233,.05);border-color:rgba(255,246,233,.18)}
+  #practice .tabs{background:rgba(10,8,8,.55);border-color:rgba(231,93,78,.34)}
+  #practice .quiz,#practice .game{background:#241B19;border-color:rgba(231,93,78,.34);
+    box-shadow:0 26px 52px rgba(0,0,0,.46),inset 0 1px 0 rgba(255,246,233,.09)}
+  #practice .qitem,#practice .lchoice{background:#31241F;border-color:rgba(255,246,233,.18)}
+  @media(max-width:760px){
+    #practice{margin-left:-24px;margin-right:-24px;padding:50px 24px 54px;border-radius:26px}
+    #practice:after{left:26px;right:26px}
+  }
+  @media(max-width:560px){
+    #practice{margin-left:-16px;margin-right:-16px;padding:44px 16px 48px;border-radius:22px}
+    #practice .phead{gap:10px;margin-bottom:8px}
+    #practice:after{left:18px;right:18px}
+  }
+  @media(max-width:400px){
+    #practice{margin-left:-10px;margin-right:-10px;padding:38px 12px 42px;border-radius:18px}
+  }
+
   /* ---------- games menu ---------- */
   /* segmented control — a track with a sliding coral pill, deliberately unlike the badges */
   .tabs{position:relative;display:inline-flex;gap:4px;padding:6px;margin:20px 0 16px;max-width:100%;
@@ -375,8 +423,8 @@
   .hud .snd:hover{border-color:var(--coral)}
   .badges{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}
   .badge{font:800 10.5px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
-       border:1px solid var(--line);border-radius:999px;padding:8px 11px;opacity:.7;
-       background:rgba(20,17,17,.35);transition:.25s}
+       border:1px solid rgba(255,246,233,.24);border-radius:999px;padding:8px 11px;opacity:.85;
+       background:rgba(16,13,12,.42);transition:.25s}
   .badge.on{color:#1a1210;background:var(--coral);border-color:var(--coral);opacity:1;
        box-shadow:0 4px 14px rgba(231,93,78,.35)}
   #gToast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,24px);z-index:70;
@@ -405,7 +453,7 @@
     .hud .grow2{grid-column:1 / -1;grid-row:2}
     .hud .hudright{justify-self:end}
     .hud .chip2{font-size:10.5px;padding:8px 10px}
-    .hud .snd{padding:8px 10px;min-width:40px}
+    .hud .snd{padding:0;width:44px;height:44px;min-width:44px;display:grid;place-items:center;font-size:15px}
   }
 
   /* ---------- 21st.dev-style micro-interactions ---------- */
@@ -644,8 +692,11 @@
   </section>
 
   <section id="practice">
-    <h2 class="reveal">Practice</h2>
-    <p class="sub reveal">Four quick games. Pick one — everything stays on this device.</p>
+    <div class="phead reveal">
+      <h2>Practice</h2>
+      <span class="ptag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6h9a4.5 4.5 0 0 1 4.4 3.6l.9 4.4A3.2 3.2 0 0 1 16.5 16l-1-1.4a2 2 0 0 0-1.6-.8h-5.8a2 2 0 0 0-1.6.8l-1 1.4a3.2 3.2 0 0 1-5.3-2l.9-4.4A4.5 4.5 0 0 1 7.5 6Z"/><path d="M8 10v3M6.5 11.5h3M16.2 10.4h.01M17.9 12.4h.01"/></svg>Four games</span>
+    </div>
+    <p class="sub reveal">Pick one — everything stays on this device.</p>
     <div class="hud reveal" id="gHud">
       <span class="chip2" id="gStreakWrap" title="Days in a row with practice"><span class="flame">🔥</span> <b id="gStreak">1</b> <span id="gStreakLabel">day</span></span>
       <div class="grow2">
