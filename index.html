@@ -340,6 +340,16 @@
            margin:6px 0 14px;color:var(--cream);letter-spacing:.2px}
   @media(max-width:560px){.tab{padding:9px 13px;font-size:14px}}
 
+  /* ---------- play ledger strip ---------- */
+  .playmeta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:-4px 0 16px;
+            font:600 12.5px/1.3 var(--text);letter-spacing:.02em;color:rgba(255,246,233,.62)}
+  .playmeta #playstats{color:rgba(255,246,233,.8)}
+  .again{border:1px solid rgba(255,246,233,.22);background:none;color:rgba(255,246,233,.72);
+         font:700 11.5px/1 var(--text);letter-spacing:.06em;text-transform:uppercase;
+         padding:0 12px;min-height:34px;border-radius:999px;cursor:pointer}
+  .again:hover{color:var(--cream);border-color:var(--coral)}
+  @media(max-width:560px){.again{min-height:44px;padding:0 16px}}
+
   /* ---------- progress / gamification ---------- */
   .hud{display:grid;grid-template-columns:auto minmax(120px,1fr) auto;gap:12px 16px;align-items:center;
        margin:0 0 12px;border:1px solid var(--line);border-radius:16px;padding:11px 13px;
@@ -658,6 +668,11 @@
       <button class="tab" role="tab" aria-selected="false" aria-controls="pane-cards" data-pane="cards"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="12" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v9"/></svg><span>Cards</span></button>
     </div>
 
+    <p class="playmeta reveal">
+      <span id="playstats">0 of 0 words met</span>
+      <button class="again" id="playreset" type="button">Start over</button>
+    </p>
+
     <div class="pane is-on" id="pane-match" role="tabpanel">
       <div class="quiz">
         <p class="sub">Tap a word, then its meaning. Three pairs — right answers earn XP.</p>
@@ -883,31 +898,114 @@
   var msg = document.getElementById('qmsg'), sel = null, left = 0;
   function shuffle(a) { return a.map(function (v) { return [Math.random(), v]; }).sort(function (x, y) { return x[0] - y[0]; }).map(function (v) { return v[1]; }); }
 
-  var matchQueue = [], matchSet = 0, lastSet = [], carry = [];
-  function pairOf(v) { return { w: v.w, m: v.m }; }
-  function refillMatch() {
-    /* one pass = every word exactly once, in sets of three.
-       The leftover words of a pass lead the next one, and the previous set's words go last,
-       so a word is never repeated until the whole bank has been used. */
-    matchQueue = [];
-    var lead = VOCAB.filter(function (v) { return carry.indexOf(v.w) >= 0; });
-    var tail = VOCAB.filter(function (v) { return lastSet.indexOf(v.w) >= 0 && carry.indexOf(v.w) < 0; });
-    var rest = VOCAB.filter(function (v) { return carry.indexOf(v.w) < 0 && lastSet.indexOf(v.w) < 0; });
-    var pool = lead.map(pairOf).concat(shuffle(rest.map(pairOf)), shuffle(tail.map(pairOf)));
-    carry = [];
-    while (pool.length) {
-      var set = pool.splice(0, 3);
-      if (set.length < 3) { carry = set.map(function (x) { return x.w; }); break; }
-      matchQueue.push(set);
+  /* ---------- play ledger ----------
+     One record in localStorage, shared by every word game, so a player keeps
+     moving forward instead of meeting the same words again:
+       - words are dealt unseen-first and never repeat until the whole bank is used
+       - when the bank runs out, a new round starts on a fresh shuffle
+       - a new round never opens with the exact set that closed the last one
+     Sets are combinations, so rounds keep producing new pairings even after
+     every word has been met once. */
+  var LEDGER = 'tem-play-v1';
+  var ledger = {};
+  try { ledger = JSON.parse(localStorage.getItem(LEDGER) || '{}'); } catch (e) { ledger = {}; }
+  function lane(name) {
+    name = name || 'words';
+    if (!ledger[name] || !ledger[name].seen) ledger[name] = { seen: [], round: 1, last: [] };
+    return ledger[name];
+  }
+  function saveLedger() { try { localStorage.setItem(LEDGER, JSON.stringify(ledger)); } catch (e) {} }
+  function sigOf(a) { return a.map(function (v) { return v.w; }).sort().join('|'); }
+  function scatter(q, words, minIdx) {
+    /* move these words to random positions past the opening deal, so they are
+       neither dealt first (an instant repeat) nor always last (which would
+       make the closing set of every pass identical) */
+    words.forEach(function (w) {
+      var at = -1, i;
+      for (i = 0; i < q.length; i++) if (q[i].w === w) { at = i; break; }
+      if (at < 0) return;
+      var j = minIdx + Math.floor(Math.random() * Math.max(1, q.length - minIdx));
+      if (j >= q.length) j = q.length - 1;
+      var t = q[at]; q[at] = q[j]; q[j] = t;
+    });
+    return q;
+  }
+  function fillDeck(L, n) {
+    L.queue = scatter(shuffle(VOCAB.slice()), L.last || [], n);
+    L.seen = [];
+    L.fills = (L.fills || 0) + 1;
+    if (L.fills > 1) L.round++;                  /* first fill keeps round 1 */
+  }
+  function dealWords(n) {
+    var L = lane('words');
+    if (!L.sets) L.sets = [];
+    L.played = L.played || 0;
+
+    /* A continuous shuffled queue, not a round that resets: every word is dealt
+       once per pass, and a set may straddle two passes, so a set is never
+       forced by whatever happens to be left over at the end. */
+    if (!L.queue || !L.queue.length) fillDeck(L, n);
+
+    var out = [];
+    while (out.length < n) {
+      if (!L.queue.length) {
+        fillDeck(L, n);
+        /* never let a fresh pass hand back a word this set already holds */
+        L.queue = scatter(L.queue, out.map(function (v) { return v.w; }), n);
+      }
+      out.push(L.queue.shift());
     }
-    if (!matchQueue.length) matchQueue.push(pool.length ? pool : VOCAB.slice(0, 3).map(pairOf));
+
+    /* 42 words -> 11,480 combinations for a set of three. Swap the tail for a
+       word still waiting in the queue if this exact set has been served. */
+    for (var guard = 0; guard < 8 && L.sets.indexOf(sigOf(out)) >= 0; guard++) {
+      var at = -1, i;
+      for (i = 0; i < L.queue.length; i++) {
+        if (out.indexOf(L.queue[i]) === -1 && (L.last || []).indexOf(L.queue[i].w) === -1) { at = i; break; }
+      }
+      if (at < 0) {
+        fillDeck(L, n);                          /* pass exhausted: open the next one */
+        L.queue = scatter(L.queue, out.map(function (v) { return v.w; }), n);
+        for (i = 0; i < L.queue.length; i++) {
+          if (out.indexOf(L.queue[i]) === -1 && (L.last || []).indexOf(L.queue[i].w) === -1) { at = i; break; }
+        }
+      }
+      if (at < 0) break;                         /* nothing new left to offer */
+      var cand = L.queue.splice(at, 1)[0];
+      L.queue.push(out[out.length - 1]);         /* dropped word goes to the back */
+      out[out.length - 1] = cand;
+    }
+
+    out.forEach(function (v) { if (L.seen.indexOf(v.w) < 0) L.seen.push(v.w); });
+    L.last = out.map(function (v) { return v.w; });
+    if (n > 1) {                                 /* a single word is not a "set" */
+      L.played++;
+      L.sets.push(sigOf(out));
+      while (L.sets.length > 60) L.sets.shift();
+    }
+    saveLedger();
+    return out;
+  }
+  function combos(k) {
+    var t = 1, i;
+    for (i = 0; i < k; i++) t = t * (VOCAB.length - i) / (i + 1);
+    return Math.round(t);
+  }
+  function paintPlayStats() {
+    var L = lane('words'), el = document.getElementById('playstats');
+    if (!el) return;
+    el.textContent = 'Round ' + L.round + ' · ' + L.seen.length + ' of ' + VOCAB.length +
+      ' words met · ' + L.played + (L.played === 1 ? ' set' : ' sets') + ' · ' +
+      combos(3).toLocaleString('en-AU') + ' possible, no set repeats';
   }
 
+  var matchSet = 0;
+  function pairOf(v) { return { w: v.w, m: v.m }; }
+
   function renderMatch() {
-    if (!matchQueue.length) refillMatch();
-    var set = matchQueue.shift();
+    var set = dealWords(3).map(pairOf);
     matchSet++;
-    lastSet = set.map(function (x) { return x.w; });
+    paintPlayStats();
     wbox.innerHTML = ''; mbox.innerHTML = ''; sel = null;
     left = set.length;
     msg.className = 'qmsg'; msg.textContent = 'Set ' + matchSet + ' — pick a word, then its meaning.';
@@ -1002,9 +1100,21 @@
     { w:'Neglect', m:'To fail to give proper care or attention.', e:'' },
     { w:'Make the most of', m:'To use a situation as well as you can.', e:'' },
     { w:'Waste time', m:'Spending hours on things that offer no value.', e:'' },
-    { w:'Deadline', m:'The final agreed-upon time for completing a task.', e:'' }
+    { w:'Deadline', m:'The final agreed-upon time for completing a task.', e:'' },
+    /* --- added from the published episode PDFs (full transcriptions, Ep22-29) --- */
+    { w:'translate', m:'To change a word from your home language into English.', e:'I asked my smart friend to translate the menu because I really wanted the chicken.' },
+    { w:'overwhelmed', m:'Feeling like things are just too much to handle.', e:'When my boss gives me 5 heavy jobs at once, I feel completely overwhelmed.' },
+    { w:'unsolicited', m:'Advice you did not ask for.', e:'My aunt gave me unsolicited advice about my shoes today.' },
+    { w:'validation', m:'Needing someone else to say you are good, you matter.', e:'I posted a selfie just to get some quick validation from pals.' },
+    { w:'stagnation', m:'Feeling stuck in one place, like dirty water that does not flow.', e:'I felt deep stagnation at my desk, so I made a change.' },
+    { w:'misfire', m:'When something does not work the way it is supposed to.', e:'My brain misfires when I try to speak too fast.' },
+    { w:'overload', m:'When there is just too much of something for a system to handle.', e:'Try to remember too many grammar rules at once and you get total overload.' },
+    { w:'hinge', m:'The small metal piece that joins two heavy doors so they can swing.', e:'' },
+    { w:'shelf', m:'A flat wooden board where you store books or items on a wall.', e:'My mental shelf is full of English words, but some are just too high to reach right now.' },
+    { w:'voice', m:'The loud sound you make when you speak, or the silent sound inside your mind.', e:'My inner voice is getting very good at English now.' },
+    { w:'echo', m:'When you copy a sound right after you hear it spoken.', e:'I try to echo the actors in my favourite shows to learn their fast rhythm.' }
   ];
-  refillMatch(); renderMatch();          /* deck now exists */
+  renderMatch(); paintPlayStats();          /* deck now exists */
 
   var KNOW = 'tem-known';
   var known = {};
@@ -1012,7 +1122,13 @@
   var flash = document.getElementById('flash'), fw = document.getElementById('fw'),
       fm = document.getElementById('fm'), fe = document.getElementById('fe'),
       knowCount = document.getElementById('knowcount');
-  var deck = shuffle(VOCAB.slice()), di = 0;      /* shuffled once per visit */
+  /* unseen words first, so a returning player is not shown the same card twice */
+  var deck = (function () {
+    var seen = lane('words').seen;
+    var fresh = VOCAB.filter(function (v) { return seen.indexOf(v.w) < 0; });
+    var old = VOCAB.filter(function (v) { return seen.indexOf(v.w) >= 0; });
+    return shuffle(fresh).concat(shuffle(old));
+  })(), di = 0;
   function nextCard() {
     var n = deck.length, seen = 0, v = null;
     while (seen++ < n) {
@@ -1060,6 +1176,16 @@
     });
     var h = (location.hash || '').replace('#', '');
     if (h === 'listen' || h === 'order' || h === 'cards') show(h);
+
+    /* Start over: wipe the ledger so the next play begins at word one again */
+    var rst = document.getElementById('playreset');
+    if (rst) rst.addEventListener('click', function () {
+      ledger = {}; saveLedger();
+      matchSet = 0; curLine = ''; picked = [];
+      renderMatch(); newListen(); renderOrder();
+      paintPlayStats();
+      rst.blur();
+    });
   })();
 
   /* ---------- listen and pick ---------- */
@@ -1091,13 +1217,9 @@
     speechSynthesis.speak(u);
   }
   function newListen() {
-    if (!lBag.length) {                       /* new pass: do not start with the word just heard */
-      lBag = shuffle(VOCAB.slice());
-      if (lTarget && lBag.length > 1 && lBag[lBag.length - 1].w === lTarget.w) {
-        var sw = lBag[0]; lBag[0] = lBag[lBag.length - 1]; lBag[lBag.length - 1] = sw;
-      }
-    }
-    lTarget = lBag.pop();
+    lTarget = dealWords(1)[0];
+    if (!lTarget) return;
+    paintPlayStats();
     var others = VOCAB.filter(function (v) { return v.w !== lTarget.w; });
     others = others.sort(function () { return Math.random() - 0.5; }).slice(0, 2);
     var opts = [lTarget].concat(others).sort(function () { return Math.random() - 0.5; });
@@ -1148,13 +1270,18 @@
   var orderBag = [], curLine = '', picked = [], bank = document.getElementById('bank'),
       lineEl = document.getElementById('line'), oMsg = document.getElementById('omsg');
   function nextLine() {
-    if (!orderBag.length) {                    /* new pass over every sentence */
-      orderBag = shuffle(LINES.slice());
-      if (curLine && orderBag.length > 1 && orderBag[orderBag.length - 1] === curLine) {
-        var tmp = orderBag[0]; orderBag[0] = orderBag[orderBag.length - 1]; orderBag[orderBag.length - 1] = tmp;
-      }
+    /* same ledger idea as the words: every sentence once, then a fresh round,
+       and never the same sentence twice in a row across the seam */
+    var L = lane('order');
+    var pool = LINES.filter(function (l) { return L.seen.indexOf(l) < 0 && l !== L.last; });
+    if (!pool.length) {
+      L.seen = []; L.round++;
+      pool = LINES.filter(function (l) { return l !== L.last; });
     }
-    curLine = orderBag.pop();
+    curLine = pool[Math.floor(Math.random() * pool.length)] || LINES[0];
+    if (L.seen.indexOf(curLine) < 0) L.seen.push(curLine);
+    L.last = curLine;
+    saveLedger();
     return curLine;
   }
   function renderOrder() {
