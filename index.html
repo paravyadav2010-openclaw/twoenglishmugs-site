@@ -17,7 +17,7 @@
 <script>
 /* ---------- first-party analytics: no cookies, no third party, honours DNT / GPC ---------- */
 (function () {
-  var EP = 'https://dl.twoenglishmugs.com/e';
+  var EP = '/e';   /* same-origin: the CSP allows connect-src 'self' only */
   var sid;
   try {
     sid = sessionStorage.getItem('tem-sid');
