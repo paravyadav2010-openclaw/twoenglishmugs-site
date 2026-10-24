@@ -14,6 +14,55 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <script>document.documentElement.classList.add('js');</script>
+<script>
+/* ---------- first-party analytics: no cookies, no third party, honours DNT / GPC ---------- */
+(function () {
+  var EP = 'https://dl.twoenglishmugs.com/e';
+  var sid;
+  try {
+    sid = sessionStorage.getItem('tem-sid');
+    if (!sid) {
+      sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      sessionStorage.setItem('tem-sid', sid);
+    }
+  } catch (e) { sid = 'nosession'; }
+
+  var off = navigator.doNotTrack === '1' || window.doNotTrack === '1' ||
+            navigator.globalPrivacyControl === true;
+
+  function activeGame() {
+    var p = document.querySelector('.pane.is-on');
+    return p ? p.id.replace('pane-', '') : '';
+  }
+
+  function send(name, game) {
+    if (off) return;
+    try {
+      var payload = JSON.stringify({
+        e: name, s: sid, g: game || '', p: location.pathname || '/'
+      });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(EP, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+      } else {
+        fetch(EP, { method: 'POST', body: payload, keepalive: true });
+      }
+    } catch (e) {}
+  }
+
+  window.TEM_AN = { send: send, game: activeGame };
+  send('pageview');
+
+  /* one delegated listener covers every outbound link, including ones added later */
+  document.addEventListener('click', function (ev) {
+    var el = ev.target;
+    var a = el && el.closest ? el.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('dl.twoenglishmugs.com') >= 0) send('pdf_open', activeGame());
+    else if (href.indexOf('youtube.com') >= 0 || href.indexOf('youtu.be') >= 0) send('episode_open', activeGame());
+  }, true);
+})();
+</script>
 <style>
   @font-face{font-family:Fredoka;src:url(/assets/fonts/Fredoka.ttf) format('truetype');font-weight:300 700;font-display:swap}
   @font-face{font-family:Nunito;src:url(/assets/fonts/Nunito.ttf) format('truetype');font-weight:200 900;font-display:swap}
@@ -1070,6 +1119,7 @@
           left--;
           if (left === 0) {
             msg.className = 'qmsg good'; msg.textContent = 'Set done. Say each one out loud once — next three coming up.';
+            if (window.TEM_AN) TEM_AN.send('match_set_done', 'match');
             setTimeout(renderMatch, 1400);
           } else {
             msg.className = 'qmsg good'; msg.textContent = 'Right. ' + left + ' to go.';
@@ -1186,6 +1236,7 @@
   });
   document.getElementById('known').addEventListener('click', function () {
     known[flash.getAttribute('data-w')] = true;
+    if (window.TEM_AN) TEM_AN.send('card_known', 'cards');
     try { localStorage.setItem(KNOW, JSON.stringify(known)); } catch (err) {}
     paintKnown(); nextCard();
   });
@@ -1206,6 +1257,7 @@
       });
       panes.forEach(function (p) { p.classList.toggle('is-on', p.id === 'pane-' + name); });
       try { history.replaceState(null, '', '#' + (name === 'match' ? 'practice' : name)); } catch (e) {}
+      if (window.TEM_AN) TEM_AN.send('game_open', name);
     }
     tabs.forEach(function (t) {
       t.addEventListener('click', function () { show(t.getAttribute('data-pane')); });
@@ -1531,6 +1583,7 @@
   }
 
   function correct(word) {
+    if (window.TEM_AN) TEM_AN.send('game_correct', TEM_AN.game());
     S.streak++; if (S.streak > S.best) S.best = S.streak;
     var bonus = (S.streak % 3 === 0) ? 5 : 0;
     addXp(10 + bonus);
