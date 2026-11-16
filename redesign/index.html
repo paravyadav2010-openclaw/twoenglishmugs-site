@@ -75,6 +75,21 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
   #episodes .card { grid-column: 1 / -1; }
   #episodes .wrap > .grid { margin-top: var(--s-4); }
 }
+/* the guide library: a plain list of every working gate, two columns on a desktop */
+.gl { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0 var(--s-6); }
+.gl li { border-top: 1px solid var(--p-line, rgba(36,24,18,.14)); }
+.gl a { display: flex; align-items: baseline; gap: var(--s-3); padding: var(--s-3) 0; text-decoration: none;
+  color: var(--p-ink); }
+.gl a:hover .gl__t { text-decoration: underline; text-underline-offset: 3px; }
+.gl__n { flex: 0 0 auto; font-size: var(--t-small); color: var(--p-muted); font-variant-numeric: tabular-nums; }
+.gl__t { flex: 1 1 auto; font-size: var(--t-body); line-height: 1.35; }
+.gl__a { flex: 0 0 auto; color: var(--p-accent); }
+@media (max-width: 639px) {
+  .gl { grid-template-columns: 1fr; gap: 0; max-height: 340px; overflow-y: auto; overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch; padding-right: 4px; }
+}
+
 /* the float card sits at the top of the panel, clear of the two faces */
 .hero__media .ly-float { top: var(--s-5); bottom: auto; left: var(--s-5); }
 /* the carried-over sheet has one negative margin that stretches the section; clip it */
@@ -927,10 +942,32 @@ main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
       <div class="span-6">
         <div class="section-head">
           <h2 id="guide-h">The words, in writing. <span class="muted">A free study guide for every episode.</span></h2>
-          <p>Every episode has its own guide: the full transcript, the word list and one writing prompt. Its link sits on the episode’s card, and its email gate sends the PDF straight back. Nothing is sold to anyone.</p>
+          <p>Every episode has its own guide: the full transcript, the word list and one writing prompt. Pick any episode below, or take the newest one. Its email gate sends the PDF straight back. Nothing is sold to anyone.</p>
         </div>
         <div class="btn-row">
           <a class="btn btn--primary" href="https://dl.twoenglishmugs.com/ep40-negative-self-talk">Get the episode 40 guide</a>
+        </div>
+        <div class="guidelib" style="margin-top:var(--s-6)">
+          <p class="t-label">Every guide so far · 17 PDFs, one per episode</p>
+          <ul class="gl">
+          <li><a href="https://dl.twoenglishmugs.com/ep40-negative-self-talk"><span class="gl__n">Episode 40</span><span class="gl__t">Negative Self-Talk: One Tiny Mistake</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep39-see-what-others-miss"><span class="gl__n">Episode 39</span><span class="gl__t">People Who See What Others Miss</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep38-be-happy-with-what-you-have"><span class="gl__n">Episode 38</span><span class="gl__t">How To Be Happy With What You Have</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep37-before-sleep"><span class="gl__n">Episode 37</span><span class="gl__t">Why Your Mind Won&#8217;t Shut Up at Night</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep36-time-management"><span class="gl__n">Episode 36</span><span class="gl__t">Time Management, Made Simple</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep35-speak-with-confidence"><span class="gl__n">Episode 35</span><span class="gl__t">Forget a Word? Speak With Confidence</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep32-pick-one-thing"><span class="gl__n">Episode 32</span><span class="gl__t">Why You Never Finish Anything You Start</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep31-stop-putting-things-off"><span class="gl__n">Episode 31</span><span class="gl__t">Stop Waiting for the Perfect Time</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep30-afraid-to-speak"><span class="gl__n">Episode 30</span><span class="gl__t">Stop Being Afraid to Speak English</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep29-think-in-english"><span class="gl__n">Episode 29</span><span class="gl__t">Think in English, Don&#39;t Translate</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep28-build-english-sentences"><span class="gl__n">Episode 28</span><span class="gl__t">Stop Putting Words in the Wrong Order</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep27-power-of-silence"><span class="gl__n">Episode 27</span><span class="gl__t">The Power of Silence</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep26-train-your-ears"><span class="gl__n">Episode 26</span><span class="gl__t">Train Your Ears For Real English</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep25-stop-studying-grammar"><span class="gl__n">Episode 25</span><span class="gl__t">Stop Studying Grammar, Just Listen</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep24-food-words"><span class="gl__n">Episode 24</span><span class="gl__t">Food Words You Use Every Day</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep23-stay-motivated"><span class="gl__n">Episode 23</span><span class="gl__t">How To Stay Motivated</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          <li><a href="https://dl.twoenglishmugs.com/ep22-money"><span class="gl__n">Episode 22</span><span class="gl__t">Money, and What It Does To Us</span><span class="gl__a" aria-hidden="true">&darr;</span></a></li>
+          </ul>
         </div>
         <div class="vecpanel" style="height:220px;margin-top:var(--s-7)"><svg viewBox="0 0 560 380" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A flat page of the study guide with its word list">
   <rect width="560" height="380" fill="#241812"/>

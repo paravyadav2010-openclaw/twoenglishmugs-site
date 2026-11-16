@@ -87,6 +87,22 @@ PDF = {
   37:'ep37-before-sleep', 38:'ep38-be-happy-with-what-you-have', 39:'ep39-see-what-others-miss',
   40:'ep40-negative-self-talk',
 }
+# the whole library: every episode that actually has a gate page, newest first
+guide_rows = []
+for e in eps:
+    n = int(''.join(ch for ch in e['n'] if ch.isdigit()) or 0)
+    slug = PDF.get(n)
+    if not slug:
+        continue
+    guide_rows.append(
+        '          <li><a href="https://dl.twoenglishmugs.com/' + slug + '">'
+        '<span class="gl__n">Episode ' + str(n) + '</span>'
+        '<span class="gl__t">' + e['title'] + '</span>'
+        '<span class="gl__a" aria-hidden="true">&darr;</span></a></li>'
+    )
+GUIDE_LIB = '\n'.join(guide_rows)
+GUIDE_LABEL = 'Every guide so far \u00b7 %d PDFs, one per episode' % len(guide_rows)
+
 cards = []
 for e in featured:
     num = e['n']
@@ -183,6 +199,21 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
   #episodes .card { grid-column: 1 / -1; }
   #episodes .wrap > .grid { margin-top: var(--s-4); }
 }
+/* the guide library: a plain list of every working gate, two columns on a desktop */
+.gl { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0 var(--s-6); }
+.gl li { border-top: 1px solid var(--p-line, rgba(36,24,18,.14)); }
+.gl a { display: flex; align-items: baseline; gap: var(--s-3); padding: var(--s-3) 0; text-decoration: none;
+  color: var(--p-ink); }
+.gl a:hover .gl__t { text-decoration: underline; text-underline-offset: 3px; }
+.gl__n { flex: 0 0 auto; font-size: var(--t-small); color: var(--p-muted); font-variant-numeric: tabular-nums; }
+.gl__t { flex: 1 1 auto; font-size: var(--t-body); line-height: 1.35; }
+.gl__a { flex: 0 0 auto; color: var(--p-accent); }
+@media (max-width: 639px) {
+  .gl { grid-template-columns: 1fr; gap: 0; max-height: 340px; overflow-y: auto; overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch; padding-right: 4px; }
+}
+
 /* the float card sits at the top of the panel, clear of the two faces */
 .hero__media .ly-float { top: var(--s-5); bottom: auto; left: var(--s-5); }
 /* the carried-over sheet has one negative margin that stretches the section; clip it */
@@ -405,10 +436,16 @@ BODY = '''<body>
       <div class="span-6">
         <div class="section-head">
           <h2 id="guide-h">The words, in writing. <span class="muted">A free study guide for every episode.</span></h2>
-          <p>Every episode has its own guide: the full transcript, the word list and one writing prompt. Its link sits on the episode\u2019s card, and its email gate sends the PDF straight back. Nothing is sold to anyone.</p>
+          <p>Every episode has its own guide: the full transcript, the word list and one writing prompt. Pick any episode below, or take the newest one. Its email gate sends the PDF straight back. Nothing is sold to anyone.</p>
         </div>
         <div class="btn-row">
           <a class="btn btn--primary" href="https://dl.twoenglishmugs.com/ep40-negative-self-talk">Get the episode 40 guide</a>
+        </div>
+        <div class="guidelib" style="margin-top:var(--s-6)">
+          <p class="t-label">''' + GUIDE_LABEL + '''</p>
+          <ul class="gl">
+''' + GUIDE_LIB + '''
+          </ul>
         </div>
         <div class="vecpanel" style="height:220px;margin-top:var(--s-7)">''' + SVG_GUIDE + '''</div>
       </div>
