@@ -204,7 +204,12 @@ main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
   will-change: transform;
 }
 .hero .wrap { position: relative; z-index: 1; }
-@media (max-width: 860px) { .hero__blob { right: -30%; top: -6%; width: 92vw; } .hero__ring { display: none; } }
+@media (max-width: 860px) {
+  /* on a phone the panel covers the whole width, so put the wash behind the headline
+     where it shows, and keep a visible arc of the ring below the panel */
+  .hero__blob { right: auto; left: -28%; top: -4%; width: 120vw; }
+  .hero__ring { display: block; right: -16%; top: auto; bottom: 6%; width: 62vw; }
+}
 
 /* episode cards: lean toward the cursor, with a coral spotlight under it */
 #episodes .grid { perspective: 1200px; }

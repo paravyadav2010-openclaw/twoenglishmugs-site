@@ -158,7 +158,7 @@
   }
 
   if (layers.length && !reduce.matches) {
-    scale = phone.matches ? 0.6 : 1;
+    scale = 1;
     measure();
     measureDrift();
     var queued = false;
@@ -168,7 +168,7 @@
       requestAnimationFrame(function () { tick(); tickDrift(); queued = false; });
     }, { passive: true });
     window.addEventListener('resize', function () {
-      scale = phone.matches ? 0.6 : 1;
+      scale = 1;
       measure();
       measureDrift();
       tick();
