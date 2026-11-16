@@ -1,0 +1,160 @@
+{
+ "url": "http://127.0.0.1:8795/index.html",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 84,
+   "scrollHeight": 8164,
+   "screens": 9.07,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "section",
+     "id": "",
+     "cls": "hero hero--split is-still is-entered",
+     "top": 0,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 0
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "inside",
+     "cls": "section",
+     "top": 900,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-02-a.jpg",
+       "scrollY": 900
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "episodes",
+     "cls": "section",
+     "top": 1800,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-03-a.jpg",
+       "scrollY": 1800
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "practice",
+     "cls": "section",
+     "top": 2738,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-04-a.jpg",
+       "scrollY": 2738
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "guides",
+     "cls": "section",
+     "top": 3664,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-05-a.jpg",
+       "scrollY": 3664
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "section",
+     "id": "steps",
+     "cls": "section",
+     "top": 4564,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-06-a.jpg",
+       "scrollY": 4564
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "section",
+     "id": "hosts",
+     "cls": "section",
+     "top": 5464,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-07-a.jpg",
+       "scrollY": 5464
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "tag": "section",
+     "id": "guide",
+     "cls": "section",
+     "top": 6364,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-08-a.jpg",
+       "scrollY": 6364
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "tag": "footer",
+     "id": "contact",
+     "cls": "footer closing",
+     "top": 7264,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-09-a.jpg",
+       "scrollY": 7264
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-16T09:35:51.982Z"
+}

@@ -521,6 +521,9 @@ html:not(.anim-ready) .hero__media { transform: none !important; }
 /* the wrap is a column we can reorder without touching the carried-over markup:
    title, one line, the game bar (tabs + start over), the card, then a quiet progress line */
 #practice .wrap { display: flex; flex-direction: column; align-items: stretch; }
+/* the game stylesheet pads the band 48px, which put every practice line 49px off the page
+   column. Dropped: the kit's own .wrap already carries the gutter at every width. */
+#practice { padding-left: 0; padding-right: 0; }
 #practice .group { display: flex; flex-direction: column; align-items: stretch; }
 #practice .phead        { order: 1; }
 #practice .sub          { order: 2; font-size: var(--t-lead); color: var(--p-inv-muted); margin: var(--s-3) 0 0; max-width: 60ch; }

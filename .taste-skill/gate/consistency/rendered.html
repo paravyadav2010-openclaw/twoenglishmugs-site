@@ -1,0 +1,1582 @@
+<!doctype html>
+<html lang="en" data-type="service" data-radius="soft" data-buttons="solid" data-motion="" class="m-enter anim-ready m-enter-done" data-tone="light" data-ready="1"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Two English Mugs: real English listening for B1 learners</title>
+<meta name="description" content="Forty episodes of real English talk for B1 learners, twenty minutes each, free on YouTube. Emma explains every hard word; Josh learns along with you.">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Two English Mugs: real English listening for B1 learners">
+<meta property="og:description" content="Forty episodes, twenty minutes each, free on YouTube. Every hard word explained as it lands.">
+<meta property="og:image" content="https://twoenglishmugs.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/mark.png" type="image/png">
+<meta name="theme-color" content="#fff6e9">
+<link rel="canonical" href="https://twoenglishmugs.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&amp;family=Figtree:wght@400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #fff6e9; --p-surface: #f3e7d8; --p-ink: #241812; --p-muted: #6f635a;
+  --p-accent: #e75d4e; --p-accent-ink: #111111; --p-action: #241812; --p-action-ink: #fff6e9;
+  --p-inv-bg: #241812; --p-inv-surface: #31251e; --p-inv-ink: #fff6e9; --p-inv-muted: #a4998f;
+  --p-inv-accent: #e75d4e; --p-inv-accent-ink: #111111; --p-inv-action: #fff6e9; --p-inv-action-ink: #241812;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.028em;
+  --display-axes: 'SOFT' 30, 'WONK' 0;
+  /* the stacked lockup needs a taller bar; the kit's hero offsets follow this token */
+  --nav: 84px; --nav-h: 84px;
+}
+@media (max-width: 639px) { :root { --nav: 66px; --nav-h: 66px; } }
+/* the client's own artwork: the two hosts, dealt as one picture on the right of the hero */
+/* the logo: the mark's cream ink is redrawn in page ink so the two mugs read on cream;
+   its own 1200x406 ratio is kept and it never shrinks in the bar */
+.nav__logo { display: inline-flex; align-items: center; gap: 0; flex: 0 0 auto; }
+.nav__logo img, footer .nav__logo img { background: transparent !important; }
+.nav__logo img.mark, footer .nav__logo img.mark { height: 30px !important; width: auto !important; max-width: none !important;
+  display: block; flex: 0 0 auto; object-fit: contain; }
+@media (max-width: 639px) { .nav__logo img.mark, footer .nav__logo img.mark { height: 26px !important; width: auto !important; } }
+/* the stacked monochrome lockup: the mark over the wordmark, one ink, in the bar */
+.nav__logo--stacked img.lockup { height: 56px !important; width: auto !important; display: block; background: transparent !important; }
+header.nav .nav__bar { min-height: 84px; }
+@media (max-width: 639px) {
+  .nav__logo--stacked img.lockup { height: 44px !important; }
+  header.nav .nav__bar { min-height: 66px; }
+}
+footer .nav__logo--stacked img.lockup { height: 72px !important; }
+.hero__media .duo { position: relative; display: flex; align-items: flex-end; justify-content: center;
+  height: 100%; min-height: 300px; }
+.hero__media .duo img { width: 50%; height: auto; max-height: 92%; object-fit: contain; display: block; }
+@media (max-width: 1023px) { .hero__media .duo { min-height: 260px; margin-top: var(--s-6); } }
+/* the bar gains a hairline and a shadow once the page is moving */
+header.nav.is-scrolled { box-shadow: 0 1px 0 rgba(36,24,18,.10), 0 8px 24px rgba(36,24,18,.06); }
+/* anchors glide, and land clear of the fixed bar */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
+/* reveals: the hidden state only exists while the motion file is running */
+.anim-ready [data-reveal] { opacity: 0; transform: translateY(22px); }
+.anim-ready [data-reveal].is-in {
+  opacity: 1; transform: none;
+  transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.anim-ready .gl li[data-reveal] { transform: translateY(10px); }
+@media (prefers-reduced-motion: reduce) { .anim-ready [data-reveal] { opacity: 1 !important; transform: none !important; } }
+/* motion is additive: nothing is hidden unless the motion file runs */
+html:not(.anim-ready) .hero__media { transform: none !important; }
+
+/* the episode list reads as tiles, not a wall of text: one tint, then the other */
+#episodes .card { background: var(--p-surface); border-radius: var(--r-lg); padding: var(--s-5) var(--s-5) var(--s-6); }
+#episodes .card:nth-child(even) { background: #fbe3dc; }
+#episodes .card .t-label { color: var(--p-accent); letter-spacing: .08em; text-transform: uppercase; font-size: var(--t-small); }
+#episodes .card h3 { margin: var(--s-2) 0 var(--s-3); }
+#episodes .card h3 a { text-decoration: none; }
+#episodes .card h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+#episodes .card .t-small { margin: 0; }
+@media (max-width: 639px) {
+  #episodes .card { padding: var(--s-4) var(--s-4) var(--s-5); }
+  /* one column, one gap: the second grid block joins with the same air as the cards */
+  #episodes .grid { grid-template-columns: 1fr; gap: var(--s-4); }
+  #episodes .card { grid-column: 1 / -1; }
+  #episodes .wrap > .grid { margin-top: var(--s-4); }
+}
+/* the guide library: a plain list of every working gate, two columns on a desktop */
+.gl { list-style: none; margin: var(--s-5) 0 0; padding: 0; display: grid;
+  grid-template-columns: repeat(4, 1fr); gap: 0 var(--s-5); }
+@media (max-width: 1023px) { .gl { grid-template-columns: repeat(2, 1fr); } }
+.gl li { border-top: 1px solid var(--p-line, rgba(36,24,18,.14)); }
+.gl a { display: flex; align-items: baseline; gap: var(--s-3); padding: var(--s-3) 0; text-decoration: none;
+  color: var(--p-ink); }
+.gl a:hover .gl__t { text-decoration: underline; text-underline-offset: 3px; }
+.gl__n { flex: 0 0 auto; font-size: var(--t-small); color: var(--p-muted); font-variant-numeric: tabular-nums; }
+.gl__t { flex: 1 1 auto; font-size: var(--t-body); line-height: 1.35; }
+.gl__a { flex: 0 0 auto; color: var(--p-accent); }
+@media (max-width: 639px) {
+  .gl { grid-template-columns: 1fr; gap: 0; max-height: 340px; overflow-y: auto; overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch; padding-right: 4px; }
+}
+
+/* the float card sits at the top of the panel, clear of the two faces */
+.hero__media .ly-float { top: var(--s-5); bottom: auto; left: var(--s-5); }
+/* the carried-over sheet has one negative margin that stretches the section; clip it */
+#practice { overflow-x: clip; }
+/* the game's reveal blocks: no observer runs on this page, so they are always shown */
+#practice .reveal { opacity: 1 !important; transform: none !important; }
+/* the practice game and the writing prompt, carried over: the same classes on the light palette */
+/* the game's little inline icons were sized by the old page's CSS; give them their own box */
+/* the practice header: one line of title and pill, then the rhythm */
+#practice .phead { display: flex; align-items: baseline; gap: var(--s-4); flex-wrap: wrap; margin: 0; }
+#practice .phead h2 { margin: 0; }
+#practice .sub { margin: var(--s-3) 0 0; }
+#practice .hud { margin-top: var(--s-5); }
+#practice .badges { margin-top: var(--s-3); }
+#practice .tabs { margin-top: var(--s-5); }
+#practice .playmeta { display: flex; justify-content: flex-end; align-items: center; margin: 0 0 var(--s-4); padding: 0; }
+#practice .pane { margin-top: 0; }
+/* the four game tabs read as one control: same shape, same height, one active state */
+#practice .tab { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: transparent; gap: 8px; }
+#practice .tab.is-on, #practice .tab[aria-selected="true"] { background: var(--coral); border-color: var(--coral); color: #141111; }
+#practice .tab[aria-selected="true"] svg { stroke: #141111; }
+/* the four-games label is a pill, level to the title */
+#practice .ptag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line);
+  border-radius: 999px; padding: 7px 14px; background: var(--card); color: var(--cream); font-size: 13px; line-height: 1; }
+#practice .hud { align-items: center; }
+#practice .grow2 { max-width: 420px; }
+#practice .lvlrow b { color: var(--p-inv-ink); }
+/* a phone fits each section in one screen */
+@media (max-width: 639px) {
+  .vecpanel { height: auto; aspect-ratio: 3 / 2; }
+  .hostsrow { grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  #episodes .grid { row-gap: var(--s-4); }
+  #guide .vecpanel { display: none; }
+  .rows li { padding-block: var(--s-4); }
+}
+#practice .ptag svg { width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+/* the emoji in the game HUD do not render on this Mac: the words carry the meaning */
+#practice .chip2 .flame, #practice #gGoalWrap > span:first-child, #practice #gSnd { display: none; }
+#practice .snd { background: var(--card); color: var(--cream); border: 1px solid var(--line); }
+#practice .tab { color: var(--cream); }
+#practice .tab > span { color: inherit; }
+#practice .turnblock { padding-top: var(--s-6); }
+#practice #wc, #practice .turn .hint { color: var(--p-inv-muted); }
+#practice .again { background: var(--card); color: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; }
+#practice .quiz .sub, #practice .pane .sub { color: #d9cec7; }
+#practice .turn { padding: 0; background: none; border-radius: 0; }
+#practice .turn h2, #practice .turn p, #practice .turn .hint { color: var(--p-inv-ink); }
+#practice .turn textarea { background: var(--card); color: var(--cream); border-color: var(--line); }
+#practice .turn .btn-main { background: var(--p-inv-action); color: var(--p-inv-action-ink); }
+/* keyboard focus: one coral ring over everything, 3:1 or better on every ground */
+:focus-visible { outline: 3px solid var(--p-accent); outline-offset: 3px; }
+#practice .tab svg, #practice .snd svg, #practice .again svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#practice .done svg, #practice .qitem svg { fill: none; stroke: currentColor; }
+/* the game is an app and keeps its own dark palette: one dark band on a light page */
+#practice {
+  background: var(--p-inv-bg); color: var(--p-inv-ink);
+  --night: #141111; --night-2: #1b1616; --card: #211b1b; --card-2: #271f1f;
+  --coral: #e75d4e; --coral-soft: #f0806f; --cream: #fff6e9; --dim: #bdb2a9;
+  --line: rgba(255,246,233,.13);
+  --display: var(--font-display); --text: var(--font-text);
+}
+#practice h2, #practice .sub, #practice .playmeta { color: var(--p-inv-ink); }
+#practice .sub { color: var(--p-inv-muted); }
+/* the writing prompt, on the coral band */
+#turn {
+  --night: #fff6e9; --night-2: #f3e7d8; --card: #f7ecdd; --card-2: #f0e1cd;
+  --coral: #e75d4e; --coral-soft: #c9432f; --cream: #241812; --dim: #6f635a;
+  --line: rgba(36,24,18,.16);
+  --display: var(--font-display); --text: var(--font-text);
+}
+/* the rows: the name with its line under it, the value on the right */
+.rows .rows__name small { display: block; font-weight: 400; color: var(--p-muted); font-size: var(--t-small); margin-top: 2px; }
+.rows__value { white-space: nowrap; }
+/* the page carries no photographs: flat vector panels in the show's own hand */
+.vecpanel { background: var(--p-surface); border-radius: var(--r-lg); overflow: hidden;
+  height: min(560px, var(--ly-fit)); display: flex; align-items: center; justify-content: center; }
+.vecpanel svg { width: 100%; height: 100%; display: block; }
+@media (max-width: 1023px) { .vecpanel { height: auto; aspect-ratio: 4 / 5; margin-top: var(--s-6); } }
+.hosts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+.hosts figure { margin: 0; }
+.hosts img { width: 100%; height: auto; display: block; }
+.hosts figcaption { margin-top: var(--s-4); }
+@media (max-width: 639px) { .hosts { grid-template-columns: 1fr; } }
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<style>
+.sub{color:var(--dim);margin:0 0 26px;font-size:16px}
+.done{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);
+        background:none;cursor:pointer;color:var(--dim);display:flex;align-items:center;justify-content:center;transition:.15s}
+.done:hover{border-color:var(--coral)}
+.done[aria-pressed="true"]{background:var(--coral);border-color:var(--coral);color:#1a1210}
+/* quiz */
+  .quiz{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:26px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+#words,#means{display:grid;grid-template-rows:repeat(3,1fr);gap:10px}
+.qitem{width:100%;display:flex;align-items:center;border:1px solid var(--line);border-radius:14px;padding:13px 15px;
+         background:var(--card);cursor:pointer;font:600 16px/1.35 var(--display);transition:.15s;text-align:left;color:var(--cream)}
+.qitem:hover{border-color:rgba(255,246,233,.35)}
+.qitem.sel{border-color:var(--coral);box-shadow:0 0 0 2px rgba(231,93,78,.25)}
+.qitem.ok{border-color:#5CB27A;background:rgba(92,178,122,.14);cursor:default}
+.qitem.bad{border-color:#C7452F;animation:shake .3s}
+.qitem.muted{opacity:.35;pointer-events:none}
+.qitem span{display:block;font:700 14.5px/1.5 var(--text);color:var(--dim)}
+.qmsg{margin:14px 0 0;font:800 14px/1.4 var(--text);color:var(--dim);min-height:20px}
+.qmsg.good{color:#7FD09A}
+.qmsg.warn{color:var(--coral-soft)}
+.turn :focus-visible,.turn a:focus-visible,.turn button:focus-visible{outline-color:#1a1210}
+/* your turn */
+  .turn{background:var(--coral);border-radius:24px;padding:30px;color:#1a1210}
+.turn h2{color:#1a1210;margin-bottom:6px}
+.turn p{color:#1a1210;margin:0 0 16px;font-size:15.5px}
+.turn textarea{width:100%;min-height:84px;resize:vertical;border-radius:14px;border:1.5px solid rgba(26,18,16,.35);
+        background:rgba(255,246,233,.94);color:#241812;padding:13px 15px;font:600 16px/1.5 var(--text)}
+.turn textarea:focus{outline:2px solid #1a1210;outline-offset:1px}
+.turnfoot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.turn .btn-main{background:#1a1210;color:var(--cream)}
+.turn .btn-main:hover{background:#2a1d18}
+.hint{font:800 13px/1 var(--text);color:rgba(26,18,16,.92)}
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--cream);color:#1a1210;
+         font:800 14px/1 var(--text);padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;
+         transition:.25s;z-index:70}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:1}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+.js .reveal:focus-within{opacity:1;transform:none}
+@media(max-width:860px){
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .tile.big{grid-column:span 2}
+    .hero-in{grid-template-columns:1fr}
+    .art{order:-1}.art>img{max-width:230px}
+    .cols{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:8px}
+    #words,#means{grid-template-rows:repeat(3,1fr);gap:8px}
+    .qitem{padding:10px 11px;font-size:13.5px;min-height:52px}
+    .qitem span{font-size:12.5px;line-height:1.4}
+    .lock img.mark{height:32px}.lock img.name{height:16px}
+    nav a{padding:8px 9px;font-size:13px}
+  }
+@media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .marq ul{animation:none}
+    .js .reveal{opacity:1;transform:none;transition:none}
+    #dots{display:none}
+  }
+@media(max-width:560px){
+    .wrap{padding:0 16px}
+    .bar{flex-wrap:nowrap;gap:10px;padding:10px 0;justify-content:center}
+    .lock{gap:8px;flex:0 0 auto}
+    .lock img.mark{height:24px}
+    .lock img.name{height:12px}
+    nav{width:auto;flex:0 0 auto;display:flex;justify-content:center;gap:0;overflow:visible}
+    nav a{padding:9px 8px;font-size:12.5px;white-space:nowrap}
+    .hero{padding:24px 0 16px}
+    .pill{font-size:10.5px;padding:5px 10px;letter-spacing:.08em}
+    h1{font-size:clamp(29px,9vw,40px);letter-spacing:-.4px}
+    .lede{font-size:16.5px}
+    .row{gap:8px}
+    .btn{flex:1 1 auto;justify-content:center;padding:13px 16px;font-size:14.5px}
+    .art>img{max-width:168px}
+    .marq ul{gap:22px;padding:11px 0}
+    .marq li{font-size:11.5px}
+    section{padding:40px 0}
+    .bento,.eps{grid-template-columns:1fr}
+    .tile.big{grid-column:span 1}
+    .tile{padding:17px}
+    .filters{gap:6px}
+    .f{padding:10px 13px;font-size:12.5px}
+    .count{width:100%;margin:8px 0 0;padding-left:2px}
+    .done{width:38px;height:38px;top:10px;right:10px}
+    .done svg{width:16px;height:16px}
+    .ep{padding:16px}
+    #words,#means{gap:12px;grid-template-rows:repeat(3,1fr)}
+    .qitem{padding:14px 15px;min-height:50px}
+    .qmsg{font-size:13.5px}
+    .quiz,.pdf{padding:20px}
+    .turn{padding:20px;border-radius:20px}
+    .turn h2{font-size:24px}
+    .turn textarea{min-height:96px;font-size:16px}
+    .turnfoot{gap:10px}
+    .turn .btn-main{width:100%;justify-content:center}
+    .hint{font-size:12.5px}
+    footer{padding:26px 0 40px}
+    footer a{display:inline-block;margin:5px 10px}
+    footer .contact{margin-top:10px;line-height:1.6;padding:0 8px}
+    #toast{left:16px;right:16px;transform:translateY(20px);bottom:20px;text-align:center}
+    #toast.show{transform:translateY(0)}
+  }
+/* ---------- games ---------- */
+  .game{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:24px}
+.grow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.flash{background:linear-gradient(158deg,#26201d 0%,var(--card) 45%,#151111 100%);
+         border:1px solid var(--line);border-radius:18px;padding:22px;
+         min-height:172px;cursor:pointer;perspective:1100px;
+         box-shadow:0 18px 44px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,246,233,.06);
+         transition:border-color .2s,box-shadow .25s,transform .25s}
+.flash:hover{border-color:rgba(255,246,233,.3);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.flash .flip-inner{position:relative;width:100%;min-height:128px;transform-style:preserve-3d;
+         transition:transform .55s cubic-bezier(.22,.9,.28,1)}
+.flash.open .flip-inner{transform:rotateY(180deg)}
+.flash:active{transform:scale(.995)}
+.flash .face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+         backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flash .face.back{transform:rotateY(180deg);justify-content:center}
+.flash .face.back::after{content:'Tap to flip back';position:absolute;right:0;bottom:-4px;
+         font:800 10.5px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,246,233,.35)}
+.flash .fw{font:600 26px/1.2 var(--display);color:var(--coral)}
+.flash .fm{color:var(--cream);font:700 15.5px/1.5 var(--text)}
+.flash .fe{color:var(--dim);font-weight:600;font-size:14.5px;font-style:italic;margin-top:8px}
+.flash .tap{font:800 12px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:14px}
+.lchoices{display:grid;gap:8px;margin-top:14px}
+.lchoice{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:var(--card);
+           color:var(--cream);font:700 15px/1.45 var(--text);text-align:left;cursor:pointer;transition:.15s;min-height:48px}
+.lchoice:hover{border-color:rgba(255,246,233,.35)}
+.lchoice.ok{border-color:#5CB27A;background:rgba(92,178,122,.14)}
+.lchoice.bad{border-color:#C7452F;background:rgba(199,69,47,.14)}
+.wchip{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 13px;
+         font:700 15px/1 var(--text);color:var(--cream);cursor:pointer;transition:.15s;min-height:40px}
+.wchip:hover{border-color:var(--coral)}
+.wchip.used{opacity:.25;pointer-events:none}
+@media(max-width:560px){
+    .game{padding:18px}
+    .flash .fw{font-size:22px}
+    .grow{gap:8px}
+    .lchoice{padding:12px 13px;font-size:14px}
+  }
+/* tap targets: 44px minimum on touch */
+  @media(max-width:560px){
+    .done{width:44px;height:44px;top:8px;right:8px}
+    .f{min-height:44px;display:inline-flex;align-items:center}
+    nav a{min-height:44px;display:inline-flex;align-items:center}
+    .chip{min-height:44px;display:inline-flex;align-items:center}
+    .qitem{width:100%;min-height:52px;font-size:13.5px}
+    .btn{min-height:44px}
+    .lock{min-height:44px;display:inline-flex;align-items:center}
+    .ep .t a{display:inline-block;padding:11px 0;margin:-11px 0}
+  }
+@media(hover:none){
+    .qitem{width:100%;min-height:52px;font-size:13.5px}
+    .f,.chip,nav a{min-height:44px;display:inline-flex;align-items:center}
+  }
+/* ---------- practice zone — a distinct "stage", not another dark section ---------- */
+  #practice{position:relative;isolation:isolate;
+    margin:38px -24px 26px;padding:66px 48px 70px;border-radius:30px;
+    background:
+      radial-gradient(860px 340px at 16% -18%,rgba(231,93,78,.36),transparent 62%),
+      radial-gradient(640px 300px at 88% -10%,rgba(231,93,78,.17),transparent 70%),
+      linear-gradient(180deg,#4E332C 0%,#3D2A25 24%,#2E221F 58%,#251C1A 100%);
+    border:1.5px solid rgba(231,93,78,.46);
+    box-shadow:
+      0 34px 74px -30px rgba(0,0,0,.82),
+      inset 0 140px 120px -95px rgba(231,93,78,.32),
+      inset 0 1px 0 rgba(255,246,233,.15)}
+#practice:before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+    background-image:radial-gradient(rgba(255,246,233,.14) 1px,transparent 1px);
+    background-size:24px 24px;opacity:.6;
+    -webkit-mask-image:radial-gradient(112% 82% at 50% 0%,#000 0%,transparent 76%);
+            mask-image:radial-gradient(112% 82% at 50% 0%,#000 0%,transparent 76%)}
+#practice:after{content:"";position:absolute;left:36px;right:36px;top:-1px;height:3px;
+    border-radius:0 0 4px 4px;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(231,93,78,.95) 16%,rgba(231,93,78,.95) 84%,transparent)}
+#practice .phead{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 10px}
+#practice .phead h2{margin:0}
+#practice .ptag{display:inline-flex;align-items:center;gap:7px;background:var(--coral);color:#1a1210;
+    border-radius:999px;padding:8px 13px 8px 11px;font:800 10.5px/1 var(--text);letter-spacing:.13em;
+    text-transform:uppercase;box-shadow:0 8px 20px rgba(231,93,78,.35)}
+#practice .ptag svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+#practice .hud{background:linear-gradient(180deg,rgba(26,20,18,.82),rgba(20,16,15,.9));
+    border-color:rgba(231,93,78,.40);
+    box-shadow:0 14px 30px rgba(0,0,0,.40),inset 0 1px 0 rgba(255,246,233,.10)}
+#practice .hud .chip2{background:rgba(255,246,233,.05);border-color:rgba(255,246,233,.18)}
+#practice .tabs{background:rgba(10,8,8,.55);border-color:rgba(231,93,78,.34)}
+#practice .quiz,#practice .game{background:#241B19;border-color:rgba(231,93,78,.34);
+    box-shadow:0 26px 52px rgba(0,0,0,.46),inset 0 1px 0 rgba(255,246,233,.09)}
+#practice .qitem,#practice .lchoice{background:#31241F;border-color:rgba(255,246,233,.18)}
+@media(max-width:760px){
+    #practice{margin-left:-24px;margin-right:-24px;padding:50px 24px 54px;border-radius:26px}
+    #practice:after{left:26px;right:26px}
+  }
+@media(max-width:560px){
+    #practice{margin-left:-16px;margin-right:-16px;padding:44px 16px 48px;border-radius:22px}
+    #practice .phead{gap:10px;margin-bottom:8px}
+    #practice:after{left:18px;right:18px}
+  }
+@media(max-width:400px){
+    #practice{margin-left:-10px;margin-right:-10px;padding:38px 12px 42px;border-radius:18px}
+  }
+/* ---------- games menu ---------- */
+  /* segmented control — a track with a sliding coral pill, deliberately unlike the badges */
+  .tabs{position:relative;display:inline-flex;gap:4px;padding:6px;margin:20px 0 16px;max-width:100%;
+       border-radius:999px;border:1px solid rgba(255,246,233,.16);
+       background:rgba(255,246,233,.05);box-shadow:inset 0 1px 0 rgba(255,246,233,.07),0 10px 26px rgba(0,0,0,.28)}
+.tab-ind{position:absolute;z-index:0;border-radius:999px;background:var(--coral);
+       box-shadow:0 8px 22px rgba(231,93,78,.42);transition:left .32s cubic-bezier(.22,.9,.28,1),
+       top .32s cubic-bezier(.22,.9,.28,1),width .32s cubic-bezier(.22,.9,.28,1),height .32s}
+.tab{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;border:0;background:none;
+       cursor:pointer;font:800 13.5px/1 var(--text);padding:11px 17px;border-radius:999px;
+       color:rgba(255,246,233,.62);transition:color .18s ease}
+.tab svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;
+       stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.tab:hover{color:var(--cream)}
+.tab.is-on{color:#1a1210}
+.tab.is-on svg{stroke:#1a1210}
+.pane{display:none}
+.pane.is-on{display:block}
+@media(max-width:560px){.tab{padding:9px 13px;font-size:14px}}
+/* ---------- play ledger strip ---------- */
+  .playmeta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:-4px 0 16px;
+            font:600 12.5px/1.3 var(--text);letter-spacing:.02em;color:rgba(255,246,233,.62)}
+.again{border:1px solid rgba(255,246,233,.22);background:none;color:rgba(255,246,233,.72);
+         font:700 11.5px/1 var(--text);letter-spacing:.06em;text-transform:uppercase;
+         padding:0 12px;min-height:34px;border-radius:999px;cursor:pointer}
+.again:hover{color:var(--cream);border-color:var(--coral)}
+@media(max-width:560px){.again{min-height:44px;padding:0 16px}}
+/* ---------- progress / gamification ---------- */
+  .hud{display:grid;grid-template-columns:auto minmax(120px,1fr) auto;gap:12px 16px;align-items:center;
+       margin:0 0 12px;border:1px solid var(--line);border-radius:16px;padding:11px 13px;
+       background:linear-gradient(180deg,rgba(255,246,233,.05),rgba(255,246,233,.02))}
+.hud .chip2{display:inline-flex;align-items:center;gap:7px;font:800 11.5px/1 var(--text);letter-spacing:.05em;
+       text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:999px;
+       padding:9px 12px;white-space:nowrap;background:rgba(20,17,17,.35)}
+.hud .chip2 b{color:var(--cream);font-size:15px}
+.hud .flame{font-size:14px;filter:saturate(1.2)}
+.hud .grow2{min-width:0}
+.hud .lvlrow{display:flex;justify-content:space-between;gap:10px;font:800 11px/1 var(--text);
+       letter-spacing:.05em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.hud .lvlrow b{color:var(--cream);letter-spacing:.02em}
+.hud .xpbar{height:11px;border-radius:999px;background:rgba(255,246,233,.12);overflow:hidden;
+       box-shadow:inset 0 1px 2px rgba(0,0,0,.45)}
+.hud .xpbar i{display:block;height:100%;min-width:0;border-radius:999px;
+       background:linear-gradient(90deg,#E75D4E,#F5A08D);transition:width .5s cubic-bezier(.2,.8,.2,1);
+       box-shadow:0 0 12px rgba(231,93,78,.55)}
+.hud .goal.hit{border-color:rgba(126,217,160,.6)}
+.hud .goal.hit b{color:#7ED9A0}
+.hud .hudright{display:flex;align-items:center;gap:8px}
+.hud .snd{border:1px solid rgba(255,246,233,.28);background:rgba(255,246,233,.06);color:var(--cream);
+       border-radius:999px;padding:9px 11px;cursor:pointer;font:800 13px/1 var(--text);min-width:44px}
+.hud .snd:hover{border-color:var(--coral)}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}
+.badges:empty{display:none}
+.badge{font:800 10.5px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
+       border:1px solid rgba(255,246,233,.24);border-radius:999px;padding:8px 11px;opacity:.85;
+       background:rgba(16,13,12,.42);transition:.25s}
+.badge.on{color:#1a1210;background:var(--coral);border-color:var(--coral);opacity:1;
+       box-shadow:0 4px 14px rgba(231,93,78,.35)}
+.qitem.hint{outline:2px solid #7ED9A0;outline-offset:2px}
+.qitem.shake{animation:gshake .3s}
+@media(prefers-reduced-motion:reduce){
+    .qitem.shake{animation:none}
+    #gFloat.go{animation:none;opacity:0}
+    .hud .xpbar i{transition:none}
+  }
+@media(max-width:560px){
+    .tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;width:100%;border-radius:20px;padding:6px}
+    .tab{justify-content:center;padding:12px 8px;font-size:13px}
+    /* two rows on phones: streak + goal/sound, then the level bar across the full width */
+    .hud{grid-template-columns:1fr auto;gap:10px 12px;padding:10px 12px}
+    .hud .grow2{grid-column:1 / -1;grid-row:2}
+    .hud .hudright{justify-self:end}
+    .hud .chip2{font-size:10.5px;padding:8px 10px}
+    .hud .snd{padding:0;width:44px;height:44px;min-width:44px;display:grid;place-items:center;font-size:15px}
+  }
+/* glare hover: a diagonal light sweep across tabs and primary buttons */
+  .tab,.btn{position:relative;overflow:hidden}
+.tab::after,.btn::after{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;
+       background:linear-gradient(115deg,transparent 42%,rgba(255,246,233,.22) 50%,transparent 58%);
+       transform:translateX(-120%);transition:transform .6s cubic-bezier(.22,.9,.28,1);pointer-events:none}
+.tab:hover::after,.btn:hover::after{transform:translateX(120%)}
+/* press + settle states on answer chips */
+  .qitem,.lchoice,.wchip{transition:transform .12s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.qitem:active,.lchoice:active,.wchip:active{transform:scale(.974)}
+.qitem.sel{border-color:var(--coral);background:rgba(231,93,78,.10);
+       box-shadow:0 0 0 1px rgba(231,93,78,.5),0 8px 24px rgba(231,93,78,.14)}
+.qitem.ok,.lchoice.ok{animation:temPop .32s cubic-bezier(.2,1.4,.4,1)}
+.qitem.hint{animation:temHint 1.1s ease-in-out 2}
+/* xp bar: a slow sheen so it reads as "alive" */
+  .hud .xpbar i{position:relative;overflow:hidden}
+.hud .xpbar i::after{content:'';position:absolute;inset:0;
+       background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);
+       transform:translateX(-100%);animation:temSheen 2.8s ease-in-out infinite}
+/* xp number pop when it changes */
+  .hud #gXp.bump{animation:temBump .34s ease}
+@media(prefers-reduced-motion:reduce){
+    .glowcard::before,.glowcard::after{display:none}
+    .tab::after,.btn::after{display:none}
+    .qitem.ok,.lchoice.ok,.qitem.hint{animation:none}
+    .hud .xpbar i::after{animation:none;display:none}
+    .hud #gXp.bump{animation:none}
+    .flash .flip-inner{transition:none}
+    .ripple{display:none}
+  }
+
+/* these must win over the carried-over sheet: it is printed after the page CSS */
+#practice { margin-left: 0 !important; margin-right: 0 !important; overflow-x: clip; }
+#practice .reveal { opacity: 1 !important; transform: none !important; }
+#practice .phead { display: flex; align-items: baseline; gap: var(--s-4); flex-wrap: wrap; margin: 0; }
+#practice .phead h2 { margin: 0; }
+#practice .ptag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line);
+  border-radius: 999px; padding: 7px 14px; background: var(--card); color: var(--cream); font-size: 13px; line-height: 1; }
+#practice .ptag svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+#practice .tab { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: transparent; gap: 8px; }
+#practice .tab[aria-selected="true"] { background: var(--coral); border-color: var(--coral); color: #141111; }
+#practice .tab[aria-selected="true"] svg { stroke: #141111; }
+#practice .playmeta { display: flex; justify-content: flex-end; margin: 0 0 var(--s-4); padding: 0; }
+#practice .again { background: var(--card); color: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; }
+#practice .hud { align-items: center; }
+#practice .grow2 { max-width: 420px; }
+#practice .turnblock { padding-top: var(--s-6); }
+
+/* ---------- the practice section, laid out as one exercise, not an app ---------- */
+/* the wrap is a column we can reorder without touching the carried-over markup:
+   title, one line, the game bar (tabs + start over), the card, then a quiet progress line */
+#practice .wrap { display: flex; flex-direction: column; align-items: stretch; }
+#practice .group { display: flex; flex-direction: column; align-items: stretch; }
+#practice .phead        { order: 1; }
+#practice .sub          { order: 2; font-size: var(--t-lead); color: var(--p-inv-muted); margin: var(--s-3) 0 0; max-width: 60ch; }
+#practice .tabs         { order: 3; margin-top: var(--s-6); }
+#practice .playmeta     { order: 4; margin: var(--s-3) 0 var(--s-4); }
+#practice .pane         { order: 5; }
+#practice .hud          { order: 6; margin-top: var(--s-5); }
+#practice .badges       { order: 7; }
+#practice .turnblock    { order: 8; }
+#practice .tabs { display: flex; gap: var(--s-2); flex-wrap: wrap; padding: 0; background: none; border: 0; }
+#practice .tab { flex: 1 1 0; min-width: 132px; min-height: 44px; justify-content: center; font-size: var(--t-body); }
+@media (max-width: 639px) { #practice .tab { min-width: 0; flex: 1 1 44%; } }
+#practice .pane { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-6); }
+@media (max-width: 639px) { #practice .pane { padding: var(--s-4); } }
+#practice .quiz, #practice .game { background: transparent !important; border: 0 !important; padding: 0 !important; border-radius: 0 !important; }
+#practice .hud { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-4);
+  padding: 0; background: none; border: 0; }
+/* nothing in the progress line may run off a phone: it wraps instead of clipping */
+#practice .hud > * { min-width: 0; }
+#practice .hudright { margin-left: 0; }
+#practice .chip2 { white-space: nowrap; }
+@media (max-width: 639px) {
+  /* keep the whole section inside two phone screens */
+  #practice { padding-top: var(--s-6); }
+  #practice .tabs { margin-top: var(--s-4); display: grid !important; grid-template-columns: 1fr 1fr !important; gap: var(--s-2) !important; }
+  #practice .tab { min-width: 0; width: 100%; flex: none; }
+  #practice .pane { overflow-x: clip; }
+  #practice .playmeta { margin: var(--s-2) 0 var(--s-3); }
+  #practice .pane { padding: 14px; }
+  #practice .turnblock { padding-top: var(--s-4); }
+  #practice .hud { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
+  #practice .grow2 { grid-column: 1 / -1; order: 3; max-width: none; }
+  #practice .hudright { display: flex; gap: var(--s-2); margin: 0; }
+  #practice .lvlrow { font-size: 12.5px; }
+}
+/* the pill row: one shape, no dark plate behind it */
+#practice .tabs { position: relative; background: none !important; border: 0 !important; padding: 0 !important; }
+#practice .tab, #practice .tab[aria-selected="true"] { border-radius: 999px !important; }
+#practice .tab { background: transparent; box-shadow: none; }
+#practice .tab-ind { display: none !important; }
+/* a plain <button> keeps the platform's native chrome, which paints a dark shade in the
+   rounded ends of the capsule. Strip it and clip the fill to the padding box. */
+#practice button, #practice .tab { -webkit-appearance: none !important; appearance: none !important;
+  background-clip: padding-box !important; -webkit-tap-highlight-color: transparent; }
+/* the game card runs the full width of a phone */
+@media (max-width: 639px) {
+  #practice { padding-inline: 0; }
+  /* the band is full-bleed; its content is not: same gutter as every other .wrap */
+  #practice .wrap { width: 100%; max-width: none; padding-inline: var(--gut); }
+  #practice .phead, #practice .sub, #practice .tabs, #practice .playmeta,
+  #practice .hud, #practice .badges, #practice .turnblock { margin-inline: 0; }
+  #practice .pane { margin: 0; border-left: 0; border-right: 0; border-radius: 0; padding: 18px 16px; }
+  #practice .quiz, #practice .game { padding: 0 !important; }
+}
+#practice .chip2 { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: var(--t-small); }
+#practice .grow2 { flex: 1 1 auto; min-width: 160px; }
+#practice .lvlrow { font-size: var(--t-small); }
+/* anchor jumps land below the fixed bar, and the section never tucks under it */
+main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
+#practice { padding-top: calc(var(--s-section, 96px) + 8px); }
+@media (max-width: 640px) {
+  /* six cards + head measured 1723px; two screens is 1688, so take the slack out of the padding */
+  #episodes { padding-top: calc(var(--padt) - 22px); padding-bottom: calc(var(--padb) - 16px); }
+}
+/* the exercise tiles look tappable and show their state */
+#practice .qitem { min-height: 56px; border-width: 1.5px; box-shadow: 0 1px 0 rgba(255,246,233,.04); }
+#practice .qitem.sel { border-color: var(--coral) !important; background: rgba(231,93,78,.16) !important;
+  box-shadow: 0 0 0 3px rgba(231,93,78,.38), inset 3px 0 0 var(--coral); color: #fff6e9; }
+#practice .qitem.ok, #practice .qitem.correct { border-color: #7FD09A; background: rgba(127,208,154,.14); }
+#practice .qitem.bad, #practice .qitem.wrong { border-color: #E0625A; background: rgba(224,98,90,.14); }
+#practice .qitem:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+#practice .sub, #practice .pane p { color: #ded4cd; }
+
+/* THE dark plate: the kit's motion layer injects a .m-tab-ind element laid exactly over the
+   active tab, filled with page ink and rounded 8px, so it showed as square dark corners
+   around the coral capsule. Our active state is the coral fill itself. */
+#practice .m-tab-ind, #practice .tab-ind { display: none !important; opacity: 0 !important; }
+/* the active pill carried a 378x92 absolutely-positioned ::after halo from the old sheet:
+   that is the dark plate at its corners. Remove it at the source. */
+#practice .tab::before, #practice .tab::after,
+#practice .tab[aria-selected="true"]::before, #practice .tab[aria-selected="true"]::after {
+  content: none !important; display: none !important; background: none !important; }
+
+/* the two tile columns were 136px each inside a 356px card, leaving 76px dead:
+   they are two equal columns that fill the card */
+#practice .cols { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; width: 100% !important; }
+#practice #words, #practice #means { width: 100% !important; }
+#practice .qitem { width: 100% !important; box-sizing: border-box; }
+@media (max-width: 639px) { #practice .pane { padding: 18px 14px; } }
+
+/* nothing in the section may draw a native ring: iOS paints its own thick ring on the
+   element it focuses, which reads as a yellow frame around the game panel */
+#practice .pane, #practice .tabs, #practice .tab, #practice .qitem, #practice .wchip,
+#practice .lchoice, #practice button { outline: none !important; }
+#practice .tab:focus-visible, #practice .qitem:focus-visible, #practice button:focus-visible {
+  outline: 3px solid var(--coral) !important; outline-offset: 2px; }
+
+/* LAST WORD on the game bar: it is a grid at every width, so the pills can never
+   outrun their container (the carried-over sheet's flex basis did exactly that) */
+#practice .tabs { display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+  gap: var(--s-2) !important; width: auto; }
+#practice .tab { width: 100% !important; min-width: 0 !important; flex: 0 0 auto !important;
+  display: inline-flex; align-items: center; justify-content: center; }
+@media (max-width: 639px) { #practice .tabs { grid-template-columns: 1fr 1fr !important; } }
+
+#practice .xpbar { height: 6px; }
+#practice .turn { padding: 0; background: none; border-radius: 0; }
+#practice .turn h2, #practice .turn p, #practice .turn .hint { color: var(--p-inv-ink); }
+#practice #wc, #practice .turn .hint { color: var(--p-inv-muted); }
+#practice .turn textarea { background: var(--card); color: var(--cream); border-color: var(--line); }
+#practice .turn .btn-main { background: var(--p-inv-action); color: var(--p-inv-action-ink); }
+#practice .quiz .sub, #practice .pane .sub { color: #d9cec7; }
+#practice .orow, #practice .ord, #practice .list-item { color: var(--cream); }
+/* the sheet leaves this one on the browser's default grey button */
+#practice .btn-main { background: var(--coral); color: #141111; border: 0; border-radius: 999px;
+  padding: 12px 20px; font-weight: 700; font-size: var(--t-body); }
+#practice .btn-main:hover { background: var(--coral-soft); }
+#practice input[type="checkbox"] { accent-color: var(--coral); }
+#practice .switch { color: var(--cream); }
+/* every remaining control in the game: one dark pill, cream label (the sheet leaves some on browser defaults) */
+#practice button:not(.tab):not(.qitem):not(.wchip):not(.lchoice):not(.snd):not(.again):not(.done):not(.btn-main) {
+  background: var(--card); color: var(--cream); border: 1px solid var(--line); border-radius: 999px;
+  padding: 10px 16px; font: inherit; font-weight: 700; }
+#practice button:disabled { opacity: .55; color: var(--cream); }
+#practice .hint, #practice #knowcount { color: var(--p-inv-muted); }
+#practice .pane > p, #practice .pane .meta { color: var(--p-inv-muted); }
+
+</style></head>
+
+<body>
+
+<header class="nav nav--centre" data-m-nav="1">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo nav__logo--stacked" href="#top"><img class="lockup" src="assets/img/tem-lockup-mono.svg" alt="Two English Mugs"></a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="#episodes">Episodes</a></div>
+      <div class="nav__item"><a class="nav__link" href="#practice">Practice</a></div>
+      <div class="nav__item"><a class="nav__link" href="#hosts">Hosts</a></div>
+      <div class="nav__item"><a class="nav__link" href="#guides">Free PDF</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="https://www.youtube.com/@TwoEnglishMugs">Listen free</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero hero--split is-still is-entered" data-enter="" aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>40 episodes · B1 · twenty minutes</p>
+        <h1 id="hero-h">Real English for B1 learners</h1>
+        <p class="hero__lead">Twenty minutes, one story, two hosts. Josh is still learning, and Emma explains each hard word as it lands.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="https://www.youtube.com/@TwoEnglishMugs">Listen free</a>
+          <a class="btn btn--secondary" href="#practice">Try the practice</a>
+        </div>
+      </div>
+      <div class="hero__media span-6 start-7" style="transform: translate3d(0px, 0px, 0px);">
+        <div class="duo">
+          <img src="assets/img/wave-emma.svg" alt="Emma, the host, waving hello" fetchpriority="high">
+          <img src="assets/img/wave-josh.svg" alt="Josh, the learner, waving hello" fetchpriority="high">
+        </div>
+        <div class="ly-float">
+          <div class="ly-float__row"><span class="ly-live">Newest</span><span>21 min</span></div>
+          <div class="ly-float__title">Episode 40: Negative Self-Talk</div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="inside" aria-labelledby="inside-h">
+    <div class="wrap grid grid--middle">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="inside-h" data-reveal="" class="is-in">One episode, three ways in. <span class="muted">Twenty minutes of listening, then the words.</span></h2>
+        </div>
+        <ul class="rows">
+          <li data-reveal="" class="is-in"><span class="rows__name">Listen to the story<small>A whole episode, spoken at the speed people really speak.</small></span><span class="rows__value">20 min</span></li>
+          <li data-reveal="" class="is-in"><span class="rows__name">Play with the words<small>Four games on the vocabulary each episode uses.</small></span><span class="rows__value">4 games</span></li>
+          <li data-reveal="" class="is-in"><span class="rows__name">Read it in writing<small>The free study guide holds the full transcript and the word list.</small></span><span class="rows__value">Free PDF</span></li>
+        </ul>
+        <p style="margin-top:var(--s-6)"><a class="link" href="https://www.youtube.com/@TwoEnglishMugs">See every episode on YouTube</a></p>
+      </div>
+      <div class="span-6 start-7">
+        <div class="vecpanel is-in" data-reveal=""><svg viewBox="0 0 460 560" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Three flat cards: an episode to listen to, a game to play and a written guide">
+  <rect width="460" height="560" fill="#f3e7d8"></rect>
+  <circle cx="392" cy="74" r="96" fill="#e75d4e" opacity=".16"></circle>
+  <g>
+    <rect x="40" y="86" width="380" height="128" rx="18" fill="#241812"></rect>
+    <circle cx="104" cy="150" r="30" fill="#e75d4e"></circle>
+    <path d="M96 136l24 14-24 14z" fill="#fff6e9"></path>
+    <rect x="152" y="128" width="196" height="13" rx="6.5" fill="#fff6e9"></rect>
+    <rect x="152" y="152" width="136" height="10" rx="5" fill="#fff6e9" opacity=".55"></rect>
+    <rect x="152" y="172" width="112" height="10" rx="5" fill="#fff6e9" opacity=".35"></rect>
+  </g>
+  <g>
+    <rect x="40" y="238" width="380" height="128" rx="18" fill="#fff6e9"></rect>
+    <rect x="74" y="274" width="56" height="56" rx="14" fill="#e75d4e"></rect>
+    <rect x="92" y="292" width="20" height="20" rx="6" fill="#fff6e9"></rect>
+    <rect x="152" y="280" width="176" height="13" rx="6.5" fill="#241812"></rect>
+    <rect x="152" y="304" width="120" height="10" rx="5" fill="#241812" opacity=".45"></rect>
+  </g>
+  <g>
+    <rect x="40" y="390" width="380" height="128" rx="18" fill="#fff6e9"></rect>
+    <path d="M78 418h52a8 8 0 0 1 8 8v56a8 8 0 0 1-8 8H78a8 8 0 0 1-8-8v-56a8 8 0 0 1 8-8z" fill="none" stroke="#241812" stroke-width="4"></path>
+    <path d="M88 436h24M88 452h24M88 468h14" stroke="#e75d4e" stroke-width="4" stroke-linecap="round"></path>
+    <rect x="152" y="432" width="196" height="13" rx="6.5" fill="#241812"></rect>
+    <rect x="152" y="456" width="148" height="10" rx="5" fill="#241812" opacity=".45"></rect>
+  </g>
+</svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="episodes" aria-labelledby="episodes-h">
+    <div class="wrap">
+      <div class="group">
+        <div class="section-head">
+          <h2 id="episodes-h" data-reveal="" class="is-in">Start with one of these episodes. <span class="muted">Six to start with.</span></h2>
+        </div>
+        <div class="grid">
+        <article class="card card--open span-4 is-in" data-reveal="">
+          <p class="t-label">Episode 40</p>
+          <h3><a href="https://www.youtube.com/watch?v=CTPy2OGln3U">Negative Self-Talk: One Tiny Mistake</a></h3>
+          <p class="t-small muted">21 min · habits · free on YouTube</p>
+          <p class="t-small" style="margin-top:var(--s-3)"><a class="link" href="https://dl.twoenglishmugs.com/ep40-negative-self-talk">Study guide and PDF</a></p>
+        </article>
+        <article class="card card--open span-4 is-in" data-reveal="">
+          <p class="t-label">Episode 39</p>
+          <h3><a href="https://www.youtube.com/watch?v=rRLLftxpJSY">People Who See What Others Miss</a></h3>
+          <p class="t-small muted">22 min · habits · free on YouTube</p>
+          <p class="t-small" style="margin-top:var(--s-3)"><a class="link" href="https://dl.twoenglishmugs.com/ep39-see-what-others-miss">Study guide and PDF</a></p>
+        </article>
+        <article class="card card--open span-4 is-in" data-reveal="">
+          <p class="t-label">Episode 38</p>
+          <h3><a href="https://www.youtube.com/watch?v=8cVkKapa5tM">How To Be Happy With What You Have</a></h3>
+          <p class="t-small muted">19 min · habits · free on YouTube</p>
+          <p class="t-small" style="margin-top:var(--s-3)"><a class="link" href="https://dl.twoenglishmugs.com/ep38-be-happy-with-what-you-have">Study guide and PDF</a></p>
+        </article>
+        </div>
+      </div>
+      <div class="grid">
+        <article class="card card--open span-4 is-in" data-reveal="">
+          <p class="t-label">Episode 37</p>
+          <h3><a href="https://www.youtube.com/watch?v=8QO9KrMldsU">Why Your Mind Won’t Shut Up at Night</a></h3>
+          <p class="t-small muted">19 min · habits · free on YouTube</p>
+          <p class="t-small" style="margin-top:var(--s-3)"><a class="link" href="https://dl.twoenglishmugs.com/ep37-before-sleep">Study guide and PDF</a></p>
+        </article>
+        <article class="card card--open span-4 is-in" data-reveal="">
+          <p class="t-label">Episode 36</p>
+          <h3><a href="https://www.youtube.com/watch?v=HOriaNGKHyw">Time Management, Made Simple</a></h3>
+          <p class="t-small muted">26 min · habits · free on YouTube</p>
+          <p class="t-small" style="margin-top:var(--s-3)"><a class="link" href="https://dl.twoenglishmugs.com/ep36-time-management">Study guide and PDF</a></p>
+        </article>
+        <article class="card card--open span-4 is-in" data-reveal="">
+          <p class="t-label">Episode 35</p>
+          <h3><a href="https://www.youtube.com/watch?v=WpeUWQjZRUk">Forget a Word? Speak With Confidence</a></h3>
+          <p class="t-small muted">31 min · words · free on YouTube</p>
+          <p class="t-small" style="margin-top:var(--s-3)"><a class="link" href="https://dl.twoenglishmugs.com/ep35-speak-with-confidence">Study guide and PDF</a></p>
+        </article>
+      </div>
+      <p style="margin-top:var(--s-6)"><a class="link" href="https://www.youtube.com/@TwoEnglishMugs">All 40 episodes, on YouTube</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="practice" aria-labelledby="practice-h">
+    <div class="wrap">
+      <div class="group">
+
+    <div class="phead reveal in is-in" data-reveal="">
+      <h2>Practice</h2>
+      <span class="ptag" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6h9a4.5 4.5 0 0 1 4.4 3.6l.9 4.4A3.2 3.2 0 0 1 16.5 16l-1-1.4a2 2 0 0 0-1.6-.8h-5.8a2 2 0 0 0-1.6.8l-1 1.4a3.2 3.2 0 0 1-5.3-2l.9-4.4A4.5 4.5 0 0 1 7.5 6Z"></path><path d="M8 10v3M6.5 11.5h3M16.2 10.4h.01M17.9 12.4h.01"></path></svg>Four games</span>
+    </div>
+    <p class="sub reveal in is-in" data-reveal="">Pick a game, then choose a word to begin. Everything stays on this device.</p>
+    <div class="hud reveal in" id="gHud">
+      <span class="chip2" id="gStreakWrap" title="Days in a row with practice"><span class="flame">🔥</span> <b id="gStreak">1</b> <span id="gStreakLabel">day</span></span>
+      <div class="grow2">
+        <div class="lvlrow"><b id="gLevel">Level 1</b><span id="gXp">0 / 100 XP</span></div>
+        <div class="xpbar" role="progressbar" aria-label="Progress to next level"><i id="gBar"></i></div>
+      </div>
+      <div class="hudright">
+        <span class="chip2 goal" id="gGoalWrap" title="Today's XP goal"><span>🎯</span> <b id="gGoal">0 / 50</b> today</span>
+        <button class="snd" id="gSnd" aria-pressed="true" title="Sound on or off">🔊</button>
+      </div>
+    </div>
+    <div class="badges reveal in" id="gBadges"></div>
+
+    <div class="tabs reveal m-has-ind in is-in" role="tablist" aria-label="Games" data-reveal=""><span class="m-tab-ind" aria-hidden="true" style="--x: 0px; --y: 0px; --w: 290px; --h: 44px; --sx: 1; --sy: 1;"></span>
+      <span class="tab-ind" aria-hidden="true"></span>
+      <button class="tab is-on" role="tab" aria-selected="true" aria-controls="pane-match" data-pane="match" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5 14.5 9.5"></path><path d="M13 6.5 15 4.5a4.2 4.2 0 0 1 6 6l-2 2"></path><path d="M11 17.5 9 19.5a4.2 4.2 0 0 1-6-6l2-2"></path></svg><span>Match</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-listen" data-pane="listen" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4"></path><path d="M8 7v10"></path><path d="M12 4v16"></path><path d="M16 8v8"></path><path d="M20 10v4"></path></svg><span>Listen</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-order" data-pane="order" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9"></path><path d="M4 12h6"></path><path d="M4 17h9"></path><path d="M17 5v14"></path><path d="M14 16l3 3 3-3"></path></svg><span>Order</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-cards" data-pane="cards" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="12" rx="2"></rect><path d="M8 4h11a2 2 0 0 1 2 2v9"></path></svg><span>Cards</span></button>
+    </div>
+
+    <p class="playmeta reveal in">
+      <button class="again" id="playreset" type="button">New set</button>
+    </p>
+
+    <div class="pane is-on" id="pane-match" role="tabpanel">
+      <div class="quiz">
+        <p class="sub is-in" data-reveal="">Tap a word, then its meaning. Three pairs — right answers earn XP.</p>
+        <div class="cols">
+          <div id="words"><button class="qitem" type="button" data-k="translate">translate</button><button class="qitem" type="button" data-k="validation">validation</button><button class="qitem" type="button" data-k="overwhelmed">overwhelmed</button></div>
+          <div id="means"><button class="qitem" type="button" data-k="translate"><span>To change a word from your home language into English.</span></button><button class="qitem" type="button" data-k="overwhelmed"><span>Feeling like things are just too much to handle.</span></button><button class="qitem" type="button" data-k="validation"><span>Needing someone else to say you are good, you matter.</span></button></div>
+        </div>
+        <p class="qmsg" id="qmsg">Set 1 — pick a word, then its meaning.</p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-listen" role="tabpanel" hidden="">
+      <div class="game">
+        <p class="sub" data-reveal="">The word is on screen — say it out loud, then play it and check yourself.</p>
+        <p class="sayword" id="lword">minimum</p>
+        <div class="grow">
+          <button class="btn btn-main" id="speak">Play the word</button>
+          <label class="switch"><input type="checkbox" id="slow"> Slow</label>
+        </div>
+        <div class="lchoices" id="lchoices"><button class="lchoice" type="button">Spending hours on things that offer no value.</button><button class="lchoice" type="button">The smallest amount possible.</button><button class="lchoice" type="button">Moving forward and getting better.</button></div>
+        <p class="qmsg" id="lmsg">Say it out loud, then pick the meaning.</p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-order" role="tabpanel" hidden="">
+      <div class="game">
+        <p class="sub" data-reveal="">Tap or click the words to build the sentence. Tap a word in your line to send it back.</p>
+        <div class="line" id="line" aria-live="polite"></div>
+        <p class="banklabel">Words left</p>
+        <div class="bank" id="bank"><button class="wchip" type="button">the</button><button class="wchip" type="button">of</button><button class="wchip" type="button">do</button><button class="wchip" type="button">I</button><button class="wchip" type="button">always</button><button class="wchip" type="button">minimum</button><button class="wchip" type="button">amount</button><button class="wchip" type="button">cleaning</button></div>
+        <div class="grow">
+          <button class="btn btn-main" id="check">Check</button>
+          <button class="btn btn-ghost" id="nextline">Next one</button>
+        </div>
+        <p class="qmsg" id="omsg"></p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-cards" role="tabpanel" hidden="">
+      <div class="game">
+        <p class="sub" data-reveal="">Tap the card to see the meaning, then tell it honestly: do you know this word?</p>
+        <div class="flash" id="flash" role="button" tabindex="0" aria-label="Flashcard, tap to reveal the meaning" data-w="Overcome">
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="fw" id="fw">Overcome</div>
+              <div class="tap">Tap to flip</div>
+            </div>
+            <div class="face back">
+              <div class="fm" id="fm">Dealing with a scary problem successfully, even if the nervousness is still in your body.</div>
+              <div class="fe" id="fe"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grow">
+          <button class="btn btn-main" id="known">I know it</button>
+          <button class="btn btn-ghost" id="notyet">Not yet</button>
+          <span class="hint" id="knowcount">0 of 42 known</span>
+        </div>
+      </div>
+    </div>
+  
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="guides" aria-labelledby="guides-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="guides-h" data-reveal="" class="is-in">Every guide so far. <span class="muted">Tap an episode, its PDF comes by email.</span></h2>
+      </div>
+      <ul class="gl">
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep40-negative-self-talk"><span class="gl__n">Episode 40</span><span class="gl__t">Negative Self-Talk: One Tiny Mistake</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep39-see-what-others-miss"><span class="gl__n">Episode 39</span><span class="gl__t">People Who See What Others Miss</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep38-be-happy-with-what-you-have"><span class="gl__n">Episode 38</span><span class="gl__t">How To Be Happy With What You Have</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep37-before-sleep"><span class="gl__n">Episode 37</span><span class="gl__t">Why Your Mind Won’t Shut Up at Night</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep36-time-management"><span class="gl__n">Episode 36</span><span class="gl__t">Time Management, Made Simple</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep35-speak-with-confidence"><span class="gl__n">Episode 35</span><span class="gl__t">Forget a Word? Speak With Confidence</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep32-pick-one-thing"><span class="gl__n">Episode 32</span><span class="gl__t">Why You Never Finish Anything You Start</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep31-stop-putting-things-off"><span class="gl__n">Episode 31</span><span class="gl__t">Stop Waiting for the Perfect Time</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep30-afraid-to-speak"><span class="gl__n">Episode 30</span><span class="gl__t">Stop Being Afraid to Speak English</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep29-think-in-english"><span class="gl__n">Episode 29</span><span class="gl__t">Think in English, Don't Translate</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep28-build-english-sentences"><span class="gl__n">Episode 28</span><span class="gl__t">Stop Putting Words in the Wrong Order</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep27-power-of-silence"><span class="gl__n">Episode 27</span><span class="gl__t">The Power of Silence</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep26-train-your-ears"><span class="gl__n">Episode 26</span><span class="gl__t">Train Your Ears For Real English</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep25-stop-studying-grammar"><span class="gl__n">Episode 25</span><span class="gl__t">Stop Studying Grammar, Just Listen</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep24-food-words"><span class="gl__n">Episode 24</span><span class="gl__t">Food Words You Use Every Day</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep23-stay-motivated"><span class="gl__n">Episode 23</span><span class="gl__t">How To Stay Motivated</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+          <li data-reveal="" class="is-in"><a href="https://dl.twoenglishmugs.com/ep22-money"><span class="gl__n">Episode 22</span><span class="gl__t">Money, and What It Does To Us</span><span class="gl__a" aria-hidden="true">↓</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="steps" aria-labelledby="steps-h">
+    <div class="wrap grid grid--middle">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="steps-h" data-reveal="" class="is-in">Four steps, one episode. <span class="muted">No app, no account, no schedule.</span></h2>
+        </div>
+        <ul class="rows">
+          <li data-reveal="" class="is-in"><span class="rows__name">Put your earphones on<small>Cook, walk, fold the washing. Twenty minutes fits inside a normal evening.</small></span><span class="rows__value">Step 1</span></li>
+          <li data-reveal="" class="is-in"><span class="rows__name">Listen once without stopping<small>You will miss words. That is the point: keep going and the shape comes through.</small></span><span class="rows__value">Step 2</span></li>
+          <li data-reveal="" class="is-in"><span class="rows__name">Read the guide afterwards<small>The transcript shows the words you heard but could not catch.</small></span><span class="rows__value">Step 3</span></li>
+          <li data-reveal="" class="is-in"><span class="rows__name">Say one line out loud<small>One sentence from the show, in your own voice. That is the whole trick.</small></span><span class="rows__value">Step 4</span></li>
+        </ul>
+      </div>
+      <div class="span-6 start-7">
+        <div class="vecpanel is-in" data-reveal=""><svg viewBox="0 0 460 560" preserveAspectRatio="xMidYMid slice" role="img" aria-label="One loop of four steps: put your earphones on, listen, read the guide, say one line">
+  <rect width="460" height="560" fill="#241812"></rect>
+  <circle cx="70" cy="500" r="110" fill="#e75d4e" opacity=".18"></circle>
+  <g fill="none" stroke="#e75d4e" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14">
+    <circle cx="230" cy="280" r="150" stroke-opacity=".5"></circle>
+  </g>
+  <g font-family="Georgia, serif" font-size="26" fill="#fff6e9" text-anchor="middle">
+    <circle cx="230" cy="130" r="30" fill="#e75d4e"></circle><text x="230" y="140" fill="#241812">1</text>
+    <circle cx="380" cy="280" r="30" fill="#e75d4e"></circle><text x="380" y="290" fill="#241812">2</text>
+    <circle cx="230" cy="430" r="30" fill="#e75d4e"></circle><text x="230" y="440" fill="#241812">3</text>
+    <circle cx="80" cy="280" r="30" fill="#e75d4e"></circle><text x="80" y="290" fill="#241812">4</text>
+  </g>
+  <g stroke="#fff6e9" stroke-width="4" stroke-linecap="round" fill="none" opacity=".9">
+    <path d="M212 118c-6 0-12-3-16-8"></path><path d="M186 96c-4-8-10-14-18-18"></path>
+    <path d="M40 300h-24M28 288v24" stroke="#e75d4e"></path>
+  </g>
+  <circle cx="230" cy="280" r="62" fill="#241812" stroke="#fff6e9" stroke-width="4"></circle>
+  <path d="M206 262a20 20 0 0 1 34 10v14a10 10 0 0 1-20 0" fill="none" stroke="#fff6e9" stroke-width="5" stroke-linecap="round"></path>
+  <rect x="222" y="296" width="16" height="18" rx="8" fill="#e75d4e"></rect>
+</svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="hosts" aria-labelledby="hosts-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="hosts-h" data-reveal="" class="is-in">Emma teaches, Josh learns. <span class="muted">You sit beside Josh, and that is on purpose.</span></h2>
+      </div>
+      <ul class="rows" style="max-width:72ch">
+        <li data-reveal="" class="is-in"><span class="rows__name">Emma, the host<small>She explains every hard word as it lands and never makes you feel late.</small></span><span class="rows__value">Host</span></li>
+        <li data-reveal="" class="is-in"><span class="rows__name">Josh, the learner<small>He tries each line out loud, gets it wrong first, then gets it. That is the point.</small></span><span class="rows__value">Learner's seat</span></li>
+      </ul>
+      <div class="grid hostsrow" style="margin-top:var(--s-6)">
+        <div class="span-5 is-in" data-reveal=""><img src="assets/img/wave-emma.svg" alt="Emma, the host, waving hello" style="width:100%;height:auto;display:block"></div>
+        <div class="span-5 start-8 is-in" data-reveal=""><img src="assets/img/wave-josh.svg" alt="Josh, the learner, waving hello" style="width:100%;height:auto;display:block"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="guide" aria-labelledby="guide-h">
+    <div class="wrap grid grid--middle">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="guide-h" data-reveal="" class="is-in">The words, in writing. <span class="muted">A free study guide for every episode.</span></h2>
+          <p data-reveal="" class="is-in">Every episode has its own guide: the full transcript, the word list and one writing prompt. Pick any episode below, or take the newest one. Its email gate sends the PDF straight back. Nothing is sold to anyone.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="https://dl.twoenglishmugs.com/ep40-negative-self-talk">Get the episode 40 guide</a>
+        </div>
+        <div class="vecpanel is-in" style="height:220px;margin-top:var(--s-7)" data-reveal=""><svg viewBox="0 0 560 380" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A flat page of the study guide with its word list">
+  <rect width="560" height="380" fill="#241812"></rect>
+  <circle cx="470" cy="60" r="90" fill="#e75d4e" opacity=".2"></circle>
+  <rect x="120" y="54" width="320" height="300" rx="16" fill="#fff6e9"></rect>
+  <rect x="150" y="90" width="180" height="16" rx="8" fill="#241812"></rect>
+  <rect x="150" y="120" width="260" height="10" rx="5" fill="#241812" opacity=".35"></rect>
+  <rect x="150" y="140" width="228" height="10" rx="5" fill="#241812" opacity=".35"></rect>
+  <rect x="150" y="160" width="248" height="10" rx="5" fill="#241812" opacity=".35"></rect>
+  <rect x="150" y="192" width="120" height="12" rx="6" fill="#e75d4e"></rect>
+  <rect x="150" y="216" width="240" height="10" rx="5" fill="#241812" opacity=".25"></rect>
+  <rect x="150" y="236" width="200" height="10" rx="5" fill="#241812" opacity=".25"></rect>
+  <rect x="150" y="256" width="220" height="10" rx="5" fill="#241812" opacity=".25"></rect>
+  <rect x="150" y="290" width="86" height="30" rx="15" fill="#e75d4e"></rect>
+  <rect x="248" y="290" width="86" height="30" rx="15" fill="none" stroke="#241812" stroke-width="3"></rect>
+</svg></div>
+      </div>
+      <div class="span-6 start-7">
+        <div class="faq">
+          <div class="faq__item is-in" data-reveal=""><h3>Do I need to be exactly B1?</h3><p>No. If you can follow a slow conversation and lose a few words, you are in the right place. Emma explains the hard words as they come.</p></div>
+          <div class="faq__item is-in" data-reveal=""><h3>How long is an episode?</h3><p>Between nineteen and thirty-one minutes. Most sit around twenty-two.</p></div>
+          <div class="faq__item is-in" data-reveal=""><h3>Is it really free?</h3><p>Yes. Every episode is free on YouTube, and the study guide is free with an email.</p></div>
+          <div class="faq__item is-in" data-reveal=""><h3>Where do I start?</h3><p>Anywhere. Episode 40 is the newest, and the nine listed above are the ones people open first.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h" data-reveal="" class="is-in">Listen free on YouTube</h2>
+        <p data-reveal="" class="is-in">Forty episodes, twenty minutes each, no app and no sign-up.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="https://www.youtube.com/@TwoEnglishMugs">Listen free<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"></path><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-4">
+          <a class="nav__logo nav__logo--stacked" href="#top"><img class="lockup" src="assets/img/tem-lockup-mono.svg" alt="Two English Mugs"></a>
+          <p class="footer__lede">A listening podcast for people learning English. Two hosts, one story, twenty minutes.</p>
+        </div>
+        <div class="span-3 footer__col"><h4>The show</h4><ul><li><a href="#episodes">Episodes</a></li><li><a href="#hosts">Hosts</a></li><li><a href="#steps">How it works</a></li></ul></div>
+        <div class="span-3 footer__col"><h4>Practice</h4><ul><li><a href="#practice">Games</a></li><li><a href="#guides">Free PDF</a></li><li><a href="https://www.youtube.com/@TwoEnglishMugs">YouTube</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>© 2026 Two English Mugs &nbsp; <a href="privacy.html">Privacy</a> &nbsp; <a href="terms.html">Terms</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/motion-extras.js" defer=""></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll progress + sticky header */
+  var prog = document.getElementById('prog'), hd = document.getElementById('hd');
+  function onScroll() {
+    if (!prog || !hd) return;
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    hd.classList.toggle('stuck', h.scrollTop > 8);
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* rotating hero word */
+  var words = ['one cup', 'one chat', 'one habit', 'one story'];
+  var rot = document.getElementById('rot'), wi = 0;
+  if (!reduce && rot) {
+    setInterval(function () {
+      wi = (wi + 1) % words.length;
+      rot.style.opacity = 0;
+      setTimeout(function () { rot.textContent = words[wi]; rot.style.opacity = 1; }, 220);
+    }, 3200);
+    rot.style.transition = 'opacity .22s ease';
+  }
+
+  /* reveal on scroll, with a safety net */
+  var els = document.querySelectorAll('.reveal');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else { els.forEach(function (el) { el.classList.add('in'); }); }
+  setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 1400);
+
+  /* mouse-reactive dot grid — draws only when the pointer moves, never a free-running loop */
+  var cv = document.getElementById('dots');
+  if (cv && !reduce) {
+    var ctx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
+    var pts = [], W = 0, H = 0, mx = -999, my = -999, queued = false;
+    function build() {
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      pts = [];
+      for (var x = 30; x < W; x += 30) for (var y = 30; y < H; y += 30) pts.push({ x: x, y: y });
+      render();
+    }
+    function render() {
+      queued = false;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i], d = Math.hypot(p.x - mx, p.y - my);
+        var near = d < 130;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, near ? 1.3 + (1 - d / 130) * 2.1 : 1.3, 0, 6.2832);
+        ctx.fillStyle = near ? 'rgba(231,93,78,' + (0.34 + (1 - d / 130) * 0.5).toFixed(3) + ')'
+                             : 'rgba(231,93,78,.22)';
+        ctx.fill();
+      }
+    }
+    function request() { if (!queued) { queued = true; requestAnimationFrame(render); } }
+    var host = cv.parentElement;
+    host.addEventListener('pointermove', function (e) {
+      var b = cv.getBoundingClientRect();
+      mx = e.clientX - b.left; my = e.clientY - b.top; request();
+    });
+    host.addEventListener('pointerleave', function () { mx = my = -999; request(); });
+    var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 150); });
+    build();
+  }
+
+  /* episode filter + done tracking */
+  var KEY = 'tem-done';
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { done = {}; }
+  var btns = document.querySelectorAll('.done'), countEl = document.getElementById('epcount');
+  function paint() {
+    if (!countEl) return;
+    var n = 0;
+    btns.forEach(function (b) {
+      var on = !!done[b.dataset.ep];
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) n++;
+    });
+    countEl.innerHTML = '<b>' + n + '</b> of ' + btns.length + ' done';
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      done[b.dataset.ep] = !done[b.dataset.ep];
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (err) {}
+      paint();
+    });
+  });
+  paint();
+
+  document.querySelectorAll('.f').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.f').forEach(function (o) { o.classList.remove('on'); });
+      btn.classList.add('on');
+      var f = btn.dataset.f;
+      document.querySelectorAll('.ep').forEach(function (card) {
+        var tags = (card.dataset.tags || '').split(' ');
+        card.classList.toggle('hide', f !== 'all' && tags.indexOf(f) === -1);
+      });
+    });
+  });
+
+  /* word match — walks the whole deck in sets of three */
+  var wbox = document.getElementById('words'), mbox = document.getElementById('means');
+  var msg = document.getElementById('qmsg'), sel = null, left = 0;
+  function shuffle(a) { return a.map(function (v) { return [Math.random(), v]; }).sort(function (x, y) { return x[0] - y[0]; }).map(function (v) { return v[1]; }); }
+
+  /* ---------- play ledger ----------
+     One record in localStorage, shared by every word game, so a player keeps
+     moving forward instead of meeting the same words again:
+       - words are dealt unseen-first and never repeat until the whole bank is used
+       - when the bank runs out, a new round starts on a fresh shuffle
+       - a new round never opens with the exact set that closed the last one
+     Sets are combinations, so rounds keep producing new pairings even after
+     every word has been met once. */
+  var LEDGER = 'tem-play-v1';
+  var ledger = {};
+  try { ledger = JSON.parse(localStorage.getItem(LEDGER) || '{}'); } catch (e) { ledger = {}; }
+  function lane(name) {
+    name = name || 'words';
+    if (!ledger[name] || !ledger[name].seen) ledger[name] = { seen: [], round: 1, last: [] };
+    return ledger[name];
+  }
+  function saveLedger() { try { localStorage.setItem(LEDGER, JSON.stringify(ledger)); } catch (e) {} }
+  function sigOf(a) { return a.map(function (v) { return v.w; }).sort().join('|'); }
+  function scatter(q, words, minIdx) {
+    /* move these words to random positions past the opening deal, so they are
+       neither dealt first (an instant repeat) nor always last (which would
+       make the closing set of every pass identical) */
+    words.forEach(function (w) {
+      var at = -1, i;
+      for (i = 0; i < q.length; i++) if (q[i].w === w) { at = i; break; }
+      if (at < 0) return;
+      var j = minIdx + Math.floor(Math.random() * Math.max(1, q.length - minIdx));
+      if (j >= q.length) j = q.length - 1;
+      var t = q[at]; q[at] = q[j]; q[j] = t;
+    });
+    return q;
+  }
+  function fillDeck(L, n) {
+    L.queue = scatter(shuffle(VOCAB.slice()), L.last || [], n);
+    L.seen = [];
+    L.fills = (L.fills || 0) + 1;
+    if (L.fills > 1) L.round++;                  /* first fill keeps round 1 */
+  }
+  function dealWords(n) {
+    var L = lane('words');
+    if (!L.sets) L.sets = [];
+    L.played = L.played || 0;
+
+    /* A continuous shuffled queue, not a round that resets: every word is dealt
+       once per pass, and a set may straddle two passes, so a set is never
+       forced by whatever happens to be left over at the end. */
+    if (!L.queue || !L.queue.length) fillDeck(L, n);
+
+    var out = [];
+    while (out.length < n) {
+      if (!L.queue.length) {
+        fillDeck(L, n);
+        /* never let a fresh pass hand back a word this set already holds */
+        L.queue = scatter(L.queue, out.map(function (v) { return v.w; }), n);
+      }
+      out.push(L.queue.shift());
+    }
+
+    /* 42 words -> 11,480 combinations for a set of three. Swap the tail for a
+       word still waiting in the queue if this exact set has been served. */
+    for (var guard = 0; guard < 8 && L.sets.indexOf(sigOf(out)) >= 0; guard++) {
+      var at = -1, i;
+      for (i = 0; i < L.queue.length; i++) {
+        if (out.indexOf(L.queue[i]) === -1 && (L.last || []).indexOf(L.queue[i].w) === -1) { at = i; break; }
+      }
+      if (at < 0) {
+        fillDeck(L, n);                          /* pass exhausted: open the next one */
+        L.queue = scatter(L.queue, out.map(function (v) { return v.w; }), n);
+        for (i = 0; i < L.queue.length; i++) {
+          if (out.indexOf(L.queue[i]) === -1 && (L.last || []).indexOf(L.queue[i].w) === -1) { at = i; break; }
+        }
+      }
+      if (at < 0) break;                         /* nothing new left to offer */
+      var cand = L.queue.splice(at, 1)[0];
+      L.queue.push(out[out.length - 1]);         /* dropped word goes to the back */
+      out[out.length - 1] = cand;
+    }
+
+    out.forEach(function (v) { if (L.seen.indexOf(v.w) < 0) L.seen.push(v.w); });
+    L.last = out.map(function (v) { return v.w; });
+    if (n > 1) {                                 /* a single word is not a "set" */
+      L.played++;
+      L.sets.push(sigOf(out));
+      while (L.sets.length > 60) L.sets.shift();
+    }
+    saveLedger();
+    return out;
+  }
+  var matchSet = 0;
+  function pairOf(v) { return { w: v.w, m: v.m }; }
+
+  function renderMatch() {
+    var set = dealWords(3).map(pairOf);
+    matchSet++;
+    wbox.innerHTML = ''; mbox.innerHTML = ''; sel = null;
+    left = set.length;
+    msg.className = 'qmsg'; msg.textContent = 'Set ' + matchSet + ' — pick a word, then its meaning.';
+
+    shuffle(set.slice()).forEach(function (p) {
+      var b = document.createElement('button');
+      b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w; b.textContent = p.w;
+      b.addEventListener('click', function () {
+        if (b.classList.contains('ok')) return;
+        document.querySelectorAll('#words .qitem').forEach(function (o) { o.classList.remove('sel'); });
+        b.classList.add('sel'); sel = b;
+        msg.className = 'qmsg'; msg.textContent = 'Now pick the meaning of “' + p.w + '”.';
+      });
+      wbox.appendChild(b);
+    });
+
+    shuffle(set.slice()).forEach(function (p) {
+      var b = document.createElement('button');
+      b.className = 'qitem'; b.type = 'button'; b.dataset.k = p.w;
+      b.innerHTML = '<span>' + p.m + '</span>';
+      b.addEventListener('click', function () {
+        if (b.classList.contains('ok')) return;
+        if (!sel) { msg.className = 'qmsg warn'; msg.textContent = 'Pick a word on the left first.'; return; }
+        if (sel.dataset.k === b.dataset.k) {
+          b.classList.add('ok'); sel.classList.remove('sel'); sel.classList.add('ok'); sel = null;
+          left--;
+          if (left === 0) {
+            msg.className = 'qmsg good'; msg.textContent = 'Set done. Say each one out loud once — next three coming up.';
+            if (window.TEM_AN) TEM_AN.send('match_set_done', 'match');
+            setTimeout(renderMatch, 1400);
+          } else {
+            msg.className = 'qmsg good'; msg.textContent = 'Right. ' + left + ' to go.';
+          }
+        } else {
+          b.classList.add('bad');
+          setTimeout(function () { b.classList.remove('bad'); }, 400);
+          msg.className = 'qmsg warn'; msg.textContent = 'Not that one. Try the other meaning.';
+        }
+      });
+      mbox.appendChild(b);
+    });
+  }
+
+
+  /* host wave clips: play when visible, pause off-screen, respect reduced motion */
+  (function () {
+    var vids = [].slice.call(document.querySelectorAll('video.hostvid'));
+    if (!vids.length) return;
+    vids.forEach(function (v) { v.muted = true; v.setAttribute('muted', ''); });
+    if (reduce) { vids.forEach(function (v) { v.pause(); }); return; }
+    var kick = function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    if ('IntersectionObserver' in window) {
+      var vio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.isIntersecting ? kick(e.target) : e.target.pause(); });
+      }, { threshold: 0.15 });
+      vids.forEach(function (v) { vio.observe(v); });
+    }
+    vids.forEach(kick);
+    document.addEventListener('visibilitychange', function () {
+      vids.forEach(function (v) { document.hidden ? v.pause() : kick(v); });
+    });
+  })();
+
+  /* ---------- flashcards ---------- */
+  var VOCAB = [
+    { w:'impulse buy', m:'Buying something suddenly, with no plan.', e:'Those sunglasses at the petrol station were a total impulse buy.' },
+    { w:'splurge', m:'To spend a lot of money on something nice you don\'t really need.', e:'We splurged on a really nice hotel for our anniversary.' },
+    { w:'treat yourself', m:'To do something nice for yourself as a little reward.', e:'I finished my exams, so I treated myself to a really long nap.' },
+    { w:'in the long run', m:'Over a long time — years, not days.', e:'Learning new words feels slow, but in the long run, it really helps.' },
+    { w:'save for a rainy day', m:'To keep money for problems later.', e:'My dad always kept some cash in a kitchen drawer — he was saving for a rainy day.' },
+    { w:'automatic', m:'Doing something without thinking about it.', e:'Making coffee in the morning is automatic for me. My eyes are still closed.' },
+    { w:'routine', m:'The normal order you do things every day.', e:'My morning routine is waking up, stretching, and complaining about the weather.' },
+    { w:'progress', m:'Moving forward and getting better.', e:'I made real progress today. I finally understood an English movie without subtitles.' },
+    { w:'minimum', m:'The smallest amount possible.', e:'I always do the minimum amount of cleaning before my guests arrive.' },
+    { w:'expectation', m:'A strong belief that something will happen.', e:'I have a strong expectation that it will rain right after I wash my car.' },
+    { w:'habit', m:'Something you do often and easily.', e:'I have a terrible habit of eating salty snacks at midnight.' },
+    { w:'Little by little', m:'Slowly, in small amounts, over time — but with hope.', e:'' },
+    { w:'Habit stacking', m:'Attaching a new habit to an old one so your routine does half the work.', e:'' },
+    { w:'Never miss twice', m:'One mistake is an accident; two mistakes is a pattern. Get back on track immediately.', e:'' },
+    { w:'Confident', m:'Feeling sure of yourself because you have proof — not because the fear went away.', e:'' },
+    { w:'Fearless', m:'Having no fear at all. Impossible for most people, and not the goal of this episode.', e:'' },
+    { w:'Hesitate', m:'To pause or stop just because you are nervous, even when your foot is already moving forward.', e:'' },
+    { w:'Doubt', m:'The little voice inside asking.', e:'' },
+    { w:'Courage', m:'Doing the thing even though it is very difficult. Courage needs fear to exist at all.', e:'' },
+    { w:'Overcome', m:'Dealing with a scary problem successfully, even if the nervousness is still in your body.', e:'' },
+    { w:'Bias', m:'An unfair preference for or against an idea or person.', e:'' },
+    { w:'Illusion', m:'A false idea, impression, or belief that seems real.', e:'' },
+    { w:'Control', m:'The power to direct, influence, or manage outcomes.', e:'' },
+    { w:'Reaction', m:'What you say or do in response to an event or stimulus.', e:'' },
+    { w:'Compound', m:'To build upon itself and grow larger over time.', e:'' },
+    { w:'Prioritize', m:'To decide what is most important and tackle it first.', e:'' },
+    { w:'Priceless', m:'Having a value beyond money.', e:'' },
+    { w:'Neglect', m:'To fail to give proper care or attention.', e:'' },
+    { w:'Make the most of', m:'To use a situation as well as you can.', e:'' },
+    { w:'Waste time', m:'Spending hours on things that offer no value.', e:'' },
+    { w:'Deadline', m:'The final agreed-upon time for completing a task.', e:'' },
+    /* --- added from the published episode PDFs (full transcriptions, Ep22-29) --- */
+    { w:'translate', m:'To change a word from your home language into English.', e:'I asked my smart friend to translate the menu because I really wanted the chicken.' },
+    { w:'overwhelmed', m:'Feeling like things are just too much to handle.', e:'When my boss gives me 5 heavy jobs at once, I feel completely overwhelmed.' },
+    { w:'unsolicited', m:'Advice you did not ask for.', e:'My aunt gave me unsolicited advice about my shoes today.' },
+    { w:'validation', m:'Needing someone else to say you are good, you matter.', e:'I posted a selfie just to get some quick validation from pals.' },
+    { w:'stagnation', m:'Feeling stuck in one place, like dirty water that does not flow.', e:'I felt deep stagnation at my desk, so I made a change.' },
+    { w:'misfire', m:'When something does not work the way it is supposed to.', e:'My brain misfires when I try to speak too fast.' },
+    { w:'overload', m:'When there is just too much of something for a system to handle.', e:'Try to remember too many grammar rules at once and you get total overload.' },
+    { w:'hinge', m:'The small metal piece that joins two heavy doors so they can swing.', e:'' },
+    { w:'shelf', m:'A flat wooden board where you store books or items on a wall.', e:'My mental shelf is full of English words, but some are just too high to reach right now.' },
+    { w:'voice', m:'The loud sound you make when you speak, or the silent sound inside your mind.', e:'My inner voice is getting very good at English now.' },
+    { w:'echo', m:'When you copy a sound right after you hear it spoken.', e:'I try to echo the actors in my favourite shows to learn their fast rhythm.' }
+  ];
+  renderMatch();                            /* deck now exists */
+
+  var KNOW = 'tem-known';
+  var known = {};
+  try { known = JSON.parse(localStorage.getItem(KNOW) || '{}'); } catch (e) { known = {}; }
+  var flash = document.getElementById('flash'), fw = document.getElementById('fw'),
+      fm = document.getElementById('fm'), fe = document.getElementById('fe'),
+      knowCount = document.getElementById('knowcount');
+  /* unseen words first, so a returning player is not shown the same card twice */
+  var deck = (function () {
+    var seen = lane('words').seen;
+    var fresh = VOCAB.filter(function (v) { return seen.indexOf(v.w) < 0; });
+    var old = VOCAB.filter(function (v) { return seen.indexOf(v.w) >= 0; });
+    return shuffle(fresh).concat(shuffle(old));
+  })(), di = 0;
+  function nextCard() {
+    var n = deck.length, seen = 0, v = null;
+    while (seen++ < n) {
+      di = (di + 1) % n;
+      if (!known[deck[di].w]) { v = deck[di]; break; }
+    }
+    if (!v) { di = (di + 1) % n; v = deck[di]; }     /* everything known: just keep cycling */
+    fw.textContent = v.w; fm.textContent = v.m; fe.textContent = v.e;
+    flash.classList.remove('open');
+    flash.setAttribute('data-w', v.w);
+  }
+  function paintKnown() {
+    var n = Object.keys(known).filter(function (k) { return known[k]; }).length;
+    knowCount.textContent = n + ' of ' + VOCAB.length + ' known';
+  }
+  flash.addEventListener('click', function () { flash.classList.toggle('open'); });
+  flash.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flash.classList.toggle('open'); }
+  });
+  document.getElementById('known').addEventListener('click', function () {
+    known[flash.getAttribute('data-w')] = true;
+    if (window.TEM_AN) TEM_AN.send('card_known', 'cards');
+    try { localStorage.setItem(KNOW, JSON.stringify(known)); } catch (err) {}
+    paintKnown(); nextCard();
+  });
+  document.getElementById('notyet').addEventListener('click', function () { nextCard(); });
+  fw.textContent = deck[0].w; fm.textContent = deck[0].m; fe.textContent = deck[0].e;
+  flash.setAttribute('data-w', deck[0].w); paintKnown();
+
+
+  /* ---------- games menu ---------- */
+  (function () {
+    var tabs = [].slice.call(document.querySelectorAll('.tab'));
+    var panes = [].slice.call(document.querySelectorAll('.pane'));
+    function show(name) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-pane') === name;
+        t.classList.toggle('is-on', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panes.forEach(function (p) { p.classList.toggle('is-on', p.id === 'pane-' + name); });
+      try { history.replaceState(null, '', '#' + (name === 'match' ? 'practice' : name)); } catch (e) {}
+      if (window.TEM_AN) TEM_AN.send('game_open', name);
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { show(t.getAttribute('data-pane')); });
+    });
+    var h = (location.hash || '').replace('#', '');
+    if (h === 'listen' || h === 'order' || h === 'cards') show(h);
+
+    /* Start over: wipe the ledger so the next play begins at word one again */
+    var rst = document.getElementById('playreset');
+    if (rst) rst.addEventListener('click', function () {
+      ledger = {}; saveLedger();
+      matchSet = 0; curLine = ''; picked = [];
+      renderMatch(); newListen(); renderOrder();
+      rst.blur();
+    });
+  })();
+
+  /* ---------- listen and pick ---------- */
+  var lTarget = null, lBag = [], lChoices = document.getElementById('lchoices'),
+      lMsg = document.getElementById('lmsg'), canSpeak = 'speechSynthesis' in window;
+  var voices = [];
+  function loadVoices() {
+    if (!canSpeak) return;
+    var all = speechSynthesis.getVoices() || [];
+    voices = all.filter(function (v) { return /^en/i.test(v.lang); });
+  }
+  if (canSpeak) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+  function speak(text) {
+    if (!canSpeak) {
+      lMsg.className = 'qmsg warn';
+      lMsg.textContent = 'This browser cannot play sound — the word is on screen, so say it and pick by reading.';
+      return;
+    }
+    try { speechSynthesis.cancel(); speechSynthesis.resume(); } catch (e) {}
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-GB';
+    var pick = voices.filter(function (v) { return /en-GB/.test(v.lang); })[0] || voices[0];
+    if (pick) { u.voice = pick; u.lang = pick.lang; }
+    u.rate = document.getElementById('slow').checked ? 0.6 : 0.95;
+    u.onerror = function () {
+      lMsg.className = 'qmsg warn';
+      lMsg.textContent = 'The voice did not play — the word is above, so read it aloud and pick.';
+    };
+    speechSynthesis.speak(u);
+  }
+  function newListen() {
+    lTarget = dealWords(1)[0];
+    if (!lTarget) return;
+    var others = VOCAB.filter(function (v) { return v.w !== lTarget.w; });
+    others = others.sort(function () { return Math.random() - 0.5; }).slice(0, 2);
+    var opts = [lTarget].concat(others).sort(function () { return Math.random() - 0.5; });
+    lChoices.innerHTML = '';
+    opts.forEach(function (v) {
+      var b = document.createElement('button');
+      b.className = 'lchoice'; b.type = 'button'; b.textContent = v.m;
+      b.addEventListener('click', function () {
+        if (b.classList.contains('ok')) return;
+        if (v.w === lTarget.w) {
+          b.classList.add('ok');
+          lMsg.className = 'qmsg good'; lMsg.textContent = 'Yes — that is “' + lTarget.w + '”.';
+          speak(lTarget.w);
+          setTimeout(newListen, 2200);
+        } else {
+          b.classList.add('bad');
+          lMsg.className = 'qmsg warn'; lMsg.textContent = 'Not that one. Play it again.';
+        }
+      });
+      lChoices.appendChild(b);
+    });
+    lMsg.className = 'qmsg'; lMsg.textContent = 'Say it out loud, then pick the meaning.';
+    lWord.textContent = lTarget.w;
+  }
+  var lWord = document.getElementById('lword');
+  document.getElementById('speak').addEventListener('click', function () { speak(lTarget ? lTarget.w : VOCAB[0].w); });
+  newListen();
+
+  /* ---------- sentence order ---------- */
+  var LINES = [
+    'Those sunglasses at the petrol station were a total impulse buy',
+    'We splurged on a really nice hotel for our anniversary',
+    'I finished my exams, so I treated myself to a really long nap',
+    'Learning new words feels slow, but in the long run, it really helps',
+    'My dad always kept some cash in a kitchen drawer — he was saving for a rainy day',
+    'Making coffee in the morning is automatic for me. My eyes are still closed',
+    'My morning routine is waking up, stretching, and complaining about the weather',
+    'I made real progress today. I finally understood an English movie without subtitles',
+    'I always do the minimum amount of cleaning before my guests arrive',
+    'I have a strong expectation that it will rain right after I wash my car',
+    'I have a terrible habit of eating salty snacks at midnight',
+    'Making coffee in the morning is automatic for me',
+    'My morning routine is waking up and stretching',
+    'I made real progress today',
+    'I always do the minimum amount of cleaning',
+    'I have a terrible habit of eating salty snacks'
+  ];
+  var orderBag = [], curLine = '', picked = [], bank = document.getElementById('bank'),
+      lineEl = document.getElementById('line'), oMsg = document.getElementById('omsg');
+  function nextLine() {
+    /* same ledger idea as the words: every sentence once, then a fresh round,
+       and never the same sentence twice in a row across the seam */
+    var L = lane('order');
+    var pool = LINES.filter(function (l) { return L.seen.indexOf(l) < 0 && l !== L.last; });
+    if (!pool.length) {
+      L.seen = []; L.round++;
+      pool = LINES.filter(function (l) { return l !== L.last; });
+    }
+    curLine = pool[Math.floor(Math.random() * pool.length)] || LINES[0];
+    if (L.seen.indexOf(curLine) < 0) L.seen.push(curLine);
+    L.last = curLine;
+    saveLedger();
+    return curLine;
+  }
+  function renderOrder() {
+    if (!curLine) nextLine();
+    lineEl.innerHTML = ''; bank.innerHTML = '';
+    picked.forEach(function (w, i) {
+      var b = document.createElement('button');
+      b.className = 'wchip'; b.type = 'button'; b.textContent = w.split('#')[0];
+      b.addEventListener('click', function () { picked.splice(i, 1); renderOrder(); });
+      lineEl.appendChild(b);
+    });
+    var pool = curLine.split(' ').map(function (w, i) { return w + '#' + i; });
+    for (var k = pool.length - 1; k > 0; k--) { var j = Math.floor(Math.random() * (k + 1)); var t = pool[k]; pool[k] = pool[j]; pool[j] = t; }
+    pool.forEach(function (key) {
+      if (picked.indexOf(key) !== -1) return;
+      var b = document.createElement('button');
+      b.className = 'wchip'; b.type = 'button'; b.textContent = key.split('#')[0];
+      b.addEventListener('click', function () { picked.push(key); renderOrder(); });
+      bank.appendChild(b);
+    });
+  }
+  function plain(a) { return a.map(function (x) { return x.split('#')[0]; }).join(' '); }
+  document.getElementById('check').addEventListener('click', function () {
+    if (!picked.length) { oMsg.className = 'qmsg warn'; oMsg.textContent = 'Tap some words first.'; return; }
+    if (plain(picked) === curLine) { oMsg.className = 'qmsg good'; oMsg.textContent = 'That is the line.'; }
+    else { oMsg.className = 'qmsg warn'; oMsg.textContent = 'Have another go — tap a word in your line to send it back.'; }
+  });
+  document.getElementById('nextline').addEventListener('click', function () {
+    nextLine(); picked = []; oMsg.textContent = ''; renderOrder();
+  });
+  renderOrder();
+
+  /* your turn: word count + copy (the section may not be on the page) */
+  var ans = document.getElementById('ans'), wc = document.getElementById('wc');
+  var toast = document.getElementById('toast');
+  if (!ans || !wc || !document.getElementById('copy')) { return; }
+  function countWords(s) { var t = s.trim(); return t ? t.split(/\s+/).length : 0; }
+  ans.addEventListener('input', function () { wc.textContent = countWords(ans.value) + ' words'; });
+  document.getElementById('copy').addEventListener('click', function () {
+    var v = ans.value.trim();
+    if (!v) { toast.textContent = 'Write your line first.'; toast.className = 'show'; setTimeout(function () { toast.className = ''; }, 1800); return; }
+    var done2 = function () { toast.textContent = 'Copied — paste it on the video.'; toast.className = 'show'; setTimeout(function () { toast.className = ''; }, 2200); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(v).then(done2, function () { ans.select(); document.execCommand('copy'); done2(); });
+    } else { ans.select(); document.execCommand('copy'); done2(); }
+  });
+})();
+
+</script>
+
+
+</body></html>

@@ -1,6 +1,6 @@
 {
  "start": "2026-11-16T09:14:56.275Z",
- "round": 1,
+ "round": 2,
  "idle": 0,
  "errors": 0,
  "status": "fail",
@@ -11,6 +11,24 @@
    "status": "fail",
    "fails": 90,
    "round": 1,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-16T09:29:32.030Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 12,
+   "round": 2,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-16T09:32:57.175Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 90,
+   "round": 2,
    "reused": false,
    "stopHookActive": false
   }
@@ -28,11 +46,11 @@
   "by": "gate.mjs --start"
  },
  "manual": true,
- "roundKey": "f55e07777947ed9c:da39a3ee",
+ "roundKey": "34d145ec02942407:da39a3ee",
  "roundFree": false,
  "idleFree": false,
  "blockKey": null,
- "fp": "f55e07777947ed9c",
+ "fp": "34d145ec02942407",
  "page": "http://127.0.0.1:8795/index.html",
  "found": {
   "fails": [
@@ -110,8 +128,7 @@
     "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
     "widths": [
-     1440,
-     390
+     1440
     ],
     "from": "consistency",
     "ids": [
@@ -893,7 +910,7 @@
    {
     "check": "button-styles",
     "where": "(the page)",
-    "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"Control\")",
+    "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"translate\")",
     "fix": "one primary and one secondary button: one shape, one height per size, one label size",
     "widths": [
      1440,
@@ -1183,7 +1200,7 @@
    },
    {
     "check": "row-lines",
-    "where": "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\"",
+    "where": "div#pane-match > div.quiz > div.cols \"PricelessFearlessautomatic Having no fea\"",
     "msg": "a row of 2 items: its first item starts at 162px, the container's left line at 129px; its last item ends at 1278px, the container's right line at 1311px (2px either way) (SR-7)",
     "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
     "widths": [
@@ -1194,7 +1211,7 @@
      "row-lines"
     ],
     "wheres": [
-     "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\""
+     "div#pane-match > div.quiz > div.cols \"PricelessFearlessautomatic Having no fea\""
     ]
    },
    {
@@ -1211,6 +1228,22 @@
     ],
     "wheres": [
      "section#hosts > div.wrap > div.grid.hostsrow"
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read the guide afterwards The transcript\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read the guide afterwards The transcript\""
     ]
    },
    {
@@ -1246,41 +1279,25 @@
     ]
    },
    {
-    "check": "card-visual",
-    "where": "div#words \"Reaction impulse buy Courage\"",
-    "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
-    "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
+    "check": "button-styles",
+    "where": "(one screen)",
+    "msg": "3 button styles on one screen: soft, fill #241812 (\"Listen free\"); round, fill #31241f (\"in the long run\"); pill, fill #211b1b (\"NEW SET\"); the odd one out: \"NEW SET\"",
+    "fix": "one primary and one secondary button: one shape, one height per size, one label size",
     "widths": [
      390
     ],
     "from": "consistency",
     "ids": [
-     "card-visual"
+     "button-styles"
     ],
     "wheres": [
-     "div#words \"Reaction impulse buy Courage\""
-    ]
-   },
-   {
-    "check": "card-visual",
-    "where": "div#means \"What you say or do in response to an eve\"",
-    "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
-    "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
-    "widths": [
-     390
-    ],
-    "from": "consistency",
-    "ids": [
-     "card-visual"
-    ],
-    "wheres": [
-     "div#means \"What you say or do in response to an eve\""
+     "(one screen)"
     ]
    },
    {
     "check": "off-grid",
     "where": "section#practice > div.wrap > div.group > div.tabs.reveal \"Match Listen Order Cards\"",
-    "msg": "left edge at 17px, 23px off the page margin at 40px (49 elements); 3 more in this section off the grid too (h2 at 17px, p.sub.reveal at 17px, div#gHud at 17px)",
+    "msg": "left edge at 25px, 15px off the page margin at 40px (49 elements); 4 more in this section off the grid too (h2 at 25px, p.sub.reveal at 25px, div#gHud at 25px, div#pane-match at 25px)",
     "fix": "move it onto the page margin, or the column edge its section uses",
     "widths": [
      390
@@ -1296,7 +1313,7 @@
    {
     "check": "off-grid",
     "where": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\"",
-    "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, h4 at 201px, a at 50px, ...)",
+    "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, a at 50px, a at 50px, ...)",
     "fix": "move it onto the page margin, or the column edge its section uses",
     "widths": [
      390
@@ -1411,7 +1428,7 @@
    {
     "check": "spill",
     "where": "#practice div.group \"Practice Four games Pick a game,\"",
-    "msg": "x 1 to 389, the page runs 40 to 350",
+    "msg": "x 25 to 365, the page runs 40 to 350",
     "fix": "keep it inside the .wrap; nothing past the right edge",
     "widths": [
      390
@@ -1427,7 +1444,7 @@
    {
     "check": "spill",
     "where": "#practice h2 \"Practice\"",
-    "msg": "x 17 to 126.1, the page runs 40 to 350",
+    "msg": "x 25 to 134.1, the page runs 40 to 350",
     "fix": "keep it inside the .wrap; nothing past the right edge",
     "widths": [
      390
@@ -1443,7 +1460,7 @@
    {
     "check": "spill",
     "where": "#practice p.sub.reveal \"Pick a game, then choose a word \"",
-    "msg": "x 17 to 373, the page runs 40 to 350",
+    "msg": "x 25 to 365, the page runs 40 to 350",
     "fix": "keep it inside the .wrap; nothing past the right edge",
     "widths": [
      390
@@ -1459,7 +1476,7 @@
    {
     "check": "spill",
     "where": "#practice p.playmeta.reveal \"New set\"",
-    "msg": "x 17 to 373, the page runs 40 to 350",
+    "msg": "x 25 to 365, the page runs 40 to 350",
     "fix": "keep it inside the .wrap; nothing past the right edge",
     "widths": [
      390
@@ -1491,7 +1508,7 @@
    {
     "check": "screen-height",
     "where": "#episodes section.section \"Start with one of these episodes\"",
-    "msg": "1723px, 2.04 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+    "msg": "1685px, 2.00 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
     "fix": "make the section exactly one or two screens (--h: 1 or 2)",
     "widths": [
      390
@@ -1566,7 +1583,7 @@
    {
     "check": "copy-buttons",
     "where": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Listen free\"",
-    "msg": "\"Listen free\" does not start with a verb (book, buy, try, start, get, see...) (and 4 more like it: \"NEW SET\", \"Control\", \"routine\", \"overwhelmed\")",
+    "msg": "\"Listen free\" does not start with a verb (book, buy, try, start, get, see...) (and 4 more like it: \"NEW SET\", \"translate\", \"validation\", \"overwhelmed\")",
     "fix": "label buttons with a verb and what the visitor gets (\"Book a room\", \"Start free trial\")",
     "widths": [
      1440
@@ -1585,7 +1602,7 @@
    },
    {
     "check": "col-edge",
-    "where": "div#means \"Feeling like things are just too much to\"",
+    "where": "div#means \"To change a word from your home language\"",
     "msg": "the second column starts at 3 places: 725px (section#practice), 732px (section.hero.hero--split, section#inside, section#steps, section#guide), 841px (section#hosts)",
     "fix": "start the second column of every split on the same one or two grid columns",
     "widths": [
@@ -1636,8 +1653,8 @@
    },
    {
     "check": "label-centre",
-    "where": "div#words > button.qitem:nth-of-type(1) \"Control\"",
-    "msg": "its label sits 462px off-centre (16px of room at the left, 478px at the right) (and 2 more like it: \"routine\", \"overwhelmed\")",
+    "where": "div#words > button.qitem:nth-of-type(1) \"translate\"",
+    "msg": "its label sits 451px off-centre (16px of room at the left, 467px at the right) (and 2 more like it: \"validation\", \"overwhelmed\")",
     "fix": "centre the label in its button, or fill the empty side with an icon",
     "widths": [
      1440
@@ -1707,7 +1724,7 @@
    {
     "check": "button-styles",
     "where": "button#playreset \"NEW SET\"",
-    "msg": "on the phone 4 buttons run the full width of their column, but  \"NEW SET\" is 85px of 356px: one action in two sizes",
+    "msg": "on the phone 4 buttons run the full width of their column, but  \"NEW SET\" is 85px of 340px: one action in two sizes",
     "fix": "give every button the same width rule on the phone: all full width, or all at their own width",
     "widths": [
      390
@@ -1725,6 +1742,16 @@
     "from": "consistency"
    },
    {
+    "check": "label-centre",
+    "where": "div#words > button.qitem:nth-of-type(1) \"in the long run\"",
+    "msg": "its label sits 24px off-centre (16px of room at the left, 40px at the right) (and 2 more like it: \"habit\", \"Something you do often a\")",
+    "fix": "centre the label in its button, or fill the empty side with an icon",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
     "check": "copy-number-pair",
     "msg": "number-pair headings \"Four X, one Y\": 2, budget 1",
     "fix": "say what the section holds (\"Recent buildings\") and let the first line carry the claim (references/copy-tells.md)",
@@ -1736,8 +1763,8 @@
   ],
   "crashed": [],
   "seconds": {
-   "consistency": 176,
-   "layout": 8
+   "consistency": 164,
+   "layout": 6
   }
  },
  "open": [
@@ -1815,8 +1842,7 @@
    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
    "widths": [
-    1440,
-    390
+    1440
    ],
    "from": "consistency",
    "ids": [
@@ -2598,7 +2624,7 @@
   {
    "check": "button-styles",
    "where": "(the page)",
-   "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"Control\")",
+   "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"translate\")",
    "fix": "one primary and one secondary button: one shape, one height per size, one label size",
    "widths": [
     1440,
@@ -2888,7 +2914,7 @@
   },
   {
    "check": "row-lines",
-   "where": "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\"",
+   "where": "div#pane-match > div.quiz > div.cols \"PricelessFearlessautomatic Having no fea\"",
    "msg": "a row of 2 items: its first item starts at 162px, the container's left line at 129px; its last item ends at 1278px, the container's right line at 1311px (2px either way) (SR-7)",
    "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
    "widths": [
@@ -2899,7 +2925,7 @@
     "row-lines"
    ],
    "wheres": [
-    "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\""
+    "div#pane-match > div.quiz > div.cols \"PricelessFearlessautomatic Having no fea\""
    ]
   },
   {
@@ -2916,6 +2942,22 @@
    ],
    "wheres": [
     "section#hosts > div.wrap > div.grid.hostsrow"
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read the guide afterwards The transcript\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read the guide afterwards The transcript\""
    ]
   },
   {
@@ -2951,41 +2993,25 @@
    ]
   },
   {
-   "check": "card-visual",
-   "where": "div#words \"Reaction impulse buy Courage\"",
-   "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
-   "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
+   "check": "button-styles",
+   "where": "(one screen)",
+   "msg": "3 button styles on one screen: soft, fill #241812 (\"Listen free\"); round, fill #31241f (\"in the long run\"); pill, fill #211b1b (\"NEW SET\"); the odd one out: \"NEW SET\"",
+   "fix": "one primary and one secondary button: one shape, one height per size, one label size",
    "widths": [
     390
    ],
    "from": "consistency",
    "ids": [
-    "card-visual"
+    "button-styles"
    ],
    "wheres": [
-    "div#words \"Reaction impulse buy Courage\""
-   ]
-  },
-  {
-   "check": "card-visual",
-   "where": "div#means \"What you say or do in response to an eve\"",
-   "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
-   "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
-   "widths": [
-    390
-   ],
-   "from": "consistency",
-   "ids": [
-    "card-visual"
-   ],
-   "wheres": [
-    "div#means \"What you say or do in response to an eve\""
+    "(one screen)"
    ]
   },
   {
    "check": "off-grid",
    "where": "section#practice > div.wrap > div.group > div.tabs.reveal \"Match Listen Order Cards\"",
-   "msg": "left edge at 17px, 23px off the page margin at 40px (49 elements); 3 more in this section off the grid too (h2 at 17px, p.sub.reveal at 17px, div#gHud at 17px)",
+   "msg": "left edge at 25px, 15px off the page margin at 40px (49 elements); 4 more in this section off the grid too (h2 at 25px, p.sub.reveal at 25px, div#gHud at 25px, div#pane-match at 25px)",
    "fix": "move it onto the page margin, or the column edge its section uses",
    "widths": [
     390
@@ -3001,7 +3027,7 @@
   {
    "check": "off-grid",
    "where": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\"",
-   "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, h4 at 201px, a at 50px, ...)",
+   "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, a at 50px, a at 50px, ...)",
    "fix": "move it onto the page margin, or the column edge its section uses",
    "widths": [
     390
@@ -3116,7 +3142,7 @@
   {
    "check": "spill",
    "where": "#practice div.group \"Practice Four games Pick a game,\"",
-   "msg": "x 1 to 389, the page runs 40 to 350",
+   "msg": "x 25 to 365, the page runs 40 to 350",
    "fix": "keep it inside the .wrap; nothing past the right edge",
    "widths": [
     390
@@ -3132,7 +3158,7 @@
   {
    "check": "spill",
    "where": "#practice h2 \"Practice\"",
-   "msg": "x 17 to 126.1, the page runs 40 to 350",
+   "msg": "x 25 to 134.1, the page runs 40 to 350",
    "fix": "keep it inside the .wrap; nothing past the right edge",
    "widths": [
     390
@@ -3148,7 +3174,7 @@
   {
    "check": "spill",
    "where": "#practice p.sub.reveal \"Pick a game, then choose a word \"",
-   "msg": "x 17 to 373, the page runs 40 to 350",
+   "msg": "x 25 to 365, the page runs 40 to 350",
    "fix": "keep it inside the .wrap; nothing past the right edge",
    "widths": [
     390
@@ -3164,7 +3190,7 @@
   {
    "check": "spill",
    "where": "#practice p.playmeta.reveal \"New set\"",
-   "msg": "x 17 to 373, the page runs 40 to 350",
+   "msg": "x 25 to 365, the page runs 40 to 350",
    "fix": "keep it inside the .wrap; nothing past the right edge",
    "widths": [
     390
@@ -3196,7 +3222,7 @@
   {
    "check": "screen-height",
    "where": "#episodes section.section \"Start with one of these episodes\"",
-   "msg": "1723px, 2.04 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+   "msg": "1685px, 2.00 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
    "fix": "make the section exactly one or two screens (--h: 1 or 2)",
    "widths": [
     390
@@ -3227,6 +3253,6 @@
   }
  ],
  "waived": [],
- "warnCount": 21,
- "at": "2026-11-16T09:18:00.671Z"
+ "warnCount": 22,
+ "at": "2026-11-16T09:32:57.176Z"
 }

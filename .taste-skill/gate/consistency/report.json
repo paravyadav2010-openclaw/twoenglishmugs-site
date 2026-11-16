@@ -1,7 +1,7 @@
 {
  "page": "http://127.0.0.1:8795/index.html",
  "url": "http://127.0.0.1:8795/index.html",
- "at": "2026-11-16T09:14:57.806Z",
+ "at": "2026-11-16T09:30:07.783Z",
  "out": "/Users/ailaunchpad/workspace/tem-site/.taste-skill/gate/consistency",
  "widths": [
   {
@@ -527,7 +527,7 @@
      "sel": "(the page)",
      "text": "",
      "stop": 3,
-     "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"Control\")",
+     "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"translate\")",
      "crop": "1440-25-button-styles.jpg",
      "fix": "one primary and one secondary button: one shape, one height per size, one label size"
     },
@@ -645,7 +645,7 @@
      "sev": "WARN",
      "sel": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary",
      "text": "Listen free",
-     "msg": "\"Listen free\" does not start with a verb (book, buy, try, start, get, see...) (and 4 more like it: \"NEW SET\", \"Control\", \"routine\", \"overwhelmed\")",
+     "msg": "\"Listen free\" does not start with a verb (book, buy, try, start, get, see...) (and 4 more like it: \"NEW SET\", \"translate\", \"validation\", \"overwhelmed\")",
      "stop": 0,
      "crop": "1440-04-copy-buttons.jpg",
      "fix": "label buttons with a verb and what the visitor gets (\"Book a room\", \"Start free trial\")"
@@ -664,7 +664,7 @@
      "check": "col-edge",
      "sev": "WARN",
      "sel": "div#means",
-     "text": "Feeling like things are just too much to handle.",
+     "text": "To change a word from your home language into En",
      "msg": "the second column starts at 3 places: 725px (section#practice), 732px (section.hero.hero--split, section#inside, section#steps, section#guide), 841px (section#hosts)",
      "stop": 4,
      "crop": "1440-31-col-edge.jpg",
@@ -714,8 +714,8 @@
      "check": "label-centre",
      "sev": "WARN",
      "sel": "div#words > button.qitem:nth-of-type(1)",
-     "text": "Control",
-     "msg": "its label sits 462px off-centre (16px of room at the left, 478px at the right) (and 2 more like it: \"routine\", \"overwhelmed\")",
+     "text": "translate",
+     "msg": "its label sits 451px off-centre (16px of room at the left, 467px at the right) (and 2 more like it: \"validation\", \"overwhelmed\")",
      "stop": 4,
      "crop": "1440-32-label-centre.jpg",
      "fix": "centre the label in its button, or fill the empty side with an icon"
@@ -866,7 +866,7 @@
      "check": "row-lines",
      "sev": "FAIL",
      "sel": "div#pane-match > div.quiz > div.cols",
-     "text": "expectationautomaticvoice Doing somethin",
+     "text": "PricelessFearlessautomatic Having no fea",
      "msg": "a row of 2 items: its first item starts at 162px, the container's left line at 129px; its last item ends at 1278px, the container's right line at 1311px (2px either way) (SR-7)",
      "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
      "rule": "SR-7 T-rows",
@@ -934,21 +934,11 @@
     {
      "check": "scroll-reveal",
      "sev": "FAIL",
-     "sel": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3)",
-     "text": "Read it in writing The free study guide holds th",
-     "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
-     "stop": 1,
-     "crop": "390-08-scroll-reveal.jpg",
-     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
-    },
-    {
-     "check": "scroll-reveal",
-     "sev": "FAIL",
      "sel": "section#inside > div.wrap.grid > div.span-6.start-7 > div.vecpanel",
      "text": "",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 2,
-     "crop": "390-09-scroll-reveal.jpg",
+     "crop": "390-08-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -958,7 +948,7 @@
      "text": "Start with one of these episodes. Six to start w",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 2,
-     "crop": "390-10-scroll-reveal.jpg",
+     "crop": "390-09-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -968,7 +958,7 @@
      "text": "EPISODE 40 Negative Self-Talk: One Tiny Mistake ",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 3,
-     "crop": "390-12-scroll-reveal.jpg",
+     "crop": "390-11-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -978,7 +968,7 @@
      "text": "EPISODE 39 People Who See What Others Miss 22 mi",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 3,
-     "crop": "390-13-scroll-reveal.jpg",
+     "crop": "390-12-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -988,7 +978,7 @@
      "text": "EPISODE 38 How To Be Happy With What You Have 19",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 3,
-     "crop": "390-14-scroll-reveal.jpg",
+     "crop": "390-13-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -998,7 +988,7 @@
      "text": "EPISODE 37 Why Your Mind Won’t Shut Up at Night ",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 4,
-     "crop": "390-18-scroll-reveal.jpg",
+     "crop": "390-17-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1008,7 +998,7 @@
      "text": "EPISODE 36 Time Management, Made Simple 26 min ·",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 4,
-     "crop": "390-19-scroll-reveal.jpg",
+     "crop": "390-18-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1018,7 +1008,7 @@
      "text": "EPISODE 35 Forget a Word? Speak With Confidence ",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 4,
-     "crop": "390-20-scroll-reveal.jpg",
+     "crop": "390-19-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1028,7 +1018,7 @@
      "text": "Tap a word, then its meaning. Three pairs — righ",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 5,
-     "crop": "390-21-scroll-reveal.jpg",
+     "crop": "390-20-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1038,27 +1028,7 @@
      "text": "Every guide so far. Tap an episode, its PDF come",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 6,
-     "crop": "390-26-scroll-reveal.jpg",
-     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
-    },
-    {
-     "check": "scroll-reveal",
-     "sev": "FAIL",
-     "sel": "section#guides > div.wrap > ul.gl > li:nth-of-type(1)",
-     "text": "Episode 40 Negative Self-Talk: One Tiny Mistake ",
-     "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
-     "stop": 6,
      "crop": "390-27-scroll-reveal.jpg",
-     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
-    },
-    {
-     "check": "scroll-reveal",
-     "sev": "FAIL",
-     "sel": "section#guides > div.wrap > ul.gl > li:nth-of-type(2)",
-     "text": "Episode 39 People Who See What Others Miss ↓",
-     "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
-     "stop": 7,
-     "crop": "390-30-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1067,8 +1037,8 @@
      "sel": "section#guides > div.wrap > ul.gl > li:nth-of-type(3)",
      "text": "Episode 38 How To Be Happy With What You Have ↓",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
-     "stop": 7,
-     "crop": "390-31-scroll-reveal.jpg",
+     "stop": 6,
+     "crop": "390-28-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1099,6 +1069,16 @@
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
      "stop": 7,
      "crop": "390-34-scroll-reveal.jpg",
+     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
+    },
+    {
+     "check": "scroll-reveal",
+     "sev": "FAIL",
+     "sel": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3)",
+     "text": "Read the guide afterwards The transcript shows t",
+     "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+     "stop": 8,
+     "crop": "390-36-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1157,7 +1137,7 @@
      "sel": "section#hosts > div.wrap > div.grid.hostsrow > div.span-5:nth-of-type(1)",
      "text": "",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
-     "stop": 10,
+     "stop": 9,
      "crop": "390-42-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
@@ -1187,7 +1167,7 @@
      "sel": "div.wrap.grid > div.span-6:nth-of-type(1) > div.section-head > p",
      "text": "Every episode has its own guide: the full transc",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
-     "stop": 11,
+     "stop": 10,
      "crop": "390-45-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
@@ -1227,8 +1207,8 @@
      "sel": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(4)",
      "text": "Where do I start? Anywhere. Episode 40 is the ne",
      "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
-     "stop": 12,
-     "crop": "390-51-scroll-reveal.jpg",
+     "stop": 11,
+     "crop": "390-49-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
@@ -1252,6 +1232,26 @@
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
+     "check": "scroll-reveal",
+     "sev": "FAIL",
+     "sel": "section#guides > div.wrap > ul.gl > li:nth-of-type(1)",
+     "text": "Episode 40 Negative Self-Talk: One Tiny Mistake ",
+     "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+     "stop": 6,
+     "crop": "390-29-scroll-reveal.jpg",
+     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
+    },
+    {
+     "check": "scroll-reveal",
+     "sev": "FAIL",
+     "sel": "section#guides > div.wrap > ul.gl > li:nth-of-type(2)",
+     "text": "Episode 39 People Who See What Others Miss ↓",
+     "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+     "stop": 6,
+     "crop": "390-30-scroll-reveal.jpg",
+     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
+    },
+    {
      "check": "no-visual",
      "sev": "FAIL",
      "sel": "main#top > section.hero.hero--split",
@@ -1268,7 +1268,7 @@
      "text": "Start with one of these episodes. Six to start w",
      "msg": "no picture, effect or mock in this section; a feature section needs a visual",
      "stop": 3,
-     "crop": "390-15-no-visual.jpg",
+     "crop": "390-14-no-visual.jpg",
      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits"
     },
     {
@@ -1277,8 +1277,8 @@
      "sel": "section#guides",
      "text": "Every guide so far. Tap an episode, its PDF come",
      "msg": "no picture, effect or mock in this section; a feature section needs a visual",
-     "stop": 7,
-     "crop": "390-35-no-visual.jpg",
+     "stop": 6,
+     "crop": "390-31-no-visual.jpg",
      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits"
     },
     {
@@ -1288,28 +1288,8 @@
      "text": "The words, in writing. A free study guide for ev",
      "msg": "no picture, effect or mock in this section; a feature section needs a visual",
      "stop": 11,
-     "crop": "390-49-no-visual.jpg",
+     "crop": "390-50-no-visual.jpg",
      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits"
-    },
-    {
-     "check": "card-visual",
-     "sev": "FAIL",
-     "sel": "div#words",
-     "text": "Reaction impulse buy Courage",
-     "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
-     "stop": 6,
-     "crop": "390-28-card-visual.jpg",
-     "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons"
-    },
-    {
-     "check": "card-visual",
-     "sev": "FAIL",
-     "sel": "div#means",
-     "text": "What you say or do in response to an event or st",
-     "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
-     "stop": 6,
-     "crop": "390-29-card-visual.jpg",
-     "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons"
     },
     {
      "check": "card-family",
@@ -1318,8 +1298,18 @@
      "text": "Do I need to be exactly B1?",
      "msg": "7 cards of one kind (.span-6) set their titles in 2 faces: figtree (1, like \"Do I need to be exactly \"), fraunces (3, like \"One episode, three ways \")",
      "stop": 11,
-     "crop": "390-50-card-family.jpg",
+     "crop": "390-51-card-family.jpg",
      "fix": "draw one card part one way: one fill and one title face for every card of a kind (one featured card may differ)"
+    },
+    {
+     "check": "button-styles",
+     "sev": "FAIL",
+     "sel": "(one screen)",
+     "text": "",
+     "stop": 5,
+     "msg": "3 button styles on one screen: soft, fill #241812 (\"Listen free\"); round, fill #31241f (\"in the long run\"); pill, fill #211b1b (\"NEW SET\"); the odd one out: \"NEW SET\"",
+     "crop": "390-21-button-styles.jpg",
+     "fix": "one primary and one secondary button: one shape, one height per size, one label size"
     },
     {
      "check": "button-styles",
@@ -1327,7 +1317,7 @@
      "sel": "(the page)",
      "text": "",
      "stop": 0,
-     "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); soft, fill gradient x1 (\"Try the practice\"); pill, fill #211b1b x1 (\"NEW SET\")",
+     "msg": "4 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); soft, fill gradient x1 (\"Try the practice\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x4 (\"in the long run\")",
      "crop": "390-02-button-styles.jpg",
      "fix": "one primary and one secondary button: one shape, one height per size, one label size"
     },
@@ -1337,7 +1327,7 @@
      "sel": "section#practice > div.wrap > div.group > div.tabs.reveal",
      "text": "Match Listen Order Cards",
      "stop": 5,
-     "msg": "left edge at 17px, 23px off the page margin at 40px (49 elements); 3 more in this section off the grid too (h2 at 17px, p.sub.reveal at 17px, div#gHud at 17px)",
+     "msg": "left edge at 25px, 15px off the page margin at 40px (49 elements); 4 more in this section off the grid too (h2 at 25px, p.sub.reveal at 25px, div#gHud at 25px, div#pane-match at 25px)",
      "crop": "390-22-off-grid.jpg",
      "fix": "move it onto the page margin, or the column edge its section uses"
     },
@@ -1347,7 +1337,7 @@
      "sel": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary",
      "text": "Listen free",
      "stop": 12,
-     "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, h4 at 201px, a at 50px, ...)",
+     "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, a at 50px, a at 50px, ...)",
      "crop": "390-54-off-grid.jpg",
      "fix": "move it onto the page margin, or the column edge its section uses"
     },
@@ -1358,7 +1348,7 @@
      "text": "EPISODE 40",
      "stop": 2,
      "msg": "a caption, label or muted line in #e75d4e on #f3e7d8 reads 2.84:1 (needs 4.5:1); 4 like it, like \"EPISODE 38\", \"EPISODE 37\", \"EPISODE 35\"",
-     "crop": "390-11-text-contrast.jpg",
+     "crop": "390-10-text-contrast.jpg",
      "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels"
     },
     {
@@ -1368,7 +1358,7 @@
      "text": "EPISODE 39",
      "stop": 3,
      "msg": "a caption, label or muted line in #e75d4e on #fbe3dc reads 2.82:1 (needs 4.5:1); 2 like it, like \"EPISODE 36\"",
-     "crop": "390-16-text-contrast.jpg",
+     "crop": "390-15-text-contrast.jpg",
      "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels"
     },
     {
@@ -1378,7 +1368,7 @@
      "text": "",
      "stop": 7,
      "msg": "347px between these sections, +144% against the median 142px",
-     "crop": "390-36-section-gaps.jpg",
+     "crop": "390-35-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
@@ -1398,7 +1388,7 @@
      "text": "People Who See What Others Miss",
      "msg": "a 276x22px tap target: under the 44px a phone needs",
      "stop": 3,
-     "crop": "390-17-tap-size.jpg",
+     "crop": "390-16-tap-size.jpg",
      "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box"
     },
     {
@@ -1406,7 +1396,7 @@
      "sev": "WARN",
      "sel": "button#playreset",
      "text": "NEW SET",
-     "msg": "on the phone 4 buttons run the full width of their column, but  \"NEW SET\" is 85px of 356px: one action in two sizes",
+     "msg": "on the phone 4 buttons run the full width of their column, but  \"NEW SET\" is 85px of 340px: one action in two sizes",
      "fix": "give every button the same width rule on the phone: all full width, or all at their own width",
      "stop": 5,
      "crop": "390-23-button-styles.jpg"
@@ -1427,7 +1417,7 @@
      "sel": "section#episodes / section#practice",
      "text": "",
      "stop": 5,
-     "msg": "203px between these sections, +43% against the median 142px",
+     "msg": "187px between these sections, +32% against the median 142px",
      "crop": "390-25-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
@@ -1440,6 +1430,16 @@
      "stop": 0,
      "crop": "390-04-hole.jpg",
      "fix": "close the empty space: move the content together, or give the space the visual it lacks"
+    },
+    {
+     "check": "label-centre",
+     "sev": "WARN",
+     "sel": "div#words > button.qitem:nth-of-type(1)",
+     "text": "in the long run",
+     "msg": "its label sits 24px off-centre (16px of room at the left, 40px at the right) (and 2 more like it: \"habit\", \"Something you do often a\")",
+     "stop": 5,
+     "crop": "390-26-label-centre.jpg",
+     "fix": "centre the label in its button, or fill the empty side with an icon"
     }
    ],
    "glAsked": 0
@@ -1479,8 +1479,8 @@
   "findings": []
  },
  "counts": {
-  "FAIL": 120,
-  "WARN": 23
+  "FAIL": 119,
+  "WARN": 24
  },
  "checks": {
   "assets": "PASS",
@@ -1515,7 +1515,7 @@
   "webgl": "PASS",
   "no-visual": "FAIL",
   "text-only": "PASS",
-  "card-visual": "FAIL",
+  "card-visual": "PASS",
   "hidden-visual": "not checked",
   "card-family": "FAIL",
   "card-layout": "PASS",
