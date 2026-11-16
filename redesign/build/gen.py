@@ -497,7 +497,23 @@ OVERRIDES = '''
 #practice .pane { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-6); }
 @media (max-width: 639px) { #practice .pane { padding: var(--s-4); } }
 #practice .quiz, #practice .game { background: transparent !important; border: 0 !important; padding: 0 !important; border-radius: 0 !important; }
-#practice .hud { display: flex; align-items: center; gap: var(--s-5); padding: 0; background: none; border: 0; }
+#practice .hud { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-4);
+  padding: 0; background: none; border: 0; }
+/* nothing in the progress line may run off a phone: it wraps instead of clipping */
+#practice .hud > * { min-width: 0; }
+#practice .hudright { margin-left: 0; }
+#practice .chip2 { white-space: nowrap; }
+@media (max-width: 639px) {
+  #practice .hud { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+  #practice .grow2 { grid-column: 1 / -1; order: 3; max-width: none; }
+  #practice .hudright { display: flex; gap: var(--s-2); margin: 0; }
+  #practice .lvlrow { font-size: 12.5px; }
+}
+/* the pill row: one shape, no dark plate behind it */
+#practice .tabs { position: relative; background: none !important; border: 0 !important; padding: 0 !important; }
+#practice .tab, #practice .tab[aria-selected="true"] { border-radius: 999px !important; }
+#practice .tab { background: transparent; box-shadow: none; }
+#practice .tab-ind { display: none !important; }
 #practice .chip2 { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: var(--t-small); }
 #practice .grow2 { flex: 1 1 auto; min-width: 160px; }
 #practice .lvlrow { font-size: var(--t-small); }
