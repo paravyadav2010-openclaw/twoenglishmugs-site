@@ -308,7 +308,8 @@ html:not(.anim-ready) .hero__media { transform: none !important; }
   .vecpanel { height: auto; aspect-ratio: 3 / 2; }
   .hostsrow { grid-template-columns: 1fr 1fr; gap: var(--s-4); }
   #episodes .grid { row-gap: var(--s-4); }
-  #guide .vecpanel { display: none; }
+  /* a phone keeps the visual, at a wide crop so the section does not grow another screen */
+  #guide .vecpanel { display: block; height: auto; max-height: none; aspect-ratio: 21 / 9; margin-top: var(--s-5); }
   .rows li { padding-block: var(--s-4); }
 }
 #practice .ptag svg { width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -353,6 +354,8 @@ html:not(.anim-ready) .hero__media { transform: none !important; }
 .vecpanel { background: var(--p-surface); border-radius: var(--r-lg); overflow: hidden;
   height: min(560px, var(--ly-fit)); display: flex; align-items: center; justify-content: center; }
 .vecpanel svg { width: 100%; height: 100%; display: block; }
+/* the guide panel is the only one in a tall two-column row: cap it so the section stays one screen */
+#guide .vecpanel { max-height: 420px; }
 @media (max-width: 1023px) { .vecpanel { height: auto; aspect-ratio: 4 / 5; margin-top: var(--s-6); } }
 .hosts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6); }
 .hosts figure { margin: 0; }
@@ -514,14 +517,14 @@ BODY = '''<body>
         <div class="btn-row">
           <a class="btn btn--primary" href="https://dl.twoenglishmugs.com/ep40-negative-self-talk">Get the episode 40 guide</a>
         </div>
-        <div class="vecpanel" style="height:220px;margin-top:var(--s-7)">''' + SVG_GUIDE + '''</div>
+        <div class="vecpanel">''' + SVG_GUIDE + '''</div>
       </div>
       <div class="span-6 start-7">
         <div class="faq">
           <div class="faq__item"><h3>Do I need to be exactly B1?</h3><p>No. If you can follow a slow conversation and lose a few words, you are in the right place. Emma explains the hard words as they come.</p></div>
           <div class="faq__item"><h3>How long is an episode?</h3><p>Between nineteen and thirty-one minutes. Most sit around twenty-two.</p></div>
           <div class="faq__item"><h3>Is it really free?</h3><p>Yes. Every episode is free on YouTube, and the study guide is free with an email.</p></div>
-          <div class="faq__item"><h3>Where do I start?</h3><p>Anywhere. Episode 40 is the newest, and the nine listed above are the ones people open first.</p></div>
+          <div class="faq__item"><h3>Where do I start?</h3><p>Anywhere. Start with Episode 40, or pick any title that sounds like your week.</p></div>
         </div>
       </div>
     </div>

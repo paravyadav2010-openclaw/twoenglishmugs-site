@@ -91,9 +91,9 @@
     for (var i = 0; i < driftRows.length; i++) {
       var o = driftRows[i];
       var d = mid - (o.top + o.h / 2);
-      var tx = d * 0.05 * o.sign;
-      if (tx > 14) tx = 14;
-      if (tx < -14) tx = -14;
+      var tx = d * 0.03 * o.sign;
+      if (tx > 8) tx = 8;
+      if (tx < -8) tx = -8;
       tx = Math.round(tx * 10) / 10;
       if (tx === o.last) continue;
       o.last = tx;
