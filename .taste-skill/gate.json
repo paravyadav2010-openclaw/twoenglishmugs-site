@@ -1,0 +1,3232 @@
+{
+ "start": "2026-11-16T09:14:56.275Z",
+ "round": 1,
+ "idle": 0,
+ "errors": 0,
+ "status": "fail",
+ "history": [
+  {
+   "at": "2026-11-16T09:18:00.667Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 90,
+   "round": 1,
+   "reused": false,
+   "stopHookActive": false
+  }
+ ],
+ "max": 3,
+ "marker": {
+  "page": null,
+  "url": "http://127.0.0.1:8795/index.html",
+  "root": null,
+  "kind": "service",
+  "category": null,
+  "primary": null,
+  "rounds": 3,
+  "start": "2026-11-16T09:14:56.275Z",
+  "by": "gate.mjs --start"
+ },
+ "manual": true,
+ "roundKey": "f55e07777947ed9c:da39a3ee",
+ "roundFree": false,
+ "idleFree": false,
+ "blockKey": null,
+ "fp": "f55e07777947ed9c",
+ "page": "http://127.0.0.1:8795/index.html",
+ "found": {
+  "fails": [
+   {
+    "check": "scroll-reveal",
+    "where": "h2#inside-h \"One episode, three ways in. Twenty minut\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "h2#inside-h \"One episode, three ways in. Twenty minut\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(1) \"Listen to the story A whole episode, spo\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(1) \"Listen to the story A whole episode, spo\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(2) \"Play with the words Four games on the vo\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(2) \"Play with the words Four games on the vo\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#inside > div.wrap.grid > div.span-6.start-7 > div.vecpanel",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#inside > div.wrap.grid > div.span-6.start-7 > div.vecpanel"
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read it in writing The free study guide \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read it in writing The free study guide \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "h2#episodes-h \"Start with one of these episodes. Six to\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "h2#episodes-h \"Start with one of these episodes. Six to\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 40 Negative Self-Talk: One Tiny \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 40 Negative Self-Talk: One Tiny \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 39 People Who See What Others Mi\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 39 People Who See What Others Mi\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 38 How To Be Happy With What You\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 38 How To Be Happy With What You\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 37 Why Your Mind Won’t Shut Up a\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 37 Why Your Mind Won’t Shut Up a\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 36 Time Management, Made Simple \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 36 Time Management, Made Simple \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 35 Forget a Word? Speak With Con\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 35 Forget a Word? Speak With Con\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "h2#guides-h \"Every guide so far. Tap an episode, its \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "h2#guides-h \"Every guide so far. Tap an episode, its \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(1) \"Episode 40 Negative Self-Talk: One Tiny \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(1) \"Episode 40 Negative Self-Talk: One Tiny \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(2) \"Episode 39 People Who See What Others Mi\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(2) \"Episode 39 People Who See What Others Mi\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(3) \"Episode 38 How To Be Happy With What You\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(3) \"Episode 38 How To Be Happy With What You\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(4) \"Episode 37 Why Your Mind Won’t Shut Up a\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(4) \"Episode 37 Why Your Mind Won’t Shut Up a\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(5) \"Episode 36 Time Management, Made Simple \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(5) \"Episode 36 Time Management, Made Simple \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(6) \"Episode 35 Forget a Word? Speak With Con\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(6) \"Episode 35 Forget a Word? Speak With Con\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(7) \"Episode 32 Why You Never Finish Anything\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(7) \"Episode 32 Why You Never Finish Anything\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(8) \"Episode 31 Stop Waiting for the Perfect \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(8) \"Episode 31 Stop Waiting for the Perfect \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(9) \"Episode 30 Stop Being Afraid to Speak En\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(9) \"Episode 30 Stop Being Afraid to Speak En\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(10) \"Episode 29 Think in English, Don't Trans\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(10) \"Episode 29 Think in English, Don't Trans\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(11) \"Episode 28 Stop Putting Words in the Wro\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(11) \"Episode 28 Stop Putting Words in the Wro\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(12) \"Episode 27 The Power of Silence ↓\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(12) \"Episode 27 The Power of Silence ↓\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(13) \"Episode 26 Train Your Ears For Real Engl\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(13) \"Episode 26 Train Your Ears For Real Engl\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(14) \"Episode 25 Stop Studying Grammar, Just L\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(14) \"Episode 25 Stop Studying Grammar, Just L\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(15) \"Episode 24 Food Words You Use Every Day \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(15) \"Episode 24 Food Words You Use Every Day \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(16) \"Episode 23 How To Stay Motivated ↓\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(16) \"Episode 23 How To Stay Motivated ↓\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(17) \"Episode 22 Money, and What It Does To Us\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guides > div.wrap > ul.gl > li:nth-of-type(17) \"Episode 22 Money, and What It Does To Us\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "h2#steps-h \"Four steps, one episode. No app, no acco\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "h2#steps-h \"Four steps, one episode. No app, no acco\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(4) \"Say one line out loud One sentence from \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(4) \"Say one line out loud One sentence from \""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#steps > div.wrap.grid > div.span-6.start-7 > div.vecpanel \"1 2 3 4\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#steps > div.wrap.grid > div.span-6.start-7 > div.vecpanel \"1 2 3 4\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "h2#hosts-h \"Emma teaches, Josh learns. You sit besid\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "h2#hosts-h \"Emma teaches, Josh learns. You sit besid\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the host She explains every hard w\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the host She explains every hard w\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learner He tries each line out\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learner He tries each line out\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#hosts > div.wrap > div.grid.hostsrow > div.span-5:nth-of-type(1)",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#hosts > div.wrap > div.grid.hostsrow > div.span-5:nth-of-type(1)"
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#hosts > div.wrap > div.grid.hostsrow > div.span-5.start-8",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#hosts > div.wrap > div.grid.hostsrow > div.span-5.start-8"
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "h2#guide-h \"The words, in writing. A free study guid\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "h2#guide-h \"The words, in writing. A free study guid\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6:nth-of-type(1) > div.section-head > p \"Every episode has its own guide: the ful\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6:nth-of-type(1) > div.section-head > p \"Every episode has its own guide: the ful\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(1) \"Do I need to be exactly B1? No. If you c\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(1) \"Do I need to be exactly B1? No. If you c\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(2) \"How long is an episode? Between nineteen\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(2) \"How long is an episode? Between nineteen\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(3) \"Is it really free? Yes. Every episode is\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(3) \"Is it really free? Yes. Every episode is\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#guide > div.wrap.grid > div.span-6:nth-of-type(1) > div.vecpanel",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#guide > div.wrap.grid > div.span-6:nth-of-type(1) > div.vecpanel"
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(4) \"Where do I start? Anywhere. Episode 40 i\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(4) \"Where do I start? Anywhere. Episode 40 i\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "h2#close-h \"Listen free on YouTube\"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "h2#close-h \"Listen free on YouTube\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "div.wrap > div.closing__cta.close--type > div.section-head > p \"Forty episodes, twenty minutes each, no \"",
+    "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "div.wrap > div.closing__cta.close--type > div.section-head > p \"Forty episodes, twenty minutes each, no \""
+    ]
+   },
+   {
+    "check": "no-visual",
+    "where": "section#episodes \"Start with one of these episodes. Six to\"",
+    "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "no-visual"
+    ],
+    "wheres": [
+     "section#episodes \"Start with one of these episodes. Six to\""
+    ]
+   },
+   {
+    "check": "no-visual",
+    "where": "section#guides \"Every guide so far. Tap an episode, its \"",
+    "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "no-visual"
+    ],
+    "wheres": [
+     "section#guides \"Every guide so far. Tap an episode, its \""
+    ]
+   },
+   {
+    "check": "card-family",
+    "where": "section#guide > div.wrap.grid > div.span-6.start-7 \"Do I need to be exactly B1?\"",
+    "msg": "7 cards of one kind (.span-6) set their titles in 2 faces: figtree (1, like \"Do I need to be exactly \"), fraunces (3, like \"One episode, three ways \")",
+    "fix": "draw one card part one way: one fill and one title face for every card of a kind (one featured card may differ)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "card-family"
+    ],
+    "wheres": [
+     "section#guide > div.wrap.grid > div.span-6.start-7 \"Do I need to be exactly B1?\""
+    ]
+   },
+   {
+    "check": "button-styles",
+    "where": "(the page)",
+    "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"Control\")",
+    "fix": "one primary and one secondary button: one shape, one height per size, one label size",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "button-styles"
+    ],
+    "wheres": [
+     "(the page)"
+    ]
+   },
+   {
+    "check": "button-styles",
+    "where": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\"",
+    "msg": "one button style (soft, fill #241812) in 2 heights: 44, 83px (\"Listen free\" 83px, \"Listen free\" 44px)",
+    "fix": "one primary and one secondary button: one shape, one height per size, one label size",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "button-styles"
+    ],
+    "wheres": [
+     "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\""
+    ]
+   },
+   {
+    "check": "same-action",
+    "where": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Listen free\"",
+    "msg": "\"Listen free\" appears 3 times in different looks: 44px and 83px tall, labels at 15px and 32px",
+    "fix": "draw one action the same way everywhere (only the nav copy may be one size smaller)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "same-action"
+    ],
+    "wheres": [
+     "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Listen free\""
+    ]
+   },
+   {
+    "check": "copy-headings",
+    "where": "div.wrap > div.group > div.phead.reveal > h2 \"Practice\"",
+    "msg": "\"Practice\" names no product, part, place or section (2 headings like it; at most one brand line per page) (and 1 more like it: \"Where do I start?\")",
+    "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "copy-headings"
+    ],
+    "wheres": [
+     "div.wrap > div.group > div.phead.reveal > h2 \"Practice\""
+    ]
+   },
+   {
+    "check": "text-contrast",
+    "where": "div.group > div.grid > article.card.card--open:nth-of-type(1) > p.t-label \"EPISODE 40\"",
+    "msg": "a caption, label or muted line in #e75d4e on #f3e7d8 reads 2.84:1 (needs 4.5:1); 4 like it, like \"EPISODE 38\", \"EPISODE 37\", \"EPISODE 35\"",
+    "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "text-contrast"
+    ],
+    "wheres": [
+     "div.group > div.grid > article.card.card--open:nth-of-type(1) > p.t-label \"EPISODE 40\""
+    ]
+   },
+   {
+    "check": "text-contrast",
+    "where": "div.group > div.grid > article.card.card--open:nth-of-type(2) > p.t-label \"EPISODE 39\"",
+    "msg": "a caption, label or muted line in #e75d4e on #fbe3dc reads 2.82:1 (needs 4.5:1); 2 like it, like \"EPISODE 36\"",
+    "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "text-contrast"
+    ],
+    "wheres": [
+     "div.group > div.grid > article.card.card--open:nth-of-type(2) > p.t-label \"EPISODE 39\""
+    ]
+   },
+   {
+    "check": "hole",
+    "where": "section.hero.hero--split > div.wrap > div.hero-text.grid > div.hero__media.span-6 \"Newest 21 min Episode 40: Negative Self-\"",
+    "msg": "an empty band 350px tall across the card (50% of its height), with content above and below it",
+    "fix": "close the empty space: move the content together, or give the space the visual it lacks",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "hole"
+    ],
+    "wheres": [
+     "section.hero.hero--split > div.wrap > div.hero-text.grid > div.hero__media.span-6 \"Newest 21 min Episode 40: Negative Self-\""
+    ]
+   },
+   {
+    "check": "focus-visible",
+    "where": "div.wrap.grid > div.span-6:nth-of-type(1) > p > a.link \"See every episode on YouTube\"",
+    "msg": "Tab stop 10, a \"See every episode on YouTube\": the focus lands on something you cannot see",
+    "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "focus-visible"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.span-6:nth-of-type(1) > p > a.link \"See every episode on YouTube\""
+    ]
+   },
+   {
+    "check": "moment-none",
+    "where": "(the page)",
+    "msg": "a service page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+    "fix": "deal one (moments.mjs pick --page service --photo) and mount it in its own section",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "moment-none"
+    ],
+    "wheres": [
+     "(the page)"
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "section#guides \"Every guide so far. Tap an episode, its \"",
+    "msg": "the section starts at 3664px, 64px below the screen grid (4 x 900px): sections start on whole screens (SR-2)",
+    "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height"
+    ],
+    "wheres": [
+     "section#guides \"Every guide so far. Tap an episode, its \""
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "section#steps \"Four steps, one episode. No app, no acco\"",
+    "msg": "the section starts at 4564px, 64px below the screen grid (5 x 900px): sections start on whole screens (SR-2)",
+    "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height"
+    ],
+    "wheres": [
+     "section#steps \"Four steps, one episode. No app, no acco\""
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "section#hosts \"Emma teaches, Josh learns. You sit besid\"",
+    "msg": "the section starts at 5464px, 64px below the screen grid (6 x 900px): sections start on whole screens (and 3 more like it: \"The words, in writing. A\", \"Listen free on YouTube F\", \"Practice Four games Pick\") (SR-2)",
+    "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height"
+    ],
+    "wheres": [
+     "section#hosts \"Emma teaches, Josh learns. You sit besid\""
+    ]
+   },
+   {
+    "check": "one-section",
+    "where": "div#pane-match \"Tap a word, then its meaning. Three pair\"",
+    "msg": "a band: a box 82% of the section wide on a ground of its own that holds only text: the section's own ground is the band (SR-4)",
+    "fix": "put every block of <main> in a <section>, and give a band its own section instead of a ground inside one",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "one-section"
+    ],
+    "wheres": [
+     "div#pane-match \"Tap a word, then its meaning. Three pair\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "section#practice \"Practice Four games Pick a game, then ch\"",
+    "msg": "the content of section 4 runs 129px from the left and 129px from the right: the page's container starts at 80px; the margin is 64-120px at 1440px (one container, equal margins, 2px either way) (SR-6)",
+    "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "section#practice \"Practice Four games Pick a game, then ch\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "section#practice > div.wrap > div.group > p.playmeta.reveal \"New set\"",
+    "msg": "1 text block starts on a left line at x 1177, 1097px from the container's left: text starts on the container's left, or on one split line (x 623, 732, 841) (SR-6)",
+    "fix": "start the text on the container's left, or on the one split line every split shares",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "section#practice > div.wrap > div.group > p.playmeta.reveal \"New set\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\"",
+    "msg": "2 text blocks start on a left line at x 113, 33px from the container's left: text starts on the container's left, or on one split line (x 623, 732, 841) (also \"Set 1 — pick a word, then its me\") (SR-6)",
+    "fix": "start the text on the container's left, or on the one split line every split shares",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the hostShe explains every hard wo\"",
+    "msg": "a box over half the container wide runs 80-818px, not on the container's lines at 80-1360px (SR-6)",
+    "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the hostShe explains every hard wo\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learnerHe tries each line out \"",
+    "msg": "a box over half the container wide runs 80-818px, not on the container's lines at 80-1360px (SR-6)",
+    "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learnerHe tries each line out \""
+    ]
+   },
+   {
+    "check": "row-lines",
+    "where": "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\"",
+    "msg": "a row of 2 items: its first item starts at 162px, the container's left line at 129px; its last item ends at 1278px, the container's right line at 1311px (2px either way) (SR-7)",
+    "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-lines"
+    ],
+    "wheres": [
+     "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\""
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "section#hosts > div.wrap > div.grid.hostsrow",
+    "msg": "the split's left column starts with a picture or a box, not text: text left, the visual right, on every split (SR-8)",
+    "fix": "put the text in the left column and the visual in the right, on every split",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "section#hosts > div.wrap > div.grid.hostsrow"
+    ]
+   },
+   {
+    "check": "no-visual",
+    "where": "main#top > section.hero.hero--split \"Real English for B1 learners\"",
+    "msg": "pictures, effects and mocks cover 10% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "no-visual"
+    ],
+    "wheres": [
+     "main#top > section.hero.hero--split \"Real English for B1 learners\""
+    ]
+   },
+   {
+    "check": "no-visual",
+    "where": "section#guide \"The words, in writing. A free study guid\"",
+    "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "no-visual"
+    ],
+    "wheres": [
+     "section#guide \"The words, in writing. A free study guid\""
+    ]
+   },
+   {
+    "check": "card-visual",
+    "where": "div#words \"Reaction impulse buy Courage\"",
+    "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
+    "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "card-visual"
+    ],
+    "wheres": [
+     "div#words \"Reaction impulse buy Courage\""
+    ]
+   },
+   {
+    "check": "card-visual",
+    "where": "div#means \"What you say or do in response to an eve\"",
+    "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
+    "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "card-visual"
+    ],
+    "wheres": [
+     "div#means \"What you say or do in response to an eve\""
+    ]
+   },
+   {
+    "check": "off-grid",
+    "where": "section#practice > div.wrap > div.group > div.tabs.reveal \"Match Listen Order Cards\"",
+    "msg": "left edge at 17px, 23px off the page margin at 40px (49 elements); 3 more in this section off the grid too (h2 at 17px, p.sub.reveal at 17px, div#gHud at 17px)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "off-grid"
+    ],
+    "wheres": [
+     "section#practice > div.wrap > div.group > div.tabs.reveal \"Match Listen Order Cards\""
+    ]
+   },
+   {
+    "check": "off-grid",
+    "where": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\"",
+    "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, h4 at 201px, a at 50px, ...)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "off-grid"
+    ],
+    "wheres": [
+     "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\""
+    ]
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#guides / section#steps",
+    "msg": "347px between these sections, +144% against the median 142px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-gaps"
+    ],
+    "wheres": [
+     "section#guides / section#steps"
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "#practice h2 \"Practice\"",
+    "msg": "starts at x 129; the lines are 80 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "#practice h2 \"Practice\""
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "#practice p.sub.reveal \"Pick a game, then choose a word \"",
+    "msg": "starts at x 129; the lines are 80 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "#practice p.sub.reveal \"Pick a game, then choose a word \""
+    ]
+   },
+   {
+    "check": "sparse",
+    "where": "#inside section.section \"One episode, three ways in. Twen\"",
+    "msg": "its content fills 3% of its screen; merge it or give it its visual (0.55 is the aim)",
+    "fix": "fill the section or make it a screen shorter",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "sparse"
+    ],
+    "wheres": [
+     "#inside section.section \"One episode, three ways in. Twen\""
+    ]
+   },
+   {
+    "check": "sparse",
+    "where": "#episodes section.section \"Start with one of these episodes\"",
+    "msg": "its content fills 3% of its screen; merge it or give it its visual (0.55 is the aim)",
+    "fix": "fill the section or make it a screen shorter",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "sparse"
+    ],
+    "wheres": [
+     "#episodes section.section \"Start with one of these episodes\""
+    ]
+   },
+   {
+    "check": "sparse",
+    "where": "#guide section.section \"The words, in writing. A free st\"",
+    "msg": "its content fills 5% of its screen; merge it or give it its visual (0.55 is the aim)",
+    "fix": "fill the section or make it a screen shorter",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "sparse"
+    ],
+    "wheres": [
+     "#guide section.section \"The words, in writing. A free st\""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "#practice div.group \"Practice Four games Pick a game,\"",
+    "msg": "x 1 to 389, the page runs 40 to 350",
+    "fix": "keep it inside the .wrap; nothing past the right edge",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "#practice div.group \"Practice Four games Pick a game,\""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "#practice h2 \"Practice\"",
+    "msg": "x 17 to 126.1, the page runs 40 to 350",
+    "fix": "keep it inside the .wrap; nothing past the right edge",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "#practice h2 \"Practice\""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "#practice p.sub.reveal \"Pick a game, then choose a word \"",
+    "msg": "x 17 to 373, the page runs 40 to 350",
+    "fix": "keep it inside the .wrap; nothing past the right edge",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "#practice p.sub.reveal \"Pick a game, then choose a word \""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "#practice p.playmeta.reveal \"New set\"",
+    "msg": "x 17 to 373, the page runs 40 to 350",
+    "fix": "keep it inside the .wrap; nothing past the right edge",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "#practice p.playmeta.reveal \"New set\""
+    ]
+   },
+   {
+    "check": "screen-height",
+    "where": "#inside section.section \"One episode, three ways in. Twen\"",
+    "msg": "1109px, 1.31 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+    "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "screen-height"
+    ],
+    "wheres": [
+     "#inside section.section \"One episode, three ways in. Twen\""
+    ]
+   },
+   {
+    "check": "screen-height",
+    "where": "#episodes section.section \"Start with one of these episodes\"",
+    "msg": "1723px, 2.04 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+    "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "screen-height"
+    ],
+    "wheres": [
+     "#episodes section.section \"Start with one of these episodes\""
+    ]
+   },
+   {
+    "check": "screen-height",
+    "where": "#guide section.section \"The words, in writing. A free st\"",
+    "msg": "1031px, 1.22 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+    "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "screen-height"
+    ],
+    "wheres": [
+     "#guide section.section \"The words, in writing. A free st\""
+    ]
+   }
+  ],
+  "warns": [
+   {
+    "check": "no-visual",
+    "where": "main#top > section.hero.hero--split \"Real English for B1 learners\"",
+    "msg": "pictures, effects and mocks cover 16% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "no-visual",
+    "where": "section#guide \"The words, in writing. A free study guid\"",
+    "msg": "pictures, effects and mocks cover 17% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "button-styles",
+    "where": "div.wrap > div.group > div.tabs.reveal > button.tab:nth-of-type(1) \"Match\"",
+    "msg": "the selected tab \"Match\" is drawn as a filled pill in #e75d4e, a fill none of the page's buttons use (#241812, #211b1b, #31241f): it reads as one more button style",
+    "fix": "draw the selected tab as a line under its word, or in the primary button's fill",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-headings",
+    "where": "div.wrap > div.grid > article.card.card--open:nth-of-type(1) > h3 \"Why Your Mind Won’t Shut Up at Night\"",
+    "msg": "the card title \"Why Your Mind Won’t Shut Up at Night\" names no product, part, place or section (2 card titles like it) (and 1 more like it: \"Forget a Word? Speak Wit\")",
+    "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-buttons",
+    "where": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Listen free\"",
+    "msg": "\"Listen free\" does not start with a verb (book, buy, try, start, get, see...) (and 4 more like it: \"NEW SET\", \"Control\", \"routine\", \"overwhelmed\")",
+    "fix": "label buttons with a verb and what the visitor gets (\"Book a room\", \"Start free trial\")",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "off-grid",
+    "where": "div.wrap > div.group > div.phead.reveal > h2 \"Practice\"",
+    "msg": "the section's heading starts at 129px, 49px off the page margin (80px), and no other section starts there",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "col-edge",
+    "where": "div#means \"Feeling like things are just too much to\"",
+    "msg": "the second column starts at 3 places: 725px (section#practice), 732px (section.hero.hero--split, section#inside, section#steps, section#guide), 841px (section#hosts)",
+    "fix": "start the second column of every split on the same one or two grid columns",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "main#top > section.hero.hero--split / section#inside",
+    "msg": "226px between these sections, -32% against the median 330px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#hosts / section#guide",
+    "msg": "164px between these sections, -50% against the median 330px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#episodes / section#practice",
+    "msg": "uneven space at the edge of a band: 219px outside its edge, 101px inside it (the space on either side of a change of ground reads as one gap only when the two match)",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "div.wrap.nav__bar > nav.nav__links > div.nav__item:nth-of-type(3) > a.nav__link \"Hosts\"",
+    "msg": "\"Hosts\" opens a section headed \"Emma teaches, Josh learns. You sit beside Josh, an\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "label-centre",
+    "where": "div#words > button.qitem:nth-of-type(1) \"Control\"",
+    "msg": "its label sits 462px off-centre (16px of room at the left, 478px at the right) (and 2 more like it: \"routine\", \"overwhelmed\")",
+    "fix": "centre the label in its button, or fill the empty side with an icon",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-current",
+    "where": "header.nav.nav--centre",
+    "msg": "the nav stays on screen with 4 links to the page's sections, but never marks the one you are in (no link changes as the page scrolls)",
+    "fix": "mark the link of the section on screen (a colour, a weight or a line under it) as the visitor scrolls",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "progress-bar",
+    "where": "div#gHud > div.grow2 > div.xpbar \"LEVEL 1 0 / 100 XP\"",
+    "msg": "a progress or meter bar on the page, like the one in \"LEVEL 1 0 / 100 XP\": the house rules have no drag or progress bars",
+    "fix": "show the figure in words or as a number (\"2 of 5 done\"), not as a bar that fills",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "heading-order",
+    "where": "div.closing__links:nth-of-type(2) > div.grid:nth-of-type(1) > div.span-3.footer__col:nth-of-type(2) > h4 \"The show\"",
+    "msg": "\"The show\" is an h4 after an h2: a level is skipped (in the header or footer)",
+    "fix": "step down one level at a time (h1, h2, h3): change the tag, not the look; a footer's column heads are h3",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "action-repeat",
+    "where": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"listen free\"",
+    "msg": "\"listen free\" shows 2 times on the first screen at 1440px (nav, hero): the nav's button and the hero's; nothing else on the screen may repeat it",
+    "fix": "show the action once a screen besides the nav's button: the hero's, the close's or the phone bar's, never all at once",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav",
+    "where": "header.nav.nav--centre > div.wrap.nav__bar > button.nav__toggle",
+    "msg": "the nav is lopsided: its last item ends 13px inside the content's edge (350px), while its first starts on the other edge",
+    "fix": "start the nav's first item and end its last on the content's two edges",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "tap-size",
+    "where": "div.grid > article.card.card--open:nth-of-type(2) > h3 > a \"People Who See What Others Miss\"",
+    "msg": "a 276x22px tap target: under the 44px a phone needs",
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "button-styles",
+    "where": "button#playreset \"NEW SET\"",
+    "msg": "on the phone 4 buttons run the full width of their column, but  \"NEW SET\" is 85px of 356px: one action in two sizes",
+    "fix": "give every button the same width rule on the phone: all full width, or all at their own width",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "hole",
+    "where": "section.hero.hero--split > div.wrap > div.hero-text.grid > div.hero__media.span-6 \"Newest 21 min Episode 40: Negative Self-\"",
+    "msg": "an empty band 112px tall across the card (35% of its height), with content above and below it",
+    "fix": "close the empty space: move the content together, or give the space the visual it lacks",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-number-pair",
+    "msg": "number-pair headings \"Four X, one Y\": 2, budget 1",
+    "fix": "say what the section holds (\"Recent buildings\") and let the first line carry the claim (references/copy-tells.md)",
+    "widths": [],
+    "from": "copy",
+    "where": "copy x2: \"One episode, three wa...\", \"Four steps, one episode.\"",
+    "exact": false
+   }
+  ],
+  "crashed": [],
+  "seconds": {
+   "consistency": 176,
+   "layout": 8
+  }
+ },
+ "open": [
+  {
+   "check": "scroll-reveal",
+   "where": "h2#inside-h \"One episode, three ways in. Twenty minut\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "h2#inside-h \"One episode, three ways in. Twenty minut\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(1) \"Listen to the story A whole episode, spo\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(1) \"Listen to the story A whole episode, spo\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(2) \"Play with the words Four games on the vo\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(2) \"Play with the words Four games on the vo\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#inside > div.wrap.grid > div.span-6.start-7 > div.vecpanel",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#inside > div.wrap.grid > div.span-6.start-7 > div.vecpanel"
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read it in writing The free study guide \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(3) \"Read it in writing The free study guide \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "h2#episodes-h \"Start with one of these episodes. Six to\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "h2#episodes-h \"Start with one of these episodes. Six to\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 40 Negative Self-Talk: One Tiny \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 40 Negative Self-Talk: One Tiny \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 39 People Who See What Others Mi\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 39 People Who See What Others Mi\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 38 How To Be Happy With What You\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap > div.group > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 38 How To Be Happy With What You\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 37 Why Your Mind Won’t Shut Up a\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(1) \"EPISODE 37 Why Your Mind Won’t Shut Up a\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 36 Time Management, Made Simple \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(2) \"EPISODE 36 Time Management, Made Simple \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 35 Forget a Word? Speak With Con\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#episodes > div.wrap > div.grid > article.card.card--open:nth-of-type(3) \"EPISODE 35 Forget a Word? Speak With Con\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "h2#guides-h \"Every guide so far. Tap an episode, its \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "h2#guides-h \"Every guide so far. Tap an episode, its \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(1) \"Episode 40 Negative Self-Talk: One Tiny \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(1) \"Episode 40 Negative Self-Talk: One Tiny \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(2) \"Episode 39 People Who See What Others Mi\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(2) \"Episode 39 People Who See What Others Mi\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(3) \"Episode 38 How To Be Happy With What You\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(3) \"Episode 38 How To Be Happy With What You\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(4) \"Episode 37 Why Your Mind Won’t Shut Up a\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(4) \"Episode 37 Why Your Mind Won’t Shut Up a\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(5) \"Episode 36 Time Management, Made Simple \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(5) \"Episode 36 Time Management, Made Simple \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(6) \"Episode 35 Forget a Word? Speak With Con\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(6) \"Episode 35 Forget a Word? Speak With Con\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(7) \"Episode 32 Why You Never Finish Anything\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(7) \"Episode 32 Why You Never Finish Anything\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(8) \"Episode 31 Stop Waiting for the Perfect \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(8) \"Episode 31 Stop Waiting for the Perfect \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(9) \"Episode 30 Stop Being Afraid to Speak En\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(9) \"Episode 30 Stop Being Afraid to Speak En\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(10) \"Episode 29 Think in English, Don't Trans\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(10) \"Episode 29 Think in English, Don't Trans\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(11) \"Episode 28 Stop Putting Words in the Wro\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(11) \"Episode 28 Stop Putting Words in the Wro\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(12) \"Episode 27 The Power of Silence ↓\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(12) \"Episode 27 The Power of Silence ↓\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(13) \"Episode 26 Train Your Ears For Real Engl\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(13) \"Episode 26 Train Your Ears For Real Engl\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(14) \"Episode 25 Stop Studying Grammar, Just L\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(14) \"Episode 25 Stop Studying Grammar, Just L\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(15) \"Episode 24 Food Words You Use Every Day \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(15) \"Episode 24 Food Words You Use Every Day \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(16) \"Episode 23 How To Stay Motivated ↓\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(16) \"Episode 23 How To Stay Motivated ↓\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guides > div.wrap > ul.gl > li:nth-of-type(17) \"Episode 22 Money, and What It Does To Us\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guides > div.wrap > ul.gl > li:nth-of-type(17) \"Episode 22 Money, and What It Does To Us\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "h2#steps-h \"Four steps, one episode. No app, no acco\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "h2#steps-h \"Four steps, one episode. No app, no acco\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(4) \"Say one line out loud One sentence from \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6:nth-of-type(1) > ul.rows > li:nth-of-type(4) \"Say one line out loud One sentence from \""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#steps > div.wrap.grid > div.span-6.start-7 > div.vecpanel \"1 2 3 4\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#steps > div.wrap.grid > div.span-6.start-7 > div.vecpanel \"1 2 3 4\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "h2#hosts-h \"Emma teaches, Josh learns. You sit besid\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "h2#hosts-h \"Emma teaches, Josh learns. You sit besid\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the host She explains every hard w\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the host She explains every hard w\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learner He tries each line out\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learner He tries each line out\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#hosts > div.wrap > div.grid.hostsrow > div.span-5:nth-of-type(1)",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#hosts > div.wrap > div.grid.hostsrow > div.span-5:nth-of-type(1)"
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#hosts > div.wrap > div.grid.hostsrow > div.span-5.start-8",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#hosts > div.wrap > div.grid.hostsrow > div.span-5.start-8"
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "h2#guide-h \"The words, in writing. A free study guid\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "h2#guide-h \"The words, in writing. A free study guid\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6:nth-of-type(1) > div.section-head > p \"Every episode has its own guide: the ful\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6:nth-of-type(1) > div.section-head > p \"Every episode has its own guide: the ful\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(1) \"Do I need to be exactly B1? No. If you c\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(1) \"Do I need to be exactly B1? No. If you c\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(2) \"How long is an episode? Between nineteen\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(2) \"How long is an episode? Between nineteen\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(3) \"Is it really free? Yes. Every episode is\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(3) \"Is it really free? Yes. Every episode is\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#guide > div.wrap.grid > div.span-6:nth-of-type(1) > div.vecpanel",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#guide > div.wrap.grid > div.span-6:nth-of-type(1) > div.vecpanel"
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(4) \"Where do I start? Anywhere. Episode 40 i\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6.start-7 > div.faq > div.faq__item:nth-of-type(4) \"Where do I start? Anywhere. Episode 40 i\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "h2#close-h \"Listen free on YouTube\"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "h2#close-h \"Listen free on YouTube\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "div.wrap > div.closing__cta.close--type > div.section-head > p \"Forty episodes, twenty minutes each, no \"",
+   "msg": "starts \"opacity\" (0.7 s) the moment it is scrolled into view (an IntersectionObserver)",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "div.wrap > div.closing__cta.close--type > div.section-head > p \"Forty episodes, twenty minutes each, no \""
+   ]
+  },
+  {
+   "check": "no-visual",
+   "where": "section#episodes \"Start with one of these episodes. Six to\"",
+   "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+   "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "no-visual"
+   ],
+   "wheres": [
+    "section#episodes \"Start with one of these episodes. Six to\""
+   ]
+  },
+  {
+   "check": "no-visual",
+   "where": "section#guides \"Every guide so far. Tap an episode, its \"",
+   "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+   "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "no-visual"
+   ],
+   "wheres": [
+    "section#guides \"Every guide so far. Tap an episode, its \""
+   ]
+  },
+  {
+   "check": "card-family",
+   "where": "section#guide > div.wrap.grid > div.span-6.start-7 \"Do I need to be exactly B1?\"",
+   "msg": "7 cards of one kind (.span-6) set their titles in 2 faces: figtree (1, like \"Do I need to be exactly \"), fraunces (3, like \"One episode, three ways \")",
+   "fix": "draw one card part one way: one fill and one title face for every card of a kind (one featured card may differ)",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "card-family"
+   ],
+   "wheres": [
+    "section#guide > div.wrap.grid > div.span-6.start-7 \"Do I need to be exactly B1?\""
+   ]
+  },
+  {
+   "check": "button-styles",
+   "where": "(the page)",
+   "msg": "3 button styles on the page: soft, fill #241812 x4 (\"Listen free\"); pill, fill #211b1b x1 (\"NEW SET\"); round, fill #31241f x3 (\"Control\")",
+   "fix": "one primary and one secondary button: one shape, one height per size, one label size",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "button-styles"
+   ],
+   "wheres": [
+    "(the page)"
+   ]
+  },
+  {
+   "check": "button-styles",
+   "where": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\"",
+   "msg": "one button style (soft, fill #241812) in 2 heights: 44, 83px (\"Listen free\" 83px, \"Listen free\" 44px)",
+   "fix": "one primary and one secondary button: one shape, one height per size, one label size",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "button-styles"
+   ],
+   "wheres": [
+    "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\""
+   ]
+  },
+  {
+   "check": "same-action",
+   "where": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Listen free\"",
+   "msg": "\"Listen free\" appears 3 times in different looks: 44px and 83px tall, labels at 15px and 32px",
+   "fix": "draw one action the same way everywhere (only the nav copy may be one size smaller)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "same-action"
+   ],
+   "wheres": [
+    "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Listen free\""
+   ]
+  },
+  {
+   "check": "copy-headings",
+   "where": "div.wrap > div.group > div.phead.reveal > h2 \"Practice\"",
+   "msg": "\"Practice\" names no product, part, place or section (2 headings like it; at most one brand line per page) (and 1 more like it: \"Where do I start?\")",
+   "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "copy-headings"
+   ],
+   "wheres": [
+    "div.wrap > div.group > div.phead.reveal > h2 \"Practice\""
+   ]
+  },
+  {
+   "check": "text-contrast",
+   "where": "div.group > div.grid > article.card.card--open:nth-of-type(1) > p.t-label \"EPISODE 40\"",
+   "msg": "a caption, label or muted line in #e75d4e on #f3e7d8 reads 2.84:1 (needs 4.5:1); 4 like it, like \"EPISODE 38\", \"EPISODE 37\", \"EPISODE 35\"",
+   "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "text-contrast"
+   ],
+   "wheres": [
+    "div.group > div.grid > article.card.card--open:nth-of-type(1) > p.t-label \"EPISODE 40\""
+   ]
+  },
+  {
+   "check": "text-contrast",
+   "where": "div.group > div.grid > article.card.card--open:nth-of-type(2) > p.t-label \"EPISODE 39\"",
+   "msg": "a caption, label or muted line in #e75d4e on #fbe3dc reads 2.82:1 (needs 4.5:1); 2 like it, like \"EPISODE 36\"",
+   "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "text-contrast"
+   ],
+   "wheres": [
+    "div.group > div.grid > article.card.card--open:nth-of-type(2) > p.t-label \"EPISODE 39\""
+   ]
+  },
+  {
+   "check": "hole",
+   "where": "section.hero.hero--split > div.wrap > div.hero-text.grid > div.hero__media.span-6 \"Newest 21 min Episode 40: Negative Self-\"",
+   "msg": "an empty band 350px tall across the card (50% of its height), with content above and below it",
+   "fix": "close the empty space: move the content together, or give the space the visual it lacks",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "hole"
+   ],
+   "wheres": [
+    "section.hero.hero--split > div.wrap > div.hero-text.grid > div.hero__media.span-6 \"Newest 21 min Episode 40: Negative Self-\""
+   ]
+  },
+  {
+   "check": "focus-visible",
+   "where": "div.wrap.grid > div.span-6:nth-of-type(1) > p > a.link \"See every episode on YouTube\"",
+   "msg": "Tab stop 10, a \"See every episode on YouTube\": the focus lands on something you cannot see",
+   "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "focus-visible"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.span-6:nth-of-type(1) > p > a.link \"See every episode on YouTube\""
+   ]
+  },
+  {
+   "check": "moment-none",
+   "where": "(the page)",
+   "msg": "a service page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+   "fix": "deal one (moments.mjs pick --page service --photo) and mount it in its own section",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "moment-none"
+   ],
+   "wheres": [
+    "(the page)"
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "section#guides \"Every guide so far. Tap an episode, its \"",
+   "msg": "the section starts at 3664px, 64px below the screen grid (4 x 900px): sections start on whole screens (SR-2)",
+   "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height"
+   ],
+   "wheres": [
+    "section#guides \"Every guide so far. Tap an episode, its \""
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "section#steps \"Four steps, one episode. No app, no acco\"",
+   "msg": "the section starts at 4564px, 64px below the screen grid (5 x 900px): sections start on whole screens (SR-2)",
+   "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height"
+   ],
+   "wheres": [
+    "section#steps \"Four steps, one episode. No app, no acco\""
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "section#hosts \"Emma teaches, Josh learns. You sit besid\"",
+   "msg": "the section starts at 5464px, 64px below the screen grid (6 x 900px): sections start on whole screens (and 3 more like it: \"The words, in writing. A\", \"Listen free on YouTube F\", \"Practice Four games Pick\") (SR-2)",
+   "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height"
+   ],
+   "wheres": [
+    "section#hosts \"Emma teaches, Josh learns. You sit besid\""
+   ]
+  },
+  {
+   "check": "one-section",
+   "where": "div#pane-match \"Tap a word, then its meaning. Three pair\"",
+   "msg": "a band: a box 82% of the section wide on a ground of its own that holds only text: the section's own ground is the band (SR-4)",
+   "fix": "put every block of <main> in a <section>, and give a band its own section instead of a ground inside one",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "one-section"
+   ],
+   "wheres": [
+    "div#pane-match \"Tap a word, then its meaning. Three pair\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "section#practice \"Practice Four games Pick a game, then ch\"",
+   "msg": "the content of section 4 runs 129px from the left and 129px from the right: the page's container starts at 80px; the margin is 64-120px at 1440px (one container, equal margins, 2px either way) (SR-6)",
+   "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "section#practice \"Practice Four games Pick a game, then ch\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "section#practice > div.wrap > div.group > p.playmeta.reveal \"New set\"",
+   "msg": "1 text block starts on a left line at x 1177, 1097px from the container's left: text starts on the container's left, or on one split line (x 623, 732, 841) (SR-6)",
+   "fix": "start the text on the container's left, or on the one split line every split shares",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "section#practice > div.wrap > div.group > p.playmeta.reveal \"New set\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\"",
+   "msg": "2 text blocks start on a left line at x 113, 33px from the container's left: text starts on the container's left, or on one split line (x 623, 732, 841) (also \"Set 1 — pick a word, then its me\") (SR-6)",
+   "fix": "start the text on the container's left, or on the one split line every split shares",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "div#pane-match > div.quiz > p.sub \"Tap a word, then its meaning. Three pair\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the hostShe explains every hard wo\"",
+   "msg": "a box over half the container wide runs 80-818px, not on the container's lines at 80-1360px (SR-6)",
+   "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "section#hosts > div.wrap > ul.rows > li:nth-of-type(1) \"Emma, the hostShe explains every hard wo\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learnerHe tries each line out \"",
+   "msg": "a box over half the container wide runs 80-818px, not on the container's lines at 80-1360px (SR-6)",
+   "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "section#hosts > div.wrap > ul.rows > li:nth-of-type(2) \"Josh, the learnerHe tries each line out \""
+   ]
+  },
+  {
+   "check": "row-lines",
+   "where": "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\"",
+   "msg": "a row of 2 items: its first item starts at 162px, the container's left line at 129px; its last item ends at 1278px, the container's right line at 1311px (2px either way) (SR-7)",
+   "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-lines"
+   ],
+   "wheres": [
+    "div#pane-match > div.quiz > div.cols \"expectationautomaticvoice Doing somethin\""
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "section#hosts > div.wrap > div.grid.hostsrow",
+   "msg": "the split's left column starts with a picture or a box, not text: text left, the visual right, on every split (SR-8)",
+   "fix": "put the text in the left column and the visual in the right, on every split",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "section#hosts > div.wrap > div.grid.hostsrow"
+   ]
+  },
+  {
+   "check": "no-visual",
+   "where": "main#top > section.hero.hero--split \"Real English for B1 learners\"",
+   "msg": "pictures, effects and mocks cover 10% of this section; a feature section needs a visual (about 25% or more)",
+   "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "no-visual"
+   ],
+   "wheres": [
+    "main#top > section.hero.hero--split \"Real English for B1 learners\""
+   ]
+  },
+  {
+   "check": "no-visual",
+   "where": "section#guide \"The words, in writing. A free study guid\"",
+   "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+   "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "no-visual"
+   ],
+   "wheres": [
+    "section#guide \"The words, in writing. A free study guid\""
+   ]
+  },
+  {
+   "check": "card-visual",
+   "where": "div#words \"Reaction impulse buy Courage\"",
+   "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
+   "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "card-visual"
+   ],
+   "wheres": [
+    "div#words \"Reaction impulse buy Courage\""
+   ]
+  },
+  {
+   "check": "card-visual",
+   "where": "div#means \"What you say or do in response to an eve\"",
+   "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
+   "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "card-visual"
+   ],
+   "wheres": [
+    "div#means \"What you say or do in response to an eve\""
+   ]
+  },
+  {
+   "check": "off-grid",
+   "where": "section#practice > div.wrap > div.group > div.tabs.reveal \"Match Listen Order Cards\"",
+   "msg": "left edge at 17px, 23px off the page margin at 40px (49 elements); 3 more in this section off the grid too (h2 at 17px, p.sub.reveal at 17px, div#gHud at 17px)",
+   "fix": "move it onto the page margin, or the column edge its section uses",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "off-grid"
+   ],
+   "wheres": [
+    "section#practice > div.wrap > div.group > div.tabs.reveal \"Match Listen Order Cards\""
+   ]
+  },
+  {
+   "check": "off-grid",
+   "where": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\"",
+   "msg": "left edge at 50px, 10px off the page margin at 40px (49 elements, like p); 5 more in this section off the grid too (img.lockup at 50px, a at 50px, h4 at 201px, a at 50px, ...)",
+   "fix": "move it onto the page margin, or the column edge its section uses",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "off-grid"
+   ],
+   "wheres": [
+    "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary \"Listen free\""
+   ]
+  },
+  {
+   "check": "section-gaps",
+   "where": "section#guides / section#steps",
+   "msg": "347px between these sections, +144% against the median 142px",
+   "fix": "use one gap between sections (all within 25% of each other)",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-gaps"
+   ],
+   "wheres": [
+    "section#guides / section#steps"
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "#practice h2 \"Practice\"",
+   "msg": "starts at x 129; the lines are 80 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "#practice h2 \"Practice\""
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "#practice p.sub.reveal \"Pick a game, then choose a word \"",
+   "msg": "starts at x 129; the lines are 80 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "#practice p.sub.reveal \"Pick a game, then choose a word \""
+   ]
+  },
+  {
+   "check": "sparse",
+   "where": "#inside section.section \"One episode, three ways in. Twen\"",
+   "msg": "its content fills 3% of its screen; merge it or give it its visual (0.55 is the aim)",
+   "fix": "fill the section or make it a screen shorter",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "sparse"
+   ],
+   "wheres": [
+    "#inside section.section \"One episode, three ways in. Twen\""
+   ]
+  },
+  {
+   "check": "sparse",
+   "where": "#episodes section.section \"Start with one of these episodes\"",
+   "msg": "its content fills 3% of its screen; merge it or give it its visual (0.55 is the aim)",
+   "fix": "fill the section or make it a screen shorter",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "sparse"
+   ],
+   "wheres": [
+    "#episodes section.section \"Start with one of these episodes\""
+   ]
+  },
+  {
+   "check": "sparse",
+   "where": "#guide section.section \"The words, in writing. A free st\"",
+   "msg": "its content fills 5% of its screen; merge it or give it its visual (0.55 is the aim)",
+   "fix": "fill the section or make it a screen shorter",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "sparse"
+   ],
+   "wheres": [
+    "#guide section.section \"The words, in writing. A free st\""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "#practice div.group \"Practice Four games Pick a game,\"",
+   "msg": "x 1 to 389, the page runs 40 to 350",
+   "fix": "keep it inside the .wrap; nothing past the right edge",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "#practice div.group \"Practice Four games Pick a game,\""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "#practice h2 \"Practice\"",
+   "msg": "x 17 to 126.1, the page runs 40 to 350",
+   "fix": "keep it inside the .wrap; nothing past the right edge",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "#practice h2 \"Practice\""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "#practice p.sub.reveal \"Pick a game, then choose a word \"",
+   "msg": "x 17 to 373, the page runs 40 to 350",
+   "fix": "keep it inside the .wrap; nothing past the right edge",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "#practice p.sub.reveal \"Pick a game, then choose a word \""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "#practice p.playmeta.reveal \"New set\"",
+   "msg": "x 17 to 373, the page runs 40 to 350",
+   "fix": "keep it inside the .wrap; nothing past the right edge",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "#practice p.playmeta.reveal \"New set\""
+   ]
+  },
+  {
+   "check": "screen-height",
+   "where": "#inside section.section \"One episode, three ways in. Twen\"",
+   "msg": "1109px, 1.31 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+   "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "screen-height"
+   ],
+   "wheres": [
+    "#inside section.section \"One episode, three ways in. Twen\""
+   ]
+  },
+  {
+   "check": "screen-height",
+   "where": "#episodes section.section \"Start with one of these episodes\"",
+   "msg": "1723px, 2.04 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+   "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "screen-height"
+   ],
+   "wheres": [
+    "#episodes section.section \"Start with one of these episodes\""
+   ]
+  },
+  {
+   "check": "screen-height",
+   "where": "#guide section.section \"The words, in writing. A free st\"",
+   "msg": "1031px, 1.22 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
+   "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "screen-height"
+   ],
+   "wheres": [
+    "#guide section.section \"The words, in writing. A free st\""
+   ]
+  }
+ ],
+ "waived": [],
+ "warnCount": 21,
+ "at": "2026-11-16T09:18:00.671Z"
+}

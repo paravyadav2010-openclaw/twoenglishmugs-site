@@ -588,9 +588,10 @@ OVERRIDES = '''
 /* the game card runs the full width of a phone */
 @media (max-width: 639px) {
   #practice { padding-inline: 0; }
-  #practice .wrap { width: 100%; max-width: none; padding-inline: 0; }
+  /* the band is full-bleed; its content is not: same gutter as every other .wrap */
+  #practice .wrap { width: 100%; max-width: none; padding-inline: var(--gut); }
   #practice .phead, #practice .sub, #practice .tabs, #practice .playmeta,
-  #practice .hud, #practice .badges, #practice .turnblock { margin-inline: 16px; }
+  #practice .hud, #practice .badges, #practice .turnblock { margin-inline: 0; }
   #practice .pane { margin: 0; border-left: 0; border-right: 0; border-radius: 0; padding: 18px 16px; }
   #practice .quiz, #practice .game { padding: 0 !important; }
 }
@@ -600,6 +601,10 @@ OVERRIDES = '''
 /* anchor jumps land below the fixed bar, and the section never tucks under it */
 main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
 #practice { padding-top: calc(var(--s-section, 96px) + 8px); }
+@media (max-width: 640px) {
+  /* six cards + head measured 1723px; two screens is 1688, so take the slack out of the padding */
+  #episodes { padding-top: calc(var(--padt) - 22px); padding-bottom: calc(var(--padb) - 16px); }
+}
 /* the exercise tiles look tappable and show their state */
 #practice .qitem { min-height: 56px; border-width: 1.5px; box-shadow: 0 1px 0 rgba(255,246,233,.04); }
 #practice .qitem.sel { border-color: var(--coral) !important; background: rgba(231,93,78,.16) !important;
