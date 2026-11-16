@@ -1,0 +1,310 @@
+{
+ "url": "http://127.0.0.1:8796/index.html",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 72,
+   "scrollHeight": 8100,
+   "screens": 9,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "section",
+     "id": "",
+     "cls": "hero hero--split is-still is-entered",
+     "top": 0,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 0
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "inside",
+     "cls": "section",
+     "top": 900,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-02-a.jpg",
+       "scrollY": 900
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "episodes",
+     "cls": "section",
+     "top": 1800,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-03-a.jpg",
+       "scrollY": 1800
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "practice",
+     "cls": "section g2",
+     "top": 2700,
+     "h": 1800,
+     "hScreens": 2,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-04-a.jpg",
+       "scrollY": 2700
+      },
+      {
+       "file": "desktop-sec-04-b.jpg",
+       "scrollY": 3600
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "steps",
+     "cls": "section",
+     "top": 4500,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-05-a.jpg",
+       "scrollY": 4500
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "section",
+     "id": "hosts",
+     "cls": "section",
+     "top": 5400,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-06-a.jpg",
+       "scrollY": 5400
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "section",
+     "id": "guide",
+     "cls": "section",
+     "top": 6300,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-07-a.jpg",
+       "scrollY": 6300
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "tag": "footer",
+     "id": "contact",
+     "cls": "footer closing",
+     "top": 7200,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-08-a.jpg",
+       "scrollY": 7200
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  },
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "navH": 56,
+   "scrollHeight": 8907,
+   "screens": 10.55,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "section",
+     "id": "",
+     "cls": "hero hero--split is-still is-entered",
+     "top": 0,
+     "h": 844,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "mobile-sec-01-a.jpg",
+       "scrollY": 0
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "inside",
+     "cls": "section",
+     "top": 844,
+     "h": 1116,
+     "hScreens": 1.32,
+     "offGrid": 272,
+     "tiles": [
+      {
+       "file": "mobile-sec-02-a.jpg",
+       "scrollY": 844
+      },
+      {
+       "file": "mobile-sec-02-b.jpg",
+       "scrollY": 1116
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "episodes",
+     "cls": "section",
+     "top": 1960,
+     "h": 986,
+     "hScreens": 1.17,
+     "offGrid": 142,
+     "tiles": [
+      {
+       "file": "mobile-sec-03-a.jpg",
+       "scrollY": 1960
+      },
+      {
+       "file": "mobile-sec-03-b.jpg",
+       "scrollY": 2102
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "practice",
+     "cls": "section g2",
+     "top": 2946,
+     "h": 1688,
+     "hScreens": 2,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "mobile-sec-04-a.jpg",
+       "scrollY": 2946
+      },
+      {
+       "file": "mobile-sec-04-b.jpg",
+       "scrollY": 3790
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "steps",
+     "cls": "section",
+     "top": 4634,
+     "h": 1143,
+     "hScreens": 1.35,
+     "offGrid": 299,
+     "tiles": [
+      {
+       "file": "mobile-sec-05-a.jpg",
+       "scrollY": 4634
+      },
+      {
+       "file": "mobile-sec-05-b.jpg",
+       "scrollY": 4933
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "section",
+     "id": "hosts",
+     "cls": "section",
+     "top": 5777,
+     "h": 1091,
+     "hScreens": 1.29,
+     "offGrid": 247,
+     "tiles": [
+      {
+       "file": "mobile-sec-06-a.jpg",
+       "scrollY": 5777
+      },
+      {
+       "file": "mobile-sec-06-b.jpg",
+       "scrollY": 6024
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "section",
+     "id": "guide",
+     "cls": "section",
+     "top": 6868,
+     "h": 1195,
+     "hScreens": 1.42,
+     "offGrid": 351,
+     "tiles": [
+      {
+       "file": "mobile-sec-07-a.jpg",
+       "scrollY": 6868
+      },
+      {
+       "file": "mobile-sec-07-b.jpg",
+       "scrollY": 7219
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "tag": "footer",
+     "id": "contact",
+     "cls": "footer closing",
+     "top": 8063,
+     "h": 844,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "mobile-sec-08-a.jpg",
+       "scrollY": 8063
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-16T05:17:23.959Z"
+}
