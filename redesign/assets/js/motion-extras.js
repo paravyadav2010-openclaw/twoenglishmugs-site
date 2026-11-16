@@ -14,7 +14,7 @@
 
   /* ---------------- reveals ---------------- */
   var TARGETS = [
-    '.section-head h2', '.section-head > p', '.rows li', '#episodes .card',
+    '.section-head h2', '.section-head > p', '.rows li',
     '.hostsrow > div', '.faq__item', '.gl li',
     '#practice .phead', '#practice .sub', '#practice .tabs'
   ];
@@ -59,6 +59,45 @@
 
     if (reduce.addEventListener) {
       reduce.addEventListener('change', function (ev) { if (ev.matches) showAll(); });
+    }
+  }
+
+  /* ---------------- guide rows: scroll-linked horizontal drift ----------------
+     rows splay apart as they cross the viewport and settle back to 0 when centred,
+     alternating direction per row so the list reads as a stack, not a grid. */
+  var driftRows = [];
+  if (!reduce.matches) {
+    Array.prototype.forEach.call(document.querySelectorAll('.gl li'), function (el, i) {
+      driftRows.push({ el: el, sign: i % 2 ? -1 : 1, top: 0, h: 0, last: null });
+    });
+  }
+
+  function measureDrift() {
+    var y = window.pageYOffset;
+    driftRows.forEach(function (o) {
+      var prev = o.el.style.transform;
+      o.el.style.transform = 'none';
+      var r = o.el.getBoundingClientRect();
+      o.top = r.top + y;
+      o.h = r.height;
+      o.el.style.transform = prev;
+      o.last = null;
+    });
+  }
+
+  function tickDrift() {
+    var vh = window.innerHeight;
+    var mid = window.pageYOffset + vh / 2;
+    for (var i = 0; i < driftRows.length; i++) {
+      var o = driftRows[i];
+      var d = mid - (o.top + o.h / 2);
+      var tx = d * 0.05 * o.sign;
+      if (tx > 14) tx = 14;
+      if (tx < -14) tx = -14;
+      tx = Math.round(tx * 10) / 10;
+      if (tx === o.last) continue;
+      o.last = tx;
+      o.el.style.transform = 'translate3d(' + tx + 'px,0,0)';
     }
   }
 
@@ -121,18 +160,22 @@
   if (layers.length && !reduce.matches) {
     scale = phone.matches ? 0.6 : 1;
     measure();
+    measureDrift();
     var queued = false;
     window.addEventListener('scroll', function () {
       if (queued) return;
       queued = true;
-      requestAnimationFrame(function () { tick(); queued = false; });
+      requestAnimationFrame(function () { tick(); tickDrift(); queued = false; });
     }, { passive: true });
     window.addEventListener('resize', function () {
       scale = phone.matches ? 0.6 : 1;
       measure();
+      measureDrift();
       tick();
+      tickDrift();
     });
-    window.addEventListener('load', function () { measure(); tick(); });
+    window.addEventListener('load', function () { measure(); measureDrift(); tick(); tickDrift(); });
+    tickDrift();
     tick();
 
     if (reduce.addEventListener) {
@@ -142,6 +185,61 @@
       });
     }
   }
+
+  /* ---------------- pointer: tilt, spotlight, magnet ----------------
+     only where a real cursor exists, and never while reduced motion is on */
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  function initPointer() {
+    if (reduce.matches || !fine.matches) return;
+
+    /* 1. episode cards lean toward the cursor and carry a coral spotlight */
+    Array.prototype.forEach.call(document.querySelectorAll('#episodes .card'), function (card) {
+      card.setAttribute('data-tilt', '');
+      var queued = false, px = 0.5, py = 0.5;
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        px = (e.clientX - r.left) / r.width;
+        py = (e.clientY - r.top) / r.height;
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () {
+          queued = false;
+          var ry = (px - 0.5) * 2 * 6;
+          var rx = (0.5 - py) * 2 * 6;
+          card.style.transform =
+            'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) +
+            'deg) translate3d(0,-4px,0)';
+          card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+          card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+        });
+      }, { passive: true });
+      card.addEventListener('pointerleave', function () {
+        card.style.transform = '';
+      });
+    });
+
+    /* 2. the primary button leans toward the cursor, capped at 6px */
+    Array.prototype.forEach.call(document.querySelectorAll('.btn--primary'), function (btn) {
+      var queued = false, dx = 0, dy = 0;
+      btn.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        dx = (e.clientX - (r.left + r.width / 2)) * 0.22;
+        dy = (e.clientY - (r.top + r.height / 2)) * 0.22;
+        if (dx > 6) dx = 6; if (dx < -6) dx = -6;
+        if (dy > 6) dy = 6; if (dy < -6) dy = -6;
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () {
+          queued = false;
+          btn.style.transform = 'translate3d(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px,0)';
+        });
+      }, { passive: true });
+      btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+    });
+  }
+
+  initPointer();
 
   /* ---------------- the bar ---------------- */
   var nav = document.querySelector('header.nav');

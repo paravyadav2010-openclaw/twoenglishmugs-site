@@ -206,6 +206,25 @@ main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
 .hero .wrap { position: relative; z-index: 1; }
 @media (max-width: 860px) { .hero__blob { right: -30%; top: -6%; width: 92vw; } .hero__ring { display: none; } }
 
+/* episode cards: lean toward the cursor, with a coral spotlight under it */
+#episodes .grid { perspective: 1200px; }
+#episodes .card { position: relative; isolation: isolate;
+  transition: transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s cubic-bezier(.22,.61,.36,1); }
+#episodes .card[data-tilt]:hover { box-shadow: 0 22px 44px -26px rgba(36,24,18,.42); }
+#episodes .card::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: 0; transition: opacity .32s ease; z-index: -1;
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(231,93,78,.22), rgba(231,93,78,0) 62%);
+}
+#episodes .card[data-tilt]:hover::after { opacity: 1; }
+
+/* the primary button leans toward the cursor */
+.btn--primary { transition: transform .35s cubic-bezier(.22,.61,.36,1), background-color .2s ease; }
+
+/* guide rows drift sideways; the section clips so a row can never widen the page */
+#guides { overflow-x: clip; }
+.gl li { will-change: transform; }
+
 /* parallax layers are composited, never re-laid-out */
 [data-par] { will-change: transform; }
 @media (prefers-reduced-motion: reduce) { [data-par] { will-change: auto; transform: none !important; } }
