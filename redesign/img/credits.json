@@ -1,0 +1,60 @@
+{
+ "note": "Credits for the photographs in this folder: photos.mjs credits prints the footer block for the ones the pages use.",
+ "photos": [
+  {
+   "file": "photo-m61714648-960.jpg",
+   "files": [
+    "photo-m61714648-500.jpg",
+    "photo-m61714648-960.jpg"
+   ],
+   "id": "m61714648",
+   "alt": "Espresso poured from a small jug into a white cup on a worn wooden bar",
+   "by": "Nathan Dumlao",
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Nathan_Dumlao_2017-05-27_(Unsplash).jpg",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-m61713028.jpg",
+   "files": [
+    "photo-m61713028-500.jpg",
+    "photo-m61713028-960.jpg",
+    "photo-m61713028.jpg"
+   ],
+   "id": "m61713028",
+   "alt": "Espresso running from a bottomless portafilter at a chrome machine",
+   "by": "Blake Richard Verdoorn",
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Latte_in_a_coffee_machine_(Unsplash).jpg",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-m147143894-1200.webp",
+   "files": [
+    "photo-m147143894-1200.webp"
+   ],
+   "id": "m147143894",
+   "alt": "A steel sample trier with a wooden handle pulled from a coffee roaster's drum, holding pale green beans mid-roast",
+   "by": "Jameswasswa",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Closer_look_at_the_coffee_beans_from_the_coffee_roasting_machine_looking_at_their_progress.jpg",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-m187311853-1200.webp",
+   "files": [
+    "photo-m187311853-1200.webp"
+   ],
+   "id": "m187311853",
+   "alt": "A barista's hands tamping ground coffee in a portafilter beside an espresso machine",
+   "by": "Shixart1985",
+   "licence": "CC BY 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Barista_prepares_espresso_at_coffee_shop.jpg",
+   "source": "Wikimedia Commons"
+  }
+ ]
+}

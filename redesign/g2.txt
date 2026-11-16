@@ -1,0 +1,125 @@
+gate: checking index.html (service); this takes a few minutes on a CPU Chrome
+gate: 40 FAIL open
+  FAIL flush            button#copy "Copy my line"  [1440]
+       its button sits -152px above the lower edge of section#practice, where the ground changes to section#steps
+       fix: give the section its padding at the edge where the ground changes (the closing call keeps a clear gap above the footer)
+  FAIL overlap-text     h2#steps-h "Four steps, one episode. No app, no acco"  [1440]
+       lies over the text "Copy my line" (button#copy)
+       fix: move the box off the text (or the text off the box)
+  FAIL cut-text         button#copy "Copy my line"  [1440]
+       1 line of its text sit where the box has no visible edge (its fill matches what is behind it there)
+       fix: give the text room: no overflow clipping a line, no line past its box
+  FAIL no-visual        section#episodes "Start with one of these episodes. Six to"  [1440, 390]
+       no picture, effect or mock in this section; a feature section needs a visual
+       fix: give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits
+  FAIL no-visual        section#practice "Practice"  [1440, 390]
+       no picture, effect or mock in this section; a feature section needs a visual
+       fix: give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits
+  FAIL card-family      section#guide > div.wrap.grid > div.span-6.start-7 "Do I need to be exactly B1?"  [1440, 390]
+       9 cards of one kind (.span-6) set their titles in 2 faces: figtree (1, like "Do I need to be exactly "), fraunces (3, like "One episode, three ways ")
+       fix: draw one card part one way: one fill and one title face for every card of a kind (one featured card may differ)
+  FAIL button-styles    (one screen)  [1440]
+       3 button styles on one screen: soft, fill #241812 ("Listen free"); round, fill #211b1b ("validation"); soft, fill #fff6e9 ("Copy my line"); the odd one out: "Copy my line"
+       fix: one primary and one secondary button: one shape, one height per size, one label size
+  FAIL button-styles    (the page)  [1440, 390]
+       4 button styles on the page: soft, fill #241812 x4 ("Listen free"); square, fill #efefef, outline #000000 x1 ("Start over"); round, fill #211b1b x3 ("validation"); soft, fill #fff6e9 x1 ("Copy my line")
+       fix: one primary and one secondary button: one shape, one height per size, one label size
+  FAIL copy-headings    div.group > div.grid > article.card.card--open:nth-of-type(2) > h3 "People Who See What Ot  [1440]
+       "People Who See What Others Miss" names no product, part, place or section (8 headings like it; at most one brand line per page) (and 7 more like it: "How To Be Happy With Wha", "Why Your Mind Won’t Shut", "Time Manageme
+       fix: name the thing in every heading: the product, a part, the place or a section noun
+  FAIL text-contrast    button#playreset "Start over"  [1440, 390]
+       a caption, label or muted line in #fff6e9 on #efefef reads 1.07:1 (needs 4.5:1)
+       fix: body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels
+  FAIL text-contrast    div#pane-match > div.quiz > p.sub "Tap a word, then its meaning. Three pair"  [1440, 390]
+       body text in #a4998f on #1b1616 reads 6.42:1 (needs 7:1)
+       fix: body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels
+  FAIL text-contrast    span#wc "0 words"  [1440]
+       a caption, label or muted line in #fff6e9 on #fff6e9 reads 1:1 (needs 4.5:1)
+       fix: body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels
+  FAIL section-gaps     section#hosts / section#guide  [1440]
+       64px between these sections, -80% against the median 324px
+       fix: use one gap between sections (all within 25% of each other)
+  FAIL focus-visible    header.nav.nav--centre > div.wrap.nav__bar > a.skip-link:nth-of-type(1) "Skip to content"  [1440]
+       Tab stop 1, a "Skip to content": its focus change is faint: 1.51:1 against the ground, 3:1 needed
+       fix: keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus
+  FAIL focus-visible    header.nav.nav--centre > div.wrap.nav__bar > a.nav__logo:nth-of-type(2) "Two English Mugs"  [1440]
+       Tab stop 2, a "Two English Mugs": it shows no change when focused
+       fix: keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus
+  FAIL focus-visible    header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary "Listen  [1440]
+       Tab stop 6, a "Listen free": it shows no change when focused
+       fix: keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus
+  FAIL moment-none      (the page)  [1440]
+       a service page (--type) deals no moment: every kind carries one, two on a long page (moments.md)
+       fix: deal one (moments.mjs pick --page service --photo) and mount it in its own section
+  FAIL section-height   section#practice "Practice Four games Pick one — everythin"  [1440]
+       the section's content does not fit it: its content is 217px taller than the section (scrollHeight 1117, clientHeight 900); its lowest content ends 1117px below its top, past 828px (the section less 72px of bottom padding
+       fix: fit the content above the section's bottom padding (--padb), or make it two screens (.g2) in two groups
+  FAIL section-height   section#hosts "Emma teaches, Josh learns. You sit besid"  [1440]
+       the section's content does not fit it: its content is 52px taller than the section (scrollHeight 952, clientHeight 900); its lowest content ends 952px below its top, past 828px (the section less 72px of bottom padding); 
+       fix: fit the content above the section's bottom padding (--padb), or make it two screens (.g2) in two groups
+  FAIL section-height   div#turn "Your turn Episode 35 asks: “What’s your "  [1440]
+       "Your turn Episode 35 asks: “What" lies outside section 4 (801 to 1117px from its top; the section is 900px tall) (and 5 more like it: "Your turn Episode 35 ask", "Your turn", section#hosts > div.wrap > div.grid) (SR-2)
+       fix: fit the content above the section's bottom padding (--padb), or make it two screens (.g2) in two groups
+  FAIL section-air      section#practice / section#steps  [1440]
+       the content of these two sections overlaps by 101px: 128-480px of air between them (every gap out of the band at 1440px, top to bottom: 504px after "Start with one of th", -101px after "Practice Four games ", 64px after 
+       fix: keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)
+  FAIL section-air      section#hosts / section#guide  [1440]
+       64px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)
+       fix: keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)
+  FAIL section-air      div#turn "Your turn Episode 35 asks: “What’s your "  [1440]
+       a top border across 100% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)
+       fix: take the rule out: sections and their parts are parted by their ground and the air between them
+  FAIL one-section (neighbour) section#practice "Practice Four games Pick one — everythin"  [1440, 390]
+       the screen at scroll 3600px (stride 4) shows 145px of section 4 and the content of 2 sections, over 24px each beside section 5: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)
+       fix: make each section exactly one screen or two, so a screen shows one section and no neighbour peeks
+  FAIL one-section      div#pane-match > div.quiz "Tap a word, then its meaning. Three pair"  [1440]
+       a band: a box 89% of the section wide on a ground of its own that holds only text: the section's own ground is the band (SR-4)
+       fix: put every block of <main> in a <section>, and give a band its own section instead of a ground inside one
+  FAIL one-heading      div#turn > div.turn.reveal > h2 "Your turn"  [1440]
+       the section holds 2 h2 headings: one per section, first in its .wrap (SR-5)
+       fix: give each section one h2, first in its .wrap, and the hero only its h1
+  FAIL one-heading      h2#steps-h "Four steps, one episode. No app, no acco"  [1440]
+       headings of two sections show whole on one screen at 11 of 127 scroll positions (8.7%; at scroll 2950, 3000, 3050, 3100px), here with "Your turn": at most 3% on a desktop (SR-5)
+       fix: make the sections one screen tall so their headings sit a screen apart and two never share one
+  FAIL container-edges  div#pane-match > div.quiz > p.sub "Tap a word, then its meaning. Three pair"  [1440]
+       2 text blocks start on a left line at x 107, 27px from the container's left: text starts on the container's left, or on one split line (x 623, 732, 841) (also "Set 1 — pick a word, then its me") (SR-6)
+       fix: start the text on the container's left, or on the one split line every split shares
+  FAIL container-edges  section#hosts > div.wrap > ul.rows > li:nth-of-type(1) "Emma, the hostShe explains every h  [1440]
+       a box over half the container wide runs 80-818px, not on the container's lines at 80-1360px (SR-6)
+       fix: run the picture or box from the container's left line to its right line, or put it in a row or a split
+  FAIL container-edges  section#hosts > div.wrap > ul.rows > li:nth-of-type(2) "Josh, the learnerHe tries each lin  [1440]
+       a box over half the container wide runs 80-818px, not on the container's lines at 80-1360px (SR-6)
+       fix: run the picture or box from the container's left line to its right line, or put it in a row or a split
+  FAIL row-lines        div#pane-match > div.quiz > div.cols "stagnationsplurgeHesitate To spend a lot"  [1440]
+       a row of 2 items: its first item starts at 107px, the container's left line at 80px; its last item ends at 1333px, the container's right line at 1360px (2px either way) (SR-7)
+       fix: start the row's first item on the container's left line and end its last on the right line, every item one height
+  FAIL split-pair       section#hosts > div.wrap > div.grid  [1440]
+       the split's left column starts with a picture or a box, not text: text left, the visual right, on every split (SR-8)
+       fix: put the text in the left column and the visual in the right, on every split
+  FAIL tap-size         button#gSnd "🔊"  [390, 320]
+       a 34x29px tap target: 0px from the next one ("Listen"), so a thumb lands on the wrong one
+       fix: make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid pa
+  FAIL tap-size         button#playreset "Start over"  [390, 320]
+       a 87x31px tap target: 0px from the next one ("Match"), so a thumb lands on the wrong one
+       fix: make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid pa
+  FAIL no-visual        main#top > section.hero.hero--split "Real English for B1 learners"  [390]
+       pictures, effects and mocks cover 14% of this section; a feature section needs a visual (about 25% or more)
+       fix: give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits
+  FAIL off-grid         div.closing__links > div.footer__legal > span > a:nth-of-type(1) "Privacy"  [390]
+       left edge at 185.5px, 15.5px off a common edge of its section at 201px (4 elements, like a)
+       fix: move it onto the page margin, or the column edge its section uses
+  FAIL off-viewport     header.nav.nav--centre > div.wrap.nav__bar > button.nav__toggle  [320]
+       at 320px wide it runs 27px past the screen's right edge (cut there: the page clips what runs past it)
+       fix: keep it inside the screen at this width: let it shrink, wrap or stack
+  FAIL one-sided        #guide section.section "The words, in writing. A free st"  [1440]
+       its visuals end at x 708, short of the right line 1360
+       fix: let the row reach both .wrap edges
+  FAIL sparse           #episodes section.section "Start with one of these episodes"  [1440]
+       its content fills 44% of its screen; merge it or give it its visual (0.55 is the aim)
+       fix: fill the section or make it a screen shorter
+  FAIL neighbour        #steps section.section "Four steps, one episode. No app,"  [1440]
+       framed, 44px of #practice section.section "Practice Four games Pick one — e" shows
+       fix: keep the next section's heading and picture out of this screen
+  26 WARN (not blocking), first: no-visual main#top > section.hero.hero--split "Rea; no-visual section#guide "The words, in writing. A ; copy-buttons header.nav.nav--centre > div.wrap.nav__b; copy-actions (the page); section-gaps main#top > section.hero.hero--split / se
+A FAIL you judge false: add {"check": "<id>", "target": "<its where, enough to name that one finding>", "reason": "<why, 12+ characters>"} to .taste-skill/waivers.json (one finding each, 5 at most, never for kit-edited or checker-gaming); it goes in your report. Never edit the kit's files or hide the page from the checker.
+GATE: FAIL 40 (round 2 of 3)

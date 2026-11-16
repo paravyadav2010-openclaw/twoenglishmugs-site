@@ -1,0 +1,92 @@
+<section id="practice">
+    <div class="phead reveal">
+      <h2>Practice</h2>
+      <span class="ptag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6h9a4.5 4.5 0 0 1 4.4 3.6l.9 4.4A3.2 3.2 0 0 1 16.5 16l-1-1.4a2 2 0 0 0-1.6-.8h-5.8a2 2 0 0 0-1.6.8l-1 1.4a3.2 3.2 0 0 1-5.3-2l.9-4.4A4.5 4.5 0 0 1 7.5 6Z"/><path d="M8 10v3M6.5 11.5h3M16.2 10.4h.01M17.9 12.4h.01"/></svg>Four games</span>
+    </div>
+    <p class="sub reveal">Pick one — everything stays on this device.</p>
+    <div class="hud reveal" id="gHud">
+      <span class="chip2" id="gStreakWrap" title="Days in a row with practice"><span class="flame">🔥</span> <b id="gStreak">1</b> <span id="gStreakLabel">day</span></span>
+      <div class="grow2">
+        <div class="lvlrow"><b id="gLevel">Level 1</b><span id="gXp">0 / 100 XP</span></div>
+        <div class="xpbar" role="progressbar" aria-label="Progress to next level"><i id="gBar"></i></div>
+      </div>
+      <div class="hudright">
+        <span class="chip2 goal" id="gGoalWrap" title="Today's XP goal"><span>🎯</span> <b id="gGoal">0 / 50</b> today</span>
+        <button class="snd" id="gSnd" aria-pressed="true" title="Sound on or off">🔊</button>
+      </div>
+    </div>
+    <div class="badges reveal" id="gBadges"></div>
+
+    <div class="tabs reveal" role="tablist" aria-label="Games">
+      <span class="tab-ind" aria-hidden="true"></span>
+      <button class="tab is-on" role="tab" aria-selected="true" aria-controls="pane-match" data-pane="match"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5 14.5 9.5"/><path d="M13 6.5 15 4.5a4.2 4.2 0 0 1 6 6l-2 2"/><path d="M11 17.5 9 19.5a4.2 4.2 0 0 1-6-6l2-2"/></svg><span>Match</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-listen" data-pane="listen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4"/><path d="M8 7v10"/><path d="M12 4v16"/><path d="M16 8v8"/><path d="M20 10v4"/></svg><span>Listen</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-order" data-pane="order"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9"/><path d="M4 12h6"/><path d="M4 17h9"/><path d="M17 5v14"/><path d="M14 16l3 3 3-3"/></svg><span>Order</span></button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pane-cards" data-pane="cards"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="12" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v9"/></svg><span>Cards</span></button>
+    </div>
+
+    <p class="playmeta reveal">
+      <button class="again" id="playreset" type="button">Start over</button>
+    </p>
+
+    <div class="pane is-on" id="pane-match" role="tabpanel">
+      <div class="quiz">
+        <p class="sub">Tap a word, then its meaning. Three pairs — right answers earn XP.</p>
+        <div class="cols">
+          <div id="words"></div>
+          <div id="means"></div>
+        </div>
+        <p class="qmsg" id="qmsg">Pick a word to start.</p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-listen" role="tabpanel">
+      <div class="game">
+        <p class="sub">The word is on screen — say it out loud, then play it and check yourself.</p>
+        <p class="sayword" id="lword">automatic</p>
+        <div class="grow">
+          <button class="btn btn-main" id="speak">Play the word</button>
+          <label class="switch"><input type="checkbox" id="slow"> Slow</label>
+        </div>
+        <div class="lchoices" id="lchoices"></div>
+        <p class="qmsg" id="lmsg">Play it, say it, then pick the meaning.</p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-order" role="tabpanel">
+      <div class="game">
+        <p class="sub">Tap or click the words to build the sentence. Tap a word in your line to send it back.</p>
+        <div class="line" id="line" aria-live="polite"></div>
+        <p class="banklabel">Words left</p>
+        <div class="bank" id="bank"></div>
+        <div class="grow">
+          <button class="btn btn-main" id="check">Check</button>
+          <button class="btn btn-ghost" id="nextline">Next one</button>
+        </div>
+        <p class="qmsg" id="omsg"></p>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-cards" role="tabpanel">
+      <div class="game">
+        <p class="sub">Tap the card to see the meaning, then tell it honestly: do you know this word?</p>
+        <div class="flash" id="flash" role="button" tabindex="0" aria-label="Flashcard, tap to reveal the meaning">
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="fw" id="fw">automatic</div>
+              <div class="tap">Tap to flip</div>
+            </div>
+            <div class="face back">
+              <div class="fm" id="fm"></div>
+              <div class="fe" id="fe"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grow">
+          <button class="btn btn-main" id="known">I know it</button>
+          <button class="btn btn-ghost" id="notyet">Not yet</button>
+          <span class="hint" id="knowcount">0 of 6 known</span>
+        </div>
+      </div>
+    </div>
+  </section>

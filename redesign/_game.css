@@ -1,0 +1,39 @@
+/* quiz */
+  .quiz{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:26px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  #words,#means{display:grid;grid-template-rows:repeat(3,1fr);gap:10px}
+  .qitem{width:100%;display:flex;align-items:center;border:1px solid var(--line);border-radius:14px;padding:13px 15px;
+         background:var(--card);cursor:pointer;font:600 16px/1.35 var(--display);transition:.15s;text-align:left;color:var(--cream)}
+  .qitem:hover{border-color:rgba(255,246,233,.35)}
+  .qitem.sel{border-color:var(--coral);box-shadow:0 0 0 2px rgba(231,93,78,.25)}
+  .qitem.ok{border-color:#5CB27A;background:rgba(92,178,122,.14);cursor:default}
+  .qitem.bad{border-color:#C7452F;animation:shake .3s}
+  .qitem.muted{opacity:.35;pointer-events:none}
+  .qitem span{display:block;font:700 14.5px/1.5 var(--text);color:var(--dim)}
+  @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .qmsg{margin:14px 0 0;font:800 14px/1.4 var(--text);color:var(--dim);min-height:20px}
+  .qmsg.good{color:#7FD09A}
+  .qmsg.warn{color:var(--coral-soft)}
+
+  /* keyboard focus: visible on every control (WCAG 2.4.7) */
+  :focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+  .turn :focus-visible,.turn a:focus-visible,.turn button:focus-visible{outline-color:#1a1210}
+  footer :focus-visible{outline-color:var(--coral-soft)}
+
+  /* your turn */
+  .turn{background:var(--coral);border-radius:24px;padding:30px;color:#1a1210}
+  .turn h2{color:#1a1210;margin-bottom:6px}
+  .turn p{color:#1a1210;margin:0 0 16px;font-size:15.5px}
+  .turn textarea{width:100%;min-height:84px;resize:vertical;border-radius:14px;border:1.5px solid rgba(26,18,16,.35);
+        background:rgba(255,246,233,.94);color:#241812;padding:13px 15px;font:600 16px/1.5 var(--text)}
+  .turn textarea:focus{outline:2px solid #1a1210;outline-offset:1px}
+  .turnfoot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .turn .btn-main{background:#1a1210;color:var(--cream)}
+  .turn .btn-main:hover{background:#2a1d18}
+  .hint{font:800 13px/1 var(--text);color:rgba(26,18,16,.92)}
+  #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--cream);color:#1a1210;
+         font:800 14px/1 var(--text);padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;
+         transition:.25s;z-index:70}
+  #toast.show{opacity:1;transform:translate(-50%,0)}
+
+  
