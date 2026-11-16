@@ -184,17 +184,22 @@
   .qmsg.good{color:#7FD09A}
   .qmsg.warn{color:var(--coral-soft)}
 
+  /* keyboard focus: visible on every control (WCAG 2.4.7) */
+  :focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+  .turn :focus-visible,.turn a:focus-visible,.turn button:focus-visible{outline-color:#1a1210}
+  footer :focus-visible{outline-color:var(--coral-soft)}
+
   /* your turn */
   .turn{background:var(--coral);border-radius:24px;padding:30px;color:#1a1210}
   .turn h2{color:#1a1210;margin-bottom:6px}
-  .turn p{color:rgba(26,18,16,.8);margin:0 0 16px;font-size:15.5px}
+  .turn p{color:#1a1210;margin:0 0 16px;font-size:15.5px}
   .turn textarea{width:100%;min-height:84px;resize:vertical;border-radius:14px;border:1.5px solid rgba(26,18,16,.35);
         background:rgba(255,246,233,.94);color:#241812;padding:13px 15px;font:600 16px/1.5 var(--text)}
   .turn textarea:focus{outline:2px solid #1a1210;outline-offset:1px}
   .turnfoot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
   .turn .btn-main{background:#1a1210;color:var(--cream)}
   .turn .btn-main:hover{background:#2a1d18}
-  .hint{font:800 13px/1 var(--text);color:rgba(26,18,16,.75)}
+  .hint{font:800 13px/1 var(--text);color:rgba(26,18,16,.92)}
   #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--cream);color:#1a1210;
          font:800 14px/1 var(--text);padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;
          transition:.25s;z-index:70}
@@ -208,6 +213,7 @@
   .reveal{opacity:1}
   .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
   .js .reveal.in{opacity:1;transform:none}
+  .js .reveal:focus-within{opacity:1;transform:none}
 
   footer{border-top:1px solid var(--line);padding:30px 0 48px;color:var(--dim);font-size:14px;text-align:center}
   footer .lock{margin-bottom:12px;justify-content:center}
@@ -361,6 +367,8 @@
     .chip{min-height:44px;display:inline-flex;align-items:center}
     .qitem{width:100%;min-height:52px;font-size:13.5px}
     .btn{min-height:44px}
+    .lock{min-height:44px;display:inline-flex;align-items:center}
+    .ep .t a{display:inline-block;padding:11px 0;margin:-11px 0}
   }
   @media(hover:none){
     .qitem{width:100%;min-height:52px;font-size:13.5px}
@@ -640,7 +648,7 @@
         and every hard word explained the moment it shows up.</p>
         <div class="row">
           <a class="btn btn-main" href="https://www.youtube.com/@TwoEnglishMugs">Listen free</a>
-          <a class="btn btn-ghost" href="#quiz">Try the quiz</a>
+          <a class="btn btn-ghost" href="#practice">Try the quiz</a>
         </div>
       </div>
       <div class="art">
