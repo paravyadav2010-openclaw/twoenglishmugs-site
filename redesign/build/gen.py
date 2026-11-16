@@ -101,7 +101,7 @@ for e in eps:
         '<span class="gl__a" aria-hidden="true">&darr;</span></a></li>'
     )
 GUIDE_LIB = '\n'.join(guide_rows)
-GUIDE_LABEL = 'Every guide so far \u00b7 %d PDFs, one per episode' % len(guide_rows)
+GUIDE_LABEL = 'Every guide so far'
 
 cards = []
 for e in featured:
