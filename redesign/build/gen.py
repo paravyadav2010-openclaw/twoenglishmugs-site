@@ -504,7 +504,13 @@ OVERRIDES = '''
 #practice .hudright { margin-left: 0; }
 #practice .chip2 { white-space: nowrap; }
 @media (max-width: 639px) {
-  #practice .hud { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+  /* keep the whole section inside two phone screens */
+  #practice { padding-top: var(--s-6); }
+  #practice .tabs { margin-top: var(--s-4); }
+  #practice .playmeta { margin: var(--s-2) 0 var(--s-3); }
+  #practice .pane { padding: 14px; }
+  #practice .turnblock { padding-top: var(--s-4); }
+  #practice .hud { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
   #practice .grow2 { grid-column: 1 / -1; order: 3; max-width: none; }
   #practice .hudright { display: flex; gap: var(--s-2); margin: 0; }
   #practice .lvlrow { font-size: 12.5px; }
