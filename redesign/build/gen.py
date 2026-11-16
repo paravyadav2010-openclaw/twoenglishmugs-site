@@ -77,14 +77,29 @@ SVG_GUIDE = """<svg viewBox="0 0 560 380" preserveAspectRatio="xMidYMid slice" r
 
 # ---------- episodes ----------
 featured = eps[:6]
+
+# the email gate's slug for each episode (from the live site's own PDF chips)
+PDF = {
+  22:'ep22-money', 23:'ep23-stay-motivated', 24:'ep24-food-words', 25:'ep25-stop-studying-grammar',
+  26:'ep26-train-your-ears', 27:'ep27-power-of-silence', 28:'ep28-build-english-sentences',
+  29:'ep29-think-in-english', 30:'ep30-afraid-to-speak', 31:'ep31-stop-putting-things-off',
+  32:'ep32-pick-one-thing', 35:'ep35-speak-with-confidence', 36:'ep36-time-management',
+  37:'ep37-before-sleep', 38:'ep38-be-happy-with-what-you-have', 39:'ep39-see-what-others-miss',
+  40:'ep40-negative-self-talk',
+}
 cards = []
 for e in featured:
-    num = e['n'].replace('Episode ', 'Episode ')
+    num = e['n']
+    n = int(''.join(ch for ch in num if ch.isdigit()) or 0)
+    slug = PDF.get(n)
+    pdf = ('          <p class="t-small" style="margin-top:var(--s-3)"><a class="link" href="https://dl.twoenglishmugs.com/'
+           + slug + '">Study guide and PDF</a></p>\n') if slug else ''
     cards.append(
         '        <article class="card card--open span-4">\n'
         '          <p class="t-label">' + num + '</p>\n'
         '          <h3><a href="' + e['url'] + '">' + e['title'] + '</a></h3>\n'
         '          <p class="t-small muted">' + e['desc'] + ' &middot; free on YouTube</p>\n'
+        + pdf +
         '        </article>'
     )
 EPISODES = '\n'.join(cards)
@@ -97,12 +112,12 @@ HEAD = '''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Two English Mugs: real English listening for B1 learners</title>
-<meta name="description" content="Twenty-six episodes of real English talk for B1 learners, twenty minutes each, free on YouTube. Emma explains every hard word; Josh learns along with you.">
+<meta name="description" content="Forty episodes of real English talk for B1 learners, twenty minutes each, free on YouTube. Emma explains every hard word; Josh learns along with you.">
 <meta name="site-kind" content="other">
 <meta name="page-type" content="service">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Two English Mugs: real English listening for B1 learners">
-<meta property="og:description" content="Twenty-six episodes, twenty minutes each, free on YouTube. Every hard word explained as it lands.">
+<meta property="og:description" content="Forty episodes, twenty minutes each, free on YouTube. Every hard word explained as it lands.">
 <meta property="og:image" content="https://twoenglishmugs.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/mark.png" type="image/png">
@@ -281,7 +296,7 @@ BODY = '''<body>
   <section class="hero hero--split" data-enter aria-labelledby="hero-h">
     <div class="wrap"><div class="hero-text grid hero__grid">
       <div class="hero__text span-5">
-        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>26 episodes &middot; B1 &middot; twenty minutes</p>
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>40 episodes &middot; B1 &middot; twenty minutes</p>
         <h1 id="hero-h">Real English for B1 learners</h1>
         <p class="hero__lead">Twenty minutes, one story, two hosts. Josh is still learning, and Emma explains each hard word as it lands.</p>
         <div class="btn-row">
@@ -334,7 +349,7 @@ BODY = '''<body>
       <div class="grid">
 ''' + EPISODES_ROW2 + '''
       </div>
-      <p style="margin-top:var(--s-6)"><a class="link" href="https://www.youtube.com/@TwoEnglishMugs">All 26 episodes, on YouTube</a></p>
+      <p style="margin-top:var(--s-6)"><a class="link" href="https://www.youtube.com/@TwoEnglishMugs">All 40 episodes, on YouTube</a></p>
     </div>
   </section>
 
@@ -389,10 +404,10 @@ BODY = '''<body>
       <div class="span-6">
         <div class="section-head">
           <h2 id="guide-h">The words, in writing. <span class="muted">A free study guide for every episode.</span></h2>
-          <p>Each guide holds the full transcript, the word list and one writing prompt. Send your email and the PDF arrives; nothing is sold to anyone.</p>
+          <p>Every episode has its own guide: the full transcript, the word list and one writing prompt. Its link sits on the episode\u2019s card, and its email gate sends the PDF straight back. Nothing is sold to anyone.</p>
         </div>
         <div class="btn-row">
-          <a class="btn btn--primary" href="https://dl.twoenglishmugs.com/">Get the study guide</a>
+          <a class="btn btn--primary" href="https://dl.twoenglishmugs.com/ep40-negative-self-talk">Get the episode 40 guide</a>
         </div>
         <div class="vecpanel" style="height:220px;margin-top:var(--s-7)">''' + SVG_GUIDE + '''</div>
       </div>
@@ -414,7 +429,7 @@ BODY = '''<body>
     <div class="closing__cta close--type">
       <div class="section-head">
         <h2 id="close-h">Listen free on YouTube</h2>
-        <p>Twenty-six episodes, twenty minutes each, no app and no sign-up.</p>
+        <p>Forty episodes, twenty minutes each, no app and no sign-up.</p>
       </div>
       <a class="btn btn--primary btn--xl btn--wide" href="https://www.youtube.com/@TwoEnglishMugs">Listen free<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
     </div>
