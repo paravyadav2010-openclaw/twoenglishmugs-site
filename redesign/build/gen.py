@@ -6,7 +6,7 @@ RED = os.path.dirname(HERE) + '/'
 eps = json.load(open(RED + 'episodes.json'))
 p_inner = open(HERE + '/p_inner.html').read()
 t_inner = open(HERE + '/t_inner.html').read()
-gamecss = open(RED + '_game.css').read()
+gamecss = open(RED + '_game_full.css').read()
 gamejs = open(RED + '_game_full.js').read()
 
 
@@ -131,11 +131,31 @@ HEAD = '''<!doctype html>
   --display-axes: 'SOFT' 30, 'WONK' 0;
 }
 /* the client's own artwork: the two hosts, dealt as one picture on the right of the hero */
-.nav__logo img { width: 30px; height: 30px; display: block; }
+/* the logo keeps its own ratio and its off-white blends into the ground */
+.nav__logo img, footer .nav__logo img { width: auto; display: inline-block; vertical-align: middle; mix-blend-mode: multiply; }
+.nav__logo img.mark, footer .nav__logo img.mark { height: 30px; }
+.nav__logo .logo-name { font-family: var(--font-display); font-size: 19px; line-height: 1; color: var(--p-ink); letter-spacing: -.01em; margin-left: 10px; }
+footer .nav__logo .logo-name { font-size: 17px; }
+.nav__logo { display: inline-flex; align-items: center; gap: 0; }
 .hero__media .duo { position: relative; display: flex; align-items: flex-end; justify-content: center;
   height: 100%; min-height: 300px; }
 .hero__media .duo img { width: 50%; height: auto; max-height: 92%; object-fit: contain; display: block; }
 @media (max-width: 1023px) { .hero__media .duo { min-height: 260px; margin-top: var(--s-6); } }
+/* the episode list reads as tiles, not a wall of text: one tint, then the other */
+#episodes .card { background: var(--p-surface); border-radius: var(--r-lg); padding: var(--s-5) var(--s-5) var(--s-6); }
+#episodes .card:nth-child(even) { background: #fbe3dc; }
+#episodes .card .t-label { color: var(--p-accent); letter-spacing: .08em; text-transform: uppercase; font-size: var(--t-small); }
+#episodes .card h3 { margin: var(--s-2) 0 var(--s-3); }
+#episodes .card h3 a { text-decoration: none; }
+#episodes .card h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+#episodes .card .t-small { margin: 0; }
+@media (max-width: 639px) { #episodes .card { padding: var(--s-4) var(--s-4) var(--s-5); } }
+/* the float card sits at the top of the panel, clear of the two faces */
+.hero__media .ly-float { top: var(--s-5); bottom: auto; left: var(--s-5); }
+/* the carried-over sheet has one negative margin that stretches the section; clip it */
+#practice { overflow-x: clip; }
+/* the game's reveal blocks: no observer runs on this page, so they are always shown */
+#practice .reveal { opacity: 1 !important; transform: none !important; }
 /* the practice game and the writing prompt, carried over: the same classes on the light palette */
 /* the game's little inline icons were sized by the old page's CSS; give them their own box */
 /* the practice header: one line of title and pill, then the rhythm */
@@ -145,7 +165,8 @@ HEAD = '''<!doctype html>
 #practice .hud { margin-top: var(--s-5); }
 #practice .badges { margin-top: var(--s-3); }
 #practice .tabs { margin-top: var(--s-5); }
-#practice .playmeta { display: flex; justify-content: flex-end; margin: var(--s-2) 0 0; }
+#practice .playmeta { display: flex; justify-content: flex-end; align-items: center; margin: 0 0 var(--s-4); padding: 0; }
+#practice .pane { margin-top: 0; }
 /* the four game tabs read as one control: same shape, same height, one active state */
 #practice .tab { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: transparent; gap: 8px; }
 #practice .tab.is-on, #practice .tab[aria-selected="true"] { background: var(--coral); border-color: var(--coral); color: #141111; }
@@ -222,7 +243,7 @@ BODY = '''<body>
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">Skip to content</a>
-    <a class="nav__logo" href="#top"><img src="img/mark.png" alt="" width="30" height="30">Two English Mugs</a>
+    <a class="nav__logo" href="#top"><img class="mark" src="img/mark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
     <nav class="nav__links" aria-label="Main">
       <div class="nav__item"><a class="nav__link" href="#episodes">Episodes</a></div>
       <div class="nav__item"><a class="nav__link" href="#practice">Practice</a></div>
@@ -382,7 +403,7 @@ BODY = '''<body>
     <div class="closing__links">
       <div class="grid">
         <div class="span-6 stack-4">
-          <a class="nav__logo" href="#top"><img src="img/mark.png" alt="" width="30" height="30">Two English Mugs</a>
+          <a class="nav__logo" href="#top"><img class="mark" src="img/mark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
           <p class="footer__lede">A listening podcast for people learning English. Two hosts, one story, twenty minutes.</p>
         </div>
         <div class="span-3 footer__col"><h4>The show</h4><ul><li><a href="#episodes">Episodes</a></li><li><a href="#hosts">Hosts</a></li><li><a href="#steps">How it works</a></li></ul></div>
@@ -406,7 +427,46 @@ BODY = '''<body>
 </html>
 '''
 
-STYLE = '<style>\n' + gamecss + '\n</style>\n'
+OVERRIDES = '''
+/* these must win over the carried-over sheet: it is printed after the page CSS */
+#practice { margin-left: 0 !important; margin-right: 0 !important; overflow-x: clip; }
+#practice .reveal { opacity: 1 !important; transform: none !important; }
+#practice .phead { display: flex; align-items: baseline; gap: var(--s-4); flex-wrap: wrap; margin: 0; }
+#practice .phead h2 { margin: 0; }
+#practice .ptag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line);
+  border-radius: 999px; padding: 7px 14px; background: var(--card); color: var(--cream); font-size: 13px; line-height: 1; }
+#practice .ptag svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+#practice .tab { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: transparent; gap: 8px; }
+#practice .tab[aria-selected="true"] { background: var(--coral); border-color: var(--coral); color: #141111; }
+#practice .tab[aria-selected="true"] svg { stroke: #141111; }
+#practice .playmeta { display: flex; justify-content: flex-end; margin: 0 0 var(--s-4); padding: 0; }
+#practice .again { background: var(--card); color: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; }
+#practice .hud { align-items: center; }
+#practice .grow2 { max-width: 420px; }
+#practice .turnblock { padding-top: var(--s-6); }
+#practice .turn { padding: 0; background: none; border-radius: 0; }
+#practice .turn h2, #practice .turn p, #practice .turn .hint { color: var(--p-inv-ink); }
+#practice #wc, #practice .turn .hint { color: var(--p-inv-muted); }
+#practice .turn textarea { background: var(--card); color: var(--cream); border-color: var(--line); }
+#practice .turn .btn-main { background: var(--p-inv-action); color: var(--p-inv-action-ink); }
+#practice .quiz .sub, #practice .pane .sub { color: #d9cec7; }
+#practice .orow, #practice .ord, #practice .list-item { color: var(--cream); }
+/* the sheet leaves this one on the browser's default grey button */
+#practice .btn-main { background: var(--coral); color: #141111; border: 0; border-radius: 999px;
+  padding: 12px 20px; font-weight: 700; font-size: var(--t-body); }
+#practice .btn-main:hover { background: var(--coral-soft); }
+#practice input[type="checkbox"] { accent-color: var(--coral); }
+#practice .switch { color: var(--cream); }
+/* every remaining control in the game: one dark pill, cream label (the sheet leaves some on browser defaults) */
+#practice button:not(.tab):not(.qitem):not(.wchip):not(.lchoice):not(.snd):not(.again):not(.done):not(.btn-main) {
+  background: var(--card); color: var(--cream); border: 1px solid var(--line); border-radius: 999px;
+  padding: 10px 16px; font: inherit; font-weight: 700; }
+#practice button:disabled { opacity: .55; color: var(--cream); }
+#practice .hint, #practice #knowcount { color: var(--p-inv-muted); }
+#practice .pane > p, #practice .pane .meta { color: var(--p-inv-muted); }
+'''
+
+STYLE = '<style>\n' + gamecss + '\n' + OVERRIDES + '\n</style>\n'
 html = HEAD + STYLE + BODY
 open(RED + 'index.html', 'w').write(html)
 print("wrote", len(html), "chars")
