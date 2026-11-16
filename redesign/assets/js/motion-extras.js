@@ -1,73 +1,83 @@
 /* Motion layer for twoenglishmugs.com
-   Lenis (smooth scroll) + GSAP ScrollTrigger (scroll-driven reveals).
-   Written so the page is complete without it: nothing is hidden unless this file runs,
-   prefers-reduced-motion turns it all off, and a 3s watchdog clears any stuck state. */
+   Reveals on IntersectionObserver, one transform-only parallax on the hero, nothing else.
+   No library, no scroll hijack: if this file never runs the page is still complete,
+   and prefers-reduced-motion turns every part of it off. */
 (function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  if (reduce || !window.gsap || !window.ScrollTrigger) return;
+  var TARGETS = [
+    '.section-head h2', '.section-head > p', '.rows li', '#episodes .card',
+    '.vecpanel', '.hostsrow > div', '.faq__item', '.gl li',
+    '#practice .phead', '#practice .sub', '#practice .tabs'
+  ];
 
-  var gsap = window.gsap;
-  gsap.registerPlugin(window.ScrollTrigger);
-  root.classList.add('anim-ready');
+  var els = [];
+  TARGETS.forEach(function (sel) {
+    Array.prototype.forEach.call(document.querySelectorAll(sel), function (el) {
+      el.setAttribute('data-reveal', '');
+      els.push(el);
+    });
+  });
 
-  /* Smooth scrolling: left to the browser. Lenis was tried here and hijacked the
-     wheel without actually driving scrollTo on this page, so anchors only glided by
-     half a screen. The kit's easing + scroll-behavior do the same job without the risk. */
-
-  /* ---- reveals: one pattern for every section below the hero ---- */
-  var enter = 'top 82%';
-
-  function reveal(sel, vars) {
-    var els = gsap.utils.toArray(sel);
-    if (!els.length) return;
-    gsap.from(els, Object.assign({
-      y: 26, opacity: 0, duration: 0.75, ease: 'power2.out', stagger: 0.07,
-      scrollTrigger: { trigger: els[0].closest('section') || els[0], start: enter, once: true }
-    }, vars || {}));
+  function showAll() {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+    root.classList.remove('anim-ready');
   }
 
-  reveal('.section-head h2');
-  reveal('.section-head > p');
-  reveal('.rows li', { y: 18, stagger: 0.06 });
-  reveal('#episodes .card', { y: 30, stagger: 0.06 });
-  reveal('.vecpanel', { y: 34, duration: 0.9 });
-  reveal('.hostsrow > div', { y: 24 });
-  reveal('.faq__item', { y: 14, stagger: 0.05 });
-  reveal('.gl li', { y: 12, stagger: 0.025, duration: 0.5 });
+  if (reduce.matches || !('IntersectionObserver' in window)) {
+    showAll();
+  } else {
+    root.classList.add('anim-ready');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    els.forEach(function (el) { io.observe(el); });
 
-  /* ---- the hero settles as you leave it ---- */
-  gsap.to('.hero__media', {
-    y: -40, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-  });
-  /* the words drift down slowly as the hero leaves; no opacity fade, a dimmed hero
-     mid-scroll reads as a rendering fault rather than a transition */
-  gsap.to('.hero__text', {
-    y: 18, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-  });
+    /* nothing may stay hidden: after 2.5s anything in view is shown regardless */
+    setTimeout(function () {
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (!el.classList.contains('is-in') && r.top < window.innerHeight && r.bottom > 0) {
+          el.classList.add('is-in');
+        }
+      });
+    }, 2500);
 
-  /* ---- the bar gains weight once you are moving ---- */
+    if (reduce.addEventListener) {
+      reduce.addEventListener('change', function (ev) { if (ev.matches) showAll(); });
+    }
+  }
+
+  /* the hero settles as it leaves: transform only, never opacity */
+  var media = document.querySelector('.hero__media');
+  if (media && !reduce.matches && window.innerWidth > 639) {
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = Math.min(window.scrollY, window.innerHeight);
+        media.style.transform = 'translate3d(0,' + (-y * 0.06).toFixed(2) + 'px,0)';
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* the bar gains weight once the page is moving */
   var nav = document.querySelector('header.nav');
   if (nav) {
-    window.ScrollTrigger.create({
-      start: 'top -60',
-      onEnter: function () { nav.classList.add('is-scrolled'); },
-      onLeaveBack: function () { nav.classList.remove('is-scrolled'); }
-    });
+    var navScroll = function () {
+      nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    };
+    window.addEventListener('scroll', navScroll, { passive: true });
+    navScroll();
   }
-
-  /* ---- the practice band drifts in without touching the game itself ---- */
-  reveal('#practice .phead, #practice .sub', { y: 18, stagger: 0.06 });
-  reveal('#practice .tabs', { y: 20 });
-
-  /* ---- watchdog: if anything is left invisible, put it back ---- */
-  setTimeout(function () {
-    document.querySelectorAll('[style*="opacity"]').forEach(function (el) {
-      if (parseFloat(getComputedStyle(el).opacity) < 0.05) el.style.opacity = '';
-    });
-    window.ScrollTrigger.refresh();
-  }, 3000);
 })();

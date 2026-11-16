@@ -1,0 +1,11 @@
+{
+ "page": null,
+ "url": "http://127.0.0.1:8795/index.html",
+ "root": null,
+ "kind": "service",
+ "category": null,
+ "primary": null,
+ "rounds": 3,
+ "start": "2026-11-16T09:14:56.275Z",
+ "by": "gate.mjs --start"
+}
