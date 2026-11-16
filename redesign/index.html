@@ -513,7 +513,9 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
 @media (max-width: 639px) {
   /* keep the whole section inside two phone screens */
   #practice { padding-top: var(--s-6); }
-  #practice .tabs { margin-top: var(--s-4); }
+  #practice .tabs { margin-top: var(--s-4); display: grid !important; grid-template-columns: 1fr 1fr !important; gap: var(--s-2) !important; }
+  #practice .tab { min-width: 0; width: 100%; flex: none; }
+  #practice .pane { overflow-x: clip; }
   #practice .playmeta { margin: var(--s-2) 0 var(--s-3); }
   #practice .pane { padding: 14px; }
   #practice .turnblock { padding-top: var(--s-4); }
@@ -527,6 +529,19 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
 #practice .tab, #practice .tab[aria-selected="true"] { border-radius: 999px !important; }
 #practice .tab { background: transparent; box-shadow: none; }
 #practice .tab-ind { display: none !important; }
+/* a plain <button> keeps the platform's native chrome, which paints a dark shade in the
+   rounded ends of the capsule. Strip it and clip the fill to the padding box. */
+#practice button, #practice .tab { -webkit-appearance: none !important; appearance: none !important;
+  background-clip: padding-box !important; -webkit-tap-highlight-color: transparent; }
+/* the game card runs the full width of a phone */
+@media (max-width: 639px) {
+  #practice { padding-inline: 0; }
+  #practice .wrap { width: 100%; max-width: none; padding-inline: 0; }
+  #practice .phead, #practice .sub, #practice .tabs, #practice .playmeta,
+  #practice .hud, #practice .badges, #practice .turnblock { margin-inline: 16px; }
+  #practice .pane { margin: 0; border-left: 0; border-right: 0; border-radius: 0; padding: 18px 16px; }
+  #practice .quiz, #practice .game { padding: 0 !important; }
+}
 #practice .chip2 { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: var(--t-small); }
 #practice .grow2 { flex: 1 1 auto; min-width: 160px; }
 #practice .lvlrow { font-size: var(--t-small); }
@@ -541,6 +556,24 @@ main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
 #practice .qitem.bad, #practice .qitem.wrong { border-color: #E0625A; background: rgba(224,98,90,.14); }
 #practice .qitem:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 #practice .sub, #practice .pane p { color: #ded4cd; }
+
+/* THE dark plate: the kit's motion layer injects a .m-tab-ind element laid exactly over the
+   active tab, filled with page ink and rounded 8px, so it showed as square dark corners
+   around the coral capsule. Our active state is the coral fill itself. */
+#practice .m-tab-ind, #practice .tab-ind { display: none !important; opacity: 0 !important; }
+/* the active pill carried a 378x92 absolutely-positioned ::after halo from the old sheet:
+   that is the dark plate at its corners. Remove it at the source. */
+#practice .tab::before, #practice .tab::after,
+#practice .tab[aria-selected="true"]::before, #practice .tab[aria-selected="true"]::after {
+  content: none !important; display: none !important; background: none !important; }
+
+/* LAST WORD on the game bar: it is a grid at every width, so the pills can never
+   outrun their container (the carried-over sheet's flex basis did exactly that) */
+#practice .tabs { display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+  gap: var(--s-2) !important; width: auto; }
+#practice .tab { width: 100% !important; min-width: 0 !important; flex: 0 0 auto !important;
+  display: inline-flex; align-items: center; justify-content: center; }
+@media (max-width: 639px) { #practice .tabs { grid-template-columns: 1fr 1fr !important; } }
 
 #practice .xpbar { height: 6px; }
 #practice .turn { padding: 0; background: none; border-radius: 0; }
