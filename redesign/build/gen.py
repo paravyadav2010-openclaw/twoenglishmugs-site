@@ -189,6 +189,27 @@ header.nav.is-scrolled { box-shadow: 0 1px 0 rgba(36,24,18,.10), 0 8px 24px rgba
 /* anchors glide, and land clear of the fixed bar */
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
+/* hero depth props: a coral wash behind the panel and a thin ring in front of it */
+.hero { position: relative; overflow: clip; }
+.hero__blob {
+  position: absolute; right: -8%; top: -18%; width: min(56vw, 780px); aspect-ratio: 1;
+  border-radius: 50%; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle at 36% 34%, rgba(231,93,78,.30), rgba(231,93,78,.11) 48%, rgba(231,93,78,0) 70%);
+  will-change: transform;
+}
+.hero__ring {
+  position: absolute; right: 4%; top: 12%; width: min(30vw, 420px); aspect-ratio: 1;
+  border-radius: 50%; pointer-events: none; z-index: 0;
+  border: 2px solid rgba(231,93,78,.34);
+  will-change: transform;
+}
+.hero .wrap { position: relative; z-index: 1; }
+@media (max-width: 860px) { .hero__blob { right: -30%; top: -6%; width: 92vw; } .hero__ring { display: none; } }
+
+/* parallax layers are composited, never re-laid-out */
+[data-par] { will-change: transform; }
+@media (prefers-reduced-motion: reduce) { [data-par] { will-change: auto; transform: none !important; } }
+
 /* reveals: the hidden state only exists while the motion file is running */
 .anim-ready [data-reveal] { opacity: 0; transform: translateY(22px); }
 .anim-ready [data-reveal].is-in {
@@ -343,6 +364,8 @@ BODY = '''<body>
 <main id="top">
 
   <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <span class="hero__blob" aria-hidden="true"></span>
+    <span class="hero__ring" aria-hidden="true"></span>
     <div class="wrap"><div class="hero-text grid hero__grid">
       <div class="hero__text span-5">
         <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>40 episodes &middot; B1 &middot; twenty minutes</p>
