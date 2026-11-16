@@ -134,6 +134,7 @@ HEAD = '''<!doctype html>
 /* the logo: the mark's cream ink is redrawn in page ink so the two mugs read on cream;
    its own 1200x406 ratio is kept and it never shrinks in the bar */
 .nav__logo { display: inline-flex; align-items: center; gap: 0; flex: 0 0 auto; }
+.nav__logo img, footer .nav__logo img { background: transparent !important; }
 .nav__logo img.mark, footer .nav__logo img.mark { height: 30px !important; width: auto !important; max-width: none !important;
   display: block; flex: 0 0 auto; object-fit: contain; }
 @media (max-width: 639px) { .nav__logo img.mark, footer .nav__logo img.mark { height: 26px !important; width: auto !important; } }
@@ -254,7 +255,7 @@ BODY = '''<body>
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">Skip to content</a>
-    <a class="nav__logo" href="#top"><img class="mark" src="img/mark-dark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
+    <a class="nav__logo" href="#top"><img class="mark" src="img/tem-mark.svg" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
     <nav class="nav__links" aria-label="Main">
       <div class="nav__item"><a class="nav__link" href="#episodes">Episodes</a></div>
       <div class="nav__item"><a class="nav__link" href="#practice">Practice</a></div>
@@ -414,7 +415,7 @@ BODY = '''<body>
     <div class="closing__links">
       <div class="grid">
         <div class="span-6 stack-4">
-          <a class="nav__logo" href="#top"><img class="mark" src="img/mark-dark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
+          <a class="nav__logo" href="#top"><img class="mark" src="img/tem-mark.svg" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
           <p class="footer__lede">A listening podcast for people learning English. Two hosts, one story, twenty minutes.</p>
         </div>
         <div class="span-3 footer__col"><h4>The show</h4><ul><li><a href="#episodes">Episodes</a></li><li><a href="#hosts">Hosts</a></li><li><a href="#steps">How it works</a></li></ul></div>
