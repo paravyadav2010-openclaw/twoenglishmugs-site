@@ -517,9 +517,10 @@
   });
   renderOrder();
 
-  /* your turn: word count + copy */
+  /* your turn: word count + copy (the section may not be on the page) */
   var ans = document.getElementById('ans'), wc = document.getElementById('wc');
   var toast = document.getElementById('toast');
+  if (!ans || !wc || !document.getElementById('copy')) { return; }
   function countWords(s) { var t = s.trim(); return t ? t.split(/\s+/).length : 0; }
   ans.addEventListener('input', function () { wc.textContent = countWords(ans.value) + ' words'; });
   document.getElementById('copy').addEventListener('click', function () {

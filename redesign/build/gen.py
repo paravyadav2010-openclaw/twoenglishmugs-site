@@ -385,14 +385,12 @@ BODY = '''<body>
     </div>
   </section>
 
-  <section class="section g2" id="practice" aria-labelledby="practice-h">
+  <section class="section" id="practice" aria-labelledby="practice-h">
     <div class="wrap">
       <div class="group">
 ''' + p_inner + '''
       </div>
-      <div class="turnblock" id="turn">
-''' + t_inner + '''
-      </div>
+
     </div>
   </section>
 
