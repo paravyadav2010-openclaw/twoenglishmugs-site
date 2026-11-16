@@ -484,6 +484,43 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
 #practice .hud { align-items: center; }
 #practice .grow2 { max-width: 420px; }
 #practice .turnblock { padding-top: var(--s-6); }
+
+/* ---------- the practice section, laid out as one exercise, not an app ---------- */
+/* the wrap is a column we can reorder without touching the carried-over markup:
+   title, one line, the game bar (tabs + start over), the card, then a quiet progress line */
+#practice .wrap { display: flex; flex-direction: column; align-items: stretch; }
+#practice .group { display: flex; flex-direction: column; align-items: stretch; }
+#practice .phead        { order: 1; }
+#practice .sub          { order: 2; font-size: var(--t-lead); color: var(--p-inv-muted); margin: var(--s-3) 0 0; max-width: 60ch; }
+#practice .tabs         { order: 3; margin-top: var(--s-6); }
+#practice .playmeta     { order: 4; margin: var(--s-3) 0 var(--s-4); }
+#practice .pane         { order: 5; }
+#practice .hud          { order: 6; margin-top: var(--s-5); }
+#practice .badges       { order: 7; }
+#practice .turnblock    { order: 8; }
+#practice .tabs { display: flex; gap: var(--s-2); flex-wrap: wrap; padding: 0; background: none; border: 0; }
+#practice .tab { flex: 1 1 0; min-width: 132px; min-height: 44px; justify-content: center; font-size: var(--t-body); }
+@media (max-width: 639px) { #practice .tab { min-width: 0; flex: 1 1 44%; } }
+#practice .pane { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-6); }
+@media (max-width: 639px) { #practice .pane { padding: var(--s-4); } }
+#practice .quiz, #practice .game { background: transparent !important; border: 0 !important; padding: 0 !important; border-radius: 0 !important; }
+#practice .hud { display: flex; align-items: center; gap: var(--s-5); padding: 0; background: none; border: 0; }
+#practice .chip2 { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: var(--t-small); }
+#practice .grow2 { flex: 1 1 auto; min-width: 160px; }
+#practice .lvlrow { font-size: var(--t-small); }
+/* anchor jumps land below the fixed bar, and the section never tucks under it */
+main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
+#practice { padding-top: calc(var(--s-section, 96px) + 8px); }
+/* the exercise tiles look tappable and show their state */
+#practice .qitem { min-height: 56px; border-width: 1.5px; box-shadow: 0 1px 0 rgba(255,246,233,.04); }
+#practice .qitem.sel { border-color: var(--coral) !important; background: rgba(231,93,78,.16) !important;
+  box-shadow: 0 0 0 3px rgba(231,93,78,.38), inset 3px 0 0 var(--coral); color: #fff6e9; }
+#practice .qitem.ok, #practice .qitem.correct { border-color: #7FD09A; background: rgba(127,208,154,.14); }
+#practice .qitem.bad, #practice .qitem.wrong { border-color: #E0625A; background: rgba(224,98,90,.14); }
+#practice .qitem:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+#practice .sub, #practice .pane p { color: #ded4cd; }
+
+#practice .xpbar { height: 6px; }
 #practice .turn { padding: 0; background: none; border-radius: 0; }
 #practice .turn h2, #practice .turn p, #practice .turn .hint { color: var(--p-inv-ink); }
 #practice #wc, #practice .turn .hint { color: var(--p-inv-muted); }
@@ -653,9 +690,9 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
 
     <div class="phead reveal">
       <h2>Practice</h2>
-      <span class="ptag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6h9a4.5 4.5 0 0 1 4.4 3.6l.9 4.4A3.2 3.2 0 0 1 16.5 16l-1-1.4a2 2 0 0 0-1.6-.8h-5.8a2 2 0 0 0-1.6.8l-1 1.4a3.2 3.2 0 0 1-5.3-2l.9-4.4A4.5 4.5 0 0 1 7.5 6Z"/><path d="M8 10v3M6.5 11.5h3M16.2 10.4h.01M17.9 12.4h.01"/></svg>Four games</span>
+      <span class="ptag" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6h9a4.5 4.5 0 0 1 4.4 3.6l.9 4.4A3.2 3.2 0 0 1 16.5 16l-1-1.4a2 2 0 0 0-1.6-.8h-5.8a2 2 0 0 0-1.6.8l-1 1.4a3.2 3.2 0 0 1-5.3-2l.9-4.4A4.5 4.5 0 0 1 7.5 6Z"/><path d="M8 10v3M6.5 11.5h3M16.2 10.4h.01M17.9 12.4h.01"/></svg>Four games</span>
     </div>
-    <p class="sub reveal">Pick one — everything stays on this device.</p>
+    <p class="sub reveal">Pick a game, then choose a word to begin. Everything stays on this device.</p>
     <div class="hud reveal" id="gHud">
       <span class="chip2" id="gStreakWrap" title="Days in a row with practice"><span class="flame">🔥</span> <b id="gStreak">1</b> <span id="gStreakLabel">day</span></span>
       <div class="grow2">
@@ -678,7 +715,7 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
     </div>
 
     <p class="playmeta reveal">
-      <button class="again" id="playreset" type="button">Start over</button>
+      <button class="again" id="playreset" type="button">New set</button>
     </p>
 
     <div class="pane is-on" id="pane-match" role="tabpanel">

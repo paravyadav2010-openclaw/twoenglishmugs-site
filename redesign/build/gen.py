@@ -477,6 +477,43 @@ OVERRIDES = '''
 #practice .hud { align-items: center; }
 #practice .grow2 { max-width: 420px; }
 #practice .turnblock { padding-top: var(--s-6); }
+
+/* ---------- the practice section, laid out as one exercise, not an app ---------- */
+/* the wrap is a column we can reorder without touching the carried-over markup:
+   title, one line, the game bar (tabs + start over), the card, then a quiet progress line */
+#practice .wrap { display: flex; flex-direction: column; align-items: stretch; }
+#practice .group { display: flex; flex-direction: column; align-items: stretch; }
+#practice .phead        { order: 1; }
+#practice .sub          { order: 2; font-size: var(--t-lead); color: var(--p-inv-muted); margin: var(--s-3) 0 0; max-width: 60ch; }
+#practice .tabs         { order: 3; margin-top: var(--s-6); }
+#practice .playmeta     { order: 4; margin: var(--s-3) 0 var(--s-4); }
+#practice .pane         { order: 5; }
+#practice .hud          { order: 6; margin-top: var(--s-5); }
+#practice .badges       { order: 7; }
+#practice .turnblock    { order: 8; }
+#practice .tabs { display: flex; gap: var(--s-2); flex-wrap: wrap; padding: 0; background: none; border: 0; }
+#practice .tab { flex: 1 1 0; min-width: 132px; min-height: 44px; justify-content: center; font-size: var(--t-body); }
+@media (max-width: 639px) { #practice .tab { min-width: 0; flex: 1 1 44%; } }
+#practice .pane { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-6); }
+@media (max-width: 639px) { #practice .pane { padding: var(--s-4); } }
+#practice .quiz, #practice .game { background: transparent !important; border: 0 !important; padding: 0 !important; border-radius: 0 !important; }
+#practice .hud { display: flex; align-items: center; gap: var(--s-5); padding: 0; background: none; border: 0; }
+#practice .chip2 { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: var(--t-small); }
+#practice .grow2 { flex: 1 1 auto; min-width: 160px; }
+#practice .lvlrow { font-size: var(--t-small); }
+/* anchor jumps land below the fixed bar, and the section never tucks under it */
+main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
+#practice { padding-top: calc(var(--s-section, 96px) + 8px); }
+/* the exercise tiles look tappable and show their state */
+#practice .qitem { min-height: 56px; border-width: 1.5px; box-shadow: 0 1px 0 rgba(255,246,233,.04); }
+#practice .qitem.sel { border-color: var(--coral) !important; background: rgba(231,93,78,.16) !important;
+  box-shadow: 0 0 0 3px rgba(231,93,78,.38), inset 3px 0 0 var(--coral); color: #fff6e9; }
+#practice .qitem.ok, #practice .qitem.correct { border-color: #7FD09A; background: rgba(127,208,154,.14); }
+#practice .qitem.bad, #practice .qitem.wrong { border-color: #E0625A; background: rgba(224,98,90,.14); }
+#practice .qitem:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+#practice .sub, #practice .pane p { color: #ded4cd; }
+
+#practice .xpbar { height: 6px; }
 #practice .turn { padding: 0; background: none; border-radius: 0; }
 #practice .turn h2, #practice .turn p, #practice .turn .hint { color: var(--p-inv-ink); }
 #practice #wc, #practice .turn .hint { color: var(--p-inv-muted); }
