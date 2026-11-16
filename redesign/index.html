@@ -38,12 +38,17 @@
   --display-axes: 'SOFT' 30, 'WONK' 0;
 }
 /* the client's own artwork: the two hosts, dealt as one picture on the right of the hero */
-/* the logo keeps its own ratio and its off-white blends into the ground */
-.nav__logo img, footer .nav__logo img { width: auto; display: inline-block; vertical-align: middle; mix-blend-mode: multiply; }
-.nav__logo img.mark, footer .nav__logo img.mark { height: 30px; }
-.nav__logo .logo-name { font-family: var(--font-display); font-size: 19px; line-height: 1; color: var(--p-ink); letter-spacing: -.01em; margin-left: 10px; }
+/* the logo: the mark's cream ink is redrawn in page ink so the two mugs read on cream;
+   its own 1200x406 ratio is kept and it never shrinks in the bar */
+.nav__logo { display: inline-flex; align-items: center; gap: 0; flex: 0 0 auto; }
+.nav__logo img.mark, footer .nav__logo img.mark { height: 30px !important; width: auto !important; max-width: none !important;
+  display: block; flex: 0 0 auto; object-fit: contain; }
+@media (max-width: 639px) { .nav__logo img.mark, footer .nav__logo img.mark { height: 26px !important; width: auto !important; } }
+.nav__logo .logo-name { font-family: var(--font-display); font-size: 19px; line-height: 1; color: var(--p-ink);
+  letter-spacing: -.01em; margin-left: 10px; white-space: nowrap; }
 footer .nav__logo .logo-name { font-size: 17px; }
-.nav__logo { display: inline-flex; align-items: center; gap: 0; }
+@media (max-width: 639px) { .nav__logo .logo-name { font-size: 16px; margin-left: 8px; } }
+@media (max-width: 380px) { .nav__logo .logo-name { display: none; } }
 .hero__media .duo { position: relative; display: flex; align-items: flex-end; justify-content: center;
   height: 100%; min-height: 300px; }
 .hero__media .duo img { width: 50%; height: auto; max-height: 92%; object-fit: contain; display: block; }
@@ -56,7 +61,13 @@ footer .nav__logo .logo-name { font-size: 17px; }
 #episodes .card h3 a { text-decoration: none; }
 #episodes .card h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 #episodes .card .t-small { margin: 0; }
-@media (max-width: 639px) { #episodes .card { padding: var(--s-4) var(--s-4) var(--s-5); } }
+@media (max-width: 639px) {
+  #episodes .card { padding: var(--s-4) var(--s-4) var(--s-5); }
+  /* one column, one gap: the second grid block joins with the same air as the cards */
+  #episodes .grid { grid-template-columns: 1fr; gap: var(--s-4); }
+  #episodes .card { grid-column: 1 / -1; }
+  #episodes .wrap > .grid { margin-top: var(--s-4); }
+}
 /* the float card sits at the top of the panel, clear of the two faces */
 .hero__media .ly-float { top: var(--s-5); bottom: auto; left: var(--s-5); }
 /* the carried-over sheet has one negative margin that stretches the section; clip it */
@@ -493,7 +504,7 @@ footer .nav__logo .logo-name { font-size: 17px; }
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">Skip to content</a>
-    <a class="nav__logo" href="#top"><img class="mark" src="img/mark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
+    <a class="nav__logo" href="#top"><img class="mark" src="img/mark-dark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
     <nav class="nav__links" aria-label="Main">
       <div class="nav__item"><a class="nav__link" href="#episodes">Episodes</a></div>
       <div class="nav__item"><a class="nav__link" href="#practice">Practice</a></div>
@@ -842,7 +853,7 @@ footer .nav__logo .logo-name { font-size: 17px; }
     <div class="closing__links">
       <div class="grid">
         <div class="span-6 stack-4">
-          <a class="nav__logo" href="#top"><img class="mark" src="img/mark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
+          <a class="nav__logo" href="#top"><img class="mark" src="img/mark-dark.png" alt="" aria-hidden="true"><span class="logo-name">two english mugs</span></a>
           <p class="footer__lede">A listening podcast for people learning English. Two hosts, one story, twenty minutes.</p>
         </div>
         <div class="span-3 footer__col"><h4>The show</h4><ul><li><a href="#episodes">Episodes</a></li><li><a href="#hosts">Hosts</a></li><li><a href="#steps">How it works</a></li></ul></div>
