@@ -560,6 +560,13 @@ main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
 #practice .tab[aria-selected="true"]::before, #practice .tab[aria-selected="true"]::after {
   content: none !important; display: none !important; background: none !important; }
 
+/* the two tile columns were 136px each inside a 356px card, leaving 76px dead:
+   they are two equal columns that fill the card */
+#practice .cols { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; width: 100% !important; }
+#practice #words, #practice #means { width: 100% !important; }
+#practice .qitem { width: 100% !important; box-sizing: border-box; }
+@media (max-width: 639px) { #practice .pane { padding: 18px 14px; } }
+
 /* LAST WORD on the game bar: it is a grid at every width, so the pills can never
    outrun their container (the carried-over sheet's flex basis did exactly that) */
 #practice .tabs { display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
