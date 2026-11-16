@@ -567,6 +567,13 @@ main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
 #practice .qitem { width: 100% !important; box-sizing: border-box; }
 @media (max-width: 639px) { #practice .pane { padding: 18px 14px; } }
 
+/* nothing in the section may draw a native ring: iOS paints its own thick ring on the
+   element it focuses, which reads as a yellow frame around the game panel */
+#practice .pane, #practice .tabs, #practice .tab, #practice .qitem, #practice .wchip,
+#practice .lchoice, #practice button { outline: none !important; }
+#practice .tab:focus-visible, #practice .qitem:focus-visible, #practice button:focus-visible {
+  outline: 3px solid var(--coral) !important; outline-offset: 2px; }
+
 /* LAST WORD on the game bar: it is a grid at every width, so the pills can never
    outrun their container (the carried-over sheet's flex basis did exactly that) */
 #practice .tabs { display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
