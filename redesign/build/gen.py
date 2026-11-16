@@ -184,6 +184,14 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
   height: 100%; min-height: 300px; }
 .hero__media .duo img { width: 50%; height: auto; max-height: 92%; object-fit: contain; display: block; }
 @media (max-width: 1023px) { .hero__media .duo { min-height: 260px; margin-top: var(--s-6); } }
+/* the bar gains a hairline and a shadow once the page is moving */
+header.nav.is-scrolled { box-shadow: 0 1px 0 rgba(36,24,18,.10), 0 8px 24px rgba(36,24,18,.06); }
+/* anchors glide, and land clear of the fixed bar */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+main > section, footer.closing { scroll-margin-top: calc(var(--nav) + 24px); }
+/* motion is additive: nothing is hidden unless the motion file runs */
+html:not(.anim-ready) .hero__media { transform: none !important; }
+
 /* the episode list reads as tiles, not a wall of text: one tint, then the other */
 #episodes .card { background: var(--p-surface); border-radius: var(--r-lg); padding: var(--s-5) var(--s-5) var(--s-6); }
 #episodes .card:nth-child(even) { background: #fbe3dc; }
@@ -200,8 +208,9 @@ footer .nav__logo--stacked img.lockup { height: 72px !important; }
   #episodes .wrap > .grid { margin-top: var(--s-4); }
 }
 /* the guide library: a plain list of every working gate, two columns on a desktop */
-.gl { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0 var(--s-6); }
+.gl { list-style: none; margin: var(--s-5) 0 0; padding: 0; display: grid;
+  grid-template-columns: repeat(4, 1fr); gap: 0 var(--s-5); }
+@media (max-width: 1023px) { .gl { grid-template-columns: repeat(2, 1fr); } }
 .gl li { border-top: 1px solid var(--p-line, rgba(36,24,18,.14)); }
 .gl a { display: flex; align-items: baseline; gap: var(--s-3); padding: var(--s-3) 0; text-decoration: none;
   color: var(--p-ink); }
@@ -312,7 +321,7 @@ BODY = '''<body>
       <div class="nav__item"><a class="nav__link" href="#episodes">Episodes</a></div>
       <div class="nav__item"><a class="nav__link" href="#practice">Practice</a></div>
       <div class="nav__item"><a class="nav__link" href="#hosts">Hosts</a></div>
-      <div class="nav__item"><a class="nav__link" href="#guide">Free PDF</a></div>
+      <div class="nav__item"><a class="nav__link" href="#guides">Free PDF</a></div>
     </nav>
     <div class="nav__actions">
       <a class="btn btn--primary" href="https://www.youtube.com/@TwoEnglishMugs">Listen free</a>
@@ -394,6 +403,17 @@ BODY = '''<body>
     </div>
   </section>
 
+  <section class="section" id="guides" aria-labelledby="guides-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="guides-h">Every guide so far. <span class="muted">Tap an episode, its PDF comes by email.</span></h2>
+      </div>
+      <ul class="gl">
+''' + GUIDE_LIB + '''
+      </ul>
+    </div>
+  </section>
+
   <section class="section" id="steps" aria-labelledby="steps-h">
     <div class="wrap grid grid--middle">
       <div class="span-6">
@@ -439,12 +459,6 @@ BODY = '''<body>
         <div class="btn-row">
           <a class="btn btn--primary" href="https://dl.twoenglishmugs.com/ep40-negative-self-talk">Get the episode 40 guide</a>
         </div>
-        <div class="guidelib" style="margin-top:var(--s-6)">
-          <p class="t-label">''' + GUIDE_LABEL + '''</p>
-          <ul class="gl">
-''' + GUIDE_LIB + '''
-          </ul>
-        </div>
         <div class="vecpanel" style="height:220px;margin-top:var(--s-7)">''' + SVG_GUIDE + '''</div>
       </div>
       <div class="span-6 start-7">
@@ -476,7 +490,7 @@ BODY = '''<body>
           <p class="footer__lede">A listening podcast for people learning English. Two hosts, one story, twenty minutes.</p>
         </div>
         <div class="span-3 footer__col"><h4>The show</h4><ul><li><a href="#episodes">Episodes</a></li><li><a href="#hosts">Hosts</a></li><li><a href="#steps">How it works</a></li></ul></div>
-        <div class="span-3 footer__col"><h4>Practice</h4><ul><li><a href="#practice">Games</a></li><li><a href="#guide">Free PDF</a></li><li><a href="https://www.youtube.com/@TwoEnglishMugs">YouTube</a></li></ul></div>
+        <div class="span-3 footer__col"><h4>Practice</h4><ul><li><a href="#practice">Games</a></li><li><a href="#guides">Free PDF</a></li><li><a href="https://www.youtube.com/@TwoEnglishMugs">YouTube</a></li></ul></div>
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 Two English Mugs &nbsp; <a href="privacy.html">Privacy</a> &nbsp; <a href="terms.html">Terms</a></span>
@@ -486,6 +500,9 @@ BODY = '''<body>
   </div>
 </footer>
 
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/motion-extras.js" defer></script>
 <script type="module" src="assets/system.js"></script>
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
