@@ -138,6 +138,32 @@ HEAD = '''<!doctype html>
 @media (max-width: 1023px) { .hero__media .duo { min-height: 260px; margin-top: var(--s-6); } }
 /* the practice game and the writing prompt, carried over: the same classes on the light palette */
 /* the game's little inline icons were sized by the old page's CSS; give them their own box */
+/* the practice header: one line of title and pill, then the rhythm */
+#practice .phead { display: flex; align-items: baseline; gap: var(--s-4); flex-wrap: wrap; margin: 0; }
+#practice .phead h2 { margin: 0; }
+#practice .sub { margin: var(--s-3) 0 0; }
+#practice .hud { margin-top: var(--s-5); }
+#practice .badges { margin-top: var(--s-3); }
+#practice .tabs { margin-top: var(--s-5); }
+#practice .playmeta { display: flex; justify-content: flex-end; margin: var(--s-2) 0 0; }
+/* the four game tabs read as one control: same shape, same height, one active state */
+#practice .tab { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: transparent; gap: 8px; }
+#practice .tab.is-on, #practice .tab[aria-selected="true"] { background: var(--coral); border-color: var(--coral); color: #141111; }
+#practice .tab[aria-selected="true"] svg { stroke: #141111; }
+/* the four-games label is a pill, level to the title */
+#practice .ptag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line);
+  border-radius: 999px; padding: 7px 14px; background: var(--card); color: var(--cream); font-size: 13px; line-height: 1; }
+#practice .hud { align-items: center; }
+#practice .grow2 { max-width: 420px; }
+#practice .lvlrow b { color: var(--p-inv-ink); }
+/* a phone fits each section in one screen */
+@media (max-width: 639px) {
+  .vecpanel { height: auto; aspect-ratio: 3 / 2; }
+  .hostsrow { grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  #episodes .grid { row-gap: var(--s-4); }
+  #guide .vecpanel { display: none; }
+  .rows li { padding-block: var(--s-4); }
+}
 #practice .ptag svg { width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 /* the emoji in the game HUD do not render on this Mac: the words carry the meaning */
 #practice .chip2 .flame, #practice #gGoalWrap > span:first-child, #practice #gSnd { display: none; }
@@ -312,7 +338,7 @@ BODY = '''<body>
         <li><span class="rows__name">Emma, the host<small>She explains every hard word as it lands and never makes you feel late.</small></span><span class="rows__value">Host</span></li>
         <li><span class="rows__name">Josh, the learner<small>He tries each line out loud, gets it wrong first, then gets it. That is the point.</small></span><span class="rows__value">Learner's seat</span></li>
       </ul>
-      <div class="grid" style="margin-top:var(--s-6)">
+      <div class="grid hostsrow" style="margin-top:var(--s-6)">
         <div class="span-5"><img src="img/wave-emma.svg" alt="Emma, the host, waving hello" style="width:100%;height:auto;display:block"></div>
         <div class="span-5 start-8"><img src="img/wave-josh.svg" alt="Josh, the learner, waving hello" style="width:100%;height:auto;display:block"></div>
       </div>
